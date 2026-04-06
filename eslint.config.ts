@@ -11,25 +11,56 @@ import pluginOxlint from 'eslint-plugin-oxlint'
 // More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
 
 export default defineConfigWithVueTs(
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{vue,ts,mts,tsx}'],
-  },
+	{
+		name: 'app/files-to-lint',
+		files: ['**/*.{vue,ts,mts,tsx}'],
+	},
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+	globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
-  ...pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
+	...pluginVue.configs['flat/essential'],
+	vueTsConfigs.recommended,
 
-  {
-    ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
-  },
+	{
+		rules: {
+			'vue/max-attributes-per-line': [
+				'warn',
+				{
+					singleline: 3,
+					multiline: 1,
+				},
+			],
+			'vue/html-indent': ['warn', 'tab'],
+			'vue/script-indent': ['warn', 'tab'],
+			'vue/singleline-html-element-content-newline': 'off',
+			'vue/multiline-html-element-content-newline': 'off',
+			'@typescript-eslint/no-unused-vars': 'warn',
+			'vue/html-self-closing': [
+				'warn',
+				{
+					html: {
+						void: 'never',
+						normal: 'never',
+						component: 'always',
+					},
+					svg: 'any',
+					math: 'any',
+				},
+			],
+			semi: ['warn', 'never'],
+			quotes: ['warn', 'single'],
+		},
+	},
 
-  {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
-  },
+	{
+		...pluginPlaywright.configs['flat/recommended'],
+		files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+	},
 
-  ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
+	{
+		...pluginVitest.configs.recommended,
+		files: ['src/**/__tests__/*'],
+	},
+
+	...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 )
