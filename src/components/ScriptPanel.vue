@@ -51,7 +51,7 @@ const id = useId()
 			role="tabpanel"
 			class="panel-content"
 		>
-			<component :is="activeTab.component" />
+			<component :is="activeTab?.component" />
 		</div>
 	</section>
 </template>
