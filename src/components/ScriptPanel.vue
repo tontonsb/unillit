@@ -1,0 +1,134 @@
+<script setup lang="ts">
+import { computed, ref, useId, watch } from 'vue'
+import type { ScriptTab } from '@/scripts/scripts'
+
+const props = defineProps<{
+	tabs: ScriptTab[]
+	title?: string
+	titleNative?: string
+	titleLang?: string
+}>()
+
+const activeIndex = ref(0)
+
+watch(() => props.tabs, () => {
+	activeIndex.value = 0
+})
+
+const activeTab = computed(() => props.tabs[activeIndex.value])
+const id = useId()
+</script>
+
+<template>
+	<section>
+		<header>
+			<h1>
+				<span class="panel-name">{{ title }}</span>
+				<span v-if="titleNative" class="panel-native" :lang="titleLang">{{ titleNative }}</span>
+			</h1>
+
+			<nav role="tablist">
+				<button
+					v-for="(tab, i) in tabs"
+					:key="i"
+					:id="`${id}-tab-${i}`"
+					type="button"
+					role="tab"
+					class="tab"
+					:class="{ active: activeIndex === i }"
+					:aria-selected="activeIndex === i"
+					:aria-controls="`${id}-panel`"
+					@click="activeIndex = i"
+				>
+					{{ tab.label }}
+				</button>
+			</nav>
+		</header>
+
+		<div
+			:id="`${id}-panel`"
+			:aria-labelledby="`${id}-tab-${activeIndex}`"
+			role="tabpanel"
+			class="panel-content"
+		>
+			<component :is="activeTab.component" />
+		</div>
+	</section>
+</template>
+
+<style scoped>
+section {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+header {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0 12px;
+	background: var(--c-cell);
+	border-bottom: 1px solid var(--c-border);
+	min-height: 36px;
+}
+
+h1 {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex-shrink: 0;
+	padding: 6px 0;
+}
+
+.panel-name {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--c-head);
+}
+
+.panel-native {
+	font-size: 15px;
+	color: var(--c-accent);
+}
+
+nav {
+	display: flex;
+	gap: 2px;
+	overflow-x: auto;
+	scrollbar-width: none;
+	flex: 1;
+}
+
+nav::-webkit-scrollbar { display: none; }
+
+.tab {
+	padding: 8px 12px;
+	border: none;
+	background: transparent;
+	color: var(--c-muted);
+	font-size: 12px;
+	font-family: var(--sans);
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	white-space: nowrap;
+	transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+	color: var(--c-label);
+}
+
+.tab.active {
+	color: var(--c-head);
+	border-bottom-color: var(--c-accent);
+}
+
+.panel-content {
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: auto;
+	background: var(--c-bg);
+}
+</style>
