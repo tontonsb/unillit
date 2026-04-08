@@ -4,6 +4,7 @@ import pluginVue from 'eslint-plugin-vue'
 import pluginPlaywright from 'eslint-plugin-playwright'
 import pluginVitest from '@vitest/eslint-plugin'
 import pluginOxlint from 'eslint-plugin-oxlint'
+import pluginStylistic from '@stylistic/eslint-plugin'
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -22,6 +23,10 @@ export default defineConfigWithVueTs(
 	vueTsConfigs.recommended,
 
 	{
+		plugins: {
+			'@stylistic': pluginStylistic,
+		},
+
 		rules: {
 			'vue/max-attributes-per-line': [
 				'warn',
@@ -32,6 +37,7 @@ export default defineConfigWithVueTs(
 			],
 			'vue/html-indent': ['warn', 'tab'],
 			'vue/script-indent': ['warn', 'tab'],
+			'@stylistic/indent': ['warn', 'tab'],
 			'vue/singleline-html-element-content-newline': 'off',
 			'vue/multiline-html-element-content-newline': 'off',
 			'@typescript-eslint/no-unused-vars': 'warn',
