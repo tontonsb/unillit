@@ -58,7 +58,7 @@ import { scriptList } from '@/scripts/scripts'
 				<span class="card-name">{{ script.name }}</span>
 				<span class="card-meta">{{ script.meta }}</span>
 				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
-				<span class="card-soon">Planned...</span>
+				<span class="card-soon">Maybe in future...</span>
 			</div>
 		</section>
 
@@ -138,6 +138,7 @@ h1 + h2 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
+	margin-top: 1.75rem;
 	margin-bottom: 1.75rem;
 }
 
