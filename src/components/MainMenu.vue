@@ -25,7 +25,7 @@ const route = useRoute()
 			<div class="nav-divider"></div>
 
 			<RouterLink
-				v-for="script in scriptList"
+				v-for="script in scriptList.filter(s => !s.comingSoon)"
 				:key="script.id"
 				:to="`/scripts/${script.id}`"
 				class="nav-item"
@@ -36,6 +36,19 @@ const route = useRoute()
 				<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
 				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.nativeName[0] }}</span>
 			</RouterLink>
+
+			<div class="nav-divider"></div>
+
+			<div
+				v-for="script in scriptList.filter(s => s.comingSoon)"
+				:key="script.id"
+				class="nav-item coming-soon"
+				:title="`${script.name} — coming soon`"
+			>
+				<span class="script-name">{{ script.name }}</span>
+				<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
+				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.nativeName[0] }}</span>
+			</div>
 		</nav>
 	</aside>
 </template>
@@ -116,6 +129,11 @@ nav {
 	background: var(--c-alt);
 	border-left-color: var(--c-accent);
 	color: var(--c-head);
+}
+
+.nav-item.coming-soon {
+	opacity: 0.4;
+	cursor: default;
 }
 
 .script-name,

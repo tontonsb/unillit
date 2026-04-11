@@ -39,7 +39,7 @@ import { scriptList } from '@/scripts/scripts'
 
 		<section class="script-grid">
 			<RouterLink
-				v-for="script in scriptList"
+				v-for="script in scriptList.filter(s => !s.comingSoon)"
 				:key="script.id"
 				:to="`/scripts/${script.id}`"
 				class="script-card"
@@ -47,7 +47,19 @@ import { scriptList } from '@/scripts/scripts'
 				<span class="card-native">{{ script.nativeName }}</span>
 				<span class="card-name">{{ script.name }}</span>
 				<span class="card-meta">{{ script.meta }}</span>
+				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
 			</RouterLink>
+			<div
+				v-for="script in scriptList.filter(s => s.comingSoon)"
+				:key="script.id"
+				class="script-card coming-soon"
+			>
+				<span class="card-native">{{ script.nativeName }}</span>
+				<span class="card-name">{{ script.name }}</span>
+				<span class="card-meta">{{ script.meta }}</span>
+				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
+				<span class="card-soon">Planned...</span>
+			</div>
 		</section>
 
 		<h2>Abu- what?</h2>
@@ -172,6 +184,20 @@ ol {
 	background: var(--c-alt);
 }
 
+.script-card.coming-soon {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.card-soon {
+	font-size: 0.65rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--c-muted);
+	margin-top: auto;
+}
+
 .card-native {
 	font-size: 1.75rem;
 	line-height: 1.2;
@@ -188,5 +214,12 @@ ol {
 	font-size: 0.75rem;
 	color: var(--c-muted);
 	line-height: 1.4;
+}
+
+.card-countries {
+	font-size: 0.7rem;
+	color: var(--c-muted);
+	line-height: 1.4;
+	opacity: 0.7;
 }
 </style>
