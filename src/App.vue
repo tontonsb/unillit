@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import MainMenu from '@/components/MainMenu.vue'
+import { activeThaiFontFamily } from '@/scripts/thai/ThaiFont'
+
+const fontVars = computed(() => ({ '--font-thai': activeThaiFontFamily() }))
 </script>
 
 <template>
-	<div class="app-layout">
+	<div class="app-layout" :style="fontVars">
 		<MainMenu />
 		<main class="app-main">
 			<RouterView />

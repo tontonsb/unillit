@@ -17,7 +17,11 @@ const config = computed(() => scriptsById[route.params.id as string])
 				:title-native="config.nativeName"
 				:title-lang="config.id"
 			/>
-			<ScriptPanel :tabs="config.practiceTabs" />
+			<ScriptPanel :tabs="config.practiceTabs">
+				<template v-if="config.infoHeaderEnd" #header-end>
+					<component :is="config.infoHeaderEnd" />
+				</template>
+			</ScriptPanel>
 		</div>
 	</div>
 

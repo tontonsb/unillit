@@ -48,10 +48,6 @@ export const scriptList: ScriptConfig[] = [
 				label: 'Identify by shape',
 				component: defineAsyncComponent(() => import('@/scripts/thai/ShapeIdentification.vue')),
 			},
-			{
-				label: 'Poster',
-				component: defineAsyncComponent(() => import('@/scripts/thai/ThaiPoster.vue')),
-			},
 			{ label: 'None', component: NoContent },
 		],
 	},

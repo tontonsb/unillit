@@ -43,6 +43,8 @@ const id = useId()
 					{{ tab.label }}
 				</button>
 			</nav>
+
+			<slot name="header-end" ></slot>
 		</header>
 
 		<div
