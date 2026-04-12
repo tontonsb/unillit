@@ -10,6 +10,7 @@ export interface ScriptConfig {
 	id: string
 	name: string
 	nativeName: string
+	abbr?: string     // icon char for collapsed menu; defaults to nativeName[0]
 	meta: string
 	countries?: string
 	comingSoon?: boolean
@@ -59,6 +60,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'arabic',
 		name: 'Arabic',
 		nativeName: 'العربية',
+		abbr: 'ع',
 		meta: 'Abjad · right → left · 28 letters',
 		comingSoon: true,
 		infoTabs: [
@@ -84,6 +86,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'bengali',
 		name: 'Bengali',
 		nativeName: 'বাংলা',
+		abbr: 'ব',
 		meta: 'Abugida · left → right · IAST-lite romanisation',
 		countries: 'Bangladesh · West Bengal',
 		comingSoon: true,
@@ -106,6 +109,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'cyrillic',
 		name: 'Cyrillic',
 		nativeName: 'Кириллица',
+		abbr: 'Ж',
 		meta: 'Alphabet · left → right · BGN/PCGN romanisation',
 		countries: 'Russia · Ukraine · Bulgaria',
 		comingSoon: true,
@@ -128,6 +132,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'greek',
 		name: 'Greek',
 		nativeName: 'Ελληνικά',
+		abbr: 'Ω',
 		meta: 'Alphabet · left → right',
 		countries: 'Greece · Cyprus',
 		comingSoon: true,

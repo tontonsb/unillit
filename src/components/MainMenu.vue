@@ -34,7 +34,7 @@ const route = useRoute()
 			>
 				<span class="script-name">{{ script.name }}</span>
 				<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
-				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.nativeName[0] }}</span>
+				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</RouterLink>
 
 			<div class="nav-divider"></div>
@@ -47,7 +47,7 @@ const route = useRoute()
 			>
 				<span class="script-name">{{ script.name }}</span>
 				<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
-				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.nativeName[0] }}</span>
+				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</div>
 		</nav>
 	</aside>
