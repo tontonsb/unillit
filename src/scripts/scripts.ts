@@ -65,7 +65,7 @@ export const scriptList: ScriptConfig[] = [
 		meta: 'Abjad · right → left · 28 letters · up to 4 forms each',
 		comingSoon: true,
 		infoTabs: [
-			{
+			/*{
 				label: 'Shape × Dots',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicDotsGrid.vue')),
 			},
@@ -76,7 +76,7 @@ export const scriptList: ScriptConfig[] = [
 			{
 				label: 'Shape families +',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicShapeFamiliesPlus.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
@@ -92,14 +92,14 @@ export const scriptList: ScriptConfig[] = [
 		countries: 'Bangladesh · West Bengal',
 		comingSoon: true,
 		infoTabs: [
-			{
+			/*{
 				label: 'Reading tips',
 				component: defineAsyncComponent(() => import('@/scripts/bengali/BengaliTips.vue')),
 			},
 			{
 				label: 'Alphabet',
 				component: defineAsyncComponent(() => import('@/scripts/bengali/BengaliSheet.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
@@ -115,14 +115,14 @@ export const scriptList: ScriptConfig[] = [
 		countries: 'Russia · Ukraine · Bulgaria',
 		comingSoon: true,
 		infoTabs: [
-			{
+			/*{
 				label: 'Reading tips',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
 			},
 			{
 				label: 'Alphabet',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicSheet.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
