@@ -12,12 +12,12 @@ const config = computed(() => scriptsById[route.params.id as string])
 	<div v-if="config" class="script-page">
 		<div class="panels">
 			<ScriptPanel
-				:tabs="config.infoTabs"
+				:tabs="config.infoTabs ?? []"
 				:title="config.name"
 				:title-native="config.nativeName"
 				:title-lang="config.id"
 			/>
-			<ScriptPanel :tabs="config.practiceTabs">
+			<ScriptPanel :tabs="config.practiceTabs ?? []">
 				<template v-if="config.infoHeaderEnd" #header-end>
 					<component :is="config.infoHeaderEnd" />
 				</template>
