@@ -68,6 +68,7 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เกาะ', translit: 'o', length: 'short' },
 			{ thai: 'เกอ', translit: 'oe', length: 'long' },
 			{ thai: 'แกะ', translit: 'ae', length: 'short' },
+			{ thai: 'กำ', translit: 'am', length: 'short' },
 		],
 	},
 	{
