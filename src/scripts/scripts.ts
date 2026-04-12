@@ -31,8 +31,12 @@ export const scriptList: ScriptConfig[] = [
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/ThaiFontPicker.vue')),
 		practiceTabs: [
 			{
-				label: 'Quiz',
+				label: 'Type-in',
 				component: defineAsyncComponent(() => import('@/scripts/thai/ThaiQuiz.vue')),
+			},
+			{
+				label: 'Multiple choice',
+				component: defineAsyncComponent(() => import('@/scripts/thai/ThaiMultipleChoiceQuiz.vue')),
 			},
 		],
 		infoTabs: [
