@@ -4,8 +4,13 @@ import { scriptList } from '@/scripts/scripts'
 
 <template>
 	<article>
-		<h1>Transliteration Reference</h1>
+		<h1>Unillit</h1>
+
 		<p class="home-sub">
+			Some road signs in a foreign land make you feel illiterate? Well un-illiterate yourself!
+		</p>
+
+		<p>
 			Tips and lookup sheets to transliterate different scripts into Latin characters.
 			Mostly assembled for GeoGuessr purposes — to learn how to decipher what a sign in a foreign script says.
 			Compared to other resources I tried to make the descriptions even shorter, i.e. just the basics, lookup sheets and off you go.
@@ -13,8 +18,10 @@ import { scriptList } from '@/scripts/scripts'
 
 		<h2>Suggested approach</h2>
 
-		<p>Learning is generally non-linear and we are likely to swap back and forth between resources.
-		But generally this is made with two strategies in mind:</p>
+		<p>
+			Learning is generally non-linear and we are likely to swap back and forth between resources.
+			But generally this is made with two strategies in mind:
+		</p>
 
 		<div class="approaches">
 			<div>
@@ -84,12 +91,6 @@ import { scriptList } from '@/scripts/scripts'
 			As most classifications, this does not convey the whole truth.
 			For example, Hangul (the Korean script) is alphabetic, but the letters are arranged in syllable blocks.
 		</p>
-
-		<h2>Any errors?</h2>
-		<p>
-			I'm just learning most of these scripts myself by reading wikipedia, docs and resources curated by the GeoGuessr community as well as consulting with AI chat bots.
-			If you spot any errors, hit me up on Discord: Džuris (@tontonsb) or email juris@glaive.pro.
-		</p>
 	</article>
 </template>
 
@@ -158,6 +159,26 @@ ol {
 	color: var(--c-label);
 	font-size: 0.9rem;
 	line-height: 1.5;
+}
+
+dl {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.25rem 1.25rem;
+	margin: 0.75rem 0 1rem;
+}
+
+dt {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--c-head);
+	padding-top: 0.1em;
+}
+
+dd {
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: var(--c-label);
 }
 
 .script-grid {

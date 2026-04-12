@@ -26,8 +26,9 @@ export const scriptList: ScriptConfig[] = [
 	{
 		id: 'thai',
 		name: 'Thai',
-		nativeName: 'ภาษาไทย',
-		meta: 'Abugida · left → right',
+		nativeName: 'อักษรไทย',
+		abbr: 'ภ',
+		meta: 'Abugida · left → right · 44 consonants · 20+ vowel forms',
 		countries: 'Thailand',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/ThaiFontPicker.vue')),
 		practiceTabs: [
@@ -61,7 +62,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Arabic',
 		nativeName: 'العربية',
 		abbr: 'ع',
-		meta: 'Abjad · right → left · 28 letters',
+		meta: 'Abjad · right → left · 28 letters · up to 4 forms each',
 		comingSoon: true,
 		infoTabs: [
 			{
@@ -87,7 +88,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Bengali',
 		nativeName: 'বাংলা',
 		abbr: 'ব',
-		meta: 'Abugida · left → right · IAST-lite romanisation',
+		meta: 'Abugida · left → right · 39 consonants · 11 vowels',
 		countries: 'Bangladesh · West Bengal',
 		comingSoon: true,
 		infoTabs: [
@@ -110,7 +111,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Cyrillic',
 		nativeName: 'Кириллица',
 		abbr: 'Ж',
-		meta: 'Alphabet · left → right · BGN/PCGN romanisation',
+		meta: 'Alphabet · left → right · 33 letters',
 		countries: 'Russia · Ukraine · Bulgaria',
 		comingSoon: true,
 		infoTabs: [
@@ -133,7 +134,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Greek',
 		nativeName: 'Ελληνικά',
 		abbr: 'Ω',
-		meta: 'Alphabet · left → right',
+		meta: 'Alphabet · left → right · 24 letters',
 		countries: 'Greece · Cyprus',
 		comingSoon: true,
 	},
@@ -141,7 +142,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'lao',
 		name: 'Lao',
 		nativeName: 'ພາສາລາວ',
-		meta: 'Abugida · left → right',
+		meta: 'Abugida · left → right · 27 consonants',
 		countries: 'Laos',
 		comingSoon: true,
 	},

@@ -49,6 +49,16 @@ const route = useRoute()
 				<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
 				<span class="script-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</div>
+
+			<div class="nav-divider"></div>
+
+			<RouterLink to="/about"
+				class="nav-item"
+				:class="{ active: route.name === 'about' }"
+				title="About">
+				<span class="script-name">About</span>
+				<span class="script-abbr" aria-hidden="true">?</span>
+			</RouterLink>
 		</nav>
 	</aside>
 </template>
