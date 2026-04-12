@@ -72,7 +72,7 @@ const vowelFamilies: VowelFamily[] = [
 		],
 	},
 	{
-		name: 'Diphthong patterns (vowel combos and glides with consonant glyphs ย / ว / อ)',
+		name: 'Diphthong patterns (vowel combos and glides with consonant glyphs ย / ว / อ / รร)',
 		vowels: [
 			{ thai: 'กอย', translit: 'oi', length: 'long' },
 			{ thai: 'กาว', translit: 'ao', length: 'long' },
@@ -85,6 +85,7 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เกย', translit: 'oei', length: 'long' },
 			{ thai: 'เกีย', translit: 'ia', length: 'long' },
 			{ thai: 'เกือ', translit: 'uea', length: 'long' },
+			{ thai: 'กรร', translit: 'an/a', length: 'short' },
 		],
 	},
 ]

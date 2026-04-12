@@ -92,6 +92,8 @@ export const syllableQuestions: Question[] = [
 	{ prompt: 'ศรี',   answer: 'si',     hint: 'auspicious — ร is silent in this Sanskrit cluster' },
 	{ prompt: 'สอง',   answer: 'song',   hint: 'two — s + o + ng' },
 	{ prompt: 'แก่น',  answer: 'kaen',   hint: 'core/essence — k + ae + n, mai ek tone mark' },
+	{ prompt: 'พรรณ', answer: 'phan',   hint: 'ro han (รร) + final ณ — short a, final n; "phan"' },
+	{ prompt: 'กรรม', answer: 'kam',    hint: 'ro han (รร) + final ม — short a, final m' },
 ]
 
 export const placeQuestions: Question[] = [
