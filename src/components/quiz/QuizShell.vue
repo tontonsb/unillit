@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref, watch, toRef, nextTick } from 'vue'
+import { ref, computed, watch, toRef, nextTick } from 'vue'
 import type { VNode } from 'vue'
 import type { Question, QuizDataset } from './dataset'
 import { useQuizSession, type Phase } from './useSession'
+import { useStats } from '@/composables/useStats'
 
 const props = defineProps<{
 	datasets: QuizDataset[]
 	promptClass?: string
+	scriptId?: string
 }>()
 
 const emit = defineEmits<{
@@ -24,6 +26,12 @@ const {
 
 const nextBtn = ref<HTMLButtonElement | null>(null)
 
+const stats = computed(() =>
+	props.scriptId
+		? useStats(props.scriptId, props.datasets[datasetIndex.value].label)
+		: null
+)
+
 function emitQuestion() {
 	if (current.value) emit('question', { question: current.value, session: session.value })
 }
@@ -31,21 +39,25 @@ function emitQuestion() {
 watch(datasetIndex, () => {
 	_startSession()
 	emitQuestion()
+	stats.value?.startRun(session.value.length)
 }, { immediate: true })
 
 function startSession() {
 	_startSession()
 	emitQuestion()
+	stats.value?.startRun(session.value.length)
 }
 
 function handleSubmit(correct: boolean) {
 	_submit(correct)
 	nextTick(() => nextBtn.value?.focus())
+	if (current.value) stats.value?.recordAnswer(current.value.prompt, correct)
 }
 
 function advance() {
 	_advance()
 	if (phase.value === 'question') emitQuestion()
+	else if (phase.value === 'done') stats.value?.completeRun()
 }
 </script>
 

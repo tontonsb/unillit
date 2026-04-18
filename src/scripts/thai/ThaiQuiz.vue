@@ -13,7 +13,11 @@ const datasets = [
 </script>
 
 <template>
-	<TypeInQuiz :datasets="datasets" prompt-class="thai" />
+	<TypeInQuiz
+		:datasets="datasets"
+		prompt-class="thai"
+		script-id="thai"
+	/>
 </template>
 
 <style scoped>

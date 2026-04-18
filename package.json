@@ -1,6 +1,6 @@
 {
 	"name": "transliterations",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -16,7 +16,9 @@
 		"lint:eslint": "eslint . --cache"
 	},
 	"dependencies": {
+		"@supabase/supabase-js": "^2.103.0",
 		"pinia": "^3.0.4",
+		"tslib": "^2.8.1",
 		"vue": "^3.5.31",
 		"vue-router": "^5.0.4"
 	},

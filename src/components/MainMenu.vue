@@ -2,9 +2,11 @@
 import { ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { scriptList } from '@/scripts/scripts'
+import { useAuth } from '@/composables/useAuth'
 
 const collapsed = ref(true)
 const route = useRoute()
+const { user, loginWithDiscord, logout } = useAuth()
 </script>
 
 <template>
@@ -59,7 +61,35 @@ const route = useRoute()
 				<span class="script-name">About</span>
 				<span class="script-abbr" aria-hidden="true">?</span>
 			</RouterLink>
+
 		</nav>
+
+		<div class="user-section">
+			<button
+				v-if="!user"
+				class="nav-item nav-btn"
+				title="Login with Discord"
+				@click="loginWithDiscord"
+			>
+				<span class="script-name">Login with Discord</span>
+				<span class="script-abbr" aria-hidden="true">👤</span>
+			</button>
+			<button
+				v-else
+				class="nav-item nav-btn user-item"
+				:title="`Logged in as ${user.user_metadata.full_name ?? user.email} — click to log out`"
+				@click="logout"
+			>
+				<img
+					v-if="user.user_metadata.avatar_url"
+					:src="user.user_metadata.avatar_url"
+					class="user-avatar"
+					alt="User avatar"
+				>
+				<span class="script-name user-name">{{ user.user_metadata.full_name ?? user.email }}</span>
+				<span class="script-abbr" aria-hidden="true">⏻</span>
+			</button>
+		</div>
 	</aside>
 </template>
 
@@ -186,5 +216,42 @@ nav {
 .collapsed .nav-item {
 	align-items: center;
 	padding: 10px 0;
+}
+
+.user-section {
+	flex-shrink: 0;
+	border-top: 1px solid var(--c-border);
+}
+
+.nav-btn {
+	border: none;
+	background: none;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font: inherit;
+}
+
+.user-item {
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.user-avatar {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.user-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.collapsed .user-avatar {
+	width: 20px;
+	height: 20px;
 }
 </style>

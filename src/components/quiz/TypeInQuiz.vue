@@ -7,6 +7,7 @@ import QuizShell from './QuizShell.vue'
 defineProps<{
 	datasets: QuizDataset[]
 	promptClass?: string
+	scriptId?: string
 }>()
 
 const userInput = ref('')
@@ -25,7 +26,12 @@ function handleSubmit(current: Question, submit: (correct: boolean) => void) {
 </script>
 
 <template>
-	<QuizShell :datasets="datasets" :prompt-class="promptClass" @question="onQuestion">
+	<QuizShell
+		:datasets="datasets"
+		:prompt-class="promptClass"
+		:script-id="scriptId"
+		@question="onQuestion"
+	>
 		<template #default="{ current, phase, submit }">
 			<form v-if="phase === 'question'" class="input-row" @submit.prevent="handleSubmit(current, submit)">
 				<input

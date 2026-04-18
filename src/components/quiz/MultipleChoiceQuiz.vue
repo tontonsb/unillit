@@ -7,6 +7,7 @@ import QuizShell from './QuizShell.vue'
 defineProps<{
 	datasets: QuizDataset[]
 	promptClass?: string
+	scriptId?: string
 }>()
 
 const choices = ref<string[]>([])
@@ -41,7 +42,12 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 </script>
 
 <template>
-	<QuizShell :datasets="datasets" :prompt-class="promptClass" @question="onQuestion">
+	<QuizShell
+		:datasets="datasets"
+		:prompt-class="promptClass"
+		:script-id="scriptId"
+		@question="onQuestion"
+	>
 		<template #default="{ current, phase, submit }">
 			<div class="choices">
 				<button

@@ -9,7 +9,11 @@ const datasets = [
 </script>
 
 <template>
-	<MultipleChoiceQuiz :datasets="datasets" prompt-class="thai" />
+	<MultipleChoiceQuiz
+		:datasets="datasets"
+		prompt-class="thai"
+		script-id="thai"
+	/>
 </template>
 
 <style scoped>
