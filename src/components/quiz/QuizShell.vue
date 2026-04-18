@@ -29,6 +29,7 @@ const samplingMode = ref<SamplingMode>('shuffled')
 const randomCount = ref(10)
 
 const nextBtn = ref<HTMLButtonElement | null>(null)
+let runStarted = false
 
 const stats = computed(() => {
 	const dataset = props.datasets[datasetIndex.value]
@@ -49,19 +50,25 @@ function sessionCount() {
 watch(datasetIndex, () => {
 	_startSession(sessionCount())
 	emitQuestion()
-	stats.value?.startRun(session.value.length)
+	runStarted = false
 }, { immediate: true })
 
 function startSession() {
 	_startSession(sessionCount())
 	emitQuestion()
-	stats.value?.startRun(session.value.length)
+	runStarted = false
 }
 
 function handleSubmit(correct: boolean) {
 	_submit(correct)
 	nextTick(() => nextBtn.value?.focus())
-	if (current.value) stats.value?.recordAnswer(current.value.prompt, correct)
+	if (current.value) {
+		if (!runStarted) {
+			stats.value?.startRun(session.value.length)
+			runStarted = true
+		}
+		stats.value?.recordAnswer(current.value.prompt, correct)
+	}
 }
 
 function advance() {
