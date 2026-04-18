@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Question, QuizDataset } from './dataset'
-import { shuffle, canonicalAnswer, isMatch } from './utils'
+import { shuffle, canonicalAnswer, allAnswers, isMatch } from './utils'
 import QuizShell from './QuizShell.vue'
 
 defineProps<{
@@ -60,6 +60,9 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 					@click="handleSelect(choice, current, submit)"
 				>{{ choice }}</button>
 			</div>
+			<p v-if="phase === 'answered' && allAnswers(current).length > 1" class="also-accepted">
+				accepted: {{ allAnswers(current).join(' / ') }}
+			</p>
 		</template>
 	</QuizShell>
 </template>
@@ -106,4 +109,11 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 }
 
 .choice.dim { opacity: 0.4; }
+
+.also-accepted {
+	font-size: 11px;
+	color: var(--c-muted);
+	text-align: center;
+	margin: 0;
+}
 </style>

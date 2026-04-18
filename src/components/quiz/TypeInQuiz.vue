@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
 import type { Question, QuizDataset } from './dataset'
-import { canonicalAnswer, isMatch } from './utils'
+import { allAnswers, formatAnswers, isMatch } from './utils'
 import QuizShell from './QuizShell.vue'
 
 defineProps<{
@@ -51,11 +51,12 @@ function handleSubmit(current: Question, submit: (correct: boolean) => void) {
 			<div v-else class="feedback">
 				<div class="feedback-row" :class="lastCorrect ? 'correct' : 'wrong'">
 					<span class="feedback-icon">{{ lastCorrect ? '✓' : '✗' }}</span>
+					<span v-if="lastCorrect && allAnswers(current).length > 1" class="feedback-answer">{{ formatAnswers(current) }}</span>
 					<span v-if="!lastCorrect" class="feedback-user">{{ userInput || '(blank)' }}</span>
 				</div>
 				<div v-if="!lastCorrect" class="feedback-row correct">
 					<span class="feedback-icon">✓</span>
-					<span class="feedback-answer">{{ canonicalAnswer(current) }}</span>
+					<span class="feedback-answer">{{ formatAnswers(current) }}</span>
 				</div>
 			</div>
 		</template>
