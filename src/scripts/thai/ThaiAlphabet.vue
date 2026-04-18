@@ -99,10 +99,12 @@ const vowelRows: VowelRow[] = [
 	{ short: 'แกะ / แก็◌', long: 'แก', rtgs: 'ae', position: 'before', notes: 'Like <em>a</em> in <em>cat</em>' },
 	{ short: 'โกะ', long: 'โก', rtgs: 'o', position: 'before' },
 	{ short: 'เกาะ', long: 'กอ', rtgs: 'o', position: 'wrap / after', notes: 'Open-mid <em>o</em> as in <em>or</em>' },
-	{ short: 'เกอะ', long: 'เกอ', rtgs: 'oe', position: 'before+after', notes: 'Schwa-like; rare in place names' },
+	{ short: 'เกอะ / เกิ◌', long: 'เกอ', rtgs: 'oe', position: 'before+after', notes: 'Schwa-like; short เ◌ิ used before a final consonant (e.g. เดิน doen)' },
 	{ short: 'เกียะ', long: 'เกีย', rtgs: 'ia', position: 'before+above+after', notes: 'Diphthong; long form far more common' },
 	{ short: 'กัวะ', long: 'กัว / กว', rtgs: 'ua', position: 'above / glide', notes: 'Diphthong; ว acts as second element' },
 	{ short: 'เกือะ', long: 'เกือ', rtgs: 'uea', position: 'before+above+after', notes: 'Triphthong; long form common in place names' },
+	{ short: 'กำ', long: '—', rtgs: 'am', position: 'above+after (◌ํ+า)', notes: 'Sara am — implied final m; e.g. กำแพง Kamphaeng' },
+	{ short: 'กรร', long: '—', rtgs: 'an / a', position: 'after (◌รร)', notes: 'Ro han — <em>an</em> at syllable end; short <em>a</em> before a final consonant' },
 ]
 
 const specialMarks: Mark[] = [
@@ -110,6 +112,7 @@ const specialMarks: Mark[] = [
 	{ thai: 'ก์', rom: 'thanthakhat', gloss: '◌์ silences a consonant' },
 	{ thai: 'ฯ', rom: 'paiyannoi', gloss: 'abbreviation / etc.' },
 	{ thai: 'กํ', rom: 'nikhahit', gloss: '◌ํ — nasal /m/ or /ng/' },
+	{ thai: 'ก็', rom: 'mai taikhu', gloss: '◌็ — short vowel before final (เ◌ะ → เ◌็, แ◌ะ → แ◌็)' },
 ]
 </script>
 
