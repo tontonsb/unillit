@@ -5,6 +5,13 @@ import { shuffle } from './utils'
 
 export type Phase = 'question' | 'answered' | 'done'
 
+function buildSession(questions: Question[], count: number | null): Question[] {
+	if (!count) return shuffle(questions)
+	if (!questions.length) return []
+	
+	return Array.from({ length: count }, () => questions[Math.floor(Math.random() * questions.length)]!)
+}
+
 export function useQuizSession(datasets: Ref<QuizDataset[]>) {
 	const datasetIndex = ref(0)
 	const session = ref<Question[]>([])
@@ -15,8 +22,9 @@ export function useQuizSession(datasets: Ref<QuizDataset[]>) {
 	const current = computed(() => session.value[index.value] as Question | undefined)
 	const progress = computed(() => `${index.value + (phase.value !== 'question' ? 1 : 0)} / ${session.value.length}`)
 
-	function startSession() {
-		session.value = shuffle(datasets.value[datasetIndex.value]?.questions ?? [])
+	function startSession(count?: number | null) {
+		const questions = datasets.value[datasetIndex.value]?.questions ?? []
+		session.value = buildSession(questions, count ?? null)
 		index.value = 0
 		phase.value = 'question'
 		tally.value = { correct: 0, wrong: 0 }

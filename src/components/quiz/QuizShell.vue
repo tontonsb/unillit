@@ -24,26 +24,36 @@ const {
 	startSession: _startSession, submit: _submit, advance: _advance,
 } = useQuizSession(toRef(props, 'datasets'))
 
+type SamplingMode = 'shuffled' | 'random'
+const samplingMode = ref<SamplingMode>('shuffled')
+const randomCount = ref(10)
+
 const nextBtn = ref<HTMLButtonElement | null>(null)
 
-const stats = computed(() =>
-	props.scriptId
-		? useStats(props.scriptId, props.datasets[datasetIndex.value].label)
+const stats = computed(() => {
+	const dataset = props.datasets[datasetIndex.value]
+
+	return props.scriptId && dataset
+		? useStats(props.scriptId, dataset.label) 
 		: null
-)
+})
 
 function emitQuestion() {
 	if (current.value) emit('question', { question: current.value, session: session.value })
 }
 
+function sessionCount() {
+	return samplingMode.value === 'random' ? randomCount.value : null
+}
+
 watch(datasetIndex, () => {
-	_startSession()
+	_startSession(sessionCount())
 	emitQuestion()
 	stats.value?.startRun(session.value.length)
 }, { immediate: true })
 
 function startSession() {
-	_startSession()
+	_startSession(sessionCount())
 	emitQuestion()
 	stats.value?.startRun(session.value.length)
 }
@@ -73,6 +83,28 @@ function advance() {
 					:class="{ active: datasetIndex === i }"
 					@click="datasetIndex = i"
 				>{{ dataset.label }}</button>
+			</div>
+			<div class="mode-picker">
+				<button
+					type="button"
+					class="pill"
+					:class="{ active: samplingMode === 'shuffled' }"
+					@click="samplingMode = 'shuffled'; startSession()"
+				>Shuffled</button>
+				<button
+					type="button"
+					class="pill"
+					:class="{ active: samplingMode === 'random' }"
+					@click="samplingMode = 'random'; startSession()"
+				>Random</button>
+				<input
+					v-if="samplingMode === 'random'"
+					v-model.number="randomCount"
+					type="number"
+					min="1"
+					class="count-input"
+					@change="startSession()"
+				>
 			</div>
 		</div>
 
@@ -136,6 +168,32 @@ function advance() {
 	display: flex;
 	gap: 4px;
 	flex-wrap: wrap;
+	flex: 1;
+}
+
+.mode-picker {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	border-left: 1px solid var(--c-border);
+	padding-left: 8px;
+}
+
+.count-input {
+	width: 52px;
+	padding: 2px 6px;
+	border: 1px solid var(--c-border);
+	border-radius: 12px;
+	background: transparent;
+	color: var(--c-label);
+	font-size: 11px;
+	font-family: var(--sans);
+	text-align: center;
+}
+
+.count-input:focus {
+	outline: none;
+	border-color: var(--c-accent);
 }
 
 .pill {
