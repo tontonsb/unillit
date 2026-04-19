@@ -4,6 +4,7 @@ import type { VNode } from 'vue'
 import type { Question, QuizDataset } from './dataset'
 import { useQuizSession, type Phase } from './useSession'
 import { useStats } from '@/composables/useStats'
+import { activeFont, activeInfoSheet } from '@/composables/useScriptContext'
 import StatsPanel from './StatsPanel.vue'
 import RunsPanel from './RunsPanel.vue'
 
@@ -11,6 +12,8 @@ const props = defineProps<{
 	datasets: QuizDataset[]
 	promptClass?: string
 	scriptId?: string
+	quizType?: string
+	tolerance?: number
 }>()
 
 const emit = defineEmits<{
@@ -18,7 +21,12 @@ const emit = defineEmits<{
 }>()
 
 defineSlots<{
-	default(props: { current: Question; phase: Phase; session: Question[]; submit: (correct: boolean) => void }): VNode[]
+	default(props: {
+		current: Question
+		phase: Phase
+		session: Question[]
+		submit: (correct: boolean, errors?: number) => void
+	}): VNode[]
 }>()
 
 const {
@@ -63,15 +71,25 @@ function startSession() {
 	runStarted = false
 }
 
-function handleSubmit(correct: boolean) {
+function handleSubmit(correct: boolean, errors?: number) {
 	_submit(correct)
 	nextTick(() => nextBtn.value?.focus())
 	if (current.value) {
 		if (!runStarted) {
-			stats.value?.startRun(session.value.length)
+			stats.value?.startRun(session.value.length, {
+				quizType: props.quizType,
+				font: activeFont.value,
+				infoSheet: activeInfoSheet.value,
+				tolerance: props.tolerance,
+			})
 			runStarted = true
 		}
-		stats.value?.recordAnswer(current.value.prompt, correct)
+		stats.value?.recordAnswer(current.value.prompt, correct, {
+			font: activeFont.value,
+			infoSheet: activeInfoSheet.value,
+			tolerance: props.tolerance,
+			errors,
+		})
 	}
 }
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
 import type { Question, QuizDataset } from './dataset'
-import { allAnswers, formatAnswers, isMatch } from './utils'
+import { allAnswers, formatAnswers, isMatch, levenshtein } from './utils'
 import QuizShell from './QuizShell.vue'
 
 const props = defineProps<{
@@ -29,10 +29,12 @@ function onQuestion({ datasetIndex }: { question: Question; session: Question[];
 	nextTick(() => answerInput.value?.focus())
 }
 
-function handleSubmit(current: Question, submit: (correct: boolean) => void) {
+function handleSubmit(current: Question, submit: (correct: boolean, errors?: number) => void) {
+	const inputNorm = userInput.value.toLowerCase().trim()
+	const minErrors = Math.min(...allAnswers(current).map(a => levenshtein(inputNorm, a.toLowerCase().trim())))
 	lastExact.value = isMatch(userInput.value, current.answer)
 	lastCorrect.value = lastExact.value || isMatch(userInput.value, current.answer, tolerance.value)
-	submit(lastCorrect.value)
+	submit(lastCorrect.value, minErrors)
 }
 </script>
 
@@ -41,6 +43,8 @@ function handleSubmit(current: Question, submit: (correct: boolean) => void) {
 		:datasets="datasets"
 		:prompt-class="promptClass"
 		:script-id="scriptId"
+		:tolerance="tolerance"
+		quiz-type="typein"
 		@question="onQuestion"
 	>
 		<template #default="{ current, phase, submit }">

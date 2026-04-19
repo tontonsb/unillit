@@ -35,21 +35,65 @@ onMounted(loadStats)
 watch(() => props.datasetIndex, loadStats)
 watch(user, loadStats)
 
+// Collect distinct non-null values for each dimension
+const availableQuizTypes = computed(() => [...new Set(statsData.value.map(s => s.quizType).filter(Boolean))] as string[])
+const availableFonts = computed(() => [...new Set(statsData.value.map(s => s.font).filter(Boolean))] as string[])
+const availableInfoSheets = computed(() => [...new Set(statsData.value.map(s => s.infoSheet).filter(Boolean))] as string[])
+const availableTolerances = computed(() => [...new Set(statsData.value.map(s => s.tolerance))].sort((a, b) => a - b))
+
+const filterQuizType = ref<string | null>(null)
+const filterFont = ref<string | null>(null)
+const filterInfoSheet = ref<string | null>(null)
+const filterTolerance = ref<number | null>(null)
+
+// Reset filters when data changes
+watch(statsData, () => {
+	filterQuizType.value = null
+	filterFont.value = null
+	filterInfoSheet.value = null
+	filterTolerance.value = null
+})
+
+const filteredStats = computed(() => statsData.value.filter(s =>
+	(filterQuizType.value === null || s.quizType === filterQuizType.value) &&
+	(filterFont.value === null || s.font === filterFont.value) &&
+	(filterInfoSheet.value === null || s.infoSheet === filterInfoSheet.value) &&
+	(filterTolerance.value === null || s.tolerance === filterTolerance.value)
+))
+
+// Aggregate filtered rows per prompt
 const statsRows = computed(() => {
 	const questions = props.datasets[props.datasetIndex]?.questions ?? []
-	const byPrompt = new Map(statsData.value.map(s => [s.prompt, s]))
+
+	const byPrompt = new Map<string, { total: number; correct: number; lastAnsweredAt: string }>()
+	for (const s of filteredStats.value) {
+		const existing = byPrompt.get(s.prompt)
+		if (existing) {
+			existing.total += s.total
+			existing.correct += s.correct
+			if (s.lastAnsweredAt > existing.lastAnsweredAt) existing.lastAnsweredAt = s.lastAnsweredAt
+		} else {
+			byPrompt.set(s.prompt, { total: s.total, correct: s.correct, lastAnsweredAt: s.lastAnsweredAt })
+		}
+	}
+
 	return questions.map(q => ({
 		prompt: q.prompt,
 		stats: byPrompt.get(q.prompt) ?? null,
 	})).sort((a, b) => {
 		const ra = a.stats ? a.stats.correct / a.stats.total : -1
 		const rb = b.stats ? b.stats.correct / b.stats.total : -1
-
 		if (ra !== rb) return rb - ra
-		
 		return (b.stats?.total ?? 0) - (a.stats?.total ?? 0)
 	})
 })
+
+const hasFilters = computed(() =>
+	availableQuizTypes.value.length > 1 ||
+	availableFonts.value.length > 1 ||
+	availableInfoSheets.value.length > 1 ||
+	availableTolerances.value.length > 1
+)
 
 </script>
 
@@ -61,29 +105,76 @@ const statsRows = computed(() => {
 		</div>
 		<div v-else-if="statsLoading" class="stats-empty">Loading…</div>
 		<div v-else-if="!scriptId" class="stats-empty">Stats not available for this quiz.</div>
-		<table v-else class="stats-table">
-			<thead>
-				<tr>
-					<th>Question</th>
-					<th>Correct</th>
-					<th>Accuracy</th>
-					<th>Last seen</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="row in statsRows" :key="row.prompt">
-					<td class="prompt-cell" :class="promptClass">{{ row.prompt }}</td>
-					<td>{{ row.stats ? `${row.stats.correct} / ${row.stats.total}` : '—' }}</td>
-					<td>
-						<span v-if="row.stats" class="accuracy" :class="row.stats.correct / row.stats.total >= 0.8 ? 'good' : row.stats.correct / row.stats.total >= 0.5 ? 'ok' : 'bad'">
-							{{ Math.round(row.stats.correct / row.stats.total * 100) }}%
-						</span>
-						<span v-else class="never">never</span>
-					</td>
-					<td class="muted">{{ row.stats ? relativeDate(row.stats.lastAnsweredAt) : '—' }}</td>
-				</tr>
-			</tbody>
-		</table>
+		<template v-else>
+			<div v-if="hasFilters" class="filter-bar">
+				<template v-if="availableQuizTypes.length > 1">
+					<button
+						v-for="v in availableQuizTypes"
+						:key="v"
+						type="button"
+						class="filter-pill"
+						:class="{ active: filterQuizType === v }"
+						@click="filterQuizType = filterQuizType === v ? null : v"
+					>{{ v }}</button>
+					<span class="filter-sep"></span>
+				</template>
+				<template v-if="availableFonts.length > 1">
+					<button
+						v-for="v in availableFonts"
+						:key="v"
+						type="button"
+						class="filter-pill"
+						:class="{ active: filterFont === v }"
+						@click="filterFont = filterFont === v ? null : v"
+					>{{ v }}</button>
+					<span class="filter-sep"></span>
+				</template>
+				<template v-if="availableInfoSheets.length > 1">
+					<button
+						v-for="v in availableInfoSheets"
+						:key="v"
+						type="button"
+						class="filter-pill"
+						:class="{ active: filterInfoSheet === v }"
+						@click="filterInfoSheet = filterInfoSheet === v ? null : v"
+					>{{ v }}</button>
+					<span class="filter-sep"></span>
+				</template>
+				<template v-if="availableTolerances.length > 1">
+					<button
+						v-for="v in availableTolerances"
+						:key="v"
+						type="button"
+						class="filter-pill"
+						:class="{ active: filterTolerance === v }"
+						@click="filterTolerance = filterTolerance === v ? null : v"
+					>±{{ v }}</button>
+				</template>
+			</div>
+			<table class="stats-table">
+				<thead>
+					<tr>
+						<th>Question</th>
+						<th>Correct</th>
+						<th>Accuracy</th>
+						<th>Last seen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="row in statsRows" :key="row.prompt">
+						<td class="prompt-cell" :class="promptClass">{{ row.prompt }}</td>
+						<td>{{ row.stats ? `${row.stats.correct} / ${row.stats.total}` : '—' }}</td>
+						<td>
+							<span v-if="row.stats" class="accuracy" :class="row.stats.correct / row.stats.total >= 0.8 ? 'good' : row.stats.correct / row.stats.total >= 0.5 ? 'ok' : 'bad'">
+								{{ Math.round(row.stats.correct / row.stats.total * 100) }}%
+							</span>
+							<span v-else class="never">never</span>
+						</td>
+						<td class="muted">{{ row.stats ? relativeDate(row.stats.lastAnsweredAt) : '—' }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</template>
 	</div>
 </template>
 
@@ -107,6 +198,50 @@ const statsRows = computed(() => {
 	gap: 1rem;
 	padding: 2rem;
 	text-align: center;
+}
+
+.filter-bar {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 6px 12px;
+	border-bottom: 1px solid var(--c-border);
+	background: var(--c-cell);
+	position: sticky;
+	top: 0;
+}
+
+.filter-pill {
+	padding: 2px 8px;
+	border: 1px solid var(--c-border);
+	border-radius: 10px;
+	background: transparent;
+	color: var(--c-muted);
+	font-size: 10px;
+	font-family: var(--sans);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	transition: all 0.15s;
+}
+
+.filter-pill:hover {
+	color: var(--c-label);
+	border-color: var(--c-label);
+}
+
+.filter-pill.active {
+	background: var(--c-alt);
+	border-color: var(--c-accent);
+	color: var(--c-head);
+}
+
+.filter-sep {
+	width: 1px;
+	height: 14px;
+	background: var(--c-border);
+	margin: 0 2px;
 }
 
 .stats-table {

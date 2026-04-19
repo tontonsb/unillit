@@ -28,9 +28,10 @@ function onQuestion({ question, session }: { question: Question; session: Questi
 	choices.value = buildChoices(question, session)
 }
 
-function handleSelect(choice: string, current: Question, submit: (correct: boolean) => void) {
+function handleSelect(choice: string, current: Question, submit: (correct: boolean, errors?: number) => void) {
 	selectedChoice.value = choice
-	submit(isMatch(choice, current.answer))
+	const correct = isMatch(choice, current.answer)
+	submit(correct, correct ? 0 : undefined)
 }
 
 function choiceState(choice: string, current: Question, phase: string): 'correct' | 'wrong' | 'dim' | null {
@@ -46,6 +47,7 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 		:datasets="datasets"
 		:prompt-class="promptClass"
 		:script-id="scriptId"
+		quiz-type="multiplechoice"
 		@question="onQuestion"
 	>
 		<template #default="{ current, phase, submit }">

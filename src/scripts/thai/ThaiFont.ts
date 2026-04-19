@@ -1,4 +1,5 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { activeFont } from '@/composables/useScriptContext'
 
 export interface ThaiFont {
 	id: string
@@ -14,6 +15,8 @@ export const thaiFonts: ThaiFont[] = [
 ]
 
 export const activeThaiFontId = ref('sarabun')
+
+watch(activeThaiFontId, id => { activeFont.value = id }, { immediate: true })
 
 export function activeThaiFontFamily() {
 	return thaiFonts.find(f => f.id === activeThaiFontId.value)?.family

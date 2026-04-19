@@ -36,16 +36,35 @@ export async function fetchAllRuns(): Promise<AllRunRecord[]> {
 
 export interface QuestionStats {
 	prompt: string
+	quizType: string | null
+	font: string | null
+	infoSheet: string | null
+	tolerance: number
 	total: number
 	correct: number
+	avgErrors: number
 	lastAnsweredAt: string
+}
+
+interface RunContext {
+	quizType?: string
+	font?: string
+	infoSheet?: string
+	tolerance?: number
+}
+
+interface AnswerContext {
+	font?: string
+	infoSheet?: string
+	tolerance?: number
+	errors?: number
 }
 
 export function useStats(scriptId: string, dataset: string) {
 	let runId: string | null = null
 	let correctCount = 0
 
-	async function startRun(total: number) {
+	async function startRun(total: number, context: RunContext = {}) {
 		runId = null
 		correctCount = 0
 
@@ -54,20 +73,38 @@ export function useStats(scriptId: string, dataset: string) {
 
 		const { data } = await supabase
 			.from('quiz_runs')
-			.insert({ user_id: user.id, script_id: scriptId, dataset, total })
+			.insert({
+				user_id: user.id,
+				script_id: scriptId,
+				dataset,
+				total,
+				quiz_type: context.quizType ?? null,
+				font: context.font ?? null,
+				info_sheet: context.infoSheet ?? null,
+				tolerance: context.tolerance ?? 0,
+			})
 			.select('id')
 			.single()
 
 		runId = data?.id ?? null
 	}
 
-	async function recordAnswer(prompt: string, correct: boolean) {
+	async function recordAnswer(prompt: string, correct: boolean, ctx: AnswerContext = {}) {
 		const { data: { user } } = await supabase.auth.getUser()
 		if (!user || !runId) return
 
 		if (correct) correctCount++
 
-		await supabase.from('quiz_answers').insert({ run_id: runId, user_id: user.id, prompt, correct })
+		await supabase.from('quiz_answers').insert({
+			run_id: runId,
+			user_id: user.id,
+			prompt,
+			correct,
+			font: ctx.font ?? null,
+			info_sheet: ctx.infoSheet ?? null,
+			tolerance: ctx.tolerance ?? 0,
+			errors: ctx.errors ?? 0,
+		})
 	}
 
 	async function completeRun() {
@@ -81,7 +118,7 @@ export function useStats(scriptId: string, dataset: string) {
 	async function fetchStats(): Promise<QuestionStats[]> {
 		const { data, error } = await supabase
 			.from('question_stats')
-			.select('prompt, total, correct, last_answered_at')
+			.select('prompt, quiz_type, font, info_sheet, tolerance, total, correct, avg_errors, last_answered_at')
 			.eq('script_id', scriptId)
 			.eq('dataset', dataset)
 
@@ -89,8 +126,13 @@ export function useStats(scriptId: string, dataset: string) {
 
 		return data.map(row => ({
 			prompt: row.prompt,
+			quizType: row.quiz_type,
+			font: row.font,
+			infoSheet: row.info_sheet,
+			tolerance: row.tolerance ?? 0,
 			total: row.total,
 			correct: row.correct,
+			avgErrors: row.avg_errors ?? 0,
 			lastAnsweredAt: row.last_answered_at,
 		}))
 	}

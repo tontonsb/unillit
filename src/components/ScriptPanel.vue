@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, useId, watch } from 'vue'
 import type { ScriptTab } from '@/scripts/scripts'
+import { activeInfoSheet } from '@/composables/useScriptContext'
 
 const props = defineProps<{
 	tabs: ScriptTab[]
 	title?: string
 	titleNative?: string
 	titleLang?: string
+	contextRole?: 'info'
 }>()
 
 const activeIndex = ref(0)
@@ -17,6 +19,10 @@ watch(() => props.tabs, () => {
 
 const activeTab = computed(() => props.tabs[activeIndex.value])
 const id = useId()
+
+watch(activeTab, tab => {
+	if (props.contextRole === 'info' && tab) activeInfoSheet.value = tab.label
+}, { immediate: true })
 </script>
 
 <template>
