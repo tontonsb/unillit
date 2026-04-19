@@ -43,7 +43,10 @@ const statsRows = computed(() => {
 	})).sort((a, b) => {
 		const ra = a.stats ? a.stats.correct / a.stats.total : -1
 		const rb = b.stats ? b.stats.correct / b.stats.total : -1
-		return ra - rb
+
+		if (ra !== rb) return rb - ra
+		
+		return (b.stats?.total ?? 0) - (a.stats?.total ?? 0)
 	})
 })
 
