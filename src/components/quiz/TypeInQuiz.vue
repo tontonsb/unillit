@@ -64,12 +64,12 @@ function handleSubmit(current: Question, submit: (correct: boolean, errors?: num
 			</form>
 
 			<div v-else class="feedback">
-				<div v-if="!lastCorrect" class="feedback-row wrong">
-					<span class="feedback-icon">✗</span>
+				<div v-if="!lastExact" class="feedback-row" :class="lastCorrect ? 'fuzzy-user' : 'wrong'">
+					<span class="feedback-icon">{{ lastCorrect ? '≈' : '✗' }}</span>
 					<span class="feedback-user">{{ userInput || '(blank)' }}</span>
 				</div>
 				<div class="feedback-row" :class="lastExact ? 'correct' : (lastCorrect ? 'fuzzy' : 'correct')">
-					<span class="feedback-icon">{{ lastCorrect && !lastExact ? '≈' : '✓' }}</span>
+					<span class="feedback-icon">✓</span>
 					<span class="feedback-answer">{{ formatAnswers(current) }}</span>
 				</div>
 			</div>
@@ -144,6 +144,11 @@ function handleSubmit(current: Question, submit: (correct: boolean, errors?: num
 .feedback-row.fuzzy {
 	background: #eef5df;
 	color: #5a7030;
+}
+
+.feedback-row.fuzzy-user {
+	background: #f5f5e8;
+	color: #888860;
 }
 
 .feedback-row.wrong {
