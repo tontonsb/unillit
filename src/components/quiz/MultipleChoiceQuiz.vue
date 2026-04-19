@@ -23,7 +23,7 @@ function buildChoices(question: Question, pool: Question[]): string[] {
 	return shuffle([correct, ...distractors.slice(0, 4)])
 }
 
-function onQuestion({ question, session }: { question: Question; session: Question[] }) {
+function onQuestion({ question, session }: { question: Question; session: Question[]; datasetIndex: number }) {
 	selectedChoice.value = null
 	choices.value = buildChoices(question, session)
 }

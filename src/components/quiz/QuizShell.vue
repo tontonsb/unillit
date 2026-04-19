@@ -13,7 +13,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-	question: [{ question: Question; session: Question[] }]
+	question: [{ question: Question; session: Question[]; datasetIndex: number }]
 }>()
 
 defineSlots<{
@@ -78,7 +78,7 @@ function relativeDate(iso: string): string {
 }
 
 function emitQuestion() {
-	if (current.value) emit('question', { question: current.value, session: session.value })
+	if (current.value) emit('question', { question: current.value, session: session.value, datasetIndex: datasetIndex.value })
 }
 
 function sessionCount() {

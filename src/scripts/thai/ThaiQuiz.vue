@@ -6,8 +6,8 @@ const datasets = [
 	{ label: 'Consonants',  questions: consonantQuestions },
 	{ label: 'Vowels',      questions: vowelQuestions },
 	{ label: 'All vowels',  questions: allVowelQuestions },
-	{ label: 'Syllables',   questions: syllableQuestions },
-	{ label: 'Provinces',   questions: provinceQuestions },
+	{ label: 'Syllables',   questions: syllableQuestions,  maxTolerance: 1 },
+	{ label: 'Provinces',   questions: provinceQuestions,  maxTolerance: 3 },
 ]
 </script>
 

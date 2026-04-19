@@ -7,4 +7,5 @@ export interface Question {
 export interface QuizDataset {
 	label: string
 	questions: Question[]
+	maxTolerance?: number
 }
