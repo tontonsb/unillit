@@ -31,8 +31,33 @@
 			switch the info panel to None and test yourself.
 		</p>
 
+		<h2>Changelog</h2>
+
+		<dl class="changelog">
+			<dt>0.2</dt>
+			<dd>
+				<ul>
+					<li>Login with Discord</li>
+					<li>Stats tracking</li>
+					<li>Display answer alternatives</li>
+					<li>Allow fuzzy answers (configurable tolerance)</li>
+					<li>Reviewed Thai quiz contents</li>
+					<li>And added this changelog :)</li>
+				</ul>
+			</dd>
+
+			<dt>0.1</dt>
+			<dd>
+				<ul>
+					<li>Initial release with sheet/quiz view</li>
+					<li>Thai info sheets</li>
+					<li>Thai quizzes with LLM-generated content</li>
+				</ul>
+			</dd>
+		</dl>
+
 		<h2>Errors and feedback</h2>
-		
+
 		<p>
 			I'm just learning most of these scripts myself by reading wikipedia, docs and resources curated by
 			the GeoGuessr community as well as consulting with AI chat bots. And practicing on this site.
@@ -109,5 +134,29 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.changelog {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin: 0.75rem 0 1rem;
+}
+
+.changelog dt {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--c-muted);
+	letter-spacing: 0.04em;
+	margin-bottom: 0.2rem;
+}
+
+.changelog dd {
+	margin: 0;
+}
+
+.changelog ul {
+	margin: 0;
+	padding-left: 1.25rem;
 }
 </style>
