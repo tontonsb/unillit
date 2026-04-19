@@ -134,7 +134,7 @@ function advance() {
 			<div v-if="phase === 'done'" class="card done-card">
 				<p class="done-score">{{ tally.correct }} / {{ session.length }}</p>
 				<p class="done-label">{{ tally.correct === session.length ? 'Perfect!' : 'Session complete' }}</p>
-				<button type="button" class="btn-primary" @click="startSession">Restart</button>
+				<button type="button" class="btn-primary" @click="startSession">Play another</button>
 			</div>
 
 			<div v-else-if="current" class="card">
