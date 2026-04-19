@@ -65,30 +65,45 @@ const { user, loginWithDiscord, logout } = useAuth()
 		</nav>
 
 		<div class="user-section">
-			<button
-				v-if="!user"
-				class="nav-item nav-btn"
-				title="Login with Discord"
-				@click="loginWithDiscord"
-			>
-				<span class="script-name">Login with Discord</span>
-				<span class="script-abbr" aria-hidden="true">👤</span>
-			</button>
-			<button
-				v-else
-				class="nav-item nav-btn user-item"
-				:title="`Logged in as ${user.user_metadata.full_name ?? user.email} — click to log out`"
-				@click="logout"
-			>
-				<img
-					v-if="user.user_metadata.avatar_url"
-					:src="user.user_metadata.avatar_url"
-					class="user-avatar"
-					alt="User avatar"
+			<template v-if="!user">
+				<button
+					class="nav-item nav-btn"
+					title="Login with Discord"
+					@click="collapsed ? (collapsed = false) : loginWithDiscord()"
 				>
-				<span class="script-name user-name">{{ user.user_metadata.full_name ?? user.email }}</span>
-				<span class="script-abbr" aria-hidden="true">⏻</span>
-			</button>
+					<span class="script-name">Login with Discord</span>
+					<span class="script-abbr" aria-hidden="true">👤</span>
+				</button>
+			</template>
+			<template v-else>
+				<button
+					v-if="collapsed"
+					class="nav-item nav-btn user-item"
+					:title="user.user_metadata.full_name ?? user.email"
+					@click="collapsed = false"
+				>
+					<img
+						v-if="user.user_metadata.avatar_url"
+						:src="user.user_metadata.avatar_url"
+						class="user-avatar"
+						alt="User avatar"
+					>
+				</button>
+				<template v-else>
+					<div class="nav-item user-item">
+						<img
+							v-if="user.user_metadata.avatar_url"
+							:src="user.user_metadata.avatar_url"
+							class="user-avatar"
+							alt="User avatar"
+						>
+						<span class="user-name">{{ user.user_metadata.full_name ?? user.email }}</span>
+					</div>
+					<button class="nav-item nav-btn" title="Log out" @click="logout">
+						<span class="script-name">Logout</span>
+					</button>
+				</template>
+			</template>
 		</div>
 	</aside>
 </template>
