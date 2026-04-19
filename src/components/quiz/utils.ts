@@ -43,6 +43,17 @@ export function levenshtein(a: string, b: string): number {
 	return prev[n]!
 }
 
+export function relativeDate(iso: string): string {
+	const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
+
+	if (days === 0) return 'today'
+	if (days === 1) return 'yesterday'
+	if (days < 14) return `${days}d ago`
+	if (days < 60) return `${Math.floor(days / 7)}w ago`
+	
+	return `${Math.floor(days / 30)}mo ago`
+}
+
 export function isMatch(input: string, answer: string | string[], tolerance = 0): boolean {
 	const n = input.toLowerCase().trim()
 	const answers = Array.isArray(answer) ? answer : [answer]

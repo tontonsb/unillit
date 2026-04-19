@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue'
 import type { QuizDataset } from './dataset'
 import { useStats, type QuestionStats } from '@/composables/useStats'
 import { useAuth } from '@/composables/useAuth'
+import { relativeDate } from './utils'
 
 const props = defineProps<{
 	scriptId?: string
@@ -50,14 +51,6 @@ const statsRows = computed(() => {
 	})
 })
 
-function relativeDate(iso: string): string {
-	const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
-	if (days === 0) return 'today'
-	if (days === 1) return 'yesterday'
-	if (days < 14) return `${days}d ago`
-	if (days < 60) return `${Math.floor(days / 7)}w ago`
-	return `${Math.floor(days / 30)}mo ago`
-}
 </script>
 
 <template>

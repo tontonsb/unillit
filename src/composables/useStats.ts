@@ -1,5 +1,39 @@
 import { supabase } from '@/lib/supabase'
 
+export interface RunRecord {
+	id: string
+	total: number
+	correct: number
+	completed: boolean
+	startedAt: string
+	completedAt: string | null
+}
+
+export interface AllRunRecord extends RunRecord {
+	scriptId: string
+	dataset: string
+}
+
+export async function fetchAllRuns(): Promise<AllRunRecord[]> {
+	const { data, error } = await supabase
+		.from('quiz_runs')
+		.select('id, script_id, dataset, total, correct, completed, started_at, completed_at')
+		.order('started_at', { ascending: false })
+		.limit(200)
+
+	if (error || !data) return []
+	return data.map(row => ({
+		id: row.id,
+		scriptId: row.script_id,
+		dataset: row.dataset,
+		total: row.total,
+		correct: row.correct,
+		completed: row.completed,
+		startedAt: row.started_at,
+		completedAt: row.completed_at,
+	}))
+}
+
 export interface QuestionStats {
 	prompt: string
 	total: number
@@ -61,5 +95,25 @@ export function useStats(scriptId: string, dataset: string) {
 		}))
 	}
 
-	return { startRun, recordAnswer, completeRun, fetchStats }
+	async function fetchRuns(): Promise<RunRecord[]> {
+		const { data, error } = await supabase
+			.from('quiz_runs')
+			.select('id, total, correct, completed, started_at, completed_at')
+			.eq('script_id', scriptId)
+			.eq('dataset', dataset)
+			.order('started_at', { ascending: false })
+			.limit(100)
+
+		if (error || !data) return []
+		return data.map(row => ({
+			id: row.id,
+			total: row.total,
+			correct: row.correct,
+			completed: row.completed,
+			startedAt: row.started_at,
+			completedAt: row.completed_at,
+		}))
+	}
+
+	return { startRun, recordAnswer, completeRun, fetchStats, fetchRuns }
 }

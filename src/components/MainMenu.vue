@@ -64,6 +64,14 @@ const { user, loginWithDiscord, logout } = useAuth()
 
 		</nav>
 
+		<RouterLink to="/history"
+			class="nav-item"
+			:class="{ active: route.name === 'history' }"
+			title="History">
+			<span class="script-name">History</span>
+			<span class="script-abbr" aria-hidden="true">◷</span>
+		</RouterLink>
+
 		<div class="user-section">
 			<template v-if="!user">
 				<button

@@ -5,6 +5,7 @@ import type { Question, QuizDataset } from './dataset'
 import { useQuizSession, type Phase } from './useSession'
 import { useStats } from '@/composables/useStats'
 import StatsPanel from './StatsPanel.vue'
+import RunsPanel from './RunsPanel.vue'
 
 const props = defineProps<{
 	datasets: QuizDataset[]
@@ -39,7 +40,8 @@ const stats = computed(() => {
 		: null
 })
 
-const showStats = ref(false)
+type Tab = 'quiz' | 'stats' | 'runs'
+const activeTab = ref<Tab>('quiz')
 
 function emitQuestion() {
 	if (current.value) emit('question', { question: current.value, session: session.value, datasetIndex: datasetIndex.value })
@@ -117,7 +119,7 @@ function advance() {
 			</div>
 		</div>
 
-		<template v-if="!showStats">
+		<template v-if="activeTab === 'quiz'">
 			<div class="progress-row">
 				<div class="progress-bar">
 					<div class="progress-fill" :style="{ width: `${((index + (phase !== 'question' ? 1 : 0)) / session.length) * 100}%` }"></div>
@@ -156,30 +158,24 @@ function advance() {
 		</template>
 
 		<StatsPanel
-			v-else
+			v-else-if="activeTab === 'stats'"
 			:script-id="scriptId"
 			:prompt-class="promptClass"
 			:datasets="datasets"
 			:dataset-index="datasetIndex"
 		/>
 
+		<RunsPanel
+			v-else-if="activeTab === 'runs'"
+			:script-id="scriptId"
+			:datasets="datasets"
+			:dataset-index="datasetIndex"
+		/>
+
 		<div class="bottom-bar">
-			<button
-				type="button"
-				class="tab-btn"
-				:class="{ active: !showStats }"
-				@click="showStats = false"
-			>
-				Quiz
-			</button>
-			<button
-				type="button"
-				class="tab-btn"
-				:class="{ active: showStats }"
-				@click="showStats = true"
-			>
-				Stats
-			</button>
+			<button type="button" class="tab-btn" :class="{ active: activeTab === 'quiz' }" @click="activeTab = 'quiz'">Quiz</button>
+			<button type="button" class="tab-btn" :class="{ active: activeTab === 'stats' }" @click="activeTab = 'stats'">Stats</button>
+			<button type="button" class="tab-btn" :class="{ active: activeTab === 'runs' }" @click="activeTab = 'runs'">Runs</button>
 		</div>
 	</div>
 </template>
