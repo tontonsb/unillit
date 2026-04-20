@@ -277,4 +277,8 @@ nav {
 	width: 20px;
 	height: 20px;
 }
+
+.collapsed .user-item {
+	justify-content: center;
+}
 </style>
