@@ -71,12 +71,12 @@ function startSession() {
 	runStarted = false
 }
 
-function handleSubmit(correct: boolean, errors?: number) {
+async function handleSubmit(correct: boolean, errors?: number) {
 	_submit(correct)
 	nextTick(() => nextBtn.value?.focus())
 	if (current.value) {
 		if (!runStarted) {
-			stats.value?.startRun(session.value.length, {
+			await stats.value?.startRun(session.value.length, {
 				quizType: props.quizType,
 				font: activeFont.value,
 				infoSheet: activeInfoSheet.value,
