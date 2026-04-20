@@ -95,6 +95,31 @@ const hasFilters = computed(() =>
 	availableTolerances.value.length > 1
 )
 
+const MONTH_MS = 30 * 24 * 60 * 60 * 1000
+
+const masteredPrompts = computed(() => new Set(
+	statsData.value
+		.filter(s =>
+			s.quizType === 'typein' &&
+			!s.infoSheet &&
+			s.avgErrors === 0 &&
+			s.correct > 0 &&
+			Date.now() - new Date(s.lastAnsweredAt).getTime() < MONTH_MS
+		)
+		.map(s => s.prompt)
+))
+
+const nudge = computed(() => {
+	if (!statsData.value.length) return null
+	const parts: string[] = []
+	if (availableFonts.value.length <= 1) parts.push('a different font')
+	const hasWithSheet = statsData.value.some(s => !!s.infoSheet)
+	const hasWithoutSheet = statsData.value.some(s => !s.infoSheet)
+	if (hasWithSheet && !hasWithoutSheet) parts.push('without the info sheet open')
+	if (!parts.length) return null
+	return `Try practicing with ${parts.join(', or ')} to compare your accuracy — and earn ★ badges for unassisted recall.`
+})
+
 </script>
 
 <template>
@@ -151,9 +176,11 @@ const hasFilters = computed(() =>
 					>±{{ v }}</button>
 				</template>
 			</div>
+			<div v-if="nudge" class="nudge-bar">{{ nudge }}</div>
 			<table class="stats-table">
 				<thead>
 					<tr>
+						<th class="badge-col"></th>
 						<th>Question</th>
 						<th>Correct</th>
 						<th>Accuracy</th>
@@ -162,6 +189,9 @@ const hasFilters = computed(() =>
 				</thead>
 				<tbody>
 					<tr v-for="row in statsRows" :key="row.prompt">
+						<td class="badge-cell">
+							<span v-if="masteredPrompts.has(row.prompt)" class="mastery-badge" title="Answered correctly without assistance this month">★</span>
+						</td>
 						<td class="prompt-cell" :class="promptClass">{{ row.prompt }}</td>
 						<td>{{ row.stats ? `${row.stats.correct} / ${row.stats.total}` : '—' }}</td>
 						<td>
@@ -242,6 +272,33 @@ const hasFilters = computed(() =>
 	height: 14px;
 	background: var(--c-border);
 	margin: 0 2px;
+}
+
+.nudge-bar {
+	padding: 6px 12px;
+	border-bottom: 1px solid var(--c-border);
+	background: var(--c-cell);
+	font-size: 11px;
+	color: var(--c-muted);
+	position: sticky;
+	top: 0;
+}
+
+.badge-col {
+	width: 20px;
+	padding: 0 !important;
+}
+
+.badge-cell {
+	width: 20px;
+	padding: 0 4px !important;
+	text-align: center;
+}
+
+.mastery-badge {
+	font-size: 11px;
+	color: #c8952a;
+	line-height: 1;
 }
 
 .stats-table {
