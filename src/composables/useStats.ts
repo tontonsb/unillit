@@ -40,9 +40,10 @@ export interface QuestionStats {
 	font: string | null
 	infoSheet: string | null
 	tolerance: number
+	errors: number
 	total: number
 	correct: number
-	avgErrors: number
+	lastCorrectAt: string | null
 	lastAnsweredAt: string
 }
 
@@ -118,7 +119,7 @@ export function useStats(scriptId: string, dataset: string) {
 	async function fetchStats(): Promise<QuestionStats[]> {
 		const { data, error } = await supabase
 			.from('question_stats')
-			.select('prompt, quiz_type, font, info_sheet, tolerance, total, correct, avg_errors, last_answered_at')
+			.select('prompt, quiz_type, font, info_sheet, tolerance, errors, total, correct, last_correct_at, last_answered_at')
 			.eq('script_id', scriptId)
 			.eq('dataset', dataset)
 
@@ -130,9 +131,10 @@ export function useStats(scriptId: string, dataset: string) {
 			font: row.font,
 			infoSheet: row.info_sheet,
 			tolerance: row.tolerance ?? 0,
+			errors: row.errors ?? 0,
 			total: row.total,
 			correct: row.correct,
-			avgErrors: row.avg_errors ?? 0,
+			lastCorrectAt: row.last_correct_at ?? null,
 			lastAnsweredAt: row.last_answered_at,
 		}))
 	}

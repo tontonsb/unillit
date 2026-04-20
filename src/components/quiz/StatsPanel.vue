@@ -40,11 +40,13 @@ const availableQuizTypes = computed(() => [...new Set(statsData.value.map(s => s
 const availableFonts = computed(() => [...new Set(statsData.value.map(s => s.font).filter(Boolean))] as string[])
 const availableInfoSheets = computed(() => [...new Set(statsData.value.map(s => s.infoSheet).filter(Boolean))] as string[])
 const availableTolerances = computed(() => [...new Set(statsData.value.map(s => s.tolerance))].sort((a, b) => a - b))
+const availableErrors = computed(() => [...new Set(statsData.value.map(s => s.errors))].sort((a, b) => a - b))
 
 const filterQuizType = ref<string | null>(null)
 const filterFont = ref<string | null>(null)
 const filterInfoSheet = ref<string | null>(null)
 const filterTolerance = ref<number | null>(null)
+const filterErrors = ref<number | null>(null)
 
 // Reset filters when data changes
 watch(statsData, () => {
@@ -52,13 +54,15 @@ watch(statsData, () => {
 	filterFont.value = null
 	filterInfoSheet.value = null
 	filterTolerance.value = null
+	filterErrors.value = null
 })
 
 const filteredStats = computed(() => statsData.value.filter(s =>
 	(filterQuizType.value === null || s.quizType === filterQuizType.value) &&
 	(filterFont.value === null || s.font === filterFont.value) &&
 	(filterInfoSheet.value === null || s.infoSheet === filterInfoSheet.value) &&
-	(filterTolerance.value === null || s.tolerance === filterTolerance.value)
+	(filterTolerance.value === null || s.tolerance === filterTolerance.value) &&
+	(filterErrors.value === null || s.errors === filterErrors.value)
 ))
 
 // Aggregate filtered rows per prompt
@@ -83,7 +87,9 @@ const statsRows = computed(() => {
 	})).sort((a, b) => {
 		const ra = a.stats ? a.stats.correct / a.stats.total : -1
 		const rb = b.stats ? b.stats.correct / b.stats.total : -1
+
 		if (ra !== rb) return rb - ra
+
 		return (b.stats?.total ?? 0) - (a.stats?.total ?? 0)
 	})
 })
@@ -92,7 +98,8 @@ const hasFilters = computed(() =>
 	availableQuizTypes.value.length > 1 ||
 	availableFonts.value.length > 1 ||
 	availableInfoSheets.value.length > 1 ||
-	availableTolerances.value.length > 1
+	availableTolerances.value.length > 1 ||
+	availableErrors.value.length > 1
 )
 
 const MONTH_MS = 30 * 24 * 60 * 60 * 1000
@@ -101,23 +108,29 @@ const masteredPrompts = computed(() => new Set(
 	statsData.value
 		.filter(s =>
 			s.quizType === 'typein' &&
-			!s.infoSheet &&
-			s.avgErrors === 0 &&
+			s.errors === 0 &&
 			s.correct > 0 &&
-			Date.now() - new Date(s.lastAnsweredAt).getTime() < MONTH_MS
+			s.lastCorrectAt !== null &&
+			Date.now() - new Date(s.lastCorrectAt).getTime() < MONTH_MS
 		)
 		.map(s => s.prompt)
 ))
 
 const nudge = computed(() => {
 	if (!statsData.value.length) return null
+
 	const parts: string[] = []
+
 	if (availableFonts.value.length <= 1) parts.push('a different font')
+
 	const hasWithSheet = statsData.value.some(s => !!s.infoSheet)
 	const hasWithoutSheet = statsData.value.some(s => !s.infoSheet)
+
 	if (hasWithSheet && !hasWithoutSheet) parts.push('without the info sheet open')
+
 	if (!parts.length) return null
-	return `Try practicing with ${parts.join(', or ')} to compare your accuracy — and earn ★ badges for unassisted recall.`
+
+	return `Try practicing with ${parts.join(', or ')} to compare your accuracy and earn smarty badges for unassisted recall.`
 })
 
 </script>
@@ -139,6 +152,7 @@ const nudge = computed(() => {
 						type="button"
 						class="filter-pill"
 						:class="{ active: filterQuizType === v }"
+						:title="`Filter by quiz type: ${v}`"
 						@click="filterQuizType = filterQuizType === v ? null : v"
 					>{{ v }}</button>
 					<span class="filter-sep"></span>
@@ -150,6 +164,7 @@ const nudge = computed(() => {
 						type="button"
 						class="filter-pill"
 						:class="{ active: filterFont === v }"
+						:title="`Filter by font: ${v}`"
 						@click="filterFont = filterFont === v ? null : v"
 					>{{ v }}</button>
 					<span class="filter-sep"></span>
@@ -161,6 +176,7 @@ const nudge = computed(() => {
 						type="button"
 						class="filter-pill"
 						:class="{ active: filterInfoSheet === v }"
+						:title="`Filter by info sheet tab: ${v}`"
 						@click="filterInfoSheet = filterInfoSheet === v ? null : v"
 					>{{ v }}</button>
 					<span class="filter-sep"></span>
@@ -172,8 +188,21 @@ const nudge = computed(() => {
 						type="button"
 						class="filter-pill"
 						:class="{ active: filterTolerance === v }"
+						:title="`Filter by allowed errors setting: ${v}`"
 						@click="filterTolerance = filterTolerance === v ? null : v"
 					>±{{ v }}</button>
+					<span class="filter-sep"></span>
+				</template>
+				<template v-if="availableErrors.length > 1">
+					<button
+						v-for="v in availableErrors"
+						:key="v"
+						type="button"
+						class="filter-pill"
+						:class="{ active: filterErrors === v }"
+						:title="v === 0 ? 'Filter to exact matches only' : `Filter to answers with ${v} typo(s)`"
+						@click="filterErrors = filterErrors === v ? null : v"
+					>{{ v === 0 ? 'exact' : `${v} err` }}</button>
 				</template>
 			</div>
 			<div v-if="nudge" class="nudge-bar">{{ nudge }}</div>
@@ -190,7 +219,7 @@ const nudge = computed(() => {
 				<tbody>
 					<tr v-for="row in statsRows" :key="row.prompt">
 						<td class="badge-cell">
-							<span v-if="masteredPrompts.has(row.prompt)" class="mastery-badge" title="Answered correctly without assistance this month">★</span>
+							<span v-if="masteredPrompts.has(row.prompt)" class="mastery-badge" title="Typed with zero errors and no lookup in the last 30 days">🤓</span>
 						</td>
 						<td class="prompt-cell" :class="promptClass">{{ row.prompt }}</td>
 						<td>{{ row.stats ? `${row.stats.correct} / ${row.stats.total}` : '—' }}</td>
