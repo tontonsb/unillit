@@ -276,13 +276,25 @@ li {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1px;
 	min-width: 38px;
 	min-height: 74px;
 }
 li:last-child { border-right: none; }
 
-.thai { font-family: var(--font-thai); font-size: 24px; line-height: 1.15; }
-.rom { font-size: 8px; color: var(--c-accent); font-weight: 600; }
-.final { font-size: 7px; color: var(--c-muted); }
+.thai {
+	font-family: var(--font-thai);
+	font-size: 24px;
+	line-height: 1.15;
+}
+
+.rom {
+	font-size: 11px;
+	color: var(--c-accent);
+	font-weight: 600;
+}
+
+.final {
+	font-size: 9px;
+	color: var(--c-muted);
+}
 </style>

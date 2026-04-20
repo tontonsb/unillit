@@ -280,7 +280,6 @@ li {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1px;
 }
 
 .cols-4 { grid-template-columns: repeat(4, 1fr); }
@@ -294,9 +293,9 @@ li.c-low { background: #e3f2e5; }
 .thai { font-family: var(--font-thai); font-size: 18px; line-height: 1.3; }
 .thai.xl { font-size: 22px; }
 .thai.sm { font-size: 15px; }
-.rom { font-size: 8px; color: var(--c-accent); font-weight: 600; }
-.fin { font-size: 7px; color: var(--c-muted); }
-.gloss { font-size: 7px; color: var(--c-muted); text-align: center; line-height: 1.3; }
+.rom { font-size: 11px; color: var(--c-accent); font-weight: 600; }
+.fin { font-size: 9px; color: var(--c-muted); }
+.gloss { font-size: 9px; color: var(--c-muted); text-align: center; line-height: 1.3; }
 
 .vtable-wrap { overflow-x: auto; }
 table {
