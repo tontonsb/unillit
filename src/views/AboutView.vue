@@ -34,6 +34,17 @@
 		<h2>Changelog</h2>
 
 		<dl class="changelog">
+			<dt>0.3</dt>
+			<dd>
+				<ul>
+					<li>Change answer ordering in stats</li>
+					<li>Stats by run for quiz and overall</li>
+					<li>Improve logout UI</li>
+					<li>Track quiz type, font, info sheet, tolerance and errors for your answers</li>
+					<li>Increase font sizes on sheets</li>
+				</ul>
+			</dd>
+
 			<dt>0.2</dt>
 			<dd>
 				<ul>
