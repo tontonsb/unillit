@@ -113,7 +113,7 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 .choice.dim { opacity: 0.4; }
 
 .also-accepted {
-	font-size: 11px;
+	font-size: 13px;
 	color: var(--c-muted);
 	text-align: center;
 	margin: 0;

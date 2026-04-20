@@ -326,7 +326,7 @@ function advance() {
 }
 
 .hint {
-	font-size: 11px;
+	font-size: 13px;
 	color: var(--c-muted);
 	text-align: center;
 }
