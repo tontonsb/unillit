@@ -149,8 +149,8 @@ export const allVowelQuestions: Question[] = [
 	{ prompt: 'กัวะ', answer: 'kua', hint: 'ua short — long form far more common' },
 	{ prompt: 'เกือะ', answer: 'kuea', hint: 'uea short — long form far more common' },
 	// Special compound vowels
-	{ prompt: 'กำ', answer: 'am', hint: 'sara am — ◌ํ + า; implied final m' },
-	{ prompt: 'กรร', answer: 'a', hint: 'ro han — รร reads as short a before a final consonant' },
+	{ prompt: 'กำ', answer: 'kam', hint: 'sara am — ◌ํ + า; implied final m' },
+	{ prompt: 'กรร', answer: 'ka', hint: 'ro han — รร reads as short a before a final consonant' },
 ]
 
 // All 77 Thai provinces (76 provinces + Bangkok)
