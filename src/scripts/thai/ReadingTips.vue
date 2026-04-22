@@ -142,6 +142,14 @@
 			## Changwat
 
 			Provinces are called changwats, i.e. จังหวัด or abbreviated as just จ. The province name is what follows it.
+
+			Province centers are called amphoe mueang (อำเภอเมือง) and are usually named after the province. This means that in Kalasin you're likely to see
+			- จังหวัดกาฬสินธุ์ = changwat Kalasin = Kalasin province
+			- จ.กาฬสินธุ์ = ch. Kalasin = Kalasin province
+			- อำเภอเมืองกาฬสินธุ์ = amphoe mueang Kalasin = Mueang Kalasin District
+
+			On one hand these prefixes make it harder to parse, on the other they're like markers that help you spot where the province name might be.
+			You can practice these in the *Prefixed provinces* dataset on either the type-in or the multiple choice quiz.
 		</Markdown>
 
 		<section>

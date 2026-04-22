@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import TypeInQuiz from '@/components/quiz/TypeInQuiz.vue'
-import { consonantQuestions, vowelQuestions, allVowelQuestions, syllableQuestions, provinceQuestions } from './thaiQuestions'
+import { consonantQuestions, vowelQuestions, allVowelQuestions, syllableQuestions, provinceQuestions, provincePrefixQuestions } from './thaiQuestions'
 
 const datasets = [
-	{ label: 'Consonants',  questions: consonantQuestions },
-	{ label: 'Vowels',      questions: vowelQuestions },
-	{ label: 'All vowels',  questions: allVowelQuestions },
-	{ label: 'Syllables',   questions: syllableQuestions,  maxTolerance: 1 },
-	{ label: 'Provinces',   questions: provinceQuestions,  maxTolerance: 3 },
+	{ label: 'Consonants', questions: consonantQuestions },
+	{ label: 'Vowels', questions: vowelQuestions },
+	{ label: 'All vowels', questions: allVowelQuestions },
+	{ label: 'Syllables', questions: syllableQuestions, maxTolerance: 1 },
+	{ label: 'Provinces', questions: provinceQuestions, maxTolerance: 3 },
+	{ label: 'Prefixed provinces', questions: provincePrefixQuestions, maxTolerance: 3 },
 ]
 </script>
 

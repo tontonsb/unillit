@@ -104,6 +104,10 @@ export const syllableQuestions: Question[] = [
 	{ prompt: 'ใหม่', answer: 'mai', hint: 'new — ใ (rare ai spelling) +  silent ห raises tone + m + mai ek tone mark' },
 	{ prompt: 'พรรณ', answer: 'phan', hint: 'ro han (รร) + final ณ — short a, final n' },
 	{ prompt: 'กรรม', answer: 'kam', hint: 'ro han (รร) + final ม — short a, final m' },
+	{ prompt: 'จังหวัด', answer: 'changwat', hint: 'province — จัง (chang) + หวัด (wat, silent ห raises ว class)' },
+	{ prompt: 'อำเภอ', answer: 'amphoe', hint: 'district — อำ (am) + เภอ (phoe)' },
+	{ prompt: 'เขต', answer: 'khet', hint: 'zone/district — used in Bangkok instead of อำเภอ' },
+	{ prompt: 'ตำบล', answer: 'tambon', hint: 'sub-district — ตำ (tam) + บล (bon)' },
 ]
 
 // All vowels — short + long pairs, inherent ai forms, and diphthongs
@@ -232,4 +236,20 @@ export const provinceQuestions: Question[] = [
 	{ prompt: 'อุตรดิตถ์', answer: 'Uttaradit', hint: 'ถ์ silent; ตร cluster' },
 	{ prompt: 'อุทัยธานี', answer: 'Uthai Thani', hint: 'ทัย = thai (ท = th, ัย = ai diphthong)' },
 	{ prompt: 'อุบลราชธานี', answer: ['Ubon Ratchathani', 'Ubon'], hint: 'ล final = n → Ubon; ราช: ช final = t → ratch' },
+]
+
+const prefixed = (prefix: string, meaning: string, q: Question): Question => ({
+	prompt: prefix + q.prompt,
+	answer: q.answer,
+	hint: [prefix + ' = ' + meaning, q.hint].filter(Boolean).join(' · '),
+})
+
+const nonBangkok = provinceQuestions.filter(q => q.prompt !== 'กรุงเทพมหานคร')
+
+// จังหวัด / จ. (province) + all 77; อำเภอเมือง / อ.เมือง (central district) + all except Bangkok (uses เขต)
+export const provincePrefixQuestions: Question[] = [
+	...provinceQuestions.map(q => prefixed('จังหวัด', 'province', q)),
+	...provinceQuestions.map(q => prefixed('จ.', 'province (abbr.)', q)),
+	...nonBangkok.map(q => prefixed('อำเภอเมือง', 'central district of', q)),
+	...nonBangkok.map(q => prefixed('อ.เมือง', 'central district (abbr.)', q)),
 ]
