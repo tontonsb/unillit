@@ -101,8 +101,8 @@ export const syllableQuestions: Question[] = [
 	{ prompt: 'คลอง', answer: 'khlong', hint: 'canal — khl cluster + open o + ng' },
 	{ prompt: 'น้ำ', answer: 'nam', hint: 'water — n + sara am, mai tho tone mark' },
 	{ prompt: 'หาด', answer: 'hat', hint: 'beach — h + long a + d (final t)' },
-	{ prompt: 'ใหม่', answer: 'mai', hint: 'new — ใ (rarer ai spelling) + h + m final, mai ek' },
-	{ prompt: 'พรรณ', answer: 'phan', hint: 'ro han (รร) + final ณ — short a, final n; "phan"' },
+	{ prompt: 'ใหม่', answer: 'mai', hint: 'new — ใ (rare ai spelling) +  silent ห raises tone + m + mai ek tone mark' },
+	{ prompt: 'พรรณ', answer: 'phan', hint: 'ro han (รร) + final ณ — short a, final n' },
 	{ prompt: 'กรรม', answer: 'kam', hint: 'ro han (รร) + final ม — short a, final m' },
 ]
 
@@ -186,7 +186,7 @@ export const provinceQuestions: Question[] = [
 	{ prompt: 'ปทุมธานี', answer: 'Pathum Thani' },
 	{ prompt: 'ประจวบคีรีขันธ์', answer: 'Prachuap Khiri Khan', hint: 'ธ์ silent → Khan' },
 	{ prompt: 'ปราจีนบุรี', answer: 'Prachin Buri' },
-	{ prompt: 'ปัตตานี', answer: 'Pattani', hint: 'double ต romanised as single t' },
+	{ prompt: 'ปัตตานี', answer: 'Pattani' },
 	{ prompt: 'พระนครศรีอยุธยา', answer: ['Phra Nakhon Si Ayutthaya', 'Ayutthaya'], hint: 'ร silent in ศร → Si; อยุธยา: ธ = th → tthaya (doubled in official romanisation)' },
 	{ prompt: 'พะเยา', answer: 'Phayao' },
 	{ prompt: 'พังงา', answer: 'Phang Nga' },

@@ -81,6 +81,9 @@
 
 			The consonant clusters are basically stop + ร / ล / ว, here are some of the common consonant clusters:
 			กร (kr), กล (kl), กว (kw), ตร (tr), ปร (pr).
+
+			ห in combination with a sonorant (น ม ง ย ล ว ร) makes somewhat of an "orthographic cluster", i.e. ห is not pronounced, but only affects the tone.
+			E.g. ใหม่ is *mai* not *hmai*, หนอง is *nong* not *hnong*.
 		</Markdown>
 
 		<Markdown wrap="section">
