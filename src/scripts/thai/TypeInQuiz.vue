@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TypeInQuiz from '@/components/quiz/TypeInQuiz.vue'
-import { consonantQuestions, vowelQuestions, allVowelQuestions, syllableQuestions, provinceQuestions, provincePrefixQuestions } from './thaiQuestions'
+import { consonantQuestions, vowelQuestions, allVowelQuestions, syllableQuestions, provinceQuestions, provincePrefixQuestions } from './questions'
 
 const VOWEL_NOTE = 'Type the full syllable — include the k (e.g. ka, not just a)'
 

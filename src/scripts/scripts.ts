@@ -30,15 +30,15 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'ภ',
 		meta: 'Abugida · left → right · 44 consonants · 20+ vowel forms',
 		countries: 'Thailand',
-		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/ThaiFontPicker.vue')),
+		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
 		practiceTabs: [
 			{
 				label: 'Type-in',
-				component: defineAsyncComponent(() => import('@/scripts/thai/ThaiQuiz.vue')),
+				component: defineAsyncComponent(() => import('@/scripts/thai/TypeInQuiz.vue')),
 			},
 			{
 				label: 'Multiple choice',
-				component: defineAsyncComponent(() => import('@/scripts/thai/ThaiMultipleChoiceQuiz.vue')),
+				component: defineAsyncComponent(() => import('@/scripts/thai/MultipleChoiceQuiz.vue')),
 			},
 		],
 		infoTabs: [

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import MainMenu from '@/components/MainMenu.vue'
-import { activeThaiFontFamily } from '@/scripts/thai/ThaiFont'
+import { activeThaiFontFamily } from '@/scripts/thai/font'
 
 const fontVars = computed(() => ({ '--font-thai': activeThaiFontFamily() }))
 </script>

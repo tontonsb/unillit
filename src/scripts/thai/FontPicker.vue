@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { thaiFonts, activeThaiFontId } from './ThaiFont'
+import { thaiFonts, activeThaiFontId } from './font'
 </script>
 
 <template>

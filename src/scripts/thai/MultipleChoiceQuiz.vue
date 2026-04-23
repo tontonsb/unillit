@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MultipleChoiceQuiz from '@/components/quiz/MultipleChoiceQuiz.vue'
-import { syllableQuestions, provinceQuestions, provincePrefixQuestions } from './thaiQuestions'
+import { syllableQuestions, provinceQuestions, provincePrefixQuestions } from './questions'
 
 const datasets = [
 	{ label: 'Syllables', questions: syllableQuestions },
