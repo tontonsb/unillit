@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
+const baseCons = ref('◌')
+
+function replaceConsonant(thai: string): string {
+	return thai.replace('ก', baseCons.value)
+}
+
 import CharBadge from './CharBadge.vue'
 
 interface ConsonantChar {
@@ -195,13 +204,13 @@ const consonantFamilies: ConsonantFamily[] = [
 		</section>
 
 		<section>
-			<h2>Vowels (displayed with consonant ก)</h2>
+			<h2>Vowels — base consonant {{ baseCons }} <span class="cons-picker"><button v-for="c in placeholders" :key="c" type="button" class="cons-btn" :class="{ active: baseCons === c }" @click="baseCons = c">{{ c }}</button></span></h2>
 
 			<figure v-for="family in vowelFamilies" :key="family.name">
 				<figcaption>{{ family.name }}</figcaption>
 				<ul>
 					<li v-for="(vowel, vi) in family.vowels" :key="vi">
-						<span class="thai">{{ vowel.thai }}</span>
+						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
 						<span class="rom">{{ vowel.translit }}</span>
 						<CharBadge :tag="vowel.length" />
 					</li>
@@ -240,6 +249,8 @@ section > h2 {
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	padding: 3px 7px;
+	display: flex;
+	align-items: center;
 }
 
 figure {
@@ -285,6 +296,33 @@ li:last-child { border-right: none; }
 	font-family: var(--font-thai);
 	font-size: 24px;
 	line-height: 1.15;
+}
+
+.cons-picker {
+	display: flex;
+	gap: 2px;
+	margin-left: auto;
+}
+
+.cons-btn {
+	font-family: var(--font-thai);
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1;
+	padding: 0 5px 1px;
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	border-radius: 3px;
+	background: transparent;
+	color: rgba(255, 255, 255, 0.65);
+	cursor: pointer;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.cons-btn.active {
+	background: rgba(255, 255, 255, 0.9);
+	border-color: transparent;
+	color: var(--c-head);
 }
 
 .rom {

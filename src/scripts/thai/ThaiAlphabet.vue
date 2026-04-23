@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
+const baseCons = ref('◌')
+
+function replaceConsonant(thai: string): string {
+	return thai.replace(/ก/g, baseCons.value)
+}
+
 type ConsonantClass = 'mid' | 'high' | 'low'
 
 interface Consonant {
@@ -138,7 +147,7 @@ const specialMarks: Mark[] = [
 		</section>
 
 		<section>
-			<h2>Vowels — written around the consonant (shown here with ก)</h2>
+			<h2>Vowels — base consonant {{ baseCons }}<span class="cons-picker"><button v-for="c in placeholders" :key="c" type="button" class="cons-btn" :class="{ active: baseCons === c }" @click="baseCons = c">{{ c }}</button></span></h2>
 			<p>Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
 			<div class="vtable-wrap">
 				<table>
@@ -149,9 +158,9 @@ const specialMarks: Mark[] = [
 					</thead>
 					<tbody>
 						<tr v-for="(row, i) in vowelRows" :key="i">
-							<td><span class="thai sm">{{ row.short }}</span></td>
+							<td><span class="thai sm">{{ replaceConsonant(row.short) }}</span></td>
 							<td><span class="rom">{{ row.rtgs }}</span></td>
-							<td><span class="thai sm">{{ row.long }}</span></td>
+							<td><span class="thai sm">{{ replaceConsonant(row.long) }}</span></td>
 							<td><span class="rom">{{ row.rtgs }}</span></td>
 							<td>{{ row.position }}</td>
 							<td v-html="row.notes ?? ''"></td>
@@ -177,7 +186,7 @@ const specialMarks: Mark[] = [
 				<p>Written above the consonant. Actual tone depends on consonant class + mark combination.</p>
 				<ol class="cols-4">
 					<li v-for="m in toneMarks" :key="m.thai">
-						<span class="thai xl">{{ m.thai }}</span>
+						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
 						<span v-if="m.gloss" class="gloss">{{ m.gloss }}</span>
 					</li>
@@ -188,7 +197,7 @@ const specialMarks: Mark[] = [
 				<h2>Special marks</h2>
 				<ol class="cols-4">
 					<li v-for="m in specialMarks" :key="m.thai">
-						<span class="thai xl">{{ m.thai }}</span>
+						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
 						<span v-if="m.gloss" class="gloss">{{ m.gloss }}</span>
 					</li>
@@ -225,6 +234,35 @@ section > h2 {
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	padding: 3px 7px;
+	display: flex;
+	align-items: center;
+}
+
+.cons-picker {
+	display: flex;
+	gap: 2px;
+	margin-left: auto;
+}
+
+.cons-btn {
+	font-family: var(--font-thai);
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1;
+	padding: 0 5px 1px;
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	border-radius: 3px;
+	background: transparent;
+	color: rgba(255, 255, 255, 0.65);
+	cursor: pointer;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.cons-btn.active {
+	background: rgba(255, 255, 255, 0.9);
+	border-color: transparent;
+	color: var(--c-head);
 }
 
 section > p {
