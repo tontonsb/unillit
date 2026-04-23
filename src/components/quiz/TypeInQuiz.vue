@@ -18,6 +18,7 @@ const currentDatasetIndex = ref(0)
 const tolerance = ref(0)
 
 const maxTolerance = computed(() => props.datasets[currentDatasetIndex.value]?.maxTolerance ?? 0)
+const instructions = computed(() => props.datasets[currentDatasetIndex.value]?.instructions)
 
 watch(maxTolerance, (max) => {
 	if (tolerance.value > max) tolerance.value = max
@@ -48,6 +49,8 @@ function handleSubmit(current: Question, submit: (correct: boolean, errors?: num
 		@question="onQuestion"
 	>
 		<template #default="{ current, phase, submit }">
+			<p v-if="phase === 'question' && instructions" class="instructions">{{ instructions }}</p>
+
 			<form v-if="phase === 'question'" class="input-row" @submit.prevent="handleSubmit(current, submit)">
 				<input
 					ref="answerInput"
@@ -195,5 +198,12 @@ function handleSubmit(current: Question, submit: (correct: boolean, errors?: num
 	flex: 1;
 	accent-color: var(--c-accent);
 	cursor: pointer;
+}
+
+.instructions {
+	font-size: 12px;
+	color: var(--c-muted);
+	text-align: center;
+	max-width: 360px;
 }
 </style>
