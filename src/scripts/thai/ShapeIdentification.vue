@@ -259,6 +259,8 @@ figure {
 	border-radius: 3px;
 	overflow: hidden;
 	min-width: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 figcaption {
@@ -278,6 +280,7 @@ ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	flex: 1;
 }
 
 li {
