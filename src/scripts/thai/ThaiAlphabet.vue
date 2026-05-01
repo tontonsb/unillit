@@ -218,7 +218,7 @@ article {
 	--high: #a0320a;
 	--low: #2e7d32;
 	padding: 10px;
-	font-size: 11px;
+	font-size: clamp(11px, 0.75vw, 14px);
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -229,7 +229,7 @@ section { border: 1px solid var(--c-border); border-radius: 4px; overflow: hidde
 section > h2 {
 	background: var(--c-head);
 	color: #fff;
-	font-size: 9px;
+	font-size: 0.8em;
 	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -266,7 +266,7 @@ section > h2 {
 }
 
 section > p {
-	font-size: 8.5px;
+	font-size: 0.75em;
 	color: var(--c-label);
 	padding: 3px 7px 2px;
 	border-bottom: 1px solid var(--c-border);
@@ -277,7 +277,7 @@ section > p {
 	gap: 8px;
 	align-items: center;
 	padding: 3px 7px;
-	font-size: 8px;
+	font-size: 0.75em;
 	color: var(--c-label);
 	border-bottom: 1px solid var(--c-border);
 	flex-wrap: wrap;
@@ -322,29 +322,29 @@ li {
 
 .cols-4 { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
 .cols-10 { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
-.cols-11 { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
+.cols-11 { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
 
 li.c-mid { background: #ddeaf5; }
 li.c-high { background: #faeae3; }
 li.c-low { background: #e3f2e5; }
 
-.thai { font-family: var(--font-thai); font-size: 18px; line-height: 1.3; }
-.thai.xl { font-size: 22px; }
-.thai.sm { font-size: 15px; }
-.rom { font-size: 11px; color: var(--c-accent); font-weight: 600; }
-.fin { font-size: 9px; color: var(--c-muted); }
-.gloss { font-size: 9px; color: var(--c-muted); text-align: center; line-height: 1.3; }
+.thai { font-family: var(--font-thai); font-size: clamp(18px, 1.15vw, 22px); line-height: 1.3; }
+.thai.xl { font-size: clamp(22px, 1.4vw, 27px); }
+.thai.sm { font-size: clamp(15px, 0.94vw, 18px); }
+.rom { font-size: 1em; color: var(--c-accent); font-weight: 600; }
+.fin { font-size: 0.8em; color: var(--c-muted); }
+.gloss { font-size: 0.8em; color: var(--c-muted); text-align: center; line-height: 1.3; }
 
 .vtable-wrap { overflow-x: auto; }
 table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 9px;
+	font-size: 0.8em;
 }
 th {
 	background: var(--c-alt);
 	color: var(--c-label);
-	font-size: 8px;
+	font-size: 0.75em;
 	font-weight: 600;
 	padding: 2px 5px;
 	text-align: left;
@@ -356,7 +356,7 @@ td {
 tr:nth-child(even) td { background: var(--c-alt); }
 
 footer {
-	font-size: 8px;
+	font-size: 0.75em;
 	color: var(--c-muted);
 	border-top: 1px solid var(--c-border);
 	padding-top: 4px;

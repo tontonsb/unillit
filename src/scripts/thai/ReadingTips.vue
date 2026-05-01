@@ -214,13 +214,13 @@
 article {
 	padding: 1.25rem 1.5rem;
 	max-width: 640px;
-	font-size: 13px;
+	font-size: clamp(13px, 0.9vw, 16px);
 	line-height: 1.6;
 	color: var(--c-label);
 }
 
 h2 {
-	font-size: 12px;
+	font-size: 0.9em;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
@@ -256,7 +256,7 @@ blockquote {
 table {
 	border-collapse: collapse;
 	margin: 0.5rem 0;
-	font-size: 12px;
+	font-size: 0.9em;
 }
 
 th {
@@ -280,7 +280,7 @@ tr:nth-child(even) td {
 
 td:first-child {
 	font-family: var(--font-thai);
-	font-size: 15px;
+	font-size: 1.15em;
 }
 
 a {
@@ -307,7 +307,7 @@ dl > div {
 }
 
 dt {
-	font-size: 15px;
+	font-size: 1.15em;
 	font-weight: 600;
 	color: var(--c-accent);
 	font-family: var(--sans);
@@ -318,7 +318,7 @@ dt {
 }
 
 dd {
-	font-size: 11px;
+	font-size: 0.85em;
 	color: var(--c-muted);
 	margin: 0;
 }
@@ -329,7 +329,7 @@ dd {
 }
 
 .rtgs {
-	font-size: 12px;
+	font-size: 0.9em;
 	color: var(--c-accent);
 }
 </style>

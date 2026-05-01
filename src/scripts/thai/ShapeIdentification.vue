@@ -226,7 +226,7 @@ article {
 	flex-direction: column;
 	gap: 8px;
 	padding: 10px;
-	font-size: 11px;
+	font-size: clamp(11px, 0.75vw, 14px);
 }
 
 section {
@@ -264,7 +264,7 @@ figure {
 figcaption {
 	background: var(--c-alt);
 	color: var(--c-label);
-	font-size: 8px;
+	font-size: 0.75em;
 	font-weight: 600;
 	padding: 2px 6px;
 	border-bottom: 1px solid var(--c-border);
@@ -295,7 +295,7 @@ li:last-child { border-right: none; }
 
 .thai {
 	font-family: var(--font-thai);
-	font-size: 24px;
+	font-size: clamp(24px, 1.56vw, 30px);
 	line-height: 1.15;
 }
 
@@ -327,13 +327,13 @@ li:last-child { border-right: none; }
 }
 
 .rom {
-	font-size: 11px;
+	font-size: 1em;
 	color: var(--c-accent);
 	font-weight: 600;
 }
 
 .final {
-	font-size: 9px;
+	font-size: 0.8em;
 	color: var(--c-muted);
 }
 </style>
