@@ -136,7 +136,7 @@ const specialMarks: Mark[] = [
 				<span class="legend-item"><span class="legend-swatch" style="background:var(--low)"></span> Low</span>
 				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (shown only when different)</span>
 			</div>
-			<ol class="cols-11">
+			<ol class="cols-fill">
 				<li v-for="c in consonants" :key="c.thai" :class="`c-${c.cls}`">
 					<span class="thai">{{ c.thai }}</span>
 					<span class="rom">{{ c.rom }}</span>
@@ -172,7 +172,7 @@ const specialMarks: Mark[] = [
 
 		<section>
 			<h2>Numerals</h2>
-			<ol class="cols-10">
+			<ol class="cols-fill">
 				<li v-for="m in numerals" :key="m.thai">
 					<span class="thai xl">{{ m.thai }}</span>
 					<span class="rom">{{ m.rom }}</span>
@@ -184,7 +184,7 @@ const specialMarks: Mark[] = [
 			<section>
 				<h2>Tone marks</h2>
 				<p>Written above the consonant. Actual tone depends on consonant class + mark combination.</p>
-				<ol class="cols-4">
+				<ol class="cols-fit">
 					<li v-for="m in toneMarks" :key="m.thai">
 						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
@@ -195,7 +195,7 @@ const specialMarks: Mark[] = [
 
 			<section>
 				<h2>Special marks</h2>
-				<ol class="cols-4">
+				<ol class="cols-fit">
 					<li v-for="m in specialMarks" :key="m.thai">
 						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
@@ -320,9 +320,8 @@ li {
 	align-items: center;
 }
 
-.cols-4 { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
-.cols-10 { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
-.cols-11 { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
+.cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
+.cols-fill { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
 
 li.c-mid { background: #ddeaf5; }
 li.c-high { background: #faeae3; }
