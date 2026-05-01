@@ -144,7 +144,7 @@ const consonantFamilies: ConsonantFamily[] = [
 		],
 	},
 	{
-		name: 'Pac-man ghosts/AmongUs — gap on side',
+		name: 'Pacman ghosts/AmongUs — side gap',
 		characters: [
 			{ thai: 'อ', translit: '–', final: null, tags: ['vowel'] },
 			{ thai: 'ฮ', translit: 'h', final: null },
@@ -163,7 +163,7 @@ const consonantFamilies: ConsonantFamily[] = [
 		],
 	},
 	{
-		name: 'Back & forth squiggles — N-like, Z-like',
+		name: 'Squiggles — N-like, Z-like',
 		characters: [
 			{ thai: 'ห', translit: 'h', final: null },
 			{ thai: 'ท', translit: 'th', final: 't' },
@@ -264,7 +264,7 @@ figure {
 figcaption {
 	background: var(--c-alt);
 	color: var(--c-label);
-	font-size: 0.75em;
+	font-size: 0.65em;
 	font-weight: 600;
 	padding: 2px 6px;
 	border-bottom: 1px solid var(--c-border);
