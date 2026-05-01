@@ -320,9 +320,9 @@ li {
 	align-items: center;
 }
 
-.cols-4 { grid-template-columns: repeat(4, 1fr); }
-.cols-10 { grid-template-columns: repeat(10, 1fr); }
-.cols-11 { grid-template-columns: repeat(11, 1fr); }
+.cols-4 { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
+.cols-10 { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
+.cols-11 { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
 
 li.c-mid { background: #ddeaf5; }
 li.c-high { background: #faeae3; }

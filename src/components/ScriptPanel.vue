@@ -107,6 +107,8 @@ nav {
 	overflow-x: auto;
 	scrollbar-width: none;
 	flex: 1;
+	padding-right: 16px;
+	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
 }
 
 nav::-webkit-scrollbar { display: none; }

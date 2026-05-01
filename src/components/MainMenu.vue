@@ -164,10 +164,12 @@ nav {
 	padding: 8px 0;
 	overflow-y: auto;
 	flex: 1;
+	min-height: 0;
 }
 
 .nav-divider {
 	height: 1px;
+	flex-shrink: 0;
 	background: var(--c-border);
 	margin: 4px 0;
 }
@@ -175,6 +177,7 @@ nav {
 .nav-item {
 	display: flex;
 	flex-direction: column;
+	flex-shrink: 0;
 	padding: 10px 14px;
 	text-decoration: none;
 	color: var(--c-label);

@@ -213,20 +213,26 @@ function advance() {
 	border-bottom: 1px solid var(--c-border);
 	background: var(--c-cell);
 	gap: 8px;
-	flex-wrap: wrap;
+	flex-shrink: 0;
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding-right: 28px;
+	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
 }
+
+.toolbar::-webkit-scrollbar { display: none; }
 
 .set-pills {
 	display: flex;
 	gap: 4px;
-	flex-wrap: wrap;
-	flex: 1;
+	flex-shrink: 0;
 }
 
 .mode-picker {
 	display: flex;
 	align-items: center;
 	gap: 4px;
+	flex-shrink: 0;
 	border-left: 1px solid var(--c-border);
 	padding-left: 8px;
 }
