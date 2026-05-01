@@ -210,23 +210,24 @@ function advance() {
 	display: flex;
 	align-items: center;
 	padding: 8px 12px;
-	border-bottom: 1px solid var(--c-border);
-	background: var(--c-cell);
 	gap: 8px;
 	flex-shrink: 0;
-	overflow-x: auto;
-	scrollbar-width: none;
-	padding-right: 28px;
-	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
+	border-bottom: 1px solid var(--c-border);
+	background: var(--c-cell);
 }
-
-.toolbar::-webkit-scrollbar { display: none; }
 
 .set-pills {
 	display: flex;
 	gap: 4px;
-	flex-shrink: 0;
+	flex: 1;
+	min-width: 0;
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding-right: 16px;
+	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
 }
+
+.set-pills::-webkit-scrollbar { display: none; }
 
 .mode-picker {
 	display: flex;
@@ -264,6 +265,8 @@ function advance() {
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: all 0.15s;
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .pill:hover {
