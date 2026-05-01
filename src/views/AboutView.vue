@@ -34,6 +34,15 @@
 		<h2>Changelog</h2>
 
 		<dl class="changelog">
+			<dt>0.4</dt>
+			<dd>
+				<ul>
+					<li>Question set of prefixed Thai provinces</li>
+					<li>You can choose the consonant that Thai vowels are displayed with</li>
+					<li>Improve scaling/responsiveness</li>
+				</ul>
+			</dd>
+
 			<dt>0.3</dt>
 			<dd>
 				<ul>
