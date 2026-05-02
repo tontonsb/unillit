@@ -8,8 +8,7 @@ import { relativeDate } from './utils'
 const props = defineProps<{
 	scriptId?: string
 	promptClass?: string
-	datasets: QuizDataset[]
-	datasetIndex: number
+	dataset: QuizDataset
 }>()
 
 const { user, loginWithDiscord } = useAuth()
@@ -17,12 +16,9 @@ const { user, loginWithDiscord } = useAuth()
 const statsData = ref<QuestionStats[]>([])
 const statsLoading = ref(false)
 
-const stats = computed(() => {
-	const dataset = props.datasets[props.datasetIndex]
-	return props.scriptId && dataset
-		? useStats(props.scriptId, dataset.label)
-		: null
-})
+const stats = computed(() =>
+	props.scriptId ? useStats(props.scriptId, props.dataset.label) : null
+)
 
 async function loadStats() {
 	if (!stats.value || !user.value) return
@@ -32,7 +28,6 @@ async function loadStats() {
 }
 
 onMounted(loadStats)
-watch(() => props.datasetIndex, loadStats)
 watch(user, loadStats)
 
 // Collect distinct non-null values for each dimension
@@ -67,7 +62,7 @@ const filteredStats = computed(() => statsData.value.filter(s =>
 
 // Aggregate filtered rows per prompt
 const statsRows = computed(() => {
-	const questions = props.datasets[props.datasetIndex]?.questions ?? []
+	const questions = props.dataset.questions
 
 	const byPrompt = new Map<string, { total: number; correct: number; lastAnsweredAt: string }>()
 	for (const s of filteredStats.value) {

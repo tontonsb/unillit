@@ -1,72 +1,66 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { Question, QuizDataset } from './dataset'
+import { ref, watch } from 'vue'
+import type { Question } from './dataset'
+import type { Phase } from './useSession'
 import { shuffle, canonicalAnswer, allAnswers, isMatch } from './utils'
-import QuizShell from './QuizShell.vue'
 
-defineProps<{
-	datasets: QuizDataset[]
-	promptClass?: string
-	scriptId?: string
+const props = defineProps<{
+	current: Question
+	phase: Phase
+	session: Question[]
+}>()
+
+const emit = defineEmits<{
+	answer: [correct: boolean, errors?: number]
 }>()
 
 const choices = ref<string[]>([])
 const selectedChoice = ref<string | null>(null)
 
-function buildChoices(question: Question, pool: Question[]): string[] {
-	const correct = canonicalAnswer(question)
+function buildChoices() {
+	const correct = canonicalAnswer(props.current)
 	const distractors = shuffle([...new Set(
-		pool
+		props.session
 			.filter(q => canonicalAnswer(q) !== correct)
 			.map(q => canonicalAnswer(q))
 	)])
-	return shuffle([correct, ...distractors.slice(0, 4)])
+	choices.value = shuffle([correct, ...distractors.slice(0, 4)])
 }
 
-function onQuestion({ question, session }: { question: Question; session: Question[]; datasetIndex: number }) {
+watch(() => props.current, () => {
 	selectedChoice.value = null
-	choices.value = buildChoices(question, session)
-}
+	buildChoices()
+}, { immediate: true })
 
-function handleSelect(choice: string, current: Question, submit: (correct: boolean, errors?: number) => void) {
+function handleSelect(choice: string) {
 	selectedChoice.value = choice
-	const correct = isMatch(choice, current.answer)
-	submit(correct, correct ? 0 : undefined)
+	const correct = isMatch(choice, props.current.answer)
+	emit('answer', correct, correct ? 0 : undefined)
 }
 
-function choiceState(choice: string, current: Question, phase: string): 'correct' | 'wrong' | 'dim' | null {
-	if (phase !== 'answered') return null
-	if (isMatch(choice, current.answer)) return 'correct'
+function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
+	if (props.phase !== 'answered') return null
+	if (isMatch(choice, props.current.answer)) return 'correct'
 	if (choice === selectedChoice.value) return 'wrong'
 	return 'dim'
 }
 </script>
 
 <template>
-	<QuizShell
-		:datasets="datasets"
-		:prompt-class="promptClass"
-		:script-id="scriptId"
-		quiz-type="multiplechoice"
-		@question="onQuestion"
-	>
-		<template #default="{ current, phase, submit }">
-			<div class="choices">
-				<button
-					v-for="choice in choices"
-					:key="choice"
-					type="button"
-					class="choice"
-					:class="choiceState(choice, current, phase)"
-					:disabled="phase === 'answered'"
-					@click="handleSelect(choice, current, submit)"
-				>{{ choice }}</button>
-			</div>
-			<p v-if="phase === 'answered' && allAnswers(current).length > 1" class="also-accepted">
-				accepted: {{ allAnswers(current).join(' / ') }}
-			</p>
-		</template>
-	</QuizShell>
+	<div class="choices">
+		<button
+			v-for="choice in choices"
+			:key="choice"
+			type="button"
+			class="choice"
+			:class="choiceState(choice)"
+			:disabled="phase === 'answered'"
+			@click="handleSelect(choice)"
+		>{{ choice }}</button>
+	</div>
+	<p v-if="phase === 'answered' && allAnswers(current).length > 1" class="also-accepted">
+		accepted: {{ allAnswers(current).join(' / ') }}
+	</p>
 </template>
 
 <style scoped>
@@ -98,19 +92,9 @@ function choiceState(choice: string, current: Question, phase: string): 'correct
 
 .choice:disabled { cursor: default; }
 
-.choice.correct {
-	background: #edf7ee;
-	border-color: #5a9e64;
-	color: #2d6a35;
-}
-
-.choice.wrong {
-	background: #fdf0f0;
-	border-color: #c47878;
-	color: #a03030;
-}
-
-.choice.dim { opacity: 0.4; }
+.choice.correct { background: #edf7ee; border-color: #5a9e64; color: #2d6a35; }
+.choice.wrong   { background: #fdf0f0; border-color: #c47878; color: #a03030; }
+.choice.dim     { opacity: 0.4; }
 
 .also-accepted {
 	font-size: 13px;

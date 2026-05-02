@@ -1,3 +1,5 @@
+export type QuizMode = 'typein' | 'multiplechoice'
+
 export interface Question {
 	prompt: string
 	answer: string | string[]
@@ -9,4 +11,5 @@ export interface QuizDataset {
 	questions: Question[]
 	maxTolerance?: number
 	instructions?: string
+	modes?: QuizMode[]
 }

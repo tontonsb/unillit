@@ -59,7 +59,7 @@ watch(activeTab, tab => {
 			role="tabpanel"
 			class="panel-content"
 		>
-			<component :is="activeTab?.component" />
+			<component :is="activeTab?.component" v-bind="activeTab?.props" :key="activeIndex" />
 		</div>
 	</section>
 </template>

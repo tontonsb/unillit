@@ -1,9 +1,11 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
+import { thaiDatasets } from './thai/datasets'
 
 export interface ScriptTab {
 	label: string
 	component: Component
+	props?: Record<string, unknown>
 }
 
 export interface ScriptConfig {
@@ -31,16 +33,10 @@ export const scriptList: ScriptConfig[] = [
 		meta: 'Abugida · left → right · 44 consonants · 20+ vowel forms',
 		countries: 'Thailand',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
-		practiceTabs: [
-			{
-				label: 'Type-in',
-				component: defineAsyncComponent(() => import('@/scripts/thai/TypeInQuiz.vue')),
-			},
-			{
-				label: 'Multiple choice',
-				component: defineAsyncComponent(() => import('@/scripts/thai/MultipleChoiceQuiz.vue')),
-			},
-		],
+		practiceTabs: (() => {
+			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
+			return thaiDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'thai', promptClass: 'thai', promptFontFamily: 'var(--font-thai)' } }))
+		})(),
 		infoTabs: [
 			{
 				label: 'Reading tips',

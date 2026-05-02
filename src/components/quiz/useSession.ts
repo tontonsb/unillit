@@ -12,8 +12,7 @@ function buildSession(questions: Question[], count: number | null): Question[] {
 	return Array.from({ length: count }, () => questions[Math.floor(Math.random() * questions.length)]!)
 }
 
-export function useQuizSession(datasets: Ref<QuizDataset[]>) {
-	const datasetIndex = ref(0)
+export function useQuizSession(dataset: Ref<QuizDataset>) {
 	const session = ref<Question[]>([])
 	const index = ref(0)
 	const phase = ref<Phase>('question')
@@ -23,8 +22,7 @@ export function useQuizSession(datasets: Ref<QuizDataset[]>) {
 	const progress = computed(() => `${index.value + (phase.value !== 'question' ? 1 : 0)} / ${session.value.length}`)
 
 	function startSession(count?: number | null) {
-		const questions = datasets.value[datasetIndex.value]?.questions ?? []
-		session.value = buildSession(questions, count ?? null)
+		session.value = buildSession(dataset.value.questions, count ?? null)
 		index.value = 0
 		phase.value = 'question'
 		tally.value = { correct: 0, wrong: 0 }
@@ -45,5 +43,5 @@ export function useQuizSession(datasets: Ref<QuizDataset[]>) {
 		}
 	}
 
-	return { datasetIndex, session, index, phase, tally, current, progress, startSession, submit, advance }
+	return { session, index, phase, tally, current, progress, startSession, submit, advance }
 }

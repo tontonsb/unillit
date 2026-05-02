@@ -1,74 +1,73 @@
 <script setup lang="ts">
 import { ref, computed, watch, toRef, nextTick } from 'vue'
-import type { VNode } from 'vue'
-import type { Question, QuizDataset } from './dataset'
-import { useQuizSession, type Phase } from './useSession'
+import type { QuizDataset, QuizMode } from './dataset'
+import { useQuizSession } from './useSession'
 import { useStats } from '@/composables/useStats'
 import { activeFont, activeInfoSheet } from '@/composables/useScriptContext'
+import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizPrefs'
+import TypeInQuiz from './TypeInQuiz.vue'
+import MultipleChoiceQuiz from './MultipleChoiceQuiz.vue'
 import StatsPanel from './StatsPanel.vue'
 import RunsPanel from './RunsPanel.vue'
 
 const props = defineProps<{
-	datasets: QuizDataset[]
+	dataset: QuizDataset
 	promptClass?: string
+	promptFontFamily?: string
 	scriptId?: string
-	quizType?: string
-	tolerance?: number
-}>()
-
-const emit = defineEmits<{
-	question: [{ question: Question; session: Question[]; datasetIndex: number }]
-}>()
-
-defineSlots<{
-	default(props: {
-		current: Question
-		phase: Phase
-		session: Question[]
-		submit: (correct: boolean, errors?: number) => void
-	}): VNode[]
 }>()
 
 const {
-	datasetIndex, session, index, phase, tally, current, progress,
+	session, index, phase, tally, current, progress,
 	startSession: _startSession, submit: _submit, advance: _advance,
-} = useQuizSession(toRef(props, 'datasets'))
+} = useQuizSession(toRef(props, 'dataset'))
 
-type SamplingMode = 'shuffled' | 'random'
-const samplingMode = ref<SamplingMode>('shuffled')
-const randomCount = ref(10)
+const mode = ref<QuizMode>('typein')
+const tolerance = ref(0)
+
+const currentModes = computed((): QuizMode[] =>
+	props.dataset.modes ?? ['typein']
+)
+
+const maxTolerance = computed(() =>
+	mode.value === 'typein' ? (props.dataset.maxTolerance ?? 0) : 0
+)
+
+watch(maxTolerance, (max) => {
+	if (tolerance.value > max) tolerance.value = max
+})
 
 const nextBtn = ref<HTMLButtonElement | null>(null)
 let runStarted = false
 
-const stats = computed(() => {
-	const dataset = props.datasets[datasetIndex.value]
-	return props.scriptId && dataset
-		? useStats(props.scriptId, dataset.label)
-		: null
-})
+const stats = computed(() =>
+	props.scriptId ? useStats(props.scriptId, props.dataset.label) : null
+)
 
 type Tab = 'quiz' | 'stats' | 'runs'
 const activeTab = ref<Tab>('quiz')
-
-function emitQuestion() {
-	if (current.value) emit('question', { question: current.value, session: session.value, datasetIndex: datasetIndex.value })
-}
 
 function sessionCount() {
 	return samplingMode.value === 'random' ? randomCount.value : null
 }
 
-watch(datasetIndex, () => {
+watch(() => props.dataset, () => {
+	const modes = currentModes.value
+	mode.value = modes.includes(preferredMode.value) ? preferredMode.value : modes[0]!
 	_startSession(sessionCount())
-	emitQuestion()
 	runStarted = false
 }, { immediate: true })
 
 function startSession() {
 	_startSession(sessionCount())
-	emitQuestion()
 	runStarted = false
+}
+
+function switchMode(newMode: QuizMode) {
+	if (mode.value === newMode) return
+	mode.value = newMode
+	preferredMode.value = newMode
+	startSession()
 }
 
 async function handleSubmit(correct: boolean, errors?: number) {
@@ -77,17 +76,17 @@ async function handleSubmit(correct: boolean, errors?: number) {
 	if (current.value) {
 		if (!runStarted) {
 			await stats.value?.startRun(session.value.length, {
-				quizType: props.quizType,
+				quizType: mode.value,
 				font: activeFont.value,
 				infoSheet: activeInfoSheet.value,
-				tolerance: props.tolerance,
+				tolerance: tolerance.value,
 			})
 			runStarted = true
 		}
 		stats.value?.recordAnswer(current.value.prompt, correct, {
 			font: activeFont.value,
 			infoSheet: activeInfoSheet.value,
-			tolerance: props.tolerance,
+			tolerance: tolerance.value,
 			errors,
 		})
 	}
@@ -95,23 +94,22 @@ async function handleSubmit(correct: boolean, errors?: number) {
 
 function advance() {
 	_advance()
-	if (phase.value === 'question') emitQuestion()
-	else if (phase.value === 'done') stats.value?.completeRun()
+	if (phase.value === 'done') stats.value?.completeRun()
 }
 </script>
 
 <template>
 	<div class="quiz">
 		<div class="toolbar">
-			<div class="set-pills">
+			<div v-if="currentModes.length > 1" class="mode-toggle">
 				<button
-					v-for="(dataset, i) in datasets"
-					:key="dataset.label"
+					v-for="m in currentModes"
+					:key="m"
 					type="button"
 					class="pill"
-					:class="{ active: datasetIndex === i }"
-					@click="datasetIndex = i"
-				>{{ dataset.label }}</button>
+					:class="{ active: mode === m }"
+					@click="switchMode(m)"
+				>{{ m === 'typein' ? 'Type-in' : 'Multiple choice' }}</button>
 			</div>
 			<div class="mode-picker">
 				<button
@@ -156,13 +154,22 @@ function advance() {
 			</div>
 
 			<div v-else-if="current" class="card">
-				<div class="prompt" :class="promptClass">{{ current.prompt }}</div>
-				<slot
-					:current="current"
-					:phase="phase"
-					:session="session"
-					:submit="handleSubmit"
-				></slot>
+				<div class="prompt" :class="promptClass" :style="promptFontFamily ? { fontFamily: promptFontFamily } : {}">{{ current.prompt }}</div>
+				<TypeInQuiz
+					v-if="mode === 'typein'"
+					:current
+					:phase
+					:dataset="props.dataset"
+					v-model="tolerance"
+					@answer="handleSubmit"
+				/>
+				<MultipleChoiceQuiz
+					v-if="mode === 'multiplechoice'"
+					:current
+					:phase
+					:session
+					@answer="handleSubmit"
+				/>
 				<template v-if="phase === 'answered'">
 					<p v-if="current.hint" class="hint">{{ current.hint }}</p>
 					<button
@@ -179,15 +186,13 @@ function advance() {
 			v-else-if="activeTab === 'stats'"
 			:script-id="scriptId"
 			:prompt-class="promptClass"
-			:datasets="datasets"
-			:dataset-index="datasetIndex"
+			:dataset="props.dataset"
 		/>
 
 		<RunsPanel
 			v-else-if="activeTab === 'runs'"
 			:script-id="scriptId"
-			:datasets="datasets"
-			:dataset-index="datasetIndex"
+			:dataset="props.dataset"
 		/>
 
 		<div class="bottom-bar">
@@ -206,6 +211,7 @@ function advance() {
 	background: var(--c-bg);
 }
 
+
 .toolbar {
 	display: flex;
 	align-items: center;
@@ -216,18 +222,13 @@ function advance() {
 	background: var(--c-cell);
 }
 
-.set-pills {
+.mode-toggle {
 	display: flex;
 	gap: 4px;
-	flex: 1;
-	min-width: 0;
-	overflow-x: auto;
-	scrollbar-width: none;
-	padding-right: 16px;
-	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
+	flex-shrink: 0;
+	border-left: 1px solid var(--c-border);
+	padding-left: 8px;
 }
-
-.set-pills::-webkit-scrollbar { display: none; }
 
 .mode-picker {
 	display: flex;
@@ -236,6 +237,11 @@ function advance() {
 	flex-shrink: 0;
 	border-left: 1px solid var(--c-border);
 	padding-left: 8px;
+}
+
+.toolbar > :first-child {
+	border-left: none;
+	padding-left: 0;
 }
 
 .count-input {

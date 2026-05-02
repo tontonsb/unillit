@@ -7,20 +7,16 @@ import { relativeDate } from './utils'
 
 const props = defineProps<{
 	scriptId?: string
-	datasets: QuizDataset[]
-	datasetIndex: number
+	dataset: QuizDataset
 }>()
 
 const { user, loginWithDiscord } = useAuth()
 const runsData = ref<RunRecord[]>([])
 const runsLoading = ref(false)
 
-const stats = computed(() => {
-	const dataset = props.datasets[props.datasetIndex]
-	return props.scriptId && dataset
-		? useStats(props.scriptId, dataset.label)
-		: null
-})
+const stats = computed(() =>
+	props.scriptId ? useStats(props.scriptId, props.dataset.label) : null
+)
 
 async function loadRuns() {
 	if (!stats.value || !user.value) return
@@ -30,7 +26,6 @@ async function loadRuns() {
 }
 
 onMounted(loadRuns)
-watch(() => props.datasetIndex, loadRuns)
 watch(user, loadRuns)
 </script>
 
