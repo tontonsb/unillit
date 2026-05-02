@@ -26,9 +26,11 @@ const instructions = computed(() => props.dataset.instructions)
 
 onMounted(() => answerInput.value?.focus())
 
-watch(() => props.current, () => {
-	userInput.value = ''
-	nextTick(() => answerInput.value?.focus())
+watch(() => props.phase, (phase) => {
+	if (phase === 'question') {
+		userInput.value = ''
+		nextTick(() => answerInput.value?.focus())
+	}
 })
 
 watch(maxTolerance, (max) => {
