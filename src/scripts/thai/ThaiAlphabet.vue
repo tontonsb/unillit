@@ -147,7 +147,21 @@ const specialMarks: Mark[] = [
 		</section>
 
 		<section>
-			<h2>Vowels — base consonant {{ baseCons }}<span class="cons-picker"><button v-for="c in placeholders" :key="c" type="button" class="cons-btn" :class="{ active: baseCons === c }" @click="baseCons = c">{{ c }}</button></span></h2>
+			<h2>
+				Vowels — base consonant {{ baseCons }}
+				<span class="cons-picker">
+					<button
+						v-for="c in placeholders"
+						:key="c"
+						type="button"
+						class="cons-btn"
+						:class="{ active: baseCons === c }"
+						@click="baseCons = c"
+					>
+						{{ c }}
+					</button>
+				</span>
+			</h2>
 			<p>Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
 			<div class="vtable-wrap">
 				<table>
