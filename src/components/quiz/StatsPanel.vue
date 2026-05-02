@@ -108,6 +108,7 @@ const masteredPrompts = computed(() => new Set(
 	statsData.value
 		.filter(s =>
 			s.quizType === 'typein' &&
+			s.infoSheet === 'None' &&
 			s.errors === 0 &&
 			s.correct > 0 &&
 			s.lastCorrectAt !== null &&
