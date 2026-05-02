@@ -119,8 +119,8 @@ const nudge = computed(() => {
 
 	if (availableFonts.value.length <= 1) parts.push('a different font')
 
-	const hasWithSheet = statsData.value.some(s => !!s.infoSheet)
-	const hasWithoutSheet = statsData.value.some(s => !s.infoSheet)
+	const hasWithSheet = statsData.value.some(s => s.infoSheet !== 'None')
+	const hasWithoutSheet = statsData.value.some(s => s.infoSheet === 'None')
 
 	if (hasWithSheet && !hasWithoutSheet) parts.push('without the info sheet open')
 
