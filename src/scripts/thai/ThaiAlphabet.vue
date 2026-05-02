@@ -231,6 +231,7 @@ article {
 	--mid: #1a5c8a;
 	--high: #a0320a;
 	--low: #2e7d32;
+
 	padding: 10px;
 	font-size: clamp(11px, 0.75vw, 14px);
 	display: flex;
@@ -296,16 +297,19 @@ section > p {
 	border-bottom: 1px solid var(--c-border);
 	flex-wrap: wrap;
 }
+
 .legend-item {
 	display: flex;
 	align-items: center;
 	gap: 3px;
 }
+
 .legend-swatch {
 	width: 8px;
 	height: 8px;
 	border-radius: 1px;
 }
+
 .legend-note {
 	color: var(--c-muted);
 	margin-left: 4px;
@@ -349,11 +353,13 @@ li.c-low { background: #e3f2e5; }
 .gloss { font-size: 0.8em; color: var(--c-muted); text-align: center; line-height: 1.3; }
 
 .vtable-wrap { overflow-x: auto; }
+
 table {
 	width: 100%;
 	border-collapse: collapse;
 	font-size: 0.8em;
 }
+
 th {
 	background: var(--c-alt);
 	color: var(--c-label);
@@ -362,10 +368,12 @@ th {
 	padding: 2px 5px;
 	text-align: left;
 }
+
 td {
 	padding: 2px 5px;
 	vertical-align: middle;
 }
+
 tr:nth-child(even) td { background: var(--c-alt); }
 
 footer {

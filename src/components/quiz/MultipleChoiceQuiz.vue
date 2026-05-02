@@ -85,12 +85,12 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	transition: border-color 0.15s, background 0.15s;
 }
 
+.choice:disabled { cursor: default; }
+
 .choice:hover:not(:disabled) {
 	border-color: var(--c-accent);
 	background: var(--c-alt);
 }
-
-.choice:disabled { cursor: default; }
 
 .choice.correct { background: #edf7ee; border-color: #5a9e64; color: #2d6a35; }
 .choice.wrong   { background: #fdf0f0; border-color: #c47878; color: #a03030; }

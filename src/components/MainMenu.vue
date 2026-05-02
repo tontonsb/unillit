@@ -219,10 +219,6 @@ nav {
 	line-height: 1.3;
 }
 
-.nav-item.active .script-native {
-	color: var(--c-accent);
-}
-
 .script-abbr {
 	display: none;
 	font-size: 17px;

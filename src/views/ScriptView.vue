@@ -55,7 +55,7 @@ const config = computed(() => scriptsById[route.params.id as string])
 	color: var(--c-muted);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
 	.panels {
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr 1fr;

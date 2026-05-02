@@ -274,13 +274,13 @@ td {
 	color: var(--c-label);
 }
 
-tr:nth-child(even) td {
-	background: var(--c-alt);
-}
-
 td:first-child {
 	font-family: var(--font-thai);
 	font-size: 1.15em;
+}
+
+tr:nth-child(even) td {
+	background: var(--c-alt);
 }
 
 a {
