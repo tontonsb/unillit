@@ -146,37 +146,41 @@ function advance() {
 		</div>
 
 		<div v-if="phase === 'done'" class="card done-card">
-			<p class="done-score">{{ tally.correct }} / {{ session.length }}</p>
-			<p class="done-label">{{ tally.correct === session.length ? 'Perfect!' : 'Session complete' }}</p>
-			<button type="button" class="btn-primary" @click="startSession">Play another</button>
+			<div class="card-body">
+				<p class="done-score">{{ tally.correct }} / {{ session.length }}</p>
+				<p class="done-label">{{ tally.correct === session.length ? 'Perfect!' : 'Session complete' }}</p>
+				<button type="button" class="btn-primary" @click="startSession">Play another</button>
+			</div>
 		</div>
 
 		<div v-else-if="current" class="card">
-			<div class="prompt" :class="promptClass" :style="promptFontFamily ? { fontFamily: promptFontFamily } : {}">{{ current.prompt }}</div>
-			<TypeInQuiz
-				v-if="mode === 'typein'"
-				:current
-				:phase
-				:dataset="props.dataset"
-				v-model="tolerance"
-				@answer="handleSubmit"
-			/>
-			<MultipleChoiceQuiz
-				v-if="mode === 'multiplechoice'"
-				:current
-				:phase
-				:session
-				@answer="handleSubmit"
-			/>
-			<template v-if="phase === 'answered'">
-				<p v-if="current.hint" class="hint">{{ current.hint }}</p>
-				<button
-					ref="nextBtn"
-					type="button"
-					class="btn-primary"
-					@click="advance"
-				>Next →</button>
-			</template>
+			<div class="card-body">
+				<div class="prompt" :class="promptClass" :style="promptFontFamily ? { fontFamily: promptFontFamily } : {}">{{ current.prompt }}</div>
+				<TypeInQuiz
+					v-if="mode === 'typein'"
+					:current
+					:phase
+					:dataset="props.dataset"
+					v-model="tolerance"
+					@answer="handleSubmit"
+				/>
+				<MultipleChoiceQuiz
+					v-if="mode === 'multiplechoice'"
+					:current
+					:phase
+					:session
+					@answer="handleSubmit"
+				/>
+				<template v-if="phase === 'answered'">
+					<p v-if="current.hint" class="hint">{{ current.hint }}</p>
+					<button
+						ref="nextBtn"
+						type="button"
+						class="btn-primary"
+						@click="advance"
+					>Next →</button>
+				</template>
+			</div>
 		</div>
 	</div>
 </template>
@@ -305,10 +309,19 @@ function advance() {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	gap: 1.5rem;
 	padding: 2rem;
+	margin: auto;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .prompt {
@@ -337,7 +350,7 @@ function advance() {
 
 .btn-primary:hover { opacity: 0.85; }
 
-.done-card {
+.done-card .card-body {
 	gap: 0.75rem;
 	text-align: center;
 }
