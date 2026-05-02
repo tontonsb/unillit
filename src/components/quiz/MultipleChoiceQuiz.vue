@@ -27,9 +27,11 @@ function buildChoices() {
 	choices.value = shuffle([correct, ...distractors.slice(0, 4)])
 }
 
-watch(() => props.current, () => {
-	selectedChoice.value = null
-	buildChoices()
+watch(() => props.phase, (phase) => {
+	if (phase === 'question') {
+		selectedChoice.value = null
+		buildChoices()
+	}
 }, { immediate: true })
 
 function handleSelect(choice: string) {
