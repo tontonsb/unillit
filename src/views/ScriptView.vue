@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ScriptPanel from '@/components/ScriptPanel.vue'
 import { scriptsById } from '@/scripts/scripts'
+import { activeInfoSheet } from '@/composables/useScriptContext'
 
 const route = useRoute()
 const config = computed(() => scriptsById[route.params.id as string])
@@ -10,7 +11,7 @@ const config = computed(() => scriptsById[route.params.id as string])
 
 <template>
 	<div v-if="config" class="script-page">
-		<div class="panels">
+		<div class="panels" :class="{ 'info-none': activeInfoSheet === 'None' }">
 			<ScriptPanel
 				:tabs="config.infoTabs ?? []"
 				:title="config.name"
@@ -59,6 +60,10 @@ const config = computed(() => scriptsById[route.params.id as string])
 	.panels {
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr 1fr;
+	}
+
+	.panels.info-none {
+		grid-template-rows: auto 1fr;
 	}
 }
 </style>

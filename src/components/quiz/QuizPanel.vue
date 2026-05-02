@@ -201,14 +201,13 @@ function advance() {
 	flex-shrink: 0;
 	border-bottom: 1px solid var(--c-border);
 	background: var(--c-cell);
+	overflow-x: auto;
 }
 
 .mode-toggle {
 	display: flex;
 	gap: 4px;
 	flex-shrink: 0;
-	border-left: 1px solid var(--c-border);
-	padding-left: 8px;
 }
 
 .mode-picker {
@@ -216,13 +215,7 @@ function advance() {
 	align-items: center;
 	gap: 4px;
 	flex-shrink: 0;
-	border-left: 1px solid var(--c-border);
-	padding-left: 8px;
-}
-
-.toolbar > :first-child {
-	border-left: none;
-	padding-left: 0;
+	margin-left: auto;
 }
 
 .count-input {
