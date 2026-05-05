@@ -163,7 +163,7 @@ export const provinceQuestions: Question[] = [
 	{ prompt: 'กาญจนบุรี', answer: 'Kanchanaburi' },
 	{ prompt: 'กาฬสินธุ์', answer: 'Kalasin', hint: 'ฬ = l; ธุ์ is silent' },
 	{ prompt: 'กำแพงเพชร', answer: 'Kamphaeng Phet', hint: 'เพชร → phet: ชร cluster, ช final = t, ร silent' },
-	{ prompt: 'กรุงเทพมหานคร', answer: ['Bangkok', 'Krung Thep'] },
+	{ prompt: 'กรุงเทพมหานคร', answer: ['Krung Thep Maha Nakhnon', 'Krung Thep', 'Bangkok'] },
 	{ prompt: 'ขอนแก่น', answer: 'Khon Kaen' },
 	{ prompt: 'จันทบุรี', answer: 'Chanthaburi' },
 	{ prompt: 'ฉะเชิงเทรา', answer: 'Chachoengsao', hint: 'highly irregular romanisation' },
