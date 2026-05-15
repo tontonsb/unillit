@@ -321,6 +321,7 @@ function advance() {
 	font-size: 4rem;
 	line-height: 1.2;
 	color: var(--c-head);
+	text-align: center;
 }
 
 .hint {
