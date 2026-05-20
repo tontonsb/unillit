@@ -14,24 +14,40 @@ export interface AllRunRecord extends RunRecord {
 	dataset: string
 }
 
-export async function fetchAllRuns(): Promise<AllRunRecord[]> {
+const RUNS_PAGE_SIZE = 20
+
+export interface AllRunsPage {
+	runs: AllRunRecord[]
+	hasMore: boolean
+}
+
+export async function fetchAllRuns(page = 0): Promise<AllRunsPage> {
+	const from = page * RUNS_PAGE_SIZE
+	const to = from + RUNS_PAGE_SIZE
+
 	const { data, error } = await supabase
 		.from('quiz_runs')
 		.select('id, script_id, dataset, total, correct, completed, started_at, completed_at')
 		.order('started_at', { ascending: false })
-		.limit(200)
+		.range(from, to)
 
-	if (error || !data) return []
-	return data.map(row => ({
-		id: row.id,
-		scriptId: row.script_id,
-		dataset: row.dataset,
-		total: row.total,
-		correct: row.correct,
-		completed: row.completed,
-		startedAt: row.started_at,
-		completedAt: row.completed_at,
-	}))
+	if (error || !data) return { runs: [], hasMore: false }
+
+	const hasMore = data.length > RUNS_PAGE_SIZE
+
+	return {
+		runs: data.slice(0, RUNS_PAGE_SIZE).map(row => ({
+			id: row.id,
+			scriptId: row.script_id,
+			dataset: row.dataset,
+			total: row.total,
+			correct: row.correct,
+			completed: row.completed,
+			startedAt: row.started_at,
+			completedAt: row.completed_at,
+		})),
+		hasMore,
+	}
 }
 
 export interface QuestionStats {

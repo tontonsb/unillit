@@ -64,11 +64,11 @@ const { user, loginWithDiscord, logout } = useAuth()
 
 		</nav>
 
-		<RouterLink to="/history"
+		<RouterLink to="/progress"
 			class="nav-item"
-			:class="{ active: route.name === 'history' }"
-			title="History">
-			<span class="script-name">History</span>
+			:class="{ active: route.name === 'progress' }"
+			title="Progress">
+			<span class="script-name">Progress</span>
 			<span class="script-abbr" aria-hidden="true">◷</span>
 		</RouterLink>
 

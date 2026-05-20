@@ -37,7 +37,8 @@
 			<dt>0.5</dt>
 			<dd>
 				<ul>
-					<li><em>Revision</em> sampling mode for quizzes — increased probability for unseen/missed questions.</li>
+					<li><em>Revision</em> sampling mode for quizzes — increased probability for unseen/missed questions</li>
+					<li>Rework/extend history page into progress page</li>
 				</ul>
 			</dd>
 
