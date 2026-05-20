@@ -5,6 +5,8 @@ import { useQuizSession } from './useSession'
 import { useStats } from '@/composables/useStats'
 import { activeFont, activeInfoSheet } from '@/composables/useScriptContext'
 import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizPrefs'
+import { useAuth } from '@/composables/useAuth'
+import { revisionSample } from './utils'
 import TypeInQuiz from './TypeInQuiz.vue'
 import MultipleChoiceQuiz from './MultipleChoiceQuiz.vue'
 
@@ -17,7 +19,8 @@ const props = defineProps<{
 
 const {
 	session, index, phase, tally, current, progress,
-	startSession: _startSession, submit: _submit, advance: _advance,
+	startSession: _startSession, startSessionWith: _startSessionWith,
+	submit: _submit, advance: _advance,
 } = useQuizSession(toRef(props, 'dataset'))
 
 const mode = ref<QuizMode>('typein')
@@ -35,7 +38,10 @@ watch(maxTolerance, (max) => {
 	if (tolerance.value > max) tolerance.value = max
 })
 
+const { user } = useAuth()
+
 const nextBtn = ref<HTMLButtonElement | null>(null)
+const loadingSession = ref(false)
 let runStarted = false
 
 const stats = computed(() =>
@@ -43,25 +49,49 @@ const stats = computed(() =>
 )
 
 function sessionCount() {
-	return samplingMode.value === 'random' ? randomCount.value : null
+	return samplingMode.value !== 'shuffled' ? randomCount.value : null
 }
 
-watch(() => props.dataset, () => {
+async function buildRevisionSession() {
+	const allStats = await (stats.value?.fetchStats() ?? Promise.resolve([]))
+
+	const statsMap = new Map<string, { total: number, correct: number, lastCorrectAt: string | null }>()
+
+	for (const s of allStats) {
+		const existing = statsMap.get(s.prompt)
+
+		if (existing) {
+			existing.total += s.total
+			existing.correct += s.correct
+			if (s.lastCorrectAt && (!existing.lastCorrectAt || s.lastCorrectAt > existing.lastCorrectAt))
+				existing.lastCorrectAt = s.lastCorrectAt
+		} else {
+			statsMap.set(s.prompt, { total: s.total, correct: s.correct, lastCorrectAt: s.lastCorrectAt })
+		}
+	}
+
+	return revisionSample(props.dataset.questions, statsMap, randomCount.value)
+}
+
+async function startSession() {
+	runStarted = false
+
+	if (samplingMode.value === 'revision') {
+		loadingSession.value = true
+		_startSessionWith(await buildRevisionSession())
+		loadingSession.value = false
+	} else {
+		_startSession(sessionCount())
+	}
+}
+
+watch(() => props.dataset, async () => {
 	const modes = currentModes.value
 	mode.value = modes.includes(preferredMode.value) ? preferredMode.value : modes[0]!
-	_startSession(sessionCount())
-	runStarted = false
+	await startSession()
 }, { immediate: true })
 
-watch([samplingMode, randomCount], () => {
-	_startSession(sessionCount())
-	runStarted = false
-})
-
-function startSession() {
-	_startSession(sessionCount())
-	runStarted = false
-}
+watch([samplingMode, randomCount], () => { startSession() })
 
 function switchMode(newMode: QuizMode) {
 	if (mode.value === newMode) return
@@ -124,8 +154,20 @@ function advance() {
 					:class="{ active: samplingMode === 'random' }"
 					@click="samplingMode = 'random'"
 				>Random</button>
+				<button
+					v-if="user"
+					type="button"
+					class="pill"
+					:class="{ active: samplingMode === 'revision' }"
+					@click="samplingMode = 'revision'"
+				>Revision</button>
+				<span
+					v-else
+					class="pill pill-locked"
+					title="Log in to store stats and use Revision mode"
+				>Revision</span>
 				<input
-					v-if="samplingMode === 'random'"
+					v-if="samplingMode !== 'shuffled'"
 					v-model.number="randomCount"
 					type="number"
 					min="1"
@@ -145,7 +187,13 @@ function advance() {
 			</span>
 		</div>
 
-		<div v-if="phase === 'done'" class="card done-card">
+		<div v-if="loadingSession" class="card loading-card">
+			<div class="card-body">
+				<p class="loading-label">Loading…</p>
+			</div>
+		</div>
+
+		<div v-else-if="phase === 'done'" class="card done-card">
 			<div class="card-body">
 				<p class="done-score">{{ tally.correct }} / {{ session.length }}</p>
 				<p class="done-label">{{ tally.correct === session.length ? 'Perfect!' : 'Session complete' }}</p>
@@ -254,6 +302,16 @@ function advance() {
 	border-color: var(--c-label);
 }
 
+.pill-locked {
+	opacity: 0.4;
+	cursor: default;
+}
+
+.pill-locked:hover {
+	color: var(--c-muted);
+	border-color: var(--c-border);
+}
+
 .pill.active {
 	background: var(--c-alt);
 	border-color: var(--c-accent);
@@ -357,6 +415,11 @@ function advance() {
 }
 
 .done-label {
+	font-size: 14px;
+	color: var(--c-muted);
+}
+
+.loading-label {
 	font-size: 14px;
 	color: var(--c-muted);
 }

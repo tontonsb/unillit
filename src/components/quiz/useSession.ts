@@ -28,6 +28,13 @@ export function useQuizSession(dataset: Ref<QuizDataset>) {
 		tally.value = { correct: 0, wrong: 0 }
 	}
 
+	function startSessionWith(questions: Question[]) {
+		session.value = questions
+		index.value = 0
+		phase.value = 'question'
+		tally.value = { correct: 0, wrong: 0 }
+	}
+
 	function submit(correct: boolean) {
 		if (correct) tally.value.correct++
 		else tally.value.wrong++
@@ -43,5 +50,5 @@ export function useQuizSession(dataset: Ref<QuizDataset>) {
 		}
 	}
 
-	return { session, index, phase, tally, current, progress, startSession, submit, advance }
+	return { session, index, phase, tally, current, progress, startSession, startSessionWith, submit, advance }
 }

@@ -34,6 +34,13 @@
 		<h2>Changelog</h2>
 
 		<dl class="changelog">
+			<dt>0.5</dt>
+			<dd>
+				<ul>
+					<li><em>Revision</em> sampling mode for quizzes — increased probability for unseen/missed questions.</li>
+				</ul>
+			</dd>
+
 			<dt>0.4</dt>
 			<dd>
 				<ul>

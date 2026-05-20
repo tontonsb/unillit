@@ -50,8 +50,69 @@ export function relativeDate(iso: string): string {
 	if (days === 1) return 'yesterday'
 	if (days < 14) return `${days}d ago`
 	if (days < 60) return `${Math.floor(days / 7)}w ago`
-	
+
 	return `${Math.floor(days / 30)}mo ago`
+}
+
+export interface PromptStat {
+	total: number
+	correct: number
+	lastCorrectAt: string | null
+}
+
+function basePriority(q: Question, statsMap: Map<string, PromptStat>): number {
+	const s = statsMap.get(q.prompt)
+
+	if (!s || s.total === 0) return 0
+
+	if (s.correct / s.total < 0.5 || !s.lastCorrectAt) return 1
+
+	const daysSince = (Date.now() - new Date(s.lastCorrectAt).getTime()) / 86400000
+
+	return daysSince > 7 ? 2 : 3
+}
+
+export function revisionSample(
+	questions: Question[],
+	statsMap: Map<string, PromptStat>,
+	count: number,
+): Question[] {
+	if (!questions.length) return []
+
+	const bucketWeights = [8, 4, 2, 1]
+	const shownCounts = new Map<string, number>()
+	const result: Question[] = []
+
+	for (let i = 0; i < count; i++) {
+		const buckets: Question[][] = [[], [], [], []]
+
+		for (const q of questions) {
+			const priority = shownCounts.has(q.prompt) ? 3 : basePriority(q, statsMap)
+			buckets[priority]!.push(q)
+		}
+
+		const activeBuckets = buckets
+			.map((pool, idx) => ({ weight: bucketWeights[idx]!, pool }))
+			.filter(b => b.pool.length > 0)
+
+		const totalWeight = activeBuckets.reduce((sum, b) => sum + b.weight, 0)
+		let r = Math.random() * totalWeight
+		let picked = activeBuckets[activeBuckets.length - 1]!.pool[0]!
+
+		for (const bucket of activeBuckets) {
+			r -= bucket.weight
+
+			if (r <= 0) {
+				picked = bucket.pool[Math.floor(Math.random() * bucket.pool.length)]!
+				break
+			}
+		}
+
+		result.push(picked)
+		shownCounts.set(picked.prompt, (shownCounts.get(picked.prompt) ?? 0) + 1)
+	}
+
+	return result
 }
 
 export function isMatch(input: string, answer: string | string[], tolerance = 0): boolean {

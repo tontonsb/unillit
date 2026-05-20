@@ -9,7 +9,7 @@ function load() {
 
 const stored = load()
 
-export const samplingMode = ref<'shuffled' | 'random'>(stored.samplingMode ?? 'shuffled')
+export const samplingMode = ref<'shuffled' | 'random' | 'revision'>(stored.samplingMode ?? 'shuffled')
 export const randomCount  = ref<number>(stored.randomCount ?? 10)
 export const preferredMode = ref<QuizMode>(stored.preferredMode ?? 'typein')
 
