@@ -1,7 +1,6 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
 import { thaiDatasets } from './thai/datasets'
-import { cyrillicDatasets } from './cyrillic/datasets'
 
 export interface ScriptTab {
 	label: string
@@ -60,10 +59,10 @@ export const scriptList: ScriptConfig[] = [
 		nativeName: 'العربية',
 		abbr: 'ع',
 		meta: 'Abjad · right → left · 28 letters · up to 4 forms each',
-		comingSoon: false,
+		comingSoon: true,
 		infoTabs: [
-			{
-				label: 'Grid',
+			/*{
+				label: 'Shape × Dots',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicDotsGrid.vue')),
 			},
 			{
@@ -73,7 +72,7 @@ export const scriptList: ScriptConfig[] = [
 			{
 				label: 'Shape families +',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicShapeFamiliesPlus.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
@@ -110,34 +109,21 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'Ж',
 		meta: 'Alphabet · left → right · 33 letters',
 		countries: 'Russia · Ukraine · Bulgaria',
-		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
+		comingSoon: true,
 		infoTabs: [
-			{
+			/*{
 				label: 'Reading tips',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/ReadingTips.vue')),
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
 			},
 			{
 				label: 'Alphabet',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicSheet.vue')),
-			},
-			{
-				label: 'Latin order',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicLatinOrder.vue')),
-			},
-			{
-				label: 'Groups',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicFamiliarity.vue')),
-			},
-			{
-				label: 'Tips',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
-		practiceTabs: (() => {
-			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
-		})(),
+		practiceTabs: [
+			{ label: 'Practice', component: PracticePlaceholder },
+		],
 	},
 	{
 		id: 'greek',
