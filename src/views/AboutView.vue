@@ -39,6 +39,7 @@
 				<ul>
 					<li><em>Revision</em> sampling mode for quizzes — increased probability for unseen/missed questions</li>
 					<li>Rework/extend history page into progress page</li>
+					<li>A roadmap page</li>
 				</ul>
 			</dd>
 

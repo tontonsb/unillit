@@ -64,6 +64,14 @@ const { user, loginWithDiscord, logout } = useAuth()
 
 		</nav>
 
+		<RouterLink to="/roadmap"
+			class="nav-item"
+			:class="{ active: route.name === 'roadmap' }"
+			title="Roadmap">
+			<span class="script-name">Roadmap</span>
+			<span class="script-abbr" aria-hidden="true">🗺️</span>
+		</RouterLink>
+
 		<RouterLink to="/progress"
 			class="nav-item"
 			:class="{ active: route.name === 'progress' }"

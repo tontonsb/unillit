@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import { scriptList } from '@/scripts/scripts'
 </script>
 
@@ -43,6 +44,11 @@ import { scriptList } from '@/scripts/scripts'
 				</ol>
 			</div>
 		</div>
+
+		<p>
+			The <RouterLink to="/roadmap">roadmap</RouterLink> lays out some
+			script-specific suggested approaches.
+		</p>
 
 		<section class="script-grid">
 			<RouterLink
@@ -121,6 +127,8 @@ p {
 	color: var(--c-label);
 }
 
+p a { color: var(--c-accent); }
+
 h2 {
 	font-size: 0.8rem;
 	font-weight: 600;
@@ -185,6 +193,7 @@ dd {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	gap: 1rem;
+	margin-top: 1.75rem;
 	margin-bottom: 1.75rem;
 }
 
