@@ -74,7 +74,7 @@ function setRef(id: string, el: unknown) {
 function recompute() {
 	const g = graphEl.value
 	if (!g)
-		return;
+		return
 
 	const gr = g.getBoundingClientRect()
 	svgW.value = gr.width
@@ -84,14 +84,14 @@ function recompute() {
 
 	for (const step of props.steps) {
 		if (step.placeholder)
-			continue;
+			continue
 
 		for (const reqId of step.requires ?? []) {
 			const from = stepEls.get(reqId)
 			const to = stepEls.get(step.id)
 
 			if (!from || !to)
-				continue;
+				continue
 
 			const fr = from.getBoundingClientRect()
 			const tr = to.getBoundingClientRect()

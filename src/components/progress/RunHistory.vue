@@ -150,8 +150,8 @@ h2 {
 	transition: background 0.15s;
 }
 
-.page-btn:hover:not(:disabled) { background: var(--c-alt); }
 .page-btn:disabled { opacity: 0.35; cursor: default; }
+.page-btn:hover:not(:disabled) { background: var(--c-alt); }
 
 .page-label {
 	font-size: 12px;
