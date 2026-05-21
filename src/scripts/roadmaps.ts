@@ -153,7 +153,7 @@ export const roadmaps: ScriptRoadmap[] = [
 			},
 		],
 	},
-	{
+	/* {
 		scriptId: 'cyrillic',
 		steps: [
 			datasetModeStep('letters_typein', 'All letters', 'typein', 'All letters — type in'),
@@ -173,5 +173,5 @@ export const roadmaps: ScriptRoadmap[] = [
 				hint: 'Cursive Cyrillic has noticeably different letterforms',
 			}),
 		],
-	},
+	}, */
 ]
