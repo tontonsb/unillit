@@ -175,5 +175,3 @@ export const roadmaps: ScriptRoadmap[] = [
 		],
 	},
 ]
-
-export const roadmapsByScriptId = Object.fromEntries(roadmaps.map(r => [r.scriptId, r]))
