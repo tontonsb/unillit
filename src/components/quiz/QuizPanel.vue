@@ -216,7 +216,7 @@ function advance() {
 					v-if="mode === 'multiplechoice'"
 					:current
 					:phase
-					:session
+					:dataset="props.dataset"
 					@answer="handleSubmit"
 				/>
 				<template v-if="phase === 'answered'">

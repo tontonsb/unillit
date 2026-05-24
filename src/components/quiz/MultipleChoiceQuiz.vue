@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { Question } from './dataset'
+import type { Question, QuizDataset } from './dataset'
 import type { Phase } from './useSession'
 import { shuffle, canonicalAnswer, allAnswers, isMatch } from './utils'
 
 const props = defineProps<{
 	current: Question
 	phase: Phase
-	session: Question[]
+	dataset: QuizDataset
 }>()
 
 const emit = defineEmits<{
@@ -20,7 +20,7 @@ const selectedChoice = ref<string | null>(null)
 function buildChoices() {
 	const correct = canonicalAnswer(props.current)
 	const distractors = shuffle([...new Set(
-		props.session
+		props.dataset.questions
 			.filter(q => canonicalAnswer(q) !== correct)
 			.map(q => canonicalAnswer(q))
 	)])
