@@ -27,7 +27,7 @@ function buildChoices() {
 	choices.value = shuffle([correct, ...distractors.slice(0, 4)])
 }
 
-watch(() => props.phase, (phase) => {
+watch([() => props.phase, () => props.current], ([phase]) => {
 	if (phase === 'question') {
 		selectedChoice.value = null
 		buildChoices()
