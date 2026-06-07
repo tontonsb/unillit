@@ -115,3 +115,30 @@
 }
 
 .reading-tips a:hover { color: var(--c-head); }
+
+/* term cards (the header definition list) */
+.reading-tips dl {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+	gap: 0.5rem;
+}
+
+.reading-tips dl > div {
+	padding: 0.4rem 0.6rem;
+	border: 1px solid var(--c-border);
+	border-radius: 4px;
+	background: var(--c-cell);
+}
+
+.reading-tips dt {
+	font-size: 1.1em;
+	font-weight: 600;
+	color: var(--c-accent);
+	font-family: var(--sans);
+}
+
+.reading-tips dd {
+	font-size: 0.85em;
+	color: var(--c-muted);
+	margin: 0;
+}

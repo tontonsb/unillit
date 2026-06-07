@@ -218,34 +218,12 @@ td:first-child {
 	font-size: 1.15em;
 }
 
-dl {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-	gap: 0.5rem;
-}
-
-dl > div {
-	padding: 0.4rem 0.6rem;
-	border: 1px solid var(--c-border);
-	border-radius: 4px;
-	background: var(--c-cell);
-}
-
+/* Thai term cards carry inline badges, so the dt is a flex row */
 dt {
-	font-size: 1.15em;
-	font-weight: 600;
-	color: var(--c-accent);
-	font-family: var(--sans);
 	display: flex;
 	align-items: baseline;
 	flex-wrap: wrap;
 	gap: 0.4rem;
-}
-
-dd {
-	font-size: 0.85em;
-	color: var(--c-muted);
-	margin: 0;
 }
 
 .thai {
