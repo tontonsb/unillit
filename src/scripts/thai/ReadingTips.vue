@@ -46,7 +46,7 @@
 
 			A syllable can end in -k, -t, -p, -n, -m, -ng, -w, -y. All the other consonants simplify into these.
 
-			For example, นคร (n kh r) is *nakhon* not *nakhor*.
+			For example, นคร (*n kh r*) is *nakhon* not *nakhor*.
 
 			A syllable that ends in a consonant is called *closed* and notated as CVC (consonant–vowel–consonant) while the ones without a final consonant are called *open* or CV.
 
@@ -77,10 +77,10 @@
 			> So, if ก is *k* with an implicit *o*, รุ is *ru* (r with that u-diacri-tick) and ง is *ng*, then กรุง is *korung*, rigth?
 
 			No. If the letters make a valid consonant cluster, then they just make that.
-			Thus กร makes *kr* and that word is krung. As in Krung Thep (กรุงเทพ).
+			Thus กร makes *kr* and that word is *krung*. As in Krung Thep (กรุงเทพ).
 
 			The consonant clusters are basically stop + ร / ล / ว, here are some of the common consonant clusters:
-			กร (kr), กล (kl), กว (kw), ตร (tr), ปร (pr).
+			กร (*kr*), กล (*kl*), กว (*kw*), ตร (*tr*), ปร (*pr*).
 
 			ห in combination with a sonorant (น ม ง ย ล ว ร) makes somewhat of an "orthographic cluster", i.e. ห is not pronounced, but only affects the tone.
 			E.g. ใหม่ is *mai* not *hmai*, หนอง is *nong* not *hnong*.
@@ -106,7 +106,7 @@
 			| Clusters   | none                          | none                   | กร is *kr*        |
 			| Syllables  | น-คร                          | เชียง-ราย               | กรุง-เทพ           |
 			| Infer vow. | *a* (CV-syllable) & *o* (CVC) | none                   | none              |
-			| Result     | *nakhon*                      | *chiangrai*            | *krungthep*       |
+			| Result     | nakhon                        | chiangrai              | krungthep         |
 
 			Usually three consonants split into syllables as น-คร, but in เชียงราย the ร has vowels (diphthong in fact) so it's not the final consonant, but a syllable on it's own.
 			Meanwhile the middle ง is fine to serve as the final consonant of the first syllable, hence the split is as displayed above.
@@ -141,12 +141,12 @@
 		<Markdown wrap="section">
 			## Changwat
 
-			Provinces are called changwats, i.e. จังหวัด or abbreviated as just จ. The province name is what follows it.
+			Provinces are called *changwats*, i.e. จังหวัด or abbreviated as just จ. The province name is what follows it.
 
-			Province centers are called amphoe mueang (อำเภอเมือง) and are usually named after the province. This means that in Kalasin you're likely to see
-			- จังหวัดกาฬสินธุ์ = changwat Kalasin = Kalasin province
-			- จ.กาฬสินธุ์ = ch. Kalasin = Kalasin province
-			- อำเภอเมืองกาฬสินธุ์ = amphoe mueang Kalasin = Mueang Kalasin District
+			Province centers are called *amphoe mueang* (อำเภอเมือง) and are usually named after the province. This means that in Kalasin you're likely to see
+			- จังหวัดกาฬสินธุ์ = *changwat Kalasin* = Kalasin province
+			- จ.กาฬสินธุ์ = *ch. Kalasin* = Kalasin province
+			- อำเภอเมืองกาฬสินธุ์ = *amphoe mueang Kalasin* = Mueang Kalasin District
 
 			On one hand these prefixes make it harder to parse, on the other they're like markers that help you spot where the province name might be.
 			You can practice these in the *Prefixed provinces* dataset on either the type-in or the multiple choice quiz.
