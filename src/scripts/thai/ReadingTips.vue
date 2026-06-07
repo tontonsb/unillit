@@ -253,6 +253,14 @@ blockquote {
 	font-style: italic;
 }
 
+/* spacer column (empty cells) reads as a gap, not a bordered cell */
+th:empty, td:empty, tr:nth-child(even) td:empty {
+	border: none;
+	background: transparent;
+	padding: 0;
+	width: 0.75rem;
+}
+
 table {
 	border-collapse: collapse;
 	margin: 0.5rem 0;
