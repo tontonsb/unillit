@@ -1,0 +1,117 @@
+/* Shared typography for script reading-tips panels.
+   Script-specific bits (letterform fonts, term-card badges) live in each
+   component's scoped <style>. */
+
+.reading-tips {
+	padding: 1.25rem 1.5rem;
+	max-width: 640px;
+	font-size: clamp(13px, 0.9vw, 16px);
+	line-height: 1.6;
+	color: var(--c-label);
+}
+
+.reading-tips h2 {
+	font-size: 0.9em;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--c-accent);
+	margin-top: 1.25rem;
+	margin-bottom: 0.3rem;
+}
+
+.reading-tips h3 {
+	font-size: 0.9em;
+	font-weight: 600;
+	color: var(--c-head);
+	margin-top: 0.9rem;
+	margin-bottom: 0.2rem;
+}
+
+.reading-tips p { color: var(--c-label); }
+.reading-tips p + p { margin-top: 0.5rem; }
+
+.reading-tips ul,
+.reading-tips ol {
+	padding-left: 1.25rem;
+	margin: 0.4rem 0 0.6rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.reading-tips blockquote {
+	margin: 0.6rem 0;
+	padding: 0.3rem 0 0.3rem 0.8rem;
+	border-left: 3px solid var(--c-accent);
+	color: var(--c-head);
+	font-style: italic;
+}
+
+.reading-tips blockquote p { color: inherit; }
+
+.reading-tips table {
+	border-collapse: collapse;
+	margin: 0.5rem 0;
+	font-size: 0.9em;
+}
+
+.reading-tips th {
+	background: var(--c-alt);
+	color: var(--c-head);
+	font-weight: 600;
+	text-align: left;
+	padding: 4px 10px;
+	border: 1px solid var(--c-border);
+}
+
+.reading-tips td {
+	padding: 4px 10px;
+	border: 1px solid var(--c-border);
+	color: var(--c-label);
+}
+
+.reading-tips tr:nth-child(even) td { background: var(--c-alt); }
+
+/* spacer column (empty cells) reads as a gap, not a bordered cell */
+.reading-tips th:empty,
+.reading-tips td:empty,
+.reading-tips tr:nth-child(even) td:empty {
+	border: none;
+	background: transparent;
+	padding: 0;
+	width: 0.75rem;
+}
+
+.reading-tips figure { margin: 0.75rem 0; }
+
+.reading-tips figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--c-border);
+	border-radius: 4px;
+}
+
+.reading-tips figcaption {
+	font-size: 0.85em;
+	color: var(--c-muted);
+	margin-top: 0.4rem;
+	text-align: center;
+}
+
+.reading-tips code {
+	font-family: monospace;
+	background: var(--c-alt);
+	padding: 0 3px;
+	border-radius: 2px;
+	font-size: 0.9em;
+}
+
+.reading-tips a {
+	color: var(--c-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.reading-tips a:hover { color: var(--c-head); }

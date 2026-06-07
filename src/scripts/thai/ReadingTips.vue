@@ -1,5 +1,5 @@
 <template>
-	<article>
+	<article class="reading-tips">
 		<dl>
 			<div>
 				<dt>left → right</dt>
@@ -211,94 +211,11 @@
 </template>
 
 <style scoped>
-article {
-	padding: 1.25rem 1.5rem;
-	max-width: 640px;
-	font-size: clamp(13px, 0.9vw, 16px);
-	line-height: 1.6;
-	color: var(--c-label);
-}
-
-h2 {
-	font-size: 0.9em;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
-	color: var(--c-accent);
-	margin-top: 1.25rem;
-	margin-bottom: 0.3rem;
-}
-
-p {
-	color: var(--c-label);
-}
-
-p + p {
-	margin-top: 0.5rem;
-}
-
-ul, ol {
-	padding-left: 1.25rem;
-	margin: 0.4rem 0 0.6rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0.2rem;
-}
-
-blockquote {
-	margin: 0.5rem 0;
-	padding: 0.5rem 0.75rem;
-	border-left: 3px solid var(--c-border);
-	color: var(--c-muted);
-	font-style: italic;
-}
-
-/* spacer column (empty cells) reads as a gap, not a bordered cell */
-th:empty, td:empty, tr:nth-child(even) td:empty {
-	border: none;
-	background: transparent;
-	padding: 0;
-	width: 0.75rem;
-}
-
-table {
-	border-collapse: collapse;
-	margin: 0.5rem 0;
-	font-size: 0.9em;
-}
-
-th {
-	background: var(--c-alt);
-	color: var(--c-head);
-	font-weight: 600;
-	text-align: left;
-	padding: 4px 10px;
-	border: 1px solid var(--c-border);
-}
-
-td {
-	padding: 4px 10px;
-	border: 1px solid var(--c-border);
-	color: var(--c-label);
-}
-
+/* Thai-specific: letterform font for the first table column and term cards.
+   Shared prose/table/blockquote styles live in assets/reading-tips.css */
 td:first-child {
 	font-family: var(--font-thai);
 	font-size: 1.15em;
-}
-
-tr:nth-child(even) td {
-	background: var(--c-alt);
-}
-
-a {
-	color: var(--c-accent);
-	text-decoration: underline;
-	text-underline-offset: 2px;
-}
-
-a:hover {
-	color: var(--c-head);
 }
 
 dl {
