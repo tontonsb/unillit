@@ -74,7 +74,7 @@
 		<Markdown wrap="section">
 			## Consonant clusters
 
-			> So, if ก is *k* with an implicit *o*, รุ is *ru* (r with that u-diacri-tick) and ง is *ng*, then กรุง is *korung*, rigth?
+			> So, if ก is *k* with an implicit *o*, รุ is *ru* (r with that u-diacri-tick) and ง is *ng*, then กรุง is *korung*, right?
 
 			No. If the letters make a valid consonant cluster, then they just make that.
 			Thus กร makes *kr* and that word is *krung*. As in Krung Thep (กรุงเทพ).
