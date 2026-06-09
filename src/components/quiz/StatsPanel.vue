@@ -263,8 +263,6 @@ const nudge = computed(() => {
 	padding: 6px 12px;
 	border-bottom: 1px solid var(--c-border);
 	background: var(--c-cell);
-	position: sticky;
-	top: 0;
 }
 
 .filter-pill {
@@ -305,8 +303,6 @@ const nudge = computed(() => {
 	background: var(--c-cell);
 	font-size: 11px;
 	color: var(--c-muted);
-	position: sticky;
-	top: 0;
 }
 
 .badge-col {
