@@ -28,7 +28,9 @@ async function loadStats() {
 }
 
 onMounted(loadStats)
-watch(user, loadStats)
+// Supabase re-emits a fresh user object on every tab/window re-focus. Watch
+// the nested id instead to only reload (and reset scroll) when user changes.
+watch(() => user.value?.id, loadStats)
 
 // Collect distinct non-null values for each dimension
 const availableQuizTypes = computed(() => [...new Set(statsData.value.map(s => s.quizType).filter(Boolean))] as string[])

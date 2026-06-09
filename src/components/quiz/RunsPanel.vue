@@ -26,7 +26,9 @@ async function loadRuns() {
 }
 
 onMounted(loadRuns)
-watch(user, loadRuns)
+// Supabase re-emits a fresh user object on every tab/window re-focus. Watch
+// the nested id instead to only reload (and reset scroll) when user changes.
+watch(() => user.value?.id, loadRuns)
 </script>
 
 <template>
