@@ -26,7 +26,7 @@ span {
 	font-size: 6.5px;
 	font-weight: 700;
 	padding: 0 3px;
-	border-radius: 2px;
+	border-radius: var(--radius-sm);
 	line-height: 1.5;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;

@@ -34,6 +34,10 @@
 	--fb-fuzzy-user-bg: #f5f5e8;
 	--fb-fuzzy-user-text: #726c3c;
 
+	--radius-sm: 2px;
+	--radius: 4px;
+	--radius-pill: 9999px;
+
 	--sidebar-width: 200px;
 	--sidebar-collapsed-width: 40px;
 }

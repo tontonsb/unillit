@@ -35,7 +35,7 @@ const model = defineModel<string>({ required: true })
 	color: var(--c-head);
 	background: var(--c-cell);
 	border: 1px solid var(--c-border);
-	border-radius: 3px;
+	border-radius: var(--radius);
 	padding: 2px 4px;
 	cursor: pointer;
 }

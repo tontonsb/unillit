@@ -141,7 +141,7 @@ h2 {
 .page-btn {
 	padding: 4px 12px;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
 	font-size: 12px;

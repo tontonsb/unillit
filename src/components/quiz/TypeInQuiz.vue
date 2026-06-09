@@ -103,7 +103,7 @@ function handleSubmit() {
 	flex: 1;
 	padding: 8px 12px;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	font-size: 14px;
 	font-family: var(--sans);
 	background: var(--c-cell);
@@ -131,7 +131,7 @@ function handleSubmit() {
 	gap: 8px;
 	font-size: 14px;
 	padding: 6px 12px;
-	border-radius: 4px;
+	border-radius: var(--radius);
 	width: 100%;
 }
 
@@ -148,7 +148,7 @@ function handleSubmit() {
 .btn-primary {
 	padding: 8px 20px;
 	border: none;
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
 	font-size: 13px;

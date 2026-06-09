@@ -245,7 +245,7 @@ article {
 
 section {
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
@@ -270,7 +270,7 @@ section > h2 {
 figure {
 	margin: 0;
 	border: 1px solid var(--c-border);
-	border-radius: 3px;
+	border-radius: var(--radius);
 	overflow: hidden;
 	min-width: 0;
 	display: flex;
@@ -328,7 +328,7 @@ li:last-child { border-right: none; }
 	line-height: 1;
 	padding: 0 5px 1px;
 	border: 1px solid rgba(255, 255, 255, 0.35);
-	border-radius: 3px;
+	border-radius: var(--radius);
 	background: transparent;
 	color: rgba(255, 255, 255, 0.65);
 	cursor: pointer;

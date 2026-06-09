@@ -239,7 +239,7 @@ article {
 	gap: 8px;
 }
 
-section { border: 1px solid var(--c-border); border-radius: 4px; overflow: hidden; }
+section { border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden; }
 
 section > h2 {
 	background: var(--c-head);
@@ -266,7 +266,7 @@ section > h2 {
 	line-height: 1;
 	padding: 0 5px 1px;
 	border: 1px solid rgba(255, 255, 255, 0.35);
-	border-radius: 3px;
+	border-radius: var(--radius);
 	background: transparent;
 	color: rgba(255, 255, 255, 0.65);
 	cursor: pointer;
@@ -307,7 +307,7 @@ section > p {
 .legend-swatch {
 	width: 8px;
 	height: 8px;
-	border-radius: 1px;
+	border-radius: var(--radius-sm);
 }
 
 .legend-note {

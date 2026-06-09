@@ -203,7 +203,7 @@ dd {
 	gap: 0.25rem;
 	padding: 1rem 1.25rem;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-cell);
 	text-decoration: none;
 	color: inherit;

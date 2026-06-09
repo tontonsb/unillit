@@ -99,7 +99,7 @@
 	width: 100%;
 	height: auto;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 }
 
 .reading-tips figcaption {
@@ -113,7 +113,7 @@
 	font-family: monospace;
 	background: var(--c-alt);
 	padding: 0 3px;
-	border-radius: 2px;
+	border-radius: var(--radius-sm);
 	font-size: 0.9em;
 }
 
@@ -135,7 +135,7 @@
 .reading-tips dl > div {
 	padding: 0.4rem 0.6rem;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-cell);
 }
 

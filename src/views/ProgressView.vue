@@ -64,7 +64,7 @@ h1 {
 .btn-primary {
 	padding: 8px 20px;
 	border: none;
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
 	font-size: 13px;

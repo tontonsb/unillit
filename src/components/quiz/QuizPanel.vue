@@ -270,7 +270,7 @@ function advance() {
 	width: 52px;
 	padding: 2px 6px;
 	border: 1px solid var(--c-border);
-	border-radius: 12px;
+	border-radius: var(--radius-pill);
 	background: transparent;
 	color: var(--c-label);
 	font-size: 11px;
@@ -286,7 +286,7 @@ function advance() {
 .pill {
 	padding: 3px 10px;
 	border: 1px solid var(--c-border);
-	border-radius: 12px;
+	border-radius: var(--radius-pill);
 	background: transparent;
 	color: var(--c-muted);
 	font-size: 11px;
@@ -330,14 +330,14 @@ function advance() {
 	flex: 1;
 	height: 4px;
 	background: var(--c-border);
-	border-radius: 2px;
+	border-radius: var(--radius-sm);
 	overflow: hidden;
 }
 
 .progress-fill {
 	height: 100%;
 	background: var(--c-accent);
-	border-radius: 2px;
+	border-radius: var(--radius-sm);
 	transition: width 0.25s ease;
 }
 
@@ -391,7 +391,7 @@ function advance() {
 .btn-primary {
 	padding: 8px 20px;
 	border: none;
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
 	font-size: 13px;

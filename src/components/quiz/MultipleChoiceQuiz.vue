@@ -77,7 +77,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 .choice {
 	padding: 10px 16px;
 	border: 1px solid var(--c-border);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	background: var(--c-cell);
 	color: var(--c-label);
 	font-size: 14px;

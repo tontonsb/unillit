@@ -202,7 +202,7 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 	gap: 6px;
 	padding: 10px 14px;
 	border: 1px solid var(--c-border);
-	border-radius: 6px;
+	border-radius: var(--radius);
 	background: var(--c-cell);
 	flex: 1;
 	min-width: 160px;
