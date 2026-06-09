@@ -12,13 +12,27 @@
 	--font-thai: 'Noto Sans Thai', system-ui, sans-serif;
 
 	--c-bg: #fafaf8;
-	--c-border: #d8d4c8;
-	--c-head: #2b3a2b;
-	--c-label: #4e6350;
-	--c-accent: #3a6e45;
-	--c-muted: #8a9e8a;
+	--c-border: #c2dccb;
+	--c-head: #23351f;
+	--c-label: #46603e;
+	--c-accent: #0a8f6f;
+	--c-accent-ink: #0f7256;
+	--c-muted: #586e5b;
 	--c-cell: #ffffff;
-	--c-alt: #f2f5f2;
+	--c-alt: #e3f3ec;
+
+	/* semantic status (accuracy, freshness, tallies) */
+	--c-good: #3a7d44;
+	--c-warn: #8a5e10;
+	--c-bad: #b94040;
+
+	/* quiz answer feedback — pastel fills; border + text reuse --c-good / --c-bad */
+	--fb-ok-bg: #edf7ee;
+	--fb-wrong-bg: #fdf0f0;
+	--fb-fuzzy-bg: #eef5df;
+	--fb-fuzzy-text: #5a7030;
+	--fb-fuzzy-user-bg: #f5f5e8;
+	--fb-fuzzy-user-text: #726c3c;
 
 	--sidebar-width: 200px;
 	--sidebar-collapsed-width: 40px;

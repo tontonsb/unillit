@@ -224,8 +224,8 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 	background: transparent;
 }
 
-.step.fresh .step-dot     { background: #3a7d44; border-color: #3a7d44; }
-.step.stale .step-dot     { background: #a07020; border-color: #a07020; }
+.step.fresh .step-dot     { background: var(--c-good); border-color: var(--c-good); }
+.step.stale .step-dot     { background: var(--c-warn); border-color: var(--c-warn); }
 .step.never .step-dot     { border-color: var(--c-muted); }
 .step.untracked .step-dot { border-color: var(--c-border); }
 

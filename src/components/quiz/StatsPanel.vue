@@ -288,7 +288,7 @@ const nudge = computed(() => {
 
 .filter-pill.active {
 	background: var(--c-alt);
-	border-color: var(--c-accent);
+	border-color: var(--c-accent-ink);
 	color: var(--c-head);
 }
 
@@ -356,9 +356,9 @@ const nudge = computed(() => {
 	color: var(--c-head);
 }
 
-.accuracy.good { color: #3a7d44; }
-.accuracy.ok   { color: #a07020; }
-.accuracy.bad  { color: #b94040; }
+.accuracy.good { color: var(--c-good); }
+.accuracy.ok   { color: var(--c-warn); }
+.accuracy.bad  { color: var(--c-bad); }
 
 .never { color: var(--c-muted); }
 .muted { color: var(--c-muted); }

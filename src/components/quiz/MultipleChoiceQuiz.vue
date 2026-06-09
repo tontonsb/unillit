@@ -90,12 +90,12 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 .choice:disabled { cursor: default; }
 
 .choice:hover:not(:disabled) {
-	border-color: var(--c-accent);
+	border-color: var(--c-accent-ink);
 	background: var(--c-alt);
 }
 
-.choice.correct { background: #edf7ee; border-color: #5a9e64; color: #2d6a35; }
-.choice.wrong   { background: #fdf0f0; border-color: #c47878; color: #a03030; }
+.choice.correct { background: var(--fb-ok-bg); border-color: var(--c-good); color: var(--c-good); }
+.choice.wrong   { background: var(--fb-wrong-bg); border-color: var(--c-bad); color: var(--c-bad); }
 .choice.dim     { opacity: 0.4; }
 
 .also-accepted {

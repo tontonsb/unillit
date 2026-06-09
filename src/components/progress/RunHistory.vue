@@ -125,9 +125,9 @@ h2 {
 
 .incomplete { opacity: 0.5; }
 
-.accuracy.good { color: #3a7d44; }
-.accuracy.ok   { color: #a07020; }
-.accuracy.bad  { color: #b94040; }
+.accuracy.good { color: var(--c-good); }
+.accuracy.ok   { color: var(--c-warn); }
+.accuracy.bad  { color: var(--c-bad); }
 
 .muted { color: var(--c-muted); }
 

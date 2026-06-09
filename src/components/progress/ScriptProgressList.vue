@@ -83,7 +83,7 @@ h2 {
 
 .script-native {
 	font-size: 1.1em;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 }
 
 .practice-link {
@@ -93,7 +93,7 @@ h2 {
 	margin-left: auto;
 }
 
-.practice-link:hover { color: var(--c-accent); }
+.practice-link:hover { color: var(--c-accent-ink); }
 
 .note {
 	font-size: 13px;
@@ -137,8 +137,8 @@ h2 {
 }
 
 .ds-date.never { color: var(--c-muted); }
-.ds-date.stale { color: #a07020; }
-.ds-date.fresh { color: #3a7d44; }
+.ds-date.stale { color: var(--c-warn); }
+.ds-date.fresh { color: var(--c-good); }
 
 .ds-tags {
 	display: flex;

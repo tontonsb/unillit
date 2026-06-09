@@ -102,7 +102,7 @@ h1 {
 	background: none;
 	border: none;
 	padding: 0;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 	font: inherit;
 	cursor: pointer;
 	text-decoration: underline;
@@ -133,7 +133,7 @@ h2 {
 
 .script-native {
 	font-size: 1.1em;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 }
 
 .practice-link {
@@ -143,5 +143,5 @@ h2 {
 	margin-left: auto;
 }
 
-.practice-link:hover { color: var(--c-accent); }
+.practice-link:hover { color: var(--c-accent-ink); }
 </style>

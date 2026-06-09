@@ -127,7 +127,7 @@ p {
 	color: var(--c-label);
 }
 
-p a { color: var(--c-accent); }
+p a { color: var(--c-accent-ink); }
 
 h2 {
 	font-size: 0.8rem;
@@ -211,7 +211,7 @@ dd {
 }
 
 .script-card:hover {
-	border-color: var(--c-accent);
+	border-color: var(--c-accent-ink);
 	background: var(--c-alt);
 }
 

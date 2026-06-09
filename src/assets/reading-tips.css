@@ -50,6 +50,12 @@
 
 .reading-tips blockquote p { color: inherit; }
 
+/* low-key side note — lighter than a blockquote */
+.reading-tips small {
+	font-size: 0.85em;
+	color: var(--c-muted);
+}
+
 .reading-tips table {
 	border-collapse: collapse;
 	margin: 0.5rem 0;
@@ -57,31 +63,34 @@
 }
 
 .reading-tips th {
-	background: var(--c-alt);
 	color: var(--c-head);
 	font-weight: 600;
 	text-align: left;
-	padding: 4px 10px;
-	border: 1px solid var(--c-border);
+	padding: 4px 12px;
+}
+
+/* single rule under the header row — no cell grid */
+.reading-tips thead th {
+	border-bottom: 2px solid var(--c-border);
 }
 
 .reading-tips td {
-	padding: 4px 10px;
-	border: 1px solid var(--c-border);
+	padding: 4px 12px;
 	color: var(--c-label);
 }
 
-.reading-tips tr:nth-child(even) td { background: var(--c-alt); }
-
-/* spacer column (empty cells) reads as a gap, not a bordered cell */
+/* spacer column (empty cells) reads as a gap, not a filled cell */
 .reading-tips th:empty,
-.reading-tips td:empty,
-.reading-tips tr:nth-child(even) td:empty {
-	border: none;
+.reading-tips td:empty {
 	background: transparent;
+	border-bottom: none;
 	padding: 0;
 	width: 0.75rem;
 }
+
+/* zebra carries row tracking in place of borders (covers row-header th too) */
+.reading-tips tr:nth-child(even) td:not(:empty),
+.reading-tips tbody tr:nth-child(even) th:not(:empty) { background: var(--c-alt); }
 
 .reading-tips figure { margin: 0.75rem 0; }
 
@@ -109,7 +118,7 @@
 }
 
 .reading-tips a {
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 	text-decoration: underline;
 	text-underline-offset: 2px;
 }

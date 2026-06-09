@@ -233,6 +233,6 @@ dt {
 
 .rtgs {
 	font-size: 0.9em;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 }
 </style>

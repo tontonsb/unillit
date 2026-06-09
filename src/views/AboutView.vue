@@ -158,12 +158,13 @@ li {
 }
 
 a {
-	color: var(--c-accent);
-	text-decoration: none;
+	color: var(--c-accent-ink);
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
 a:hover {
-	text-decoration: underline;
+	color: var(--c-head);
 }
 
 .changelog {

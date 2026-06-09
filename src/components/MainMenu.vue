@@ -201,7 +201,7 @@ nav {
 
 .nav-item.active {
 	background: var(--c-alt);
-	border-left-color: var(--c-accent);
+	border-left-color: var(--c-accent-ink);
 	color: var(--c-head);
 }
 
@@ -223,14 +223,14 @@ nav {
 
 .item-native {
 	font-size: 15px;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 	line-height: 1.3;
 }
 
 .item-abbr {
 	display: none;
 	font-size: 17px;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 	line-height: 1;
 }
 

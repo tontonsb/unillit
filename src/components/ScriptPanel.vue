@@ -98,7 +98,7 @@ h1 {
 
 .panel-native {
 	font-size: 15px;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 }
 
 nav {
@@ -132,7 +132,7 @@ nav::-webkit-scrollbar { display: none; }
 
 .tab.active {
 	color: var(--c-head);
-	border-bottom-color: var(--c-accent);
+	border-bottom-color: var(--c-accent-ink);
 }
 
 .panel-content {

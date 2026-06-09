@@ -280,7 +280,7 @@ function advance() {
 
 .count-input:focus {
 	outline: none;
-	border-color: var(--c-accent);
+	border-color: var(--c-accent-ink);
 }
 
 .pill {
@@ -314,7 +314,7 @@ function advance() {
 
 .pill.active {
 	background: var(--c-alt);
-	border-color: var(--c-accent);
+	border-color: var(--c-accent-ink);
 	color: var(--c-head);
 }
 
@@ -353,8 +353,8 @@ function advance() {
 	font-size: 11px;
 }
 
-.tally-correct { color: #3a7d44; }
-.tally-wrong   { color: #b94040; }
+.tally-correct { color: var(--c-good); }
+.tally-wrong   { color: var(--c-bad); }
 
 .card {
 	flex: 1;

@@ -348,7 +348,7 @@ li.c-low { background: #e3f2e5; }
 .thai { font-family: var(--font-thai); font-size: clamp(18px, 1.15vw, 22px); line-height: 1.3; }
 .thai.xl { font-size: clamp(22px, 1.4vw, 27px); }
 .thai.sm { font-size: clamp(15px, 0.94vw, 18px); }
-.rom { font-size: 1em; color: var(--c-accent); font-weight: 600; }
+.rom { font-size: 1em; color: var(--c-accent-ink); font-weight: 600; }
 .fin { font-size: 0.8em; color: var(--c-muted); }
 .gloss { font-size: 0.8em; color: var(--c-muted); text-align: center; line-height: 1.3; }
 

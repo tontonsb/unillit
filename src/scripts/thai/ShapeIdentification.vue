@@ -283,7 +283,6 @@ figcaption {
 	font-size: 0.65em;
 	font-weight: 600;
 	padding: 2px 6px;
-	border-bottom: 1px solid var(--c-border);
 	white-space: nowrap;
 	letter-spacing: 0.04em;
 }
@@ -345,7 +344,7 @@ li:last-child { border-right: none; }
 
 .rom {
 	font-size: 1em;
-	color: var(--c-accent);
+	color: var(--c-accent-ink);
 	font-weight: 600;
 }
 
