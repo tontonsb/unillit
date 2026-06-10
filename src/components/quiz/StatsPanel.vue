@@ -138,6 +138,7 @@ const nudge = computed(() => {
 		<div v-if="!user" class="stats-empty stats-login">
 			<p>Log in to track your progress and see per-question accuracy.</p>
 			<button type="button" class="btn-primary" @click="loginWithDiscord">Login with Discord</button>
+			<p class="login-note">See the <RouterLink to="/privacy">privacy page</RouterLink> for what's stored.</p>
 		</div>
 		<div v-else-if="statsLoading" class="stats-empty">Loading…</div>
 		<div v-else-if="!scriptId" class="stats-empty">Stats not available for this quiz.</div>
@@ -376,4 +377,11 @@ const nudge = computed(() => {
 }
 
 .btn-primary:hover { opacity: 0.85; }
+
+.login-note {
+	font-size: 11px;
+	color: var(--c-muted);
+}
+
+.login-note a { color: var(--c-accent-ink); }
 </style>

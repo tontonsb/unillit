@@ -36,6 +36,7 @@ watch(() => user.value?.id, loadRuns)
 		<div v-if="!user" class="runs-empty runs-login">
 			<p>Log in to track your progress and see your run history.</p>
 			<button type="button" class="btn-primary" @click="loginWithDiscord">Login with Discord</button>
+			<p class="login-note">See the <RouterLink to="/privacy">privacy page</RouterLink> for what's stored.</p>
 		</div>
 		<div v-else-if="runsLoading" class="runs-empty">Loading…</div>
 		<div v-else-if="!scriptId" class="runs-empty">Runs not available for this quiz.</div>
@@ -136,4 +137,11 @@ watch(() => user.value?.id, loadRuns)
 }
 
 .btn-primary:hover { opacity: 0.85; }
+
+.login-note {
+	font-size: 11px;
+	color: var(--c-muted);
+}
+
+.login-note a { color: var(--c-accent-ink); }
 </style>

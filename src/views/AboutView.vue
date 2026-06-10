@@ -106,22 +106,18 @@
 			<li>Github: <a href="https://github.com/tontonsb/unillit">Unillit project</a></li>
 			<li>Discord: Džuris (@tontonsb)</li>
 		</ul>
+
+		<h2>Privacy</h2>
+		<p>
+			See the <RouterLink to="/privacy">privacy page</RouterLink> to
+			know what data and when we're gathering.
+		</p>
 	</article>
 </template>
 
 <style scoped>
 article {
 	max-width: 640px;
-}
-
-a {
-	color: var(--c-accent-ink);
-	text-decoration: underline;
-	text-underline-offset: 2px;
-}
-
-a:hover {
-	color: var(--c-head);
 }
 
 .changelog {

@@ -111,8 +111,6 @@ article {
 	font-size: 0.9rem;
 }
 
-p a { color: var(--c-accent-ink); }
-
 .approaches {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
