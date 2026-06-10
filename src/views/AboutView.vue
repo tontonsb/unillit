@@ -33,7 +33,18 @@
 
 		<h2>Changelog</h2>
 
+		I sometimes bump the version on bugfixes (and sometimes don't), but those won't appear here, that's why
+		you may notice skipped versions.
+
 		<dl class="changelog">
+			<dt>0.5.2</dt>
+			<dd>
+				<ul>
+					<li>Redesign: fixed contrast issues, made colors more fun, improved style consistency across pages</li>
+					<li>Privacy page</li>
+				</ul>
+			</dd>
+
 			<dt>0.5</dt>
 			<dd>
 				<ul>
