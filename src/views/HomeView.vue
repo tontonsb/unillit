@@ -4,7 +4,7 @@ import { scriptList } from '@/scripts/scripts'
 </script>
 
 <template>
-	<article>
+	<article class="prose">
 		<h1>Unillit</h1>
 
 		<p class="home-sub">
@@ -102,46 +102,16 @@ import { scriptList } from '@/scripts/scripts'
 
 <style scoped>
 article {
-	padding: 2rem;
 	max-width: 800px;
-	margin: 0 auto;
-}
-
-h1 {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: var(--c-head);
-	margin-bottom: 0.25rem;
 }
 
 .home-sub {
 	color: var(--c-muted);
 	margin-bottom: 1.25rem;
 	font-size: 0.9rem;
-	line-height: 1.6;
-}
-
-p {
-	font-size: 0.9rem;
-	line-height: 1.6;
-	color: var(--c-label);
 }
 
 p a { color: var(--c-accent-ink); }
-
-h2 {
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: var(--c-muted);
-	margin-top: 1.75rem;
-	margin-bottom: 0.5rem;
-}
-
-h1 + h2 {
-	margin-top: 0;
-}
 
 .approaches {
 	display: grid;
@@ -149,24 +119,6 @@ h1 + h2 {
 	gap: 1rem;
 	margin-top: 1.75rem;
 	margin-bottom: 1.75rem;
-}
-
-h3 {
-	font-size: 0.85rem;
-	font-weight: 600;
-	color: var(--c-label);
-	margin-bottom: 0.4rem;
-}
-
-ol {
-	margin-bottom: 0;
-	padding-left: 1.25rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0.35rem;
-	color: var(--c-label);
-	font-size: 0.9rem;
-	line-height: 1.5;
 }
 
 dl {
@@ -185,7 +137,6 @@ dt {
 
 dd {
 	font-size: 0.9rem;
-	line-height: 1.6;
 	color: var(--c-label);
 }
 

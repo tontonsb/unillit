@@ -6,7 +6,6 @@
 	padding: 1.25rem 1.5rem;
 	max-width: 640px;
 	font-size: clamp(13px, 0.9vw, 16px);
-	line-height: 1.6;
 	color: var(--c-label);
 }
 

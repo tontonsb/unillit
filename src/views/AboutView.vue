@@ -1,5 +1,5 @@
 <template>
-	<article>
+	<article class="prose">
 		<h1>About</h1>
 
 		<h2>The goal of the project</h2>
@@ -111,50 +111,7 @@
 
 <style scoped>
 article {
-	padding: 2rem;
 	max-width: 640px;
-	margin: 0 auto;
-}
-
-h1 {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: var(--c-head);
-	margin-bottom: 0.25rem;
-}
-
-h2 {
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: var(--c-muted);
-	margin-top: 1.75rem;
-	margin-bottom: 0.5rem;
-}
-
-h1 + h2 {
-	margin-top: 0;
-}
-
-p {
-	font-size: 0.9rem;
-	line-height: 1.6;
-	color: var(--c-label);
-	margin-bottom: 0.75rem;
-}
-
-ul {
-	padding-left: 1.25rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-}
-
-li {
-	font-size: 0.9rem;
-	line-height: 1.6;
-	color: var(--c-label);
 }
 
 a {
