@@ -1,7 +1,6 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
 import { thaiDatasets } from './thai/datasets'
-import { cyrillicDatasets } from './cyrillic/datasets'
 
 export interface ScriptTab {
 	label: string
@@ -31,7 +30,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Thai',
 		nativeName: 'อักษรไทย',
 		abbr: 'ภ',
-		meta: 'Abugida written left to right, 44 consonants and 20+ vowel forms',
+		meta: 'Abugida · left → right · 44 consonants · 20+ vowel forms',
 		countries: 'Thailand',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
 		practiceTabs: (() => {
@@ -59,11 +58,11 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Arabic',
 		nativeName: 'العربية',
 		abbr: 'ع',
-		meta: 'Abjad written right to left, 28 letters with up to 4 forms each',
-		comingSoon: false,
+		meta: 'Abjad · right → left · 28 letters · up to 4 forms each',
+		comingSoon: true,
 		infoTabs: [
-			{
-				label: 'Grid',
+			/*{
+				label: 'Shape × Dots',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicDotsGrid.vue')),
 			},
 			{
@@ -73,7 +72,7 @@ export const scriptList: ScriptConfig[] = [
 			{
 				label: 'Shape families +',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicShapeFamiliesPlus.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
@@ -85,8 +84,8 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Bengali',
 		nativeName: 'বাংলা',
 		abbr: 'ব',
-		meta: 'Abugida written left to right, 39 consonants and 11 vowels',
-		countries: 'Bangladesh, West Bengal',
+		meta: 'Abugida · left → right · 39 consonants · 11 vowels',
+		countries: 'Bangladesh · West Bengal',
 		comingSoon: true,
 		infoTabs: [
 			/*{
@@ -108,51 +107,38 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Cyrillic',
 		nativeName: 'Кириллица',
 		abbr: 'Ж',
-		meta: 'Alphabet written left to right, 33 letters',
-		countries: 'Russia, Ukraine, Bulgaria',
-		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
+		meta: 'Alphabet · left → right · 33 letters',
+		countries: 'Russia · Ukraine · Bulgaria',
+		comingSoon: true,
 		infoTabs: [
-			{
+			/*{
 				label: 'Reading tips',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/ReadingTips.vue')),
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
 			},
 			{
 				label: 'Alphabet',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicSheet.vue')),
-			},
-			{
-				label: 'Latin order',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicLatinOrder.vue')),
-			},
-			{
-				label: 'Groups',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicFamiliarity.vue')),
-			},
-			{
-				label: 'Tips',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
-			},
+			},*/
 			{ label: 'None', component: NoContent },
 		],
-		practiceTabs: (() => {
-			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
-		})(),
+		practiceTabs: [
+			{ label: 'Practice', component: PracticePlaceholder },
+		],
 	},
 	{
 		id: 'greek',
 		name: 'Greek',
 		nativeName: 'Ελληνικά',
 		abbr: 'Ω',
-		meta: 'Alphabet written left to right, 24 letters',
-		countries: 'Greece, Cyprus',
+		meta: 'Alphabet · left → right · 24 letters',
+		countries: 'Greece · Cyprus',
 		comingSoon: true,
 	},
 	{
 		id: 'lao',
 		name: 'Lao',
 		nativeName: 'ພາສາລາວ',
-		meta: 'Abugida written left to right, 27 consonants',
+		meta: 'Abugida · left → right · 27 consonants',
 		countries: 'Laos',
 		comingSoon: true,
 	},
