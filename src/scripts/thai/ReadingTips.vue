@@ -69,6 +69,10 @@
 			A syllable can end in -k, -t, -p, -n, -m, -ng, -w, -y. All the other consonants simplify into these.
 
 			For example, นคร (*n kh r*) is *nakhon* not *nakhor*.
+		</Markdown>
+
+		<Markdown wrap="section">
+			## Syllables
 
 			A syllable that ends in a consonant is called *closed* and notated as CVC (consonant–vowel–consonant) while the ones without a final consonant are called *open* or CV.
 
@@ -91,6 +95,9 @@
 			| เน   | ne       | | นาย  | nai      |
 			| นา   | na       | |      |          |
 			| โนะ  | no       |	|      |          |
+
+			The same vowel can have multiple orthographies, sometimes the syllable split can be deduced from that.
+			I.e. ะ is used for short vowels in open syllables while forms like ◌ั are always in a closed syllable.
 		</Markdown>
 
 		<Markdown wrap="section">
@@ -224,6 +231,7 @@
 			- [*Thai script* on Wikipedia](https://en.wikipedia.org/wiki/Thai_script)
 			- [*Romanization of Thai* on Wikipedia](https://en.wikipedia.org/wiki/Romanization_of_Thai)
 			- [*Type anatomy*  on Wikipedia](https://en.wikipedia.org/wiki/Thai_typography#Type_anatomy)
+			- [*Reading course* on Thai Notes](https://thai-notes.com/reading/index.html)
 			- [*Learning to Read Thai for Geoguessr* by Juliette](https://docs.google.com/document/d/1wQg71ZG2w1RoWZVe7FPF4jdC2iomDSQZImgtdOLBD-E)
 			- [*Dealing with Thai script in Geoguessr* by @faraban](https://discord.com/channels/854419081813164042/855528394229415966/1236524192237621329)
 			- [A collection of Thailand map quizzes on Helloquiz, includes finding subdivisions in Thai](https://helloquiz.app/country/th)
