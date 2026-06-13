@@ -220,7 +220,11 @@ function advance() {
 					@answer="handleSubmit"
 				/>
 				<template v-if="phase === 'answered'">
-					<p v-if="current.hint" class="hint">{{ current.hint }}</p>
+					<p
+						v-if="current.hint"
+						class="hint"
+						:style="promptFontFamily ? { fontFamily: promptFontFamily } : {}"
+					>{{ current.hint }}</p>
 					<button
 						ref="nextBtn"
 						type="button"
