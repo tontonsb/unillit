@@ -137,7 +137,12 @@ const specialMarks: Mark[] = [
 				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (shown only when different)</span>
 			</div>
 			<ol class="cols-fill">
-				<li v-for="c in consonants" :key="c.thai" class="cell" :class="`c-${c.cls}`">
+				<li
+					v-for="c in consonants"
+					:key="c.thai"
+					class="cell"
+					:class="`c-${c.cls}`"
+				>
 					<span class="thai">{{ c.thai }}</span>
 					<span class="rom">{{ c.rom }}</span>
 					<span v-if="c.fin" class="final"><em>{{ c.fin }}</em></span>
