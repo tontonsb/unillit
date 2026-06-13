@@ -42,6 +42,28 @@
 		</Markdown>
 
 		<Markdown wrap="section">
+			## Typography
+
+			Most Thai letter strokes start with the *head* — a small loop in
+			traditional fonts. Some pairs of letters like ค (*kh*) and ด (*d*)
+			only differ in head position.
+
+			Loopless fonts (analogue to sans-serif for Latin typefaces) replace
+			loops with a notch and often omit loops that are not crucial in
+			identifying the letters. Such fonts are common on public signage.
+
+			Here's how features may appear in different fonts:
+
+			| Feature     | Description   | Sarabun                                           | Serif                                           | Sans                                           | Trirong                                          | Rom.                   |
+			|-------------|---------------|---------------------------------------------------|-------------------------------------------------|------------------------------------------------|--------------------------------------------------|------------------------|
+			| Head        | Terminal loop | <span class="f-sarabun">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-serif">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-sans">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-trirong">ผ พ<br>ค ด<br>ถ ภ</span> | ph ph<br>kh d<br>th kh |
+			| Crown       | Curled loop   | <span class="f-sarabun">ข</span>                  | <span class="f-serif">ข</span>                  | <span class="f-sans">ข</span>                  | <span class="f-trirong">ข</span>                 | kh                     |
+			| Serration   | Broken line   | <span class="f-sarabun">ฃ ฅ</span>                | <span class="f-serif">ฃ ฅ</span>               | <span class="f-sans">ฃ ฅ</span>                | <span class="f-trirong">ฃ ฅ</span>               | s kh                   |
+			| Mid loop    | On stroke     | <span class="f-sarabun">ฆ<br>น ม</span>           | <span class="f-serif">ฆ<br>น ม</span>          | <span class="f-sans">ฆ<br>น ม</span>           |  <span class="f-trirong">ฆ<br>น ม</span>         | kh<br>n m              |
+			| Tail        | Line outwards | <span class="f-sarabun">ส ช ฟ</span>              | <span class="f-serif">ส ช ฟ</span>             | <span class="f-sans">ส ช ฟ</span>              | <span class="f-trirong">ส ช ฟ</span>             | s ch f                 |
+		</Markdown>
+
+		<Markdown wrap="section">
 			## Final consonants
 
 			A syllable can end in -k, -t, -p, -n, -m, -ng, -w, -y. All the other consonants simplify into these.
@@ -199,25 +221,19 @@
 
 			This includes both the resources that I used to prepare this and the resources that might be useful for you to check out if you're interested in other approaches.
 
+			- [*Thai script* on Wikipedia](https://en.wikipedia.org/wiki/Thai_script)
+			- [*Romanization of Thai* on Wikipedia](https://en.wikipedia.org/wiki/Romanization_of_Thai)
+			- [*Type anatomy*  on Wikipedia](https://en.wikipedia.org/wiki/Thai_typography#Type_anatomy)
+			- [*Learning to Read Thai for Geoguessr* by Juliette](https://docs.google.com/document/d/1wQg71ZG2w1RoWZVe7FPF4jdC2iomDSQZImgtdOLBD-E)
+			- [*Dealing with Thai script in Geoguessr* by @faraban](https://discord.com/channels/854419081813164042/855528394229415966/1236524192237621329)
 			- [A collection of Thailand map quizzes on Helloquiz, includes finding subdivisions in Thai](https://helloquiz.app/country/th)
 			- [Wikidata-based Thai toponymy quiz on Helloquiz](https://helloquiz.app/quiz/OI12OnzUUQrz)
 			- [Info (in French) and practice quizzes on super-duper.fr](https://super-duper.fr/alphabet/thai.php)
-			- [*Thai script* on Wikipedia](https://en.wikipedia.org/wiki/Thai_script)
-			- [*Romanization of Thai* on Wikipedia](https://en.wikipedia.org/wiki/Romanization_of_Thai)
-			- [*Learning to Read Thai for Geoguessr* by Juliette](https://docs.google.com/document/d/1wQg71ZG2w1RoWZVe7FPF4jdC2iomDSQZImgtdOLBD-E)
-			- [*Dealing with Thai script in Geoguessr* by @faraban](https://discord.com/channels/854419081813164042/855528394229415966/1236524192237621329)
 		</Markdown>
 	</article>
 </template>
 
 <style scoped>
-/* Thai-specific: letterform font for the first table column and term cards.
-   Shared prose/table/blockquote styles live in assets/reading-tips.css */
-td:first-child {
-	font-family: var(--font-thai);
-	font-size: 1.15em;
-}
-
 /* Thai term cards carry inline badges, so the dt is a flex row */
 dt {
 	display: flex;
@@ -234,5 +250,29 @@ dt {
 .rtgs {
 	font-size: 0.9em;
 	color: var(--c-accent-ink);
+}
+
+.f-sans {
+	font-family: 'Noto Sans Thai', sans-serif;
+	font-size: 1.6em;
+	line-height: 1;
+}
+
+.f-sarabun {
+	font-family: 'Sarabun', sans-serif;
+	font-size: 1.6em;
+	line-height: 1;
+}
+
+.f-serif {
+	font-family: 'Noto Serif Thai', serif;
+	font-size: 1.6em;
+	line-height: 1;
+}
+
+.f-trirong {
+	font-family: 'Trirong', serif;
+	font-size: 1.6em;
+	line-height: 1;
 }
 </style>
