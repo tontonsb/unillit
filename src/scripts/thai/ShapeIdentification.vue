@@ -193,7 +193,7 @@ const consonantFamilies: ConsonantFamily[] = [
 			<figure v-for="family in consonantFamilies" :key="family.name">
 				<figcaption>{{ family.name }}</figcaption>
 				<ul>
-					<li v-for="(char, ci) in family.characters" :key="ci">
+					<li v-for="(char, ci) in family.characters" :key="ci" class="cell">
 						<span class="thai">{{ char.thai }}</span>
 						<span class="rom">{{ char.translit }}</span>
 						<span v-if="char.final" class="final">–{{ char.final }}</span>
@@ -223,7 +223,7 @@ const consonantFamilies: ConsonantFamily[] = [
 			<figure v-for="family in vowelFamilies" :key="family.name">
 				<figcaption>{{ family.name }}</figcaption>
 				<ul>
-					<li v-for="(vowel, vi) in family.vowels" :key="vi">
+					<li v-for="(vowel, vi) in family.vowels" :key="vi" class="cell">
 						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
 						<span class="rom">{{ vowel.translit }}</span>
 						<CharBadge :tag="vowel.length" />

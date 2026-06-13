@@ -137,7 +137,7 @@ const specialMarks: Mark[] = [
 				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (shown only when different)</span>
 			</div>
 			<ol class="cols-fill">
-				<li v-for="c in consonants" :key="c.thai" :class="`c-${c.cls}`">
+				<li v-for="c in consonants" :key="c.thai" class="cell" :class="`c-${c.cls}`">
 					<span class="thai">{{ c.thai }}</span>
 					<span class="rom">{{ c.rom }}</span>
 					<span v-if="c.fin" class="final"><em>{{ c.fin }}</em></span>
@@ -187,7 +187,7 @@ const specialMarks: Mark[] = [
 		<section>
 			<h2>Numerals</h2>
 			<ol class="cols-fill">
-				<li v-for="m in numerals" :key="m.thai">
+				<li v-for="m in numerals" :key="m.thai" class="cell">
 					<span class="thai xl">{{ m.thai }}</span>
 					<span class="rom">{{ m.rom }}</span>
 				</li>
@@ -199,7 +199,7 @@ const specialMarks: Mark[] = [
 				<h2>Tone marks</h2>
 				<p>Written above the consonant. Actual tone depends on consonant class + mark combination.</p>
 				<ol class="cols-fit">
-					<li v-for="m in toneMarks" :key="m.thai">
+					<li v-for="m in toneMarks" :key="m.thai" class="cell">
 						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
 						<span v-if="m.gloss" class="gloss">{{ m.gloss }}</span>
@@ -210,7 +210,7 @@ const specialMarks: Mark[] = [
 			<section>
 				<h2>Special marks</h2>
 				<ol class="cols-fit">
-					<li v-for="m in specialMarks" :key="m.thai">
+					<li v-for="m in specialMarks" :key="m.thai" class="cell">
 						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
 						<span class="rom">{{ m.rom }}</span>
 						<span v-if="m.gloss" class="gloss">{{ m.gloss }}</span>

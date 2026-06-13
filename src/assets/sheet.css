@@ -43,7 +43,6 @@
   * A character cell.
   * Sizings and stripings are in the sheets.
   */
-.sheet li,
 .sheet .cell {
 	background: var(--c-cell);
 	text-align: center;
