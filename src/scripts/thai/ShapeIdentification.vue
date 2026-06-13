@@ -186,7 +186,7 @@ const consonantFamilies: ConsonantFamily[] = [
 </script>
 
 <template>
-	<article>
+	<article class="sheet">
 		<section>
 			<h2>Consonants — translit: initial / –final sound</h2>
 
@@ -235,18 +235,7 @@ const consonantFamilies: ConsonantFamily[] = [
 </template>
 
 <style scoped>
-article {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	padding: 10px;
-	font-size: clamp(11px, 0.75vw, 14px);
-}
-
 section {
-	border: 1px solid var(--c-border);
-	border-radius: var(--radius);
-	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 6px;
@@ -256,15 +245,6 @@ section {
 section > h2 {
 	flex-basis: calc(100% + 12px);
 	margin: -6px -6px 0;
-	background: var(--c-head);
-	color: #fff;
-	font-size: 9px;
-	font-weight: 600;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	padding: 3px 7px;
-	display: flex;
-	align-items: center;
 }
 
 figure {
@@ -290,20 +270,12 @@ figcaption {
 ul {
 	display: flex;
 	flex-wrap: wrap;
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	flex: 1;
 }
 
 li {
-	background: var(--c-cell);
 	border-right: 1px solid var(--c-border);
 	padding: 4px 5px 3px;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	min-width: 38px;
 	min-height: 74px;
 }
@@ -311,7 +283,7 @@ li:last-child { border-right: none; }
 
 .thai {
 	font-family: var(--font-thai);
-	font-size: clamp(24px, 1.56vw, 30px);
+	font-size: var(--glyph);
 	line-height: 1.15;
 }
 
@@ -340,16 +312,5 @@ li:last-child { border-right: none; }
 	background: rgba(255, 255, 255, 0.9);
 	border-color: transparent;
 	color: var(--c-head);
-}
-
-.rom {
-	font-size: 1em;
-	color: var(--c-accent-ink);
-	font-weight: 600;
-}
-
-.final {
-	font-size: 0.8em;
-	color: var(--c-muted);
 }
 </style>

@@ -1,6 +1,7 @@
 import './assets/main.css'
 import './assets/reading-tips.css'
 import './assets/prose.css'
+import './assets/sheet.css'
 
 import { createApp } from 'vue'
 

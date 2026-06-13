@@ -1,0 +1,71 @@
+/**
+  * Shared styles for the script info sheets.
+  *
+  * Enabled by .sheet on the root element.
+  */
+.sheet {
+	/* The main size for foreign characters */
+	--glyph: clamp(24px, 1.56vw, 30px);
+
+	padding: 10px;
+	font-size: clamp(11px, 0.75vw, 14px);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.sheet section {
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+
+.sheet section > h2 {
+	background: var(--c-head);
+	color: #fff;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 3px 7px;
+	display: flex;
+	align-items: center;
+}
+
+.sheet ul,
+.sheet ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/**
+  * A character cell.
+  * Sizings and stripings are in the sheets.
+  */
+.sheet li,
+.sheet .cell {
+	background: var(--c-cell);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sheet .rom {
+	font-size: 1em;
+	color: var(--c-accent-ink);
+	font-weight: 600;
+}
+
+.sheet .final {
+	font-size: 0.8em;
+	color: var(--c-muted);
+}
+
+.sheet .gloss {
+	font-size: 0.8em;
+	color: var(--c-muted);
+	text-align: center;
+	line-height: 1.3;
+}

@@ -126,7 +126,7 @@ const specialMarks: Mark[] = [
 </script>
 
 <template>
-	<article>
+	<article class="sheet">
 		<section>
 			<h2>Consonants — traditional alphabetical order · color shows class</h2>
 			<div class="legend">
@@ -140,7 +140,7 @@ const specialMarks: Mark[] = [
 				<li v-for="c in consonants" :key="c.thai" :class="`c-${c.cls}`">
 					<span class="thai">{{ c.thai }}</span>
 					<span class="rom">{{ c.rom }}</span>
-					<span v-if="c.fin" class="fin"><em>{{ c.fin }}</em></span>
+					<span v-if="c.fin" class="final"><em>{{ c.fin }}</em></span>
 					<span v-if="c.gloss" class="gloss">{{ c.gloss }}</span>
 				</li>
 			</ol>
@@ -231,26 +231,6 @@ article {
 	--mid: #1a5c8a;
 	--high: #a0320a;
 	--low: #2e7d32;
-
-	padding: 10px;
-	font-size: clamp(11px, 0.75vw, 14px);
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-
-section { border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden; }
-
-section > h2 {
-	background: var(--c-head);
-	color: #fff;
-	font-size: 0.8em;
-	font-weight: 600;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	padding: 3px 7px;
-	display: flex;
-	align-items: center;
 }
 
 .cons-picker {
@@ -321,22 +301,9 @@ section > p {
 	gap: 8px;
 }
 
-ol {
-	display: grid;
-	gap: 0;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+ol { display: grid; gap: 0; }
 
-li {
-	background: var(--c-cell);
-	padding: 3px 2px 2px;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+li { padding: 3px 2px 2px; }
 
 .cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
 .cols-fill { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
@@ -345,12 +312,9 @@ li.c-mid { background: #ddeaf5; }
 li.c-high { background: #faeae3; }
 li.c-low { background: #e3f2e5; }
 
-.thai { font-family: var(--font-thai); font-size: clamp(18px, 1.15vw, 22px); line-height: 1.3; }
-.thai.xl { font-size: clamp(22px, 1.4vw, 27px); }
-.thai.sm { font-size: clamp(15px, 0.94vw, 18px); }
-.rom { font-size: 1em; color: var(--c-accent-ink); font-weight: 600; }
-.fin { font-size: 0.8em; color: var(--c-muted); }
-.gloss { font-size: 0.8em; color: var(--c-muted); text-align: center; line-height: 1.3; }
+.thai { font-family: var(--font-thai); font-size: var(--glyph); line-height: 1.15; }
+.thai.xl { font-size: calc(var(--glyph) * 1.2); }
+.thai.sm { font-size: calc(var(--glyph) * 0.8); }
 
 .vtable-wrap { overflow-x: auto; }
 
