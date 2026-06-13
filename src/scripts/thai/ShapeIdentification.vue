@@ -148,28 +148,33 @@ const consonantFamilies: ConsonantFamily[] = [
 		characters: [
 			{ thai: 'อ', translit: '–', final: null, tags: ['vowel'] },
 			{ thai: 'ฮ', translit: 'h', final: null },
+			{ thai: 'จ', translit: 'ch', final: 't' },
 			{ thai: 'ฉ', translit: 'ch', final: null },
-			{ thai: 'ส', translit: 's', final: 't' },
 			{ thai: 'ล', translit: 'l', final: 'n' },
+			{ thai: 'ส', translit: 's', final: 't' },
+		],
+	},
+	{
+		name: 'Flags',
+		characters: [
+			{ thai: 'ร', translit: 'r', final: 'n/–' },
+			{ thai: 'ธ', translit: 'th', final: 't' },
+			{ thai: 'ฐ', translit: 'th', final: 't' },
 		],
 	},
 	{
 		name: 'Hooks',
 		characters: [
-			{ thai: 'จ', translit: 'ch', final: 't' },
 			{ thai: 'ง', translit: 'ng', final: 'ng' },
-			{ thai: 'ร', translit: 'r', final: 'n/–' },
 			{ thai: 'ว', translit: 'w', final: 'o/u', tags: ['vowel'] },
 		],
 	},
 	{
-		name: 'Squiggles — N-like, Z-like',
+		name: 'Squiggles — N-like',
 		characters: [
 			{ thai: 'ห', translit: 'h', final: null },
 			{ thai: 'ท', translit: 'th', final: 't' },
 			{ thai: 'ฑ', translit: 'th', final: 't' },
-			{ thai: 'ฐ', translit: 'th', final: 't' },
-			{ thai: 'ธ', translit: 'th', final: 't' },
 		],
 	},
 	{
