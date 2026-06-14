@@ -387,7 +387,7 @@ function advance() {
 }
 
 .hint {
-	font-size: 13px;
+	font-size: 16px;
 	color: var(--c-muted);
 	text-align: center;
 }
