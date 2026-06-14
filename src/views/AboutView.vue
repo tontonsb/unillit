@@ -37,6 +37,17 @@
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>0.6</dt>
+			<dd>
+				<ul>
+					<li>Increase sizes on Thai Alphabet, homogenize styles, centralize sheet styles</li>
+					<li>Describe Thai typogaphy quirks</li>
+					<li>Review Thai quiz explanations — describe key observables and overlapping transliterations with similar chars</li>
+					<li>Regroup some Thai chars after reviewing multiple fonts</li>
+					<li>Added some vowel questions to quizzes</li>
+				</ul>
+			</dd>
+
 			<dt>0.5.2</dt>
 			<dd>
 				<ul>
