@@ -8,6 +8,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
+console.log(`Unillit v${__APP_VERSION__}`)
+
 const app = createApp(App)
 
 app.use(router)

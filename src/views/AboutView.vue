@@ -1,6 +1,10 @@
+<script setup lang="ts">
+const version = __APP_VERSION__
+</script>
+
 <template>
 	<article class="prose">
-		<h1>About</h1>
+		<h1>About Unillit <span class="version">v{{ version }}</span></h1>
 
 		<h2>The goal of the project</h2>
 		<p>
@@ -140,6 +144,13 @@
 <style scoped>
 article {
 	max-width: 640px;
+}
+
+.version {
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: var(--c-muted);
+	vertical-align: middle;
 }
 
 .changelog {
