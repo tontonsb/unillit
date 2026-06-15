@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useId, watch } from 'vue'
+import { computed, useId, watch } from 'vue'
 import type { ScriptTab } from '@/scripts/scripts'
 import { activeInfoSheet } from '@/composables/useScriptContext'
 
@@ -11,7 +11,7 @@ const props = defineProps<{
 	contextRole?: 'info'
 }>()
 
-const activeIndex = ref(0)
+const activeIndex = defineModel<number>('activeIndex', { default: 0 })
 
 watch(() => props.tabs, () => {
 	activeIndex.value = 0
