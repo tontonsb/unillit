@@ -81,7 +81,8 @@ export function useResultShare(run: RunResult) {
 
 		return [
 			tier(dataset.value?.kind, pct, name),
-			`I scored ${correct}/${total} (${pct}%) on the ${name} ${label} quiz`,
+			`📈 Scored ${correct}/${total} (${pct}%)`,
+			`On the ${label} quiz`,
 			'Can you match my score?',
 			quizLink(),
 		].join('\n')
