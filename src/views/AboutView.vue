@@ -41,6 +41,14 @@ const version = __APP_VERSION__
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>0.6.2</dt>
+			<dd>
+				<ul>
+					<li>Script view with specific tabs is now linkable</li>
+					<li>You can copy your quiz result to share it</li>
+				</ul>
+			</dd>
+
 			<dt>0.6</dt>
 			<dd>
 				<ul>
