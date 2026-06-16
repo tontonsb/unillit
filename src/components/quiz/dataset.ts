@@ -1,4 +1,4 @@
-export type QuizMode = 'typein' | 'multiplechoice'
+export type QuizMode = 'typein' | 'multiplechoice' | 'multiselect'
 
 // determines the result share text flavour
 export type QuizKind = 'letters' | 'toponyms' | 'language'
