@@ -5,6 +5,7 @@ import { useQuizSession } from './useSession'
 import { useStats } from '@/composables/useStats'
 import { activeFont, activeInfoSheet } from '@/composables/useScriptContext'
 import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizPrefs'
+import { useResultShare } from '@/composables/useResultShare'
 import { useAuth } from '@/composables/useAuth'
 import { revisionSample } from './utils'
 import TypeInQuiz from './TypeInQuiz.vue'
@@ -126,6 +127,12 @@ function advance() {
 	_advance()
 	if (phase.value === 'done') stats.value?.completeRun()
 }
+
+const { resultCopied, copyResults } = useResultShare({
+	mode: () => mode.value,
+	correct: () => tally.value.correct,
+	total: () => session.value.length,
+})
 </script>
 
 <template>
@@ -197,7 +204,10 @@ function advance() {
 			<div class="card-body">
 				<p class="done-score">{{ tally.correct }} / {{ session.length }}</p>
 				<p class="done-label">{{ tally.correct === session.length ? 'Perfect!' : 'Session complete' }}</p>
-				<button type="button" class="btn-primary" @click="startSession">Play another</button>
+				<div class="done-actions">
+					<button type="button" class="btn-primary" @click="startSession">Play another</button>
+					<button type="button" class="btn-secondary" @click="copyResults">{{ resultCopied ? '✓ Copied' : 'Copy results' }}</button>
+				</div>
 			</div>
 		</div>
 
@@ -406,9 +416,33 @@ function advance() {
 
 .btn-primary:hover { opacity: 0.85; }
 
+.btn-secondary {
+	padding: 8px 20px;
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius);
+	background: transparent;
+	color: var(--c-label);
+	font-size: 13px;
+	font-family: var(--sans);
+	cursor: pointer;
+	transition: color 0.15s, border-color 0.15s;
+}
+
+.btn-secondary:hover {
+	color: var(--c-head);
+	border-color: var(--c-label);
+}
+
 .done-card .card-body {
 	gap: 0.75rem;
 	text-align: center;
+}
+
+.done-actions {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .done-score {

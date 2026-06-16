@@ -1,5 +1,6 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
+import type { QuizDataset } from '@/components/quiz/dataset'
 import { thaiDatasets } from './thai/datasets'
 
 export interface ScriptTab {
@@ -145,3 +146,8 @@ export const scriptList: ScriptConfig[] = [
 ]
 
 export const scriptsById = Object.fromEntries(scriptList.map((s) => [s.id, s]))
+
+// indexed the same as the practice tabs (which are built from these)
+export const datasetsById: Record<string, QuizDataset[]> = {
+	thai: thaiDatasets,
+}

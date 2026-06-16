@@ -1,5 +1,8 @@
 export type QuizMode = 'typein' | 'multiplechoice'
 
+// determines the result share text flavour
+export type QuizKind = 'letters' | 'toponyms' | 'language'
+
 export interface Question {
 	prompt: string
 	answer: string | string[]
@@ -12,4 +15,5 @@ export interface QuizDataset {
 	maxTolerance?: number
 	instructions?: string
 	modes?: QuizMode[]
+	kind?: QuizKind
 }

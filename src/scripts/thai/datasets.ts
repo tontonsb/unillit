@@ -11,6 +11,6 @@ export const thaiDatasets: QuizDataset[] = [
 	{ label: 'Vowels', questions: vowelQuestions, instructions: vowelNote, modes: ['typein'] },
 	{ label: 'All vowels', questions: allVowelQuestions, instructions: vowelNote, modes: ['typein'] },
 	{ label: 'Syllables', questions: syllableQuestions, maxTolerance: 1, modes: ['typein', 'multiplechoice'] },
-	{ label: 'Provinces', questions: provinceQuestions, maxTolerance: 3, modes: ['typein', 'multiplechoice'] },
-	{ label: 'Prefixed provinces', questions: provincePrefixQuestions, maxTolerance: 3, instructions: 'Type only the province name — ignore the prefix', modes: ['typein', 'multiplechoice'] },
+	{ label: 'Provinces', questions: provinceQuestions, maxTolerance: 3, modes: ['typein', 'multiplechoice'], kind: 'toponyms' },
+	{ label: 'Prefixed provinces', questions: provincePrefixQuestions, maxTolerance: 3, instructions: 'Type only the province name — ignore the prefix', modes: ['typein', 'multiplechoice'], kind: 'toponyms' },
 ]

@@ -3,14 +3,12 @@ import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ScriptPanel from '@/components/ScriptPanel.vue'
 import { scriptsById } from '@/scripts/scripts'
-import { activeInfoSheet } from '@/composables/useScriptContext'
+import { activeInfoSheet, infoTab, practiceTab } from '@/composables/useScriptContext'
+import { encodeTabs, applyShare } from '@/lib/tabLink'
 
 const route = useRoute()
 const router = useRouter()
 const config = computed(() => scriptsById[route.params.id as string])
-
-const infoIndex = ref(0)
-const practiceIndex = ref(0)
 
 function clampIndex(value: unknown, tabs: unknown[] | undefined): number | null {
 	const n = Number(value)
@@ -21,35 +19,22 @@ function clampIndex(value: unknown, tabs: unknown[] | undefined): number | null 
 	return Math.min(Math.max(0, Math.trunc(n)), Math.max(0, (tabs?.length ?? 1) - 1))
 }
 
-// the tab pair is packed into one opaque token ("info.practice" base64'd) so
-// the URL doesn't invite manual editing — purely cosmetic, not security
-function encodeTabs(info: number, practice: number): string {
-	return btoa(`${info}.${practice}`).replace(/=+$/, '')
-}
-
-function decodeTabs(token: unknown): [string?, string?] {
-	if (typeof token !== 'string') return []
-
-	try {
-		return atob(token).split('.') as [string?, string?]
-	} catch {
-		return []
-	}
-}
-
 /**
- * Read the ?t= token on load, switch tabs & clean up the URL.
+ * Handle the ?t=.... token on load:
+ * - apply quiz config (done by the applyShare)
+ * - switch tabs
+ * - clean up the URL
  */
 onMounted(() => {
-	const [rawInfo, rawPractice] = decodeTabs(route.query.t)
+	const [rawInfo, rawPractice] = applyShare(route.query.t)
 	const info = clampIndex(rawInfo, config.value?.infoTabs)
 	const practice = clampIndex(rawPractice, config.value?.practiceTabs)
 
 	if (info !== null)
-		infoIndex.value = info
+		infoTab.value = info
 
 	if (practice !== null)
-		practiceIndex.value = practice
+		practiceTab.value = practice
 
 	if (route.query.t !== undefined)
 		router.replace({ path: route.path })
@@ -61,7 +46,7 @@ let copiedTimer: ReturnType<typeof setTimeout> | undefined
 function copyLink() {
 	const href = router.resolve({
 		path: route.path,
-		query: { t: encodeTabs(infoIndex.value, practiceIndex.value) },
+		query: { t: encodeTabs() },
 	}).href
 
 	navigator.clipboard.writeText(location.origin + href)
@@ -76,12 +61,11 @@ function copyLink() {
 	<div v-if="config" class="script-page">
 		<div class="panels" :class="{ 'info-none': activeInfoSheet === 'None' }">
 			<ScriptPanel
-				v-model:active-index="infoIndex"
+				v-model:active-index="infoTab"
 				:tabs="config.infoTabs ?? []"
 				:title="config.name"
 				:title-native="config.nativeName"
 				:title-lang="config.id"
-				context-role="info"
 			>
 				<template #header-end>
 					<button
@@ -93,7 +77,7 @@ function copyLink() {
 				</template>
 			</ScriptPanel>
 			<ScriptPanel
-				v-model:active-index="practiceIndex"
+				v-model:active-index="practiceTab"
 				:tabs="config.practiceTabs ?? []"
 			>
 				<template v-if="config.infoHeaderEnd" #header-end>
