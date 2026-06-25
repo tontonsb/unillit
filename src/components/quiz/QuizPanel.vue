@@ -10,6 +10,14 @@ import { useAuth } from '@/composables/useAuth'
 import { revisionSample } from './utils'
 import TypeInQuiz from './TypeInQuiz.vue'
 import MultipleChoiceQuiz from './MultipleChoiceQuiz.vue'
+import MultiSelectQuiz from './MultiSelectQuiz.vue'
+
+function modeLabel(m: QuizMode): string {
+	if (m === 'typein') return 'Type-in'
+	if (m === 'multiplechoice') return 'Multiple choice'
+
+	return 'Multi-select'
+}
 
 const props = defineProps<{
 	dataset: QuizDataset
@@ -146,7 +154,7 @@ const { resultCopied, copyResults } = useResultShare({
 					class="pill"
 					:class="{ active: mode === m }"
 					@click="switchMode(m)"
-				>{{ m === 'typein' ? 'Type-in' : 'Multiple choice' }}</button>
+				>{{ modeLabel(m) }}</button>
 			</div>
 			<div class="mode-picker">
 				<button
@@ -224,6 +232,13 @@ const { resultCopied, copyResults } = useResultShare({
 				/>
 				<MultipleChoiceQuiz
 					v-if="mode === 'multiplechoice'"
+					:current
+					:phase
+					:dataset="props.dataset"
+					@answer="handleSubmit"
+				/>
+				<MultiSelectQuiz
+					v-if="mode === 'multiselect'"
 					:current
 					:phase
 					:dataset="props.dataset"

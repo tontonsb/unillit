@@ -5,6 +5,10 @@ export type QuizKind = 'letters' | 'toponyms' | 'language'
 
 export interface Question {
 	prompt: string
+	/**
+	 * typein/multiplechoice: accepted answer(s), first is canonical.
+	 * multiselect: the complete set of correct options.
+	 */
 	answer: string | string[]
 	hint?: string
 }
@@ -15,5 +19,6 @@ export interface QuizDataset {
 	maxTolerance?: number
 	instructions?: string
 	modes?: QuizMode[]
+	options?: string[] // for multiselect — the full list of selectables
 	kind?: QuizKind
 }
