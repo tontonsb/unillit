@@ -9,6 +9,10 @@ export interface ScriptTab {
 	props?: Record<string, unknown>
 }
 
+// 'coming' = no link, greyed out; 'beta' = working link, beta badge, dimmed;
+// 'live' = normal link. Defaults to 'live' when omitted.
+export type ScriptStatus = 'coming' | 'beta' | 'live'
+
 export interface ScriptConfig {
 	id: string
 	name: string
@@ -16,7 +20,7 @@ export interface ScriptConfig {
 	abbr?: string     // icon char for collapsed menu; defaults to nativeName[0]
 	meta: string
 	countries?: string
-	comingSoon?: boolean
+	status?: ScriptStatus
 	infoTabs?: ScriptTab[]
 	practiceTabs?: ScriptTab[]
 	infoHeaderEnd?: Component
@@ -60,7 +64,7 @@ export const scriptList: ScriptConfig[] = [
 		nativeName: 'العربية',
 		abbr: 'ع',
 		meta: 'Abjad written right to left, 28 letters with up to 4 forms each',
-		comingSoon: true,
+		status: 'coming',
 		infoTabs: [
 			/*{
 				label: 'Shape × Dots',
@@ -87,7 +91,7 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'ব',
 		meta: 'Abugida written left to right, 39 consonants and 11 vowels',
 		countries: 'Bangladesh, West Bengal',
-		comingSoon: true,
+		status: 'coming',
 		infoTabs: [
 			/*{
 				label: 'Reading tips',
@@ -110,7 +114,7 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'Ж',
 		meta: 'Alphabet written left to right, 33 letters',
 		countries: 'Russia, Ukraine, Bulgaria',
-		comingSoon: true,
+		status: 'coming',
 		infoTabs: [
 			/*{
 				label: 'Reading tips',
@@ -133,7 +137,7 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'Ω',
 		meta: 'Alphabet written left to right, 24 letters',
 		countries: 'Greece, Cyprus',
-		comingSoon: true,
+		status: 'coming',
 	},
 	{
 		id: 'lao',
@@ -141,9 +145,17 @@ export const scriptList: ScriptConfig[] = [
 		nativeName: 'ພາສາລາວ',
 		meta: 'Abugida written left to right, 27 consonants',
 		countries: 'Laos',
-		comingSoon: true,
+		status: 'coming',
 	},
 ]
+
+export const scriptStatus = (s: ScriptConfig): ScriptStatus => s.status ?? 'live'
+
+const statusRank: Record<ScriptStatus, number> = { live: 0, beta: 1, coming: 2 }
+
+// live first, then beta, then coming; stable within each group
+export const sortedScriptList = [...scriptList]
+	.sort((a, b) => statusRank[scriptStatus(a)] - statusRank[scriptStatus(b)])
 
 export const scriptsById = Object.fromEntries(scriptList.map((s) => [s.id, s]))
 

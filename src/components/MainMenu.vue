@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { scriptList } from '@/scripts/scripts'
+import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 import { useAuth } from '@/composables/useAuth'
 
 const collapsed = ref(true)
@@ -27,14 +27,17 @@ const { user, loginWithDiscord, logout } = useAuth()
 			<div class="nav-divider"></div>
 
 			<RouterLink
-				v-for="script in scriptList.filter(s => !s.comingSoon)"
+				v-for="script in sortedScriptList.filter(s => scriptStatus(s) !== 'coming')"
 				:key="script.id"
 				:to="`/scripts/${script.id}`"
 				class="nav-item"
-				:class="{ active: route.params.id === script.id }"
-				:title="script.name"
+				:class="{ active: route.params.id === script.id, beta: scriptStatus(script) === 'beta' }"
+				:title="scriptStatus(script) === 'beta' ? `${script.name} — beta` : script.name"
 			>
-				<span class="item-label">{{ script.name }}</span>
+				<span class="item-label">
+					{{ script.name }}
+					<span v-if="scriptStatus(script) === 'beta'" class="beta-badge">beta</span>
+				</span>
 				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
 				<span class="item-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</RouterLink>
@@ -42,7 +45,7 @@ const { user, loginWithDiscord, logout } = useAuth()
 			<div class="nav-divider"></div>
 
 			<div
-				v-for="script in scriptList.filter(s => s.comingSoon)"
+				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
 				class="nav-item coming-soon"
 				:title="`${script.name} — coming soon`"
@@ -208,6 +211,31 @@ nav {
 .nav-item.coming-soon {
 	opacity: 0.4;
 	cursor: default;
+}
+
+.nav-item.beta {
+	opacity: 0.75;
+}
+
+.nav-item.beta:hover,
+.nav-item.beta.active {
+	opacity: 1;
+}
+
+.beta-badge {
+	font-size: 9px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--c-accent-ink);
+	border: 1px solid var(--c-accent-ink);
+	border-radius: 3px;
+	padding: 0 3px;
+	vertical-align: middle;
+}
+
+.collapsed .beta-badge {
+	display: none;
 }
 
 .item-label,

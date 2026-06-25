@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { scriptList } from '@/scripts/scripts'
+import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 </script>
 
 <template>
@@ -52,18 +52,22 @@ import { scriptList } from '@/scripts/scripts'
 
 		<section class="script-grid">
 			<RouterLink
-				v-for="script in scriptList.filter(s => !s.comingSoon)"
+				v-for="script in sortedScriptList.filter(s => scriptStatus(s) !== 'coming')"
 				:key="script.id"
 				:to="`/scripts/${script.id}`"
 				class="script-card"
+				:class="{ beta: scriptStatus(script) === 'beta' }"
 			>
 				<span class="card-native">{{ script.nativeName }}</span>
-				<span class="card-name">{{ script.name }}</span>
+				<span class="card-name">
+					{{ script.name }}
+					<span v-if="scriptStatus(script) === 'beta'" class="beta-badge">beta</span>
+				</span>
 				<span class="card-meta">{{ script.meta }}</span>
 				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
 			</RouterLink>
 			<div
-				v-for="script in scriptList.filter(s => s.comingSoon)"
+				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
 				class="script-card coming-soon"
 			>
@@ -167,6 +171,26 @@ dd {
 .script-card.coming-soon {
 	opacity: 0.5;
 	cursor: default;
+}
+
+.script-card.beta {
+	opacity: 0.8;
+}
+
+.script-card.beta:hover {
+	opacity: 1;
+}
+
+.beta-badge {
+	font-size: 0.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--c-accent-ink);
+	border: 1px solid var(--c-accent-ink);
+	border-radius: 3px;
+	padding: 0 0.25em;
+	vertical-align: middle;
 }
 
 .card-soon {
