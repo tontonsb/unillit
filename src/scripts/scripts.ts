@@ -114,13 +114,14 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'Ж',
 		meta: 'Alphabet written left to right, 33 letters',
 		countries: 'Russia, Ukraine, Bulgaria',
-		status: 'coming',
+		status: 'beta',
+		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
 		infoTabs: [
-			/*{
-				label: 'Reading tips',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicTips.vue')),
-			},
 			{
+				label: 'Reading tips',
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/ReadingTips.vue')),
+			},
+			/*{
 				label: 'Alphabet',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicSheet.vue')),
 			},*/

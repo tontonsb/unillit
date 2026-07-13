@@ -41,6 +41,13 @@ const version = __APP_VERSION__
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>0.7</dt>
+			<dd>
+				<ul>
+					<li>Add beta Cyrillic section</li>
+				</ul>
+			</dd>
+
 			<dt>0.6.2</dt>
 			<dd>
 				<ul>

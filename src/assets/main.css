@@ -9,6 +9,7 @@
 	--font-arabic: 'Noto Naskh Arabic', serif;
 	--font-bengali: 'Noto Sans Bengali', sans-serif;
 	--font-cyrillic: 'Noto Serif', Georgia, serif;
+	--font-cyrillic-style: normal;
 	--font-thai: 'Noto Sans Thai', system-ui, sans-serif;
 
 	--c-bg: #fafaf8;
@@ -40,6 +41,10 @@
 
 	--sidebar-width: 200px;
 	--sidebar-collapsed-width: 40px;
+}
+
+.cyr {
+	font-style: var(--font-cyrillic-style, normal);
 }
 
 html, body, #app {

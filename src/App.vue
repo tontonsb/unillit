@@ -3,8 +3,13 @@ import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import MainMenu from '@/components/MainMenu.vue'
 import { activeThaiFontFamily } from '@/scripts/thai/font'
+import { activeCyrillicFontFamily, activeCyrillicFontStyle } from '@/scripts/cyrillic/font'
 
-const fontVars = computed(() => ({ '--font-thai': activeThaiFontFamily() }))
+const fontVars = computed(() => ({
+	'--font-thai': activeThaiFontFamily(),
+	'--font-cyrillic': activeCyrillicFontFamily(),
+	'--font-cyrillic-style': activeCyrillicFontStyle(),
+}))
 </script>
 
 <template>
