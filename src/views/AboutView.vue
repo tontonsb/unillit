@@ -41,6 +41,13 @@ const version = __APP_VERSION__
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>0.7.1</dt>
+			<dd>
+				<ul>
+					<li>Sketch some cyrillic quizzes</li>
+				</ul>
+			</dd>
+
 			<dt>0.7</dt>
 			<dd>
 				<ul>
