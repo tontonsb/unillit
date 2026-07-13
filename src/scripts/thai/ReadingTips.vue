@@ -179,6 +179,11 @@
 
 			On one hand these prefixes make it harder to parse, on the other they're like markers that help you spot where the province name might be.
 			You can practice these in the *Prefixed provinces* dataset on either the type-in or the multiple choice quiz.
+
+			If you're a GeoGuessr player, a great choice for your next step
+			would be practice spotting province names on information boards
+			using [this map](https://www.geoguessr.com/maps/69678c812577944ef560706b)
+			that's made by Juliette who've also written a [Thai guide for GG players](https://docs.google.com/document/d/1wQg71ZG2w1RoWZVe7FPF4jdC2iomDSQZImgtdOLBD-E).
 		</Markdown>
 
 		<section>
