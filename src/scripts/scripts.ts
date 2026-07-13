@@ -2,6 +2,7 @@ import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
 import type { QuizDataset } from '@/components/quiz/dataset'
 import { thaiDatasets } from './thai/datasets'
+import { cyrillicDatasets } from './cyrillic/datasets'
 
 export interface ScriptTab {
 	label: string
@@ -127,9 +128,10 @@ export const scriptList: ScriptConfig[] = [
 			},*/
 			{ label: 'None', component: NoContent },
 		],
-		practiceTabs: [
-			{ label: 'Practice', component: PracticePlaceholder },
-		],
+		practiceTabs: (() => {
+			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
+			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
+		})(),
 	},
 	{
 		id: 'greek',
@@ -163,4 +165,5 @@ export const scriptsById = Object.fromEntries(scriptList.map((s) => [s.id, s]))
 // indexed the same as the practice tabs (which are built from these)
 export const datasetsById: Record<string, QuizDataset[]> = {
 	thai: thaiDatasets,
+	cyrillic: cyrillicDatasets,
 }
