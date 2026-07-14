@@ -268,7 +268,6 @@ ul {
 
 li {
 	border-right: 1px solid var(--c-border);
-	padding: 4px 5px 3px;
 	min-width: 38px;
 	min-height: 74px;
 }

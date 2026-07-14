@@ -58,26 +58,29 @@ function textOn(hex: string): string {
 }
 </script>
 
-<template><span
+<template><span class="langs"><span
 	v-for="c in codes"
 	:key="c"
 	class="lang"
 	:style="{ background: colorFor(c), color: textOn(colorFor(c)) }"
 	:title="nameFor(c)"
->{{ c.toUpperCase() }}</span></template>
+>{{ c.toUpperCase() }}</span></span></template>
 
 <style scoped>
+/* single wrapper so a badge group stays one row even in flex columns */
+.langs {
+	display: inline-flex;
+	gap: 2px;
+	vertical-align: middle;
+}
+
 .lang {
-	display: inline-block;
 	font-size: 0.6em;
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	border-radius: var(--radius-sm);
 	padding: 0 3px;
 	line-height: 1.5;
-	vertical-align: middle;
 	cursor: help;
 }
-
-.lang + .lang { margin-left: 2px; }
 </style>

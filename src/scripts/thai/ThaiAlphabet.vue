@@ -69,7 +69,7 @@ const consonants: Consonant[] = [
 	{ thai: 'ส', rom: 's', fin: 't', cls: 'high' },
 	{ thai: 'ห', rom: 'h', fin: '—', cls: 'high' },
 	{ thai: 'ฬ', rom: 'l', fin: 'n', cls: 'low', tags: ['rare'] },
-	{ thai: 'อ', rom: '—', fin: '(glottal)', cls: 'mid', gloss: 'vowel carrier' },
+	{ thai: 'อ', rom: '—', fin: '(glottal)', cls: 'mid', gloss: 'vowel carry' },
 	{ thai: 'ฮ', rom: 'h', fin: '—', cls: 'low' },
 ]
 
@@ -163,7 +163,7 @@ const specialMarks: Mark[] = [
 				Vowels — base consonant {{ baseCons }}
 				<ConsonantPicker v-model="baseCons" />
 			</h2>
-			<p>Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
+			<p class="section-note">Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
 			<div class="vtable-wrap">
 				<table>
 					<thead>
@@ -198,7 +198,7 @@ const specialMarks: Mark[] = [
 		<div class="two-col">
 			<section>
 				<h2>Tone marks</h2>
-				<p>Written above the consonant. Actual tone depends on consonant class + mark combination.</p>
+				<p class="section-note">Written above the consonant. Actual tone depends on consonant class + mark combination.</p>
 				<ol class="cols-fit">
 					<li v-for="m in toneMarks" :key="m.thai" class="cell">
 						<span class="thai xl">{{ replaceConsonant(m.thai) }}</span>
@@ -228,13 +228,6 @@ const specialMarks: Mark[] = [
 </template>
 
 <style scoped>
-section > p {
-	font-size: 0.75em;
-	color: var(--c-label);
-	padding: 3px 7px 2px;
-	border-bottom: 1px solid var(--c-border);
-}
-
 .legend {
 	display: flex;
 	gap: 8px;
@@ -258,8 +251,6 @@ section > p {
 }
 
 ol { display: grid; gap: 0; }
-
-li { padding: 3px 2px 2px; }
 
 .cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
 .cols-fill { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
@@ -296,15 +287,4 @@ td {
 }
 
 tr:nth-child(even) td { background: var(--c-alt); }
-
-footer {
-	font-size: 0.75em;
-	color: var(--c-muted);
-	border-top: 1px solid var(--c-border);
-	padding-top: 4px;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 4px;
-}
 </style>
