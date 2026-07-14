@@ -52,6 +52,20 @@
 	align-items: center;
 }
 
+/**
+  * Ruled cell grid — hairline borders for dense listings where the
+  * borderless look stops reading well. Outer-edge borders are clipped
+  * by the section's overflow via the negative margins.
+  */
+.sheet .ruled {
+	margin: 0 -1px -1px 0;
+}
+
+.sheet .ruled .cell {
+	border-right: 1px solid var(--c-border);
+	border-bottom: 1px solid var(--c-border);
+}
+
 .sheet .rom {
 	font-size: 1em;
 	color: var(--c-accent-ink);

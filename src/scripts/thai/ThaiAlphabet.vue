@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import CharBadge from './CharBadge.vue'
+import ConsonantPicker from './ConsonantPicker.vue'
 
-const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 const baseCons = ref('◌')
 
 function replaceConsonant(thai: string): string {
@@ -15,6 +16,7 @@ interface Consonant {
 	rom: string
 	fin?: string // only set when final differs from initial
 	gloss?: string
+	tags?: string[] // CharBadge tags (obsolete, rare, …)
 	cls: ConsonantClass
 }
 
@@ -27,19 +29,19 @@ interface Mark {
 const consonants: Consonant[] = [
 	{ thai: 'ก', rom: 'k', cls: 'mid' },
 	{ thai: 'ข', rom: 'kh', fin: 'k', cls: 'high' },
-	{ thai: 'ฃ', rom: 'kh', fin: 'k', cls: 'high', gloss: 'obsolete' },
+	{ thai: 'ฃ', rom: 'kh', fin: 'k', cls: 'high', tags: ['obsolete'] },
 	{ thai: 'ค', rom: 'kh', fin: 'k', cls: 'low' },
-	{ thai: 'ฅ', rom: 'kh', fin: 'k', cls: 'low', gloss: 'obsolete' },
+	{ thai: 'ฅ', rom: 'kh', fin: 'k', cls: 'low', tags: ['obsolete'] },
 	{ thai: 'ฆ', rom: 'kh', fin: 'k', cls: 'low' },
 	{ thai: 'ง', rom: 'ng', cls: 'low' },
 	{ thai: 'จ', rom: 'ch', fin: 't', cls: 'mid' },
-	{ thai: 'ฉ', rom: 'ch', fin: '—', cls: 'high', gloss: 'no final' },
+	{ thai: 'ฉ', rom: 'ch', fin: '—', cls: 'high' },
 	{ thai: 'ช', rom: 'ch', fin: 't', cls: 'low' },
 	{ thai: 'ซ', rom: 's', fin: 't', cls: 'low' },
 	{ thai: 'ฌ', rom: 'ch', fin: 't', cls: 'low' },
 	{ thai: 'ญ', rom: 'y', fin: 'n', cls: 'low' },
-	{ thai: 'ฎ', rom: 'd', fin: 't', cls: 'mid', gloss: 'rare' },
-	{ thai: 'ฏ', rom: 't', cls: 'mid', gloss: 'rare' },
+	{ thai: 'ฎ', rom: 'd', fin: 't', cls: 'mid', tags: ['rare'] },
+	{ thai: 'ฏ', rom: 't', cls: 'mid', tags: ['rare'] },
 	{ thai: 'ฐ', rom: 'th', fin: 't', cls: 'high' },
 	{ thai: 'ฑ', rom: 'th', fin: 't', cls: 'low' },
 	{ thai: 'ฒ', rom: 'th', fin: 't', cls: 'low' },
@@ -52,23 +54,23 @@ const consonants: Consonant[] = [
 	{ thai: 'น', rom: 'n', cls: 'low' },
 	{ thai: 'บ', rom: 'b', fin: 'p', cls: 'mid' },
 	{ thai: 'ป', rom: 'p', cls: 'mid' },
-	{ thai: 'ผ', rom: 'ph', fin: '—', cls: 'high', gloss: 'no final' },
-	{ thai: 'ฝ', rom: 'f', fin: '—', cls: 'high', gloss: 'no final' },
+	{ thai: 'ผ', rom: 'ph', fin: '—', cls: 'high' },
+	{ thai: 'ฝ', rom: 'f', fin: '—', cls: 'high' },
 	{ thai: 'พ', rom: 'ph', fin: 'p', cls: 'low' },
 	{ thai: 'ฟ', rom: 'f', fin: 'p', cls: 'low' },
 	{ thai: 'ภ', rom: 'ph', fin: 'p', cls: 'low' },
 	{ thai: 'ม', rom: 'm', cls: 'low' },
 	{ thai: 'ย', rom: 'y', cls: 'low' },
-	{ thai: 'ร', rom: 'r', fin: 'n/—', cls: 'low', gloss: 'often silent in final' },
+	{ thai: 'ร', rom: 'r', fin: 'n/—', cls: 'low' },
 	{ thai: 'ล', rom: 'l', fin: 'n', cls: 'low' },
-	{ thai: 'ว', rom: 'w', fin: 'o/u', cls: 'low', gloss: 'becomes vowel' },
+	{ thai: 'ว', rom: 'w', fin: 'o/u', cls: 'low', gloss: 'vowel-like' },
 	{ thai: 'ศ', rom: 's', fin: 't', cls: 'high' },
 	{ thai: 'ษ', rom: 's', fin: 't', cls: 'high' },
 	{ thai: 'ส', rom: 's', fin: 't', cls: 'high' },
-	{ thai: 'ห', rom: 'h', fin: '—', cls: 'high', gloss: 'no final' },
-	{ thai: 'ฬ', rom: 'l', fin: 'n', cls: 'low', gloss: 'rare' },
-	{ thai: 'อ', rom: '—', cls: 'mid', gloss: 'vowel carrier / glottal' },
-	{ thai: 'ฮ', rom: 'h', fin: '—', cls: 'low', gloss: 'no final' },
+	{ thai: 'ห', rom: 'h', fin: '—', cls: 'high' },
+	{ thai: 'ฬ', rom: 'l', fin: 'n', cls: 'low', tags: ['rare'] },
+	{ thai: 'อ', rom: '—', fin: '(glottal)', cls: 'mid', gloss: 'vowel carrier' },
+	{ thai: 'ฮ', rom: 'h', fin: '—', cls: 'low' },
 ]
 
 const toneMarks: Mark[] = [
@@ -128,24 +130,29 @@ const specialMarks: Mark[] = [
 <template>
 	<article class="sheet">
 		<section>
-			<h2>Consonants — traditional alphabetical order · color shows class</h2>
+			<h2>Consonants — traditional alphabetical order</h2>
 			<div class="legend">
 				<span>Class (affects tone):</span>
-				<span class="legend-item"><span class="legend-swatch" style="background:var(--mid)"></span> Mid</span>
-				<span class="legend-item"><span class="legend-swatch" style="background:var(--high)"></span> High</span>
-				<span class="legend-item"><span class="legend-swatch" style="background:var(--low)"></span> Low</span>
-				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (shown only when different)</span>
+				<CharBadge tag="mid" />
+				<CharBadge tag="high" />
+				<CharBadge tag="low" />
+				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (when different · — = no final/silent)</span>
 			</div>
-			<ol class="cols-fill">
+			<ol class="cols-fill ruled">
 				<li
 					v-for="c in consonants"
 					:key="c.thai"
 					class="cell"
-					:class="`c-${c.cls}`"
 				>
 					<span class="thai">{{ c.thai }}</span>
-					<span class="rom">{{ c.rom }}</span>
-					<span v-if="c.fin" class="final"><em>{{ c.fin }}</em></span>
+					<span class="rom">
+						{{ c.rom }}
+						<em v-if="c.fin" class="final">{{ c.fin }}</em>
+					</span>
+					<span class="badges">
+						<CharBadge :tag="c.cls" />
+						<CharBadge v-for="t in c.tags" :key="t" :tag="t" />
+					</span>
 					<span v-if="c.gloss" class="gloss">{{ c.gloss }}</span>
 				</li>
 			</ol>
@@ -154,18 +161,7 @@ const specialMarks: Mark[] = [
 		<section>
 			<h2>
 				Vowels — base consonant {{ baseCons }}
-				<span class="cons-picker">
-					<button
-						v-for="c in placeholders"
-						:key="c"
-						type="button"
-						class="cons-btn"
-						:class="{ active: baseCons === c }"
-						@click="baseCons = c"
-					>
-						{{ c }}
-					</button>
-				</span>
+				<ConsonantPicker v-model="baseCons" />
 			</h2>
 			<p>Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
 			<div class="vtable-wrap">
@@ -232,39 +228,6 @@ const specialMarks: Mark[] = [
 </template>
 
 <style scoped>
-article {
-	--mid: #1a5c8a;
-	--high: #a0320a;
-	--low: #2e7d32;
-}
-
-.cons-picker {
-	display: flex;
-	gap: 2px;
-	margin-left: auto;
-}
-
-.cons-btn {
-	font-family: var(--font-thai);
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1;
-	padding: 0 5px 1px;
-	border: 1px solid rgba(255, 255, 255, 0.6);
-	border-radius: var(--radius);
-	background: transparent;
-	color: rgba(255, 255, 255, 0.92);
-	cursor: pointer;
-	text-transform: none;
-	letter-spacing: 0;
-}
-
-.cons-btn.active {
-	background: rgba(255, 255, 255, 0.9);
-	border-color: transparent;
-	color: var(--c-head);
-}
-
 section > p {
 	font-size: 0.75em;
 	color: var(--c-label);
@@ -283,18 +246,6 @@ section > p {
 	flex-wrap: wrap;
 }
 
-.legend-item {
-	display: flex;
-	align-items: center;
-	gap: 3px;
-}
-
-.legend-swatch {
-	width: 8px;
-	height: 8px;
-	border-radius: var(--radius-sm);
-}
-
 .legend-note {
 	color: var(--c-muted);
 	margin-left: 4px;
@@ -311,11 +262,12 @@ ol { display: grid; gap: 0; }
 li { padding: 3px 2px 2px; }
 
 .cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
-.cols-fill { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
+.cols-fill { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
 
-li.c-mid { background: #ddeaf5; }
-li.c-high { background: #faeae3; }
-li.c-low { background: #e3f2e5; }
+.badges {
+	display: inline-flex;
+	gap: 2px;
+}
 
 .thai { font-family: var(--font-thai); font-size: var(--glyph); line-height: 1.15; }
 .thai.xl { font-size: calc(var(--glyph) * 1.2); }
