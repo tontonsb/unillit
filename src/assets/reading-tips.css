@@ -10,17 +10,17 @@
 }
 
 .reading-tips h2 {
-	font-size: 0.9em;
+	font-family: var(--serif);
+	font-size: 1.15em;
 	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
 	color: var(--c-accent);
 	margin-top: 1.25rem;
 	margin-bottom: 0.3rem;
 }
 
 .reading-tips h3 {
-	font-size: 0.9em;
+	font-family: var(--serif);
+	font-size: 1em;
 	font-weight: 600;
 	color: var(--c-head);
 	margin-top: 0.9rem;
@@ -139,10 +139,9 @@
 }
 
 .reading-tips dt {
-	font-size: 1.1em;
 	font-weight: 600;
-	color: var(--c-accent);
-	font-family: var(--sans);
+	color: var(--c-accent-ink);
+	font-family: var(--serif);
 }
 
 .reading-tips dd {

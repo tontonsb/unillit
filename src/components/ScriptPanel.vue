@@ -85,7 +85,8 @@ h1 {
 }
 
 .panel-name {
-	font-size: 13px;
+	font-family: var(--serif);
+	font-size: 14px;
 	font-weight: 600;
 	color: var(--c-head);
 }

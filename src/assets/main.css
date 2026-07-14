@@ -6,19 +6,31 @@
 
 :root {
 	--sans: 'Noto Sans', system-ui, sans-serif;
+	--serif: 'Lora', 'Noto Serif', Georgia, serif;
 	--font-arabic: 'Noto Naskh Arabic', serif;
 	--font-bengali: 'Noto Sans Bengali', sans-serif;
 	--font-cyrillic: 'Noto Serif', Georgia, serif;
 	--font-cyrillic-style: normal;
 	--font-thai: 'Noto Sans Thai', system-ui, sans-serif;
 
+	/**
+	  * Ink is near-neutral (faint green cast); the greens carry the brand:
+	  * - quirky teal-green accent pair
+	  * - mint borders/stripes
+	  * - highway-sign green for roadsign-like headings
+	  *
+	  * --c-accent: fills, large text (h1), graphic uses — too light for AA at body sizes
+	  * --c-accent-ink: body-size text, links, borders
+	  * --c-sign: roadsign fills only, always under white text
+	  */
 	--c-bg: #fafaf8;
 	--c-border: #c2dccb;
-	--c-head: #23351f;
-	--c-label: #46603e;
+	--c-head: #242b26;
+	--c-label: #3e4842;
 	--c-accent: #0a8f6f;
 	--c-accent-ink: #0f7256;
-	--c-muted: #586e5b;
+	--c-sign: #006747;
+	--c-muted: #67716b;
 	--c-cell: #ffffff;
 	--c-alt: #e3f3ec;
 

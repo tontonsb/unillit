@@ -209,7 +209,8 @@ dd {
 }
 
 .card-name {
-	font-size: 0.95rem;
+	font-family: var(--serif);
+	font-size: 1rem;
 	font-weight: 600;
 	color: var(--c-label);
 }

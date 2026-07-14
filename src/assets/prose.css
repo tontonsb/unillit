@@ -8,19 +8,21 @@
 	margin: 0 auto;
 }
 
+/* 500 here vs 600 in reading-tips: the larger prose sizes carry more
+   ink per stroke, so they want the lighter weight */
 .prose h1 {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: var(--c-head);
+	font-family: var(--serif);
+	font-size: 1.6rem;
+	font-weight: 500;
+	color: var(--c-accent);
 	margin-bottom: 0.25rem;
 }
 
 .prose h2 {
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: var(--c-muted);
+	font-family: var(--serif);
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: var(--c-accent);
 	margin-top: 1.75rem;
 	margin-bottom: 0.5rem;
 }
@@ -30,7 +32,8 @@
 }
 
 .prose h3 {
-	font-size: 0.85rem;
+	font-family: var(--serif);
+	font-size: 0.95rem;
 	font-weight: 600;
 	color: var(--c-label);
 	margin-bottom: 0.4rem;

@@ -304,10 +304,10 @@ li:last-child { border-right: none; }
 	font-weight: 400;
 	line-height: 1;
 	padding: 0 5px 1px;
-	border: 1px solid rgba(255, 255, 255, 0.35);
+	border: 1px solid rgba(255, 255, 255, 0.6);
 	border-radius: var(--radius);
 	background: transparent;
-	color: rgba(255, 255, 255, 0.65);
+	color: rgba(255, 255, 255, 0.92);
 	cursor: pointer;
 	text-transform: none;
 	letter-spacing: 0;

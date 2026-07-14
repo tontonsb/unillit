@@ -190,39 +190,39 @@
 			<h2>Common elements in place names</h2>
 			<dl>
 				<div>
-					<dt><span class="thai">นคร</span> <span class="rtgs">Nakhon</span></dt>
+					<dt><span class="thai">นคร</span> Nakhon</dt>
 					<dd>great city</dd>
 				</div>
 				<div>
-					<dt><span class="thai">บุรี</span> <span class="rtgs">Buri / Puri</span></dt>
+					<dt><span class="thai">บุรี</span> Buri / Puri</dt>
 					<dd>fortified city</dd>
 				</div>
 				<div>
-					<dt><span class="thai">ราช</span> <span class="rtgs">Raat / Ratcha</span></dt>
+					<dt><span class="thai">ราช</span> Raat / Ratcha</dt>
 					<dd>royal/king</dd>
 				</div>
 				<div>
-					<dt><span class="thai">ธานี</span> <span class="rtgs">Thani</span></dt>
+					<dt><span class="thai">ธานี</span> Thani</dt>
 					<dd>city</dd>
 				</div>
 				<div>
-					<dt><span class="thai">เชียง</span> <span class="rtgs">Chiang</span></dt>
+					<dt><span class="thai">เชียง</span> Chiang</dt>
 					<dd>city (northern)</dd>
 				</div>
 				<div>
-					<dt><span class="thai">บาง</span> <span class="rtgs">Bang</span></dt>
+					<dt><span class="thai">บาง</span> Bang</dt>
 					<dd>waterway settlement</dd>
 				</div>
 				<div>
-					<dt><span class="thai">เขา</span> <span class="rtgs">Khao</span></dt>
+					<dt><span class="thai">เขา</span> Khao</dt>
 					<dd>mountain</dd>
 				</div>
 				<div>
-					<dt><span class="thai">แม่</span> <span class="rtgs">Mae</span></dt>
+					<dt><span class="thai">แม่</span> Mae</dt>
 					<dd>river / mother</dd>
 				</div>
 				<div>
-					<dt><span class="thai">อ่าว</span> <span class="rtgs">Ao</span></dt>
+					<dt><span class="thai">อ่าว</span> Ao</dt>
 					<dd>bay</dd>
 				</div>
 			</dl>
@@ -247,22 +247,10 @@
 </template>
 
 <style scoped>
-/* Thai term cards carry inline badges, so the dt is a flex row */
-dt {
-	display: flex;
-	align-items: baseline;
-	flex-wrap: wrap;
-	gap: 0.4rem;
-}
-
 .thai {
 	color: var(--c-head);
 	font-family: var(--font-thai);
-}
-
-.rtgs {
-	font-size: 0.9em;
-	color: var(--c-accent-ink);
+	font-size: 1.1em;
 }
 
 .f-sans {
@@ -272,7 +260,7 @@ dt {
 }
 
 .f-sarabun {
-	font-family: 'Sarabun', sans-serif;
+	font-family: Sarabun, sans-serif;
 	font-size: 1.6em;
 	line-height: 1;
 }
@@ -284,7 +272,7 @@ dt {
 }
 
 .f-trirong {
-	font-family: 'Trirong', serif;
+	font-family: Trirong, serif;
 	font-size: 1.6em;
 	line-height: 1;
 }
