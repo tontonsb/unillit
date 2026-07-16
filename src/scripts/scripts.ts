@@ -113,8 +113,8 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Cyrillic',
 		nativeName: 'Кириллица',
 		abbr: 'Ж',
-		meta: 'Alphabet written left to right, 33 letters',
-		countries: 'Russia, Ukraine, Bulgaria',
+		meta: 'Alphabet written left to right, 23 shared letters + per-lang additions',
+		countries: 'Russia, Ukraine, Belarus, Balkans, Central Asia',
 		status: 'beta',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
 		infoTabs: [
