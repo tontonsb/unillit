@@ -97,7 +97,7 @@ function copyLink() {
 	flex-shrink: 0;
 	padding: 3px 8px;
 	border: 1px solid var(--c-border);
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
 	font-size: 11px;

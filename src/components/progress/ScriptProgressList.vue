@@ -151,7 +151,7 @@ h2 {
 	color: var(--c-muted);
 	background: var(--c-alt);
 	border: 1px solid var(--c-border);
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius);
 	padding: 1px 7px;
 	white-space: nowrap;
 }

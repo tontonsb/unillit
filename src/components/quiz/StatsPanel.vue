@@ -271,7 +271,7 @@ const nudge = computed(() => {
 .filter-pill {
 	padding: 2px 8px;
 	border: 1px solid var(--c-border);
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
 	font-size: 10px;

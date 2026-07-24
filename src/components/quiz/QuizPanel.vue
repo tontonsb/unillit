@@ -299,7 +299,7 @@ const { resultCopied, copyResults } = useResultShare({
 	width: 52px;
 	padding: 2px 6px;
 	border: 1px solid var(--c-border);
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
 	font-size: 11px;
@@ -315,7 +315,7 @@ const { resultCopied, copyResults } = useResultShare({
 .pill {
 	padding: 3px 10px;
 	border: 1px solid var(--c-border);
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
 	font-size: 11px;
