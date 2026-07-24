@@ -93,7 +93,7 @@ h1 {
 
 .panel-native {
 	font-size: 15px;
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 }
 
 nav {

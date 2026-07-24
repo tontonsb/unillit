@@ -289,7 +289,7 @@ const nudge = computed(() => {
 
 .filter-pill.active {
 	background: var(--c-alt);
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 	color: var(--c-head);
 }
 
@@ -383,5 +383,5 @@ const nudge = computed(() => {
 	color: var(--c-muted);
 }
 
-.login-note a { color: var(--c-accent-ink); }
+.login-note a { color: var(--c-sign); }
 </style>

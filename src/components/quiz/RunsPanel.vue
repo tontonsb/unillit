@@ -143,5 +143,5 @@ watch(() => user.value?.id, loadRuns)
 	color: var(--c-muted);
 }
 
-.login-note a { color: var(--c-accent-ink); }
+.login-note a { color: var(--c-sign); }
 </style>

@@ -90,7 +90,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 .choice:disabled { cursor: default; }
 
 .choice:hover:not(:disabled) {
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 	background: var(--c-alt);
 }
 

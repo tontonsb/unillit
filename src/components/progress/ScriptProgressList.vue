@@ -83,7 +83,7 @@ h2 {
 
 .script-native {
 	font-size: 1.1em;
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 }
 
 .practice-link {
@@ -93,7 +93,7 @@ h2 {
 	margin-left: auto;
 }
 
-.practice-link:hover { color: var(--c-accent-ink); }
+.practice-link:hover { color: var(--c-sign); }
 
 .note {
 	font-size: 13px;

@@ -117,7 +117,7 @@
 }
 
 .reading-tips a {
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 	text-decoration: underline;
 	text-underline-offset: 2px;
 }
@@ -140,7 +140,7 @@
 
 .reading-tips dt {
 	font-weight: 600;
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 	font-family: var(--serif);
 }
 

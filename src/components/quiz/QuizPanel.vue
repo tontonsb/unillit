@@ -309,7 +309,7 @@ const { resultCopied, copyResults } = useResultShare({
 
 .count-input:focus {
 	outline: none;
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 }
 
 .pill {
@@ -343,7 +343,7 @@ const { resultCopied, copyResults } = useResultShare({
 
 .pill.active {
 	background: var(--c-alt);
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 	color: var(--c-head);
 }
 

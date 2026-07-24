@@ -20,15 +20,13 @@
 	  * - highway-sign green for roadsign-like headings
 	  *
 	  * --c-accent: fills, large text (h1), graphic uses — too light for AA at body sizes
-	  * --c-accent-ink: body-size text, links, borders
-	  * --c-sign: roadsign fills only, always under white text
+	  * --c-sign: everything that must be legible — text ink, links, borders — and sign plates under white
 	  */
 	--c-bg: #fafaf8;
 	--c-border: #c2dccb;
 	--c-head: #242b26;
 	--c-label: #3e4842;
 	--c-accent: #0a8f6f;
-	--c-accent-ink: #0f7256;
 	--c-sign: #006747;
 	--c-muted: #67716b;
 	--c-cell: #ffffff;

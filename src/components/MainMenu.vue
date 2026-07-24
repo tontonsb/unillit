@@ -210,11 +210,6 @@ nav {
 	border-radius: 0 var(--radius) var(--radius) 0;
 }
 
-.nav-item.active .item-native,
-.nav-item.active .item-abbr {
-	color: #fff;
-}
-
 .nav-item.coming-soon {
 	opacity: 0.4;
 	cursor: default;
@@ -238,20 +233,20 @@ nav {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	color: var(--c-accent-ink);
-	border: 1px solid var(--c-accent-ink);
+	color: var(--c-sign);
+	border: 1px solid var(--c-sign);
 	border-radius: 3px;
 	padding: 0 3px;
 	vertical-align: middle;
 }
 
+.collapsed .beta-badge {
+	display: none;
+}
+
 .nav-item.active .beta-badge {
 	color: #fff;
 	border-color: rgba(255, 255, 255, 0.6);
-}
-
-.collapsed .beta-badge {
-	display: none;
 }
 
 .item-label,
@@ -267,14 +262,14 @@ nav {
 
 .item-native {
 	font-size: 15px;
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 	line-height: 1.3;
 }
 
 .item-abbr {
 	display: none;
 	font-size: 17px;
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 	line-height: 1;
 }
 
@@ -285,6 +280,11 @@ nav {
 
 .collapsed .item-abbr {
 	display: block;
+}
+
+.nav-item.active .item-native,
+.nav-item.active .item-abbr {
+	color: #fff;
 }
 
 .collapsed .nav-item {

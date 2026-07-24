@@ -63,7 +63,7 @@
 
 /* links within running text (not standalone card/nav links) */
 .prose :is(p, li, dd) a {
-	color: var(--c-accent-ink);
+	color: var(--c-sign);
 	text-decoration: underline;
 	text-underline-offset: 2px;
 }

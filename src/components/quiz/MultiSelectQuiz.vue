@@ -177,13 +177,13 @@ function optClass(opt: string): string {
 .choice:disabled { cursor: default; }
 
 .choice:hover:not(:disabled) {
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 	background: var(--c-alt);
 }
 
 .box { font-size: 16px; line-height: 1; }
 
-.choice.selected { border-color: var(--c-accent-ink); background: var(--c-alt); color: var(--c-head); }
+.choice.selected { border-color: var(--c-sign); background: var(--c-alt); color: var(--c-head); }
 .choice.correct  { background: var(--fb-ok-bg); border-color: var(--c-good); color: var(--c-good); }
 .choice.wrong    { background: var(--fb-wrong-bg); border-color: var(--c-bad); color: var(--c-bad); }
 .choice.missed   { border-color: var(--c-good); color: var(--c-good); border-style: dashed; }

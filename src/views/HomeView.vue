@@ -164,7 +164,7 @@ dd {
 }
 
 .script-card:hover {
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 	background: var(--c-alt);
 }
 
@@ -186,8 +186,8 @@ dd {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	color: var(--c-accent-ink);
-	border: 1px solid var(--c-accent-ink);
+	color: var(--c-sign);
+	border: 1px solid var(--c-sign);
 	border-radius: 3px;
 	padding: 0 0.25em;
 	vertical-align: middle;

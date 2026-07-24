@@ -113,7 +113,7 @@ function handleSubmit() {
 }
 
 .answer-input:focus {
-	border-color: var(--c-accent-ink);
+	border-color: var(--c-sign);
 }
 
 .feedback {
@@ -176,7 +176,7 @@ function handleSubmit() {
 
 .tolerance-slider {
 	flex: 1;
-	accent-color: var(--c-accent-ink);
+	accent-color: var(--c-sign);
 	cursor: pointer;
 }
 
