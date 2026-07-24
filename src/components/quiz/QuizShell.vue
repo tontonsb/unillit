@@ -86,8 +86,7 @@ const activeTab = ref<Tab>('quiz')
 .tab-btn:hover { background: var(--c-alt); }
 
 .tab-btn.active {
-	color: var(--c-accent-ink);
-	border-top: 2px solid var(--c-accent);
-	margin-top: -1px;
+	color: #fff;
+	background: var(--c-sign);
 }
 </style>

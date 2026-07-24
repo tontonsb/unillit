@@ -65,65 +65,64 @@ const { user, loginWithDiscord, logout } = useAuth()
 				<span class="item-abbr" aria-hidden="true">?</span>
 			</RouterLink>
 
-		</nav>
+			<RouterLink to="/roadmap"
+				class="nav-item push-end"
+				:class="{ active: route.name === 'roadmap' }"
+				title="Roadmap">
+				<span class="item-label">Roadmap</span>
+				<span class="item-abbr" aria-hidden="true">🗺️</span>
+			</RouterLink>
 
-		<RouterLink to="/roadmap"
-			class="nav-item"
-			:class="{ active: route.name === 'roadmap' }"
-			title="Roadmap">
-			<span class="item-label">Roadmap</span>
-			<span class="item-abbr" aria-hidden="true">🗺️</span>
-		</RouterLink>
+			<RouterLink to="/progress"
+				class="nav-item"
+				:class="{ active: route.name === 'progress' }"
+				title="Progress">
+				<span class="item-label">Progress</span>
+				<span class="item-abbr" aria-hidden="true">◷</span>
+			</RouterLink>
 
-		<RouterLink to="/progress"
-			class="nav-item"
-			:class="{ active: route.name === 'progress' }"
-			title="Progress">
-			<span class="item-label">Progress</span>
-			<span class="item-abbr" aria-hidden="true">◷</span>
-		</RouterLink>
-
-		<div class="user-section">
-			<template v-if="!user">
-				<button
-					class="nav-item nav-btn"
-					title="Login with Discord"
-					@click="collapsed ? (collapsed = false) : loginWithDiscord()"
-				>
-					<span class="item-label">Login with Discord</span>
-					<span class="item-abbr" aria-hidden="true">👤</span>
-				</button>
-			</template>
-			<template v-else>
-				<button
-					v-if="collapsed"
-					class="nav-item nav-btn user-item"
-					:title="user.user_metadata.full_name ?? user.email"
-					@click="collapsed = false"
-				>
-					<img
-						v-if="user.user_metadata.avatar_url"
-						:src="user.user_metadata.avatar_url"
-						class="user-avatar"
-						alt="User avatar"
+			<div class="user-section">
+				<template v-if="!user">
+					<button
+						class="nav-item nav-btn"
+						title="Login with Discord"
+						@click="collapsed ? (collapsed = false) : loginWithDiscord()"
 					>
-				</button>
+						<span class="item-label">Login with Discord</span>
+						<span class="item-abbr" aria-hidden="true">👤</span>
+					</button>
+				</template>
 				<template v-else>
-					<div class="nav-item user-item">
+					<button
+						v-if="collapsed"
+						class="nav-item nav-btn user-item"
+						:title="user.user_metadata.full_name ?? user.email"
+						@click="collapsed = false"
+					>
 						<img
 							v-if="user.user_metadata.avatar_url"
 							:src="user.user_metadata.avatar_url"
 							class="user-avatar"
 							alt="User avatar"
 						>
-						<span class="user-name">{{ user.user_metadata.full_name ?? user.email }}</span>
-					</div>
-					<button class="nav-item nav-btn" title="Log out" @click="logout">
-						<span class="item-label">Logout</span>
 					</button>
+					<template v-else>
+						<div class="nav-item user-item">
+							<img
+								v-if="user.user_metadata.avatar_url"
+								:src="user.user_metadata.avatar_url"
+								class="user-avatar"
+								alt="User avatar"
+							>
+							<span class="user-name">{{ user.user_metadata.full_name ?? user.email }}</span>
+						</div>
+						<button class="nav-item nav-btn" title="Log out" @click="logout">
+							<span class="item-label">Logout</span>
+						</button>
+					</template>
 				</template>
-			</template>
-		</div>
+			</div>
+		</nav>
 	</aside>
 </template>
 
@@ -182,18 +181,20 @@ nav {
 	height: 1px;
 	flex-shrink: 0;
 	background: var(--c-border);
-	margin: 4px 0;
+	margin: 4px 10px;
 }
 
 .nav-item {
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
-	padding: 10px 14px;
+	padding: 8px 10px;
+	margin-block: 1px;
+	margin-inline: 6px;
+	border-radius: var(--radius);
 	text-decoration: none;
 	color: var(--c-label);
-	border-left: 3px solid transparent;
-	transition: background 0.15s, border-color 0.15s;
+	transition: background 0.15s, color 0.15s;
 	gap: 2px;
 	overflow: hidden;
 }
@@ -203,14 +204,24 @@ nav {
 }
 
 .nav-item.active {
-	background: var(--c-alt);
-	border-left-color: var(--c-accent-ink);
-	color: var(--c-head);
+	background: var(--c-sign);
+	color: #fff;
+	margin-left: 0;
+	border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.nav-item.active .item-native,
+.nav-item.active .item-abbr {
+	color: #fff;
 }
 
 .nav-item.coming-soon {
 	opacity: 0.4;
 	cursor: default;
+}
+
+.nav-item.coming-soon:hover {
+	background: none;
 }
 
 .nav-item.beta {
@@ -232,6 +243,11 @@ nav {
 	border-radius: 3px;
 	padding: 0 3px;
 	vertical-align: middle;
+}
+
+.nav-item.active .beta-badge {
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.6);
 }
 
 .collapsed .beta-badge {
@@ -273,19 +289,37 @@ nav {
 
 .collapsed .nav-item {
 	align-items: center;
-	padding: 10px 0;
+	padding: 8px 0;
+	margin-inline: 4px;
+}
+
+.collapsed .nav-item.active {
+	margin-left: 4px;
+	border-radius: var(--radius);
 }
 
 .user-section {
 	flex-shrink: 0;
-	border-top: 1px solid var(--c-border);
+	display: flex;
+	flex-direction: column;
+}
+
+.push-end {
+	margin-top: auto;
+}
+
+.user-section::before {
+	content: '';
+	display: block;
+	height: 1px;
+	background: var(--c-border);
+	margin: 4px 10px;
 }
 
 .nav-btn {
 	border: none;
 	background: none;
 	cursor: pointer;
-	width: 100%;
 	text-align: left;
 	font: inherit;
 }
