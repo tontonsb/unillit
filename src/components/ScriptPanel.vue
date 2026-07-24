@@ -109,25 +109,28 @@ nav {
 nav::-webkit-scrollbar { display: none; }
 
 .tab {
-	padding: 8px 12px;
+	align-self: center;
+	padding: 4px 10px;
 	border: none;
+	border-radius: var(--radius-sm);
 	background: transparent;
 	color: var(--c-muted);
 	font-size: 12px;
 	font-family: var(--sans);
 	cursor: pointer;
-	border-bottom: 2px solid transparent;
 	white-space: nowrap;
-	transition: color 0.15s, border-color 0.15s;
+	transition: color 0.15s, background-color 0.15s;
 }
 
 .tab:hover {
 	color: var(--c-label);
+	background: var(--c-alt);
 }
 
+/* active tab as a little sign plate, echoing the sheet section bars */
 .tab.active {
-	color: var(--c-head);
-	border-bottom-color: var(--c-accent-ink);
+	color: #fff;
+	background: var(--c-sign);
 }
 
 .panel-content {
