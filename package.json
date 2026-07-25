@@ -1,6 +1,6 @@
 {
-	"name": "transliterations",
-	"version": "0.7.2",
+	"name": "unillit",
+	"version": "1.0.0",
 	"private": true,
 	"type": "module",
 	"scripts": {

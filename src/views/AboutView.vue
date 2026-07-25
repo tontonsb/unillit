@@ -41,6 +41,14 @@ const version = __APP_VERSION__
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>1.0</dt>
+			<dd>
+				The project seems stable enough to pin v1 now.
+				<ul>
+					<li>Another design polish, mainly menus</li>
+				</ul>
+			</dd>
+
 			<dt>0.7.2</dt>
 			<dd>
 				<ul>
