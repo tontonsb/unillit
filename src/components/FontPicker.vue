@@ -40,7 +40,4 @@ const model = defineModel<string>({ required: true })
 	cursor: pointer;
 }
 
-.picker-select:focus {
-	outline: 1px solid var(--c-accent);
-}
 </style>

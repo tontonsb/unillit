@@ -163,6 +163,10 @@ aside.collapsed {
 	background: var(--c-alt);
 }
 
+.toggle-btn:focus-visible {
+	outline-offset: -2px;
+}
+
 .toggle-icon {
 	line-height: 1;
 	font-style: normal;

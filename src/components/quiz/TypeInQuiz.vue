@@ -108,7 +108,6 @@ function handleSubmit() {
 	font-family: var(--sans);
 	background: var(--c-cell);
 	color: var(--c-head);
-	outline: none;
 	transition: border-color 0.15s;
 }
 
@@ -176,7 +175,6 @@ function handleSubmit() {
 
 .tolerance-slider {
 	flex: 1;
-	accent-color: var(--c-sign);
 	cursor: pointer;
 }
 

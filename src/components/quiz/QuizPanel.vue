@@ -308,7 +308,6 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .count-input:focus {
-	outline: none;
 	border-color: var(--c-sign);
 }
 

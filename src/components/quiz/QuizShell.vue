@@ -85,6 +85,8 @@ const activeTab = ref<Tab>('quiz')
 
 .tab-btn:hover { background: var(--c-alt); }
 
+.tab-btn:focus-visible { outline-offset: -2px; }
+
 .tab-btn.active {
 	color: #fff;
 	background: var(--c-sign);

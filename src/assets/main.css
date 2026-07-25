@@ -50,6 +50,20 @@
 
 	--sidebar-width: 200px;
 	--sidebar-collapsed-width: 40px;
+
+	accent-color: var(--c-accent);
+}
+
+/* Accent is below AA for text, but focus rings and selection are
+   non-text UI (3:1), so the brand green is free to show up there. */
+:focus-visible {
+	outline: 2px solid var(--c-accent);
+	outline-offset: 2px;
+}
+
+::selection {
+	background: var(--c-alt);
+	color: var(--c-head);
 }
 
 .cyr {
@@ -71,7 +85,7 @@ body {
 }
 
 abbr {
-	border-bottom: 1px dotted var(--c-muted);
+	border-bottom: 1px dotted var(--c-accent);
 	cursor: help;
 	text-decoration: none;
 }

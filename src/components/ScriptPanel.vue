@@ -127,7 +127,10 @@ nav::-webkit-scrollbar { display: none; }
 	background: var(--c-alt);
 }
 
-/* active tab as a little sign plate, echoing the sheet section bars */
+.tab:focus-visible {
+	outline-offset: -2px;
+}
+
 .tab.active {
 	color: #fff;
 	background: var(--c-sign);

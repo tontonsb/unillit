@@ -61,6 +61,10 @@
 	color: var(--c-label);
 }
 
+.prose li::marker {
+	color: var(--c-accent);
+}
+
 /* links within running text (not standalone card/nav links) */
 .prose :is(p, li, dd) a {
 	color: var(--c-sign);
