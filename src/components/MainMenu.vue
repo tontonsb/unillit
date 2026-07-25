@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 import { useAuth } from '@/composables/useAuth'
@@ -7,15 +7,38 @@ import { useAuth } from '@/composables/useAuth'
 const collapsed = ref(true)
 const route = useRoute()
 const { user, loginWithDiscord, logout } = useAuth()
+
+// Windows Chrome renders a ~15px scrollbar; it eats enough of the collapsed
+// sidebar to make the buttons awkward. Measure whatever the scrollbar actually
+// takes and widen the sidebar by that much, but only while nav overflows.
+const nav = useTemplateRef<HTMLElement>('nav')
+const scrollbarWidth = ref(0)
+
+function measure() {
+	const el = nav.value
+	if (!el) return
+
+	scrollbarWidth.value = el.offsetWidth - el.clientWidth
+}
+
+let observer: ResizeObserver | undefined
+
+onMounted(() => {
+	observer = new ResizeObserver(measure)
+	if (nav.value) observer.observe(nav.value)
+	measure()
+})
+
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-	<aside :class="{ collapsed }">
+	<aside :class="{ collapsed }" :style="{ '--scrollbar-width': `${scrollbarWidth}px` }">
 		<button class="toggle-btn" @click="collapsed = !collapsed" :title="collapsed ? 'Expand sidebar' : 'Collapse sidebar'">
 			<span class="toggle-icon">{{ collapsed ? '›' : '‹' }}</span>
 		</button>
 
-		<nav>
+		<nav ref="nav">
 			<RouterLink to="/"
 				class="nav-item"
 				:class="{ active: route.name === 'home' }"
@@ -128,7 +151,7 @@ const { user, loginWithDiscord, logout } = useAuth()
 
 <style scoped>
 aside {
-	width: var(--sidebar-width);
+	width: calc(var(--sidebar-width) + var(--scrollbar-width, 0px));
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
@@ -140,7 +163,7 @@ aside {
 }
 
 aside.collapsed {
-	width: var(--sidebar-collapsed-width);
+	width: calc(var(--sidebar-collapsed-width) + var(--scrollbar-width, 0px));
 }
 
 .toggle-btn {
@@ -177,6 +200,7 @@ nav {
 	flex-direction: column;
 	padding: 8px 0;
 	overflow-y: auto;
+	scrollbar-width: thin;
 	flex: 1;
 	min-height: 0;
 }
