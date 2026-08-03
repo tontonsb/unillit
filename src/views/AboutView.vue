@@ -158,12 +158,6 @@ const version = __APP_VERSION__
 		</p>
 
 		<p>
-			Currently this site is in a beta release.
-			The content for Thai quizzes was compiled using AI and has not been entirely proofread yet.
-			Same goes for the placeholder content of the other (non-Thai) scripts.
-		</p>
-
-		<p>
 			If you see something wrong on this site, let me know.
 		</p>
 		<ul>
