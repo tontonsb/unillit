@@ -1,0 +1,520 @@
+---
+name: Unillit
+description: A printed map-shop reference sheet, rebuilt as a web app for reading foreign scripts.
+colors:
+  signal-teal: "#0a8f6f"
+  highway-green: "#006747"
+  mint-wash: "#e3f3ec"
+  mint-rule: "#c2dccb"
+  warm-sheet: "#fafaf8"
+  cell-white: "#ffffff"
+  deep-ink: "#242b26"
+  body-ink: "#3e4842"
+  faded-ink: "#67716b"
+  tally-good: "#3a7d44"
+  tally-warn: "#8a5e10"
+  tally-bad: "#b94040"
+  feedback-correct-bg: "#edf7ee"
+  feedback-wrong-bg: "#fdf0f0"
+  feedback-fuzzy-bg: "#eef5df"
+  feedback-fuzzy-ink: "#5a7030"
+  feedback-fuzzy-user-bg: "#f5f5e8"
+  feedback-fuzzy-user-ink: "#726c3c"
+typography:
+  display:
+    fontFamily: "Lora, 'Noto Serif', Georgia, serif"
+    fontSize: "1.6rem"
+    fontWeight: 500
+    lineHeight: 1.5
+  headline:
+    fontFamily: "Lora, 'Noto Serif', Georgia, serif"
+    fontSize: "1.1rem"
+    fontWeight: 500
+    lineHeight: 1.5
+  title:
+    fontFamily: "Lora, 'Noto Serif', Georgia, serif"
+    fontSize: "0.95rem"
+    fontWeight: 600
+    lineHeight: 1.5
+  body:
+    fontFamily: "'Noto Sans', system-ui, sans-serif"
+    fontSize: "0.9rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  label:
+    fontFamily: "'Noto Sans', system-ui, sans-serif"
+    fontSize: "10px"
+    fontWeight: 600
+    letterSpacing: "0.06em"
+  glyph:
+    fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
+    fontSize: "clamp(24px, 1.56vw, 30px)"
+    fontWeight: 400
+    lineHeight: 1.15
+  prompt:
+    fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
+    fontSize: "4rem"
+    fontWeight: 400
+    lineHeight: 1.2
+rounded:
+  sm: "2px"
+  md: "4px"
+  full: "50%"
+spacing:
+  hair: "2px"
+  xs: "4px"
+  sm: "8px"
+  md: "12px"
+  lg: "1.25rem"
+  xl: "2rem"
+components:
+  button-primary:
+    backgroundColor: "{colors.signal-teal}"
+    textColor: "{colors.cell-white}"
+    rounded: "{rounded.md}"
+    padding: "8px 20px"
+  button-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.body-ink}"
+    rounded: "{rounded.md}"
+    padding: "8px 20px"
+  pill:
+    backgroundColor: "transparent"
+    textColor: "{colors.faded-ink}"
+    rounded: "{rounded.md}"
+    padding: "3px 10px"
+  pill-active:
+    backgroundColor: "{colors.mint-wash}"
+    textColor: "{colors.deep-ink}"
+    rounded: "{rounded.md}"
+    padding: "3px 10px"
+  tab:
+    backgroundColor: "transparent"
+    textColor: "{colors.faded-ink}"
+    rounded: "{rounded.sm}"
+    padding: "4px 10px"
+  tab-active:
+    backgroundColor: "{colors.highway-green}"
+    textColor: "{colors.cell-white}"
+    rounded: "{rounded.sm}"
+    padding: "4px 10px"
+  nav-item-active:
+    backgroundColor: "{colors.highway-green}"
+    textColor: "{colors.cell-white}"
+    rounded: "0 4px 4px 0"
+    padding: "8px 10px"
+  sheet-section-header:
+    backgroundColor: "{colors.highway-green}"
+    textColor: "{colors.cell-white}"
+    typography: "{typography.label}"
+    padding: "3px 8px"
+  cell:
+    backgroundColor: "{colors.cell-white}"
+    textColor: "{colors.deep-ink}"
+    padding: "3px 4px 2px"
+  input-text:
+    backgroundColor: "{colors.cell-white}"
+    textColor: "{colors.deep-ink}"
+    rounded: "{rounded.md}"
+    padding: "8px 12px"
+  choice:
+    backgroundColor: "{colors.cell-white}"
+    textColor: "{colors.body-ink}"
+    rounded: "{rounded.md}"
+    padding: "10px 16px"
+  badge-beta:
+    backgroundColor: "transparent"
+    textColor: "{colors.highway-green}"
+    rounded: "3px"
+    padding: "0 3px"
+---
+
+# Design System: Unillit
+
+## Overview
+
+**Creative North Star: "The Map Shop Handout"**
+
+The system is designed as though it were an A4/A5 reference sheet on sturdy glossy
+stock, made by a typographer whose day job is maps, and sold in a bookshop beside
+bird-species posters and wall maps of places worth visiting. That single image
+settles most questions before they are asked. Density is not a constraint to
+apologise for — a handout you paid for does not waste the sheet. Nothing is at a
+default value, because somebody competent set this. And the sheets are an *object*:
+if a sheet could not be printed on paper and still work, it has drifted.
+
+Its typographic lineage is textbooks, map legends, the supplementary lists tucked
+into a map's corner, and a little newspaper. The layout target is an engineering
+manual, not a magazine: condensed, tabulated, ruled. The system aims to be roughly
+80–90% faithful to Matthew Butterick's *Practical Typography*, and the interesting
+part is the remaining 10–20%, where a screen and an interactive quiz demand things a
+printed page never had to answer.
+
+Roadsign iconography is the **flavour, not the foundation** — the kind of thematic
+nod a print designer might reach for anyway, since textbook and map design were never
+uniform either. It shows up as a highway-green plate under white lettering, and only
+where something genuinely behaves like a plate. Everything else is the paper, the
+rules, and the ink.
+
+**Key Characteristics:**
+- Condensed to engineering-manual density; whitespace is earned, never default
+- Mint hairlines and tonal fills do all the work that shadows would do elsewhere
+- The foreign glyph is the only element permitted to be large
+- Chrome is set at 10–13px and recedes; the sheet is the subject
+- A near-neutral ink with a faint green cast, so the greens read as deliberate
+- Print-plausible: a sheet should survive being printed on A5 and still function
+
+## Colors
+
+A near-neutral, faintly green ink on warm paper, with the entire brand carried by
+three greens: a deep highway green that does the legible work, a mint that rules and
+tints, and a brighter teal that exists to misbehave.
+
+### Primary
+- **Highway Green** (`#006747`): the load-bearing brand colour and the only green
+  trusted with text. It carries links in running prose, the romanisation tokens in
+  sheet cells (`.rom`), native script names in the sidebar, term-card headings, input
+  focus borders, and — reversed to white — every plate: sheet section headers, the
+  active panel tab, the active nav item, the active quiz-shell tab. 6.6:1 on Warm
+  Sheet, 6.9:1 reversed under white.
+
+### Secondary
+- **Signal Teal** (`#0a8f6f`): the mischief. Brighter and less orthodox than the
+  brand strictly needs, and that is the point — it is the one element breaking the
+  reference-sheet decorum. It fills primary buttons and the quiz progress bar, colours
+  page headings (`h1`/`h2`), list markers, blockquote borders, the `abbr` underline,
+  and the focus ring and `accent-color`.
+
+### Tertiary
+- **Mint Wash** (`#e3f3ec`): the tint. Table zebra striping, sheet row bands, hover
+  backgrounds on tabs and nav items, active-pill fills, inline `code` backgrounds, and
+  text selection. It is how a group gets bounded without a box.
+- **Mint Rule** (`#c2dccb`): the hairline. Every cell boundary, panel divider, section
+  outline, table underscore and progress-bar track. In a system with no shadows, this
+  is the entire vocabulary of separation.
+
+### Neutral
+- **Warm Sheet** (`#fafaf8`): the page. Body background and the ground behind panel
+  content — off-white and slightly warm, so white cells read as *paper laid on paper*.
+- **Cell White** (`#ffffff`): the specimen ground. Sheet cells, sidebar, panel headers,
+  toolbars, cards, inputs. It is the colour of "something is mounted here".
+- **Deep Ink** (`#242b26`): glyphs, specimens, headings inside sheets, emphasised
+  values. 13.9:1.
+- **Body Ink** (`#3e4842`): running prose, table cells, nav labels. 9.1:1.
+- **Faded Ink** (`#67716b`): metadata, captions, inactive controls, micro-labels,
+  gloss text, "never"/"—" placeholders. 4.8:1 — still AA at body size, which is why
+  it can be used this freely.
+
+### Status
+- **Tally Good** (`#3a7d44`) / **Tally Warn** (`#8a5e10`) / **Tally Bad** (`#b94040`):
+  accuracy tiers, roadmap freshness dots, correct/wrong tallies. Deliberately *not*
+  the brand greens — the brand must not be mistaken for a score.
+- The four quiz feedback fills (`feedback-*`) are pastel grounds only; their borders
+  and text reuse the status colours above. The fuzzy pair is olive-tinted rather than
+  green, so "almost right" is visibly neither correct nor brand.
+
+### Named Rules
+
+**The Plate Rule.** White-on-Highway-Green is reserved for surfaces that genuinely
+behave like a plate: sheet section headers, the active tab, the active nav item. It is
+the roadsign nod, and it works because it is rationed — a handful per screen. Applied
+to anything that is merely selected, prominent, or in need of attention, the nod
+becomes a costume.
+
+**The Neutral Ink Rule.** All three ink tones carry a faint green cast (`#242b26`,
+`#3e4842`, `#67716b`) rather than being true greys. Never substitute a pure neutral;
+the greens only read as deliberate because the ink quietly agrees with them.
+
+### On Signal Teal (working position, not settled)
+
+Signal Teal at body size measures **3.9:1 on Warm Sheet** — under the 4.5:1 AA
+threshold for normal text, over the 3:1 threshold for large text and non-text UI. The
+current working split is therefore: Signal Teal takes fills, large text (`h1`/`h2`),
+graphic marks and focus rings; Highway Green takes anything that must be read as text
+at body size.
+
+This is a position, not a law. The tension is real and unresolved — the colour is more
+characterful than its contrast permits, which is precisely why it is non-standard and
+worth keeping. If you want it doing more, the routes that stay honest are: larger type,
+larger fills, graphic or iconographic use, and non-text UI. The route that is not
+honest is body-size text on Warm Sheet.
+
+## Typography
+
+**Display Font:** Lora (with Noto Serif, Georgia, serif)
+**Body Font:** Noto Sans (with system-ui, sans-serif)
+**Script Fonts:** per script and user-swappable — Noto Sans Thai / Noto Serif Thai /
+Trirong / Sarabun for Thai; Noto Serif and friends for Cyrillic; Noto Naskh Arabic;
+Noto Sans Bengali. Exposed as `--font-thai`, `--font-cyrillic` and set at the app root.
+
+**Character:** A bookish serif for anything that names or titles, a plain humanist
+sans for everything that instructs or labels. Lora carries the editorial voice; Noto
+Sans stays out of the way and, crucially, has siblings in every script the product
+covers — so the specimen and the interface never look like they came from different
+publications.
+
+### Hierarchy
+- **Display** (Lora 500, 1.6rem): page titles in full-page prose views. Set in Signal
+  Teal.
+- **Headline** (Lora 500, 1.1rem): section headings in prose views; in reading-tips
+  panels the same role runs at 600/1.15em because the smaller panel size needs the
+  extra weight.
+- **Title** (Lora 600, 0.95rem–14px): sub-headings, panel names, term-card `dt`.
+- **Body** (Noto Sans 400, 0.9rem; 14px app base, 1.5 line-height): running prose,
+  table cells, quiz choices. Prose columns are capped at 640px (reading tips, About,
+  Privacy) and 800px (Home).
+- **Label** (Noto Sans 600–700, 10–11px, 0.06em tracking, uppercase): sheet section
+  headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
+  the interface read as apparatus rather than content.
+- **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
+  exposed as `--glyph` so cells can scale relative to it.
+- **Prompt** (script font, 4rem): the single character or toponym under test.
+
+### Named Rules
+
+**The Butterick Rule.** Target 80–90% fidelity to *Practical Typography*: real
+measure limits, no double spaces, proper dashes and quotes, restrained emphasis,
+purposeful line length, no decorative type. Where a screen genuinely differs from a
+page — interactive states, scroll, live data density — deviate on purpose and be able
+to say why. "It looked nicer" is not a why.
+
+**The Specimen Rule.** The foreign glyph is the only thing allowed to be large. Every
+other element is set between 10px and 1.6rem. When a new element wants to be big, it
+is almost always trying to be the specimen — and it isn't.
+
+**The Weight Split Rule.** Lora runs at 500 in full-page prose and 600 in panels. The
+larger prose sizes carry more ink per stroke, so they want the lighter weight; the
+compact panel sizes need the heavier one. Do not homogenise these to a single weight.
+
+**The Shrinking Scale Rule.** Every scale in this system — type sizes, spacing steps,
+radii, colours — is under permanent pressure to inflate, because each individual
+addition looks reasonable in isolation. Treat a smaller palette as the default-correct
+answer: reach for an existing step before adding one, and when two steps are close
+enough that nobody could name the difference, they are one step.
+
+### Open: the type ramp is not yet resolved
+
+The seven roles above describe the system's *intent*. The implementation currently
+also uses 10px, 11px, 12px, 13px, 14px, 16px and 3rem as live values, and the ramp
+above does not account for them — so the detector's `design-system-font-size` rule
+will flag much of the codebase against this file.
+
+This is a known, deliberately deferred question, not an oversight. The honest position
+is that a meaningful share of those steps are the residue of separate manual and
+AI-assisted iterations rather than decisions, while a real subset is load-bearing —
+and telling them apart requires looking at each use in context, not reading a list.
+Two things follow:
+
+- **Do not "fix" this by widening the ramp** to whatever the code happens to contain.
+  That would launder the mess into doctrine and make the file useless as a check.
+- **Do not collapse sizes wholesale** to make the detector quiet. Each merge is a
+  judgment call about a specific surface.
+
+Until it is resolved, `design-system-font-size` findings are noise rather than
+defects. Either leave the detector hook off, or silence that one rule while keeping
+the rest:
+
+```jsonc
+// .impeccable/config.json
+{ "detector": { "ignoreRules": ["design-system-font-size"] } }
+```
+
+Resolving it means one pass per register — sheets, panel chrome, prose, quiz — deciding
+which steps that register actually needs, then writing the surviving ramp here.
+
+## Layout
+
+Two fixed regions: a collapsible sidebar (200px expanded, 40px collapsed, animated
+over 0.2s) and a scrolling main area. The sidebar measures the platform scrollbar at
+runtime and widens itself by exactly that amount while its nav overflows, so the
+collapsed rail never loses button width to Windows Chrome's 15px scrollbar.
+
+The script page is the product's working surface: a `1fr 1fr` grid of two panels, info
+sheet left and practice right, each an independently scrolling column with its own
+sticky tab header. Below 768px it becomes two stacked rows; when the info panel is set
+to *None* the rows collapse to `auto 1fr` so the practice panel takes the screen. 768px
+is the system's only breakpoint — everything else scales fluidly through `clamp()`.
+
+Density is tiered by register. Sheets run on a 2–10px rhythm (`padding: 10px`, `gap:
+8px`, cells at `3px 4px 2px`) and place glyph cells on a `repeat(auto-fill,
+minmax(var(--cell-min), 1fr))` grid so a listing reflows without ever going ragged.
+Panel chrome runs on 4–12px. Full-page prose relaxes to a `0.25–2rem` rhythm, because
+those pages are read rather than consulted.
+
+Sheet type scales with the viewport rather than stepping at breakpoints:
+`font-size: clamp(11px, 0.75vw, 14px)` with `--glyph: clamp(24px, 1.56vw, 30px)`. The
+sheet stays proportionally itself from a laptop to a wide desktop.
+
+### Named Rules
+
+**The Handout Density Rule.** A handout you paid for does not waste the sheet. Before
+adding padding, ask whether a printed reference sheet would spend that space. Usually
+it would not. Whitespace here is structural — it separates groups — and is not applied
+for comfort.
+
+**The Print Test.** A sheet should be printable on A5 and still work. If a design
+depends on hover, scroll position, or viewport height to be legible, it has stopped
+being a handout.
+
+## Elevation & Depth
+
+**There are no shadows.** Not one `box-shadow`, `filter` or `backdrop-filter` exists in
+the codebase, and this is doctrine rather than an omission. The system is a printed
+sheet; ink does not float.
+
+Depth is expressed three ways, in order of strength: a **1px Mint Rule hairline**
+(cell boundaries, section outlines, panel dividers, table underscores); a **tonal
+fill** (Cell White mounted on Warm Sheet to say "specimen here", Mint Wash to band a
+row or mark a hover); and **a plate** (white on Highway Green, for the small set of
+surfaces that are genuinely active). Ruled sheet grids clip their outer edges with
+negative margins (`margin: 0 -1px -1px 0`) against the section's `overflow: hidden`, so
+a grid reads as internally ruled rather than double-bordered.
+
+### Named Rules
+
+**The No-Shadow Rule.** Never introduce a shadow, glow, blur or gradient to signal
+depth, state or importance. If something needs to come forward, give it a hairline, a
+tonal fill, or a plate — in that order.
+
+## Shapes
+
+Two radii and nothing else: **2px** (`--radius-sm`) for small inline marks — language
+badges, sheet-grid corners, the progress track, panel tabs — and **4px** (`--radius`)
+for everything with an interior: buttons, pills, inputs, cards, nav items, term cards,
+figures. `50%` appears once, on the user avatar, because it is a photograph.
+
+The form language is rectangular and ruled. Cells are square-shouldered and share
+hairlines with their neighbours rather than each carrying an outline; sections are the
+only elements with an outer border, and they clip their contents so interior rules meet
+the edge cleanly. Nothing is a capsule, nothing is a blob, nothing is circular except
+the avatar and the 10px roadmap status dots.
+
+One asymmetry is deliberate: the **active nav item flattens its left corners**
+(`border-radius: 0 4px 4px 0`) and drops its left margin so it bleeds into the sidebar
+edge. That is the plate motif — a sign fixed to a post, not a floating chip.
+
+## Components
+
+Components exist in two registers, and the difference is intentional rather than
+inconsistent. See **The Two Registers Rule** below.
+
+### Buttons
+- **Shape:** softly squared (4px radius), never capsule.
+- **Primary:** Signal Teal ground, white text, no border, `8px 20px`, 13px Noto Sans.
+  Hover dims to `opacity: 0.85`. Used for the single forward action in a view: Check,
+  Next, Play another, Login.
+- **Secondary:** transparent ground, Mint Rule hairline, Body Ink text, same metrics.
+  Hover deepens text to Deep Ink and border to Body Ink. Used for Copy results and
+  other optional actions.
+- **Focus:** the global 2px Signal Teal ring at `outline-offset: 2px`; controls flush
+  against a panel edge (tabs, toggles, quiz-shell tabs) use `outline-offset: -2px` so
+  the ring stays inside the surface.
+
+### Pills (toolbar controls)
+- **Style:** `3px 10px`, 11px, Mint Rule hairline on transparent, Faded Ink text.
+- **Hover:** text and border step up to Body Ink — no fill.
+- **Active:** Mint Wash fill, Highway Green border, Deep Ink text.
+- **Locked:** `opacity: 0.4`, rendered as a `<span>` rather than a disabled button, with
+  a `title` explaining what unlocks it (Revision mode needs an account).
+- **Filter pills** in the stats panel are the same component one step smaller (10px,
+  `2px 8px`, 600 weight) and toggle off when re-clicked.
+
+### Cards / Containers
+- **Sheet sections** are the signature container: 1px Mint Rule border, 4px radius,
+  `overflow: hidden`, opened by a full-bleed Highway Green header bar in white uppercase
+  micro-label type. An optional `.section-note` strip sits under the header, and a
+  `footer` closes it with a hairline and Faded Ink metadata.
+- **Term cards** (reading-tips `dl > div`): Cell White on a `minmax(170px, 1fr)` grid,
+  hairline border, Lora 600 Highway Green `dt` over Faded Ink `dd`.
+- **Roadmap steps:** Cell White, hairline, 160–280px wide, led by a 10px status dot
+  that fills Tally Good / Tally Warn / hollow-muted by practice recency.
+- **Internal padding:** `10px` for sheets, `10–14px` for chrome cards, `2rem` for quiz
+  card bodies.
+
+### Inputs / Fields
+- **Style:** Cell White ground, 1px Mint Rule border, 4px radius, `8px 12px`, 14px.
+- **Focus:** border shifts to Highway Green (plus the global teal focus ring).
+- **Count input:** the compact variant — 52px wide, `2px 6px`, 11px, centred, transparent.
+- Text answer inputs disable `autocomplete`, `autocorrect` and `spellcheck`, because the
+  browser must never help transliterate.
+
+### Navigation
+- **Sidebar:** Cell White with a Mint Rule right border. Items are two-line — 13px 600
+  Latin name over the 15px native script name in Highway Green — and collapse to a
+  single 17px abbreviation glyph in the 40px rail. Hover fills Mint Wash; active becomes
+  the left-bled Highway Green plate with everything reversed to white. Beta scripts sit
+  at `opacity: 0.75` and come to full opacity on hover or when active; coming-soon
+  scripts sit at `0.4` and are inert `<div>`s rather than links.
+- **Panel tabs:** 12px, `4px 10px`, 2px radius, Faded Ink; hover tints Mint Wash; active
+  is the Highway Green plate. The tab strip scrolls horizontally with hidden scrollbars
+  and a `mask-image` fade at the right edge that signals more tabs without spending a
+  chevron.
+- **Quiz-shell bottom bar:** three equal-flex uppercase 11px micro-labels; active takes
+  the Highway Green plate.
+
+### Signature: the character cell
+The atom of the whole product. A flex column inside an `auto-fill` grid: the specimen
+glyph in the script font at `--glyph` size, the romanisation beneath it in Highway
+Green 600, then optional final-form and gloss lines in Faded Ink at `0.8em`. Cells sit
+on Cell White with no border of their own; `.ruled` variants add shared hairlines for
+dense listings where the borderless look stops tracking. Rows band with Mint Wash where
+a listing is long enough to lose the reader.
+
+Everything else in the system is in service of this cell being scannable.
+
+### Named Rules
+
+**The Two Registers Rule.** Chrome and quiz are set differently on purpose.
+*Chrome* — sidebar, panel tabs, toolbars, stats filters — is the fixture around the
+handout: restrained, near-muted, typographic, 10–13px, hairline-bordered, no fills
+except on hover and active. *The quiz* is inhabited for an uninterrupted stretch, so
+its controls are frankly interactive: 14px targets, real buttons with fills, coloured
+feedback rows, generous `2rem` card padding. Both obey the same palette, radii and type
+families; they differ in how much presence they are allowed. Do not flatten one into
+the other — a quiz button set like a toolbar pill is unusable, and a toolbar set like a
+quiz button shouts over the sheet.
+
+**The Muted Chrome Rule.** Interface controls rest at Faded Ink and step up to Body Ink
+on hover. A control at full Deep Ink is either active or a bug.
+
+## Do's and Don'ts
+
+### Do:
+- **Do** ask "would a map-shop handout do this?" before adding space, weight or colour.
+  It answers most layout questions correctly.
+- **Do** carry the sheet's typographic conventions into every dense listing —
+  hairline rules, Mint Wash banding, uppercase micro-label headers, tight cell padding.
+  The sheets are the house style, not a special case. *Known drift: the stats table and
+  the reading-tips panels were built as app UI that happens to sit near sheets; moving
+  them toward sheet conventions is a licensed improvement, not a redesign.*
+- **Do** use the hairline → tonal fill → plate ladder, in that order, to express depth.
+- **Do** keep new radii to 2px or 4px.
+- **Do** spend an existing scale step before inventing one — for type, spacing, radii
+  and colour alike. Scales only ever inflate; the smaller palette is the default-correct
+  answer.
+- **Do** reserve white-on-Highway-Green for surfaces that genuinely act as plates.
+- **Do** let the glyph be the only large thing on screen.
+- **Do** state maturity per script with the existing beta badge and dimming, rather than
+  hedging the whole interface.
+- **Do** deviate from Butterick when a screen genuinely demands it — and record why.
+
+### Don't:
+- **Don't** add a shadow, glow, blur, gradient or glassmorphic surface. Not for depth,
+  not for state, not for emphasis.
+- **Don't** set Signal Teal as body-size text on Warm Sheet (3.9:1). Large text, fills,
+  graphic marks and focus rings only.
+- **Don't** drift toward a gamified language app: no mascots, streak flames, confetti,
+  bouncy oversized rounded buttons, cartoon illustration or celebratory motion.
+- **Don't** drift toward a generic SaaS dashboard: no card-on-card stacking, gradient
+  headers, purple/blue tech palette, floating widgets or comfort padding.
+- **Don't** chase trends: no neon, no heavy blur, no animated gradients, no
+  dark-mode-first inversion of a system built as printed paper.
+- **Don't** produce undifferentiated walls of prose. Academic *typography* is part of
+  the lineage; unstructured academic *text* is the failure mode — tabulate, rule and
+  group instead.
+- **Don't** homogenise the two registers, or the Lora 500/600 split, in the name of
+  consistency. Both differences are decisions.
+- **Don't** use the brand greens for status. Accuracy, freshness and correctness have
+  their own palette so a score is never mistaken for branding.
+- **Don't** exceed one breakpoint's worth of complexity — reach for `clamp()` before
+  reaching for a media query.

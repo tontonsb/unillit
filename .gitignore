@@ -40,3 +40,14 @@ __screenshots__/
 
 test-results/
 playwright-report/
+
+# Impeccable live mode — transient session state (config.json is kept)
+.impeccable/live/sessions/
+.impeccable/live/roots.json
+.impeccable/live/inject-journal.json
+
+
+#temp.... wip...
+/examples/
+/src/scripts/arabic
+/src/scripts/bengali
