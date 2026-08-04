@@ -24,8 +24,15 @@ language. Served, but not the audience that settles design trade-offs.
 Teach a person to *transliterate* an unfamiliar script into Latin characters —
 to look at a sign and parse the characters into a name — without teaching them
 the language. No pronunciation mastery, no vocabulary, no grammar, no
-comprehension. Success is a user who can look at a Thai or Cyrillic sign and
-read the toponym unaided, with the info panel switched to *None*.
+comprehension.
+
+The end goal is reading a sign unaided. But **most of the product's value is
+delivered before the user gets there**, while they are still learning — looking
+things up, building familiarity, and gradually needing the sheet less. The
+unaided state (info panel set to *None*) is the destination, not the place users
+are expected to spend time; by the time they live there comfortably they are
+close to not needing the app at all, and the internet already has plenty of
+plain quizzes. Design for the learning phase first.
 
 ## Positioning
 
@@ -33,11 +40,21 @@ Other resources treat the script as step one of learning the whole language.
 Unillit treats the script as the entire goal, and organises everything around
 recognition:
 
-- Characters are grouped by **visual traits and similarity**, never by
-  alphabetic order, meaning, role, or pronunciation.
-- Reading tips are deliberately shorter than every competing resource, and
-  strictly scoped to what changes a transliteration (reading direction, skipped
-  vowels, letters out of order, per-language letterform differences).
+- Characters are grouped by **visual traits and similarity** rather than by
+  alphabetic order, meaning, role, or pronunciation. Recognition ordering is the
+  organising principle and the differentiator; it is not an absolute ban on ever
+  presenting a conventional ordering. A traditional-order sheet can earn its
+  place as a secondary reference — the Thai Alphabet sheet does, and says so in
+  its own heading.
+- Reading tips are **radically shorter than the real alternatives**, and strictly
+  scoped to what changes a transliteration (reading direction, skipped vowels,
+  letters out of order, per-language letterform differences). The benchmark is
+  not a 2,000-word article: it is the ~200-page "Learning to Read Thai for
+  GeoGuessr" community doc (plus ~50 pages of appendices) and full
+  learn-the-language courses. Against those, Thai's ~1,300 words is the whole
+  point. Concepts still get however many words a total newcomer needs — the goal
+  is brevity relative to the alternatives, never compressing the material into
+  slogans that only make sense once you already know them.
 - The lookup sheet and the practice quiz sit **side by side**, so recognition is
   built in one place rather than across a sheet you read and a drill you do later.
 
@@ -57,8 +74,16 @@ reading. Reach and credibility matter; content accuracy is what earns them.
 - A per-script roadmap page suggests an order through the material; a progress
   page shows run history and freshness once logged in.
 - Practice is deliberately gradable down to no support: switching the info panel
-  to **None** is the "training wheels off" step, and the product must always
-  offer it.
+  to **None** is the "training wheels off" step, and the product should keep
+  offering it — as an available end state, not as the screen the page is
+  arranged around.
+- **The info panel's job is to be looked things up in.** It teaches lookup
+  itself, and aids memorisation through repeated searching: the sheets are
+  ordered so a user first learns to recognise a general shape group, then
+  gradually picks up the individual characters within it. Automatically steering
+  the user to the right group would remove the exercise that produces the
+  learning. Guided highlighting belongs in a possible "how to use this site"
+  tutorial mode, never in the primary flow.
 
 ## Capabilities and Constraints
 
@@ -70,6 +95,18 @@ reading. Reach and credibility matter; content accuracy is what earns them.
 - Quiz modes: type-in (Levenshtein fuzzy matching with a user-set error
   tolerance), multiple choice, multi-select. Sampling includes a *revision* mode
   that favours unseen and previously missed questions.
+- **An empty answer is a valid answer.** Some characters transliterate to
+  nothing — Thai's silent carrier อ already ships `answer: ['o', '-', '']`, and
+  the Cyrillic hard and soft signs are the same case. Never add a
+  non-empty-input guard to single-character quizzes; it would make correct
+  answers unsubmittable. A minimum-length guard is only defensible on datasets
+  whose answers are always multi-character (toponyms, syllables), and must be
+  derived from the dataset rather than applied globally.
+- **Result sharing exists to compare scores on Discord**, since the product has
+  no social features and none are planned. It is a supplementary convenience,
+  worth occasional polish, explicitly not worth significant investment. Its
+  current emoji rank ladder is unrefined and sillier than the rest of the
+  product's voice.
 - Anonymous use is fully functional; login only adds stats, history and revision
   targeting.
 - Terminology the product uses and explains: *abjad*, *abugida*, *alphabet*;
