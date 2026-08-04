@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thai Script — Quick Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sans:  'Noto Sans', system-ui, sans-serif;
+    --thai:  'Noto Sans Thai', system-ui, sans-serif;
+    --c-bg:     #fafaf8;
+    --c-border: #d8d4c8;
+    --c-head:   #2b3a2b;
+    --c-label:  #4e6350;
+    --c-accent: #3a6e45;
+    --c-muted:  #8a9e8a;
+    --c-cell:   #ffffff;
+    --c-alt:    #f2f5f2;
+    /* consonant class colours */
+    --mid:   #1a5c8a;  /* mid class   — blue  */
+    --high:  #a0320a;  /* high class  — rust  */
+    --low:   #2e7d32;  /* low class   — green */
+  }
+
+  body {
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.4;
+    background: var(--c-bg);
+    color: var(--c-head);
+    padding: 18mm 14mm;
+    max-width: 210mm;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--c-accent);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .page-header h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.02em; }
+  .page-header .subtitle { font-size: 10px; color: var(--c-label); }
+  .thai-title { font-family: var(--thai); font-size: 22px; font-weight: 600; color: var(--c-accent); }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .full-width { grid-column: 1 / -1; }
+
+  .section { border: 1px solid var(--c-border); border-radius: 4px; overflow: hidden; }
+  .section-title {
+    background: var(--c-head);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+  }
+  .section-note {
+    font-size: 8.5px;
+    color: var(--c-muted);
+    padding: 3px 7px 2px;
+    background: var(--c-alt);
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  /* consonant grid */
+  .char-grid { display: grid; gap: 0; }
+  .char-grid.cols-9  { grid-template-columns: repeat(9, 1fr); }
+  .char-grid.cols-11 { grid-template-columns: repeat(11, 1fr); }
+  .char-grid.cols-6  { grid-template-columns: repeat(6, 1fr); }
+  .char-grid.cols-4  { grid-template-columns: repeat(4, 1fr); }
+
+  .group-label {
+    grid-column: 1 / -1;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .group-label.mid  { background: #ddeaf5; color: var(--mid); }
+  .group-label.high { background: #faeae3; color: var(--high); }
+  .group-label.low  { background: #e3f2e5; color: var(--low); }
+
+  .cell {
+    background: var(--c-cell);
+    border-right: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    padding: 3px 2px 2px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  /* stripe even rows per grid width */
+  .cols-9  .cell:nth-child(18n+10),
+  .cols-9  .cell:nth-child(18n+11),
+  .cols-9  .cell:nth-child(18n+12),
+  .cols-9  .cell:nth-child(18n+13),
+  .cols-9  .cell:nth-child(18n+14),
+  .cols-9  .cell:nth-child(18n+15),
+  .cols-9  .cell:nth-child(18n+16),
+  .cols-9  .cell:nth-child(18n+17),
+  .cols-9  .cell:nth-child(18n+18),
+  .cols-6  .cell:nth-child(12n+7),
+  .cols-6  .cell:nth-child(12n+8),
+  .cols-6  .cell:nth-child(12n+9),
+  .cols-6  .cell:nth-child(12n+10),
+  .cols-6  .cell:nth-child(12n+11),
+  .cols-6  .cell:nth-child(12n+12),
+  .cols-4  .cell:nth-child(8n+5),
+  .cols-4  .cell:nth-child(8n+6),
+  .cols-4  .cell:nth-child(8n+7),
+  .cols-4  .cell:nth-child(8n+8) { background: var(--c-alt); }
+
+  /* consonant class left-border accent */
+  .c-mid  { border-left: 3px solid var(--mid); }
+  .c-high { border-left: 3px solid var(--high); }
+  .c-low  { border-left: 3px solid var(--low); }
+
+  .thai  { font-family: var(--thai); font-size: 18px; line-height: 1.3; }
+  .thai.lg { font-size: 22px; }
+  .thai.xl { font-size: 26px; }
+  .rom   { font-size: 8px; color: var(--c-accent); font-weight: 600; }
+  .fin   { font-size: 7px; color: var(--c-muted); }  /* final romanization */
+  .gloss { font-size: 7px; color: var(--c-muted); text-align: center; line-height: 1.3; }
+
+  /* class badge */
+  .cbadge {
+    font-size: 6px; font-weight: 700; letter-spacing: 0.04em;
+    border-radius: 2px; padding: 0 2px; line-height: 1.5; color: #fff;
+  }
+  .cbadge.mid  { background: var(--mid); }
+  .cbadge.high { background: var(--high); }
+  .cbadge.low  { background: var(--low); }
+
+  /* vowel table */
+  .vtable { width: 100%; border-collapse: collapse; font-size: 9px; }
+  .vtable th {
+    background: var(--c-alt);
+    color: var(--c-label);
+    font-size: 8px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-bottom: 1px solid var(--c-border);
+    border-right: 1px solid var(--c-border);
+    text-align: left;
+  }
+  .vtable td {
+    padding: 2px 5px;
+    border-bottom: 1px solid var(--c-border);
+    border-right: 1px solid var(--c-border);
+    vertical-align: middle;
+  }
+  .vtable tr:nth-child(even) td { background: var(--c-alt); }
+  .vtable td:last-child, .vtable th:last-child { border-right: none; }
+  .vtable .thai { font-size: 15px; }
+  .vtable .rom  { font-size: 9px; }
+
+  abbr { border-bottom: 1px dotted var(--c-muted); cursor: help; text-decoration: none; }
+
+  .legend { display: flex; gap: 8px; align-items: center; padding: 3px 7px; font-size: 8px; background: var(--c-alt); border-bottom: 1px solid var(--c-border); }
+  .legend-item { display: flex; align-items: center; gap: 3px; }
+  .legend-swatch { width: 8px; height: 8px; border-radius: 1px; }
+
+  .footnote {
+    margin-top: 8px;
+    font-size: 8px;
+    color: var(--c-muted);
+    border-top: 1px solid var(--c-border);
+    padding-top: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: white; padding: 12mm 10mm; font-size: 10.5px; }
+    @page { size: A4 portrait; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div>
+    <h1>Thai &nbsp;<span class="thai-title">ภาษาไทย</span></h1>
+    <div class="subtitle"><abbr title="Royal Thai General System of Transcription — the official standard used on Thai road signs and maps">RTGS</abbr> romanisation &nbsp;·&nbsp; abugida, left → right &nbsp;·&nbsp; no word spaces &nbsp;·&nbsp; 5 tones</div>
+  </div>
+  <div class="subtitle" style="text-align:right">
+    44 consonants (9 Mid · 11 High · 24 Low class)<br>
+    Vowels written above, below, before, or around consonant
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── CONSONANTS ── -->
+  <div class="section full-width">
+    <div class="section-title">Consonants — grouped by class (determines tone rules)</div>
+    <div class="legend">
+      <span>Class (affects tone):</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--mid)"></span> Mid</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--high)"></span> High</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--low)"></span> Low</span>
+      <span style="color:var(--c-muted); margin-left:4px">Rom = RTGS initial · <em>final in italics</em> (shown only when different)</span>
+    </div>
+    <div class="char-grid cols-9">
+
+      <div class="group-label mid">Mid class &nbsp;(9)</div>
+      <div class="cell c-mid"><span class="thai">ก</span><span class="rom">k</span><span class="fin"><em>k</em></span></div>
+      <div class="cell c-mid"><span class="thai">จ</span><span class="rom">ch</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-mid"><span class="thai">ฎ</span><span class="rom">d</span><span class="fin"><em>t</em></span><span class="gloss">rare</span></div>
+      <div class="cell c-mid"><span class="thai">ฏ</span><span class="rom">t</span><span class="fin"><em>t</em></span><span class="gloss">rare</span></div>
+      <div class="cell c-mid"><span class="thai">ด</span><span class="rom">d</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-mid"><span class="thai">ต</span><span class="rom">t</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-mid"><span class="thai">บ</span><span class="rom">b</span><span class="fin"><em>p</em></span></div>
+      <div class="cell c-mid"><span class="thai">ป</span><span class="rom">p</span><span class="fin"><em>p</em></span></div>
+      <div class="cell c-mid"><span class="thai">อ</span><span class="rom">—</span><span class="gloss">vowel carrier / glottal</span></div>
+
+      <div class="group-label high">High class &nbsp;(11)</div>
+      <div class="cell c-high"><span class="thai">ข</span><span class="rom">kh</span><span class="fin"><em>k</em></span></div>
+      <div class="cell c-high"><span class="thai">ฃ</span><span class="rom">kh</span><span class="fin"><em>k</em></span><span class="gloss">obsolete</span></div>
+      <div class="cell c-high"><span class="thai">ฉ</span><span class="rom">ch</span><span class="fin"><em>—</em></span><span class="gloss">no final</span></div>
+      <div class="cell c-high"><span class="thai">ฐ</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-high"><span class="thai">ถ</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-high"><span class="thai">ผ</span><span class="rom">ph</span><span class="fin"><em>—</em></span><span class="gloss">no final</span></div>
+      <div class="cell c-high"><span class="thai">ฝ</span><span class="rom">f</span><span class="fin"><em>—</em></span><span class="gloss">no final</span></div>
+      <div class="cell c-high"><span class="thai">ศ</span><span class="rom">s</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-high"><span class="thai">ษ</span><span class="rom">s</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-high"><span class="thai">ส</span><span class="rom">s</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-high"><span class="thai">ห</span><span class="rom">h</span><span class="fin"><em>—</em></span><span class="gloss">no final</span></div>
+
+      <div class="group-label low">Low class &nbsp;(24)</div>
+      <div class="cell c-low"><span class="thai">ค</span><span class="rom">kh</span><span class="fin"><em>k</em></span></div>
+      <div class="cell c-low"><span class="thai">ฅ</span><span class="rom">kh</span><span class="fin"><em>k</em></span><span class="gloss">obsolete</span></div>
+      <div class="cell c-low"><span class="thai">ฆ</span><span class="rom">kh</span><span class="fin"><em>k</em></span></div>
+      <div class="cell c-low"><span class="thai">ง</span><span class="rom">ng</span><span class="fin"><em>ng</em></span></div>
+      <div class="cell c-low"><span class="thai">ช</span><span class="rom">ch</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ซ</span><span class="rom">s</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ฌ</span><span class="rom">ch</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ญ</span><span class="rom">y</span><span class="fin"><em>n</em></span></div>
+      <div class="cell c-low"><span class="thai">ฑ</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ฒ</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ณ</span><span class="rom">n</span><span class="fin"><em>n</em></span></div>
+      <div class="cell c-low"><span class="thai">ท</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">ธ</span><span class="rom">th</span><span class="fin"><em>t</em></span></div>
+      <div class="cell c-low"><span class="thai">น</span><span class="rom">n</span><span class="fin"><em>n</em></span></div>
+      <div class="cell c-low"><span class="thai">พ</span><span class="rom">ph</span><span class="fin"><em>p</em></span></div>
+      <div class="cell c-low"><span class="thai">ฟ</span><span class="rom">f</span><span class="fin"><em>p</em></span></div>
+      <div class="cell c-low"><span class="thai">ภ</span><span class="rom">ph</span><span class="fin"><em>p</em></span></div>
+      <div class="cell c-low"><span class="thai">ม</span><span class="rom">m</span><span class="fin"><em>m</em></span></div>
+      <div class="cell c-low"><span class="thai">ย</span><span class="rom">y</span><span class="fin"><em>y</em></span></div>
+      <div class="cell c-low"><span class="thai">ร</span><span class="rom">r</span><span class="fin"><em>n/—</em></span><span class="gloss">often silent in final</span></div>
+      <div class="cell c-low"><span class="thai">ล</span><span class="rom">l</span><span class="fin"><em>n</em></span></div>
+      <div class="cell c-low"><span class="thai">ว</span><span class="rom">w</span><span class="fin"><em>o/u</em></span><span class="gloss">becomes vowel</span></div>
+      <div class="cell c-low"><span class="thai">ฬ</span><span class="rom">l</span><span class="fin"><em>n</em></span><span class="gloss">rare</span></div>
+      <div class="cell c-low"><span class="thai">ฮ</span><span class="rom">h</span><span class="fin"><em>—</em></span><span class="gloss">no final</span></div>
+
+    </div>
+  </div>
+
+  <!-- ── VOWELS ── -->
+  <div class="section full-width">
+    <div class="section-title">Vowels — written around the consonant (◌ = consonant position)</div>
+    <div class="section-note">Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</div>
+    <table class="vtable">
+      <thead>
+        <tr>
+          <th>Short form</th><th>RTGS</th><th>Long form</th><th>RTGS</th><th>Position</th><th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="thai">กะ / กั◌</span></td><td><span class="rom">a</span></td><td><span class="thai">กา</span></td><td><span class="rom">a</span></td><td>after (sara a / sara aa)</td><td>Short ั used before a final consonant</td></tr>
+        <tr><td><span class="thai">กิ</span></td><td><span class="rom">i</span></td><td><span class="thai">กี</span></td><td><span class="rom">i</span></td><td>above</td><td></td></tr>
+        <tr><td><span class="thai">กึ</span></td><td><span class="rom">ue</span></td><td><span class="thai">กือ</span></td><td><span class="rom">ue</span></td><td>above / above+after</td><td>Unrounded back vowel; no English equivalent</td></tr>
+        <tr><td><span class="thai">กุ</span></td><td><span class="rom">u</span></td><td><span class="thai">กู</span></td><td><span class="rom">u</span></td><td>below</td><td></td></tr>
+        <tr><td><span class="thai">เกะ / เก็◌</span></td><td><span class="rom">e</span></td><td><span class="thai">เก</span></td><td><span class="rom">e</span></td><td>before</td><td>Short form เ◌็ used before final</td></tr>
+        <tr><td><span class="thai">แกะ / แก็◌</span></td><td><span class="rom">ae</span></td><td><span class="thai">แก</span></td><td><span class="rom">ae</span></td><td>before</td><td>Like <em>a</em> in <em>cat</em></td></tr>
+        <tr><td><span class="thai">โกะ</span></td><td><span class="rom">o</span></td><td><span class="thai">โก</span></td><td><span class="rom">o</span></td><td>before</td><td></td></tr>
+        <tr><td><span class="thai">เกาะ</span></td><td><span class="rom">o</span></td><td><span class="thai">กอ</span></td><td><span class="rom">o</span></td><td>wrap / after</td><td>Open-mid <em>o</em> as in <em>or</em>; RTGS also writes as <em>o</em></td></tr>
+        <tr><td><span class="thai">เกอะ</span></td><td><span class="rom">oe</span></td><td><span class="thai">เกอ</span></td><td><span class="rom">oe</span></td><td>before+after</td><td>Schwa-like; rare in place names</td></tr>
+        <tr><td colspan="2"><span class="thai">เกีย</span> &nbsp;<span class="rom">ia</span></td><td colspan="2"><span class="thai">เกียะ</span> &nbsp;<span class="rom">ia</span></td><td>before+above+after</td><td>Diphthong; long form far more common</td></tr>
+        <tr><td colspan="2"><span class="thai">กัว / กว</span> &nbsp;<span class="rom">ua</span></td><td colspan="2"><span class="thai">กัวะ</span> &nbsp;<span class="rom">ua</span></td><td>above / glide</td><td>Diphthong; ว acts as second element</td></tr>
+        <tr><td colspan="2"><span class="thai">เกือ</span> &nbsp;<span class="rom">uea</span></td><td colspan="2"><span class="thai">เกือะ</span> &nbsp;<span class="rom">uea</span></td><td>before+above+after</td><td>Triphthong; long form common in place names</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── TONE MARKS ── -->
+  <div class="section">
+    <div class="section-title">Tone marks</div>
+    <div class="section-note">Written above the consonant. Actual tone depends on consonant class + mark combination.</div>
+    <div class="char-grid cols-4">
+      <div class="cell"><span class="thai xl">ก่</span><span class="rom">mai ek</span><span class="gloss">◌่ — low or falling</span></div>
+      <div class="cell"><span class="thai xl">ก้</span><span class="rom">mai tho</span><span class="gloss">◌้ — falling or high</span></div>
+      <div class="cell"><span class="thai xl">ก๊</span><span class="rom">mai tri</span><span class="gloss">◌๊ — high (rare)</span></div>
+      <div class="cell"><span class="thai xl">ก๋</span><span class="rom">mai chattawa</span><span class="gloss">◌๋ — rising (rare)</span></div>
+    </div>
+  </div>
+
+  <!-- ── NUMERALS & SPECIAL ── -->
+  <div class="section">
+    <div class="section-title">Numerals &amp; special marks</div>
+    <div class="char-grid cols-4">
+      <div class="cell"><span class="thai xl">๐</span><span class="rom">0</span></div>
+      <div class="cell"><span class="thai xl">๑</span><span class="rom">1</span></div>
+      <div class="cell"><span class="thai xl">๒</span><span class="rom">2</span></div>
+      <div class="cell"><span class="thai xl">๓</span><span class="rom">3</span></div>
+      <div class="cell"><span class="thai xl">๔</span><span class="rom">4</span></div>
+      <div class="cell"><span class="thai xl">๕</span><span class="rom">5</span></div>
+      <div class="cell"><span class="thai xl">๖</span><span class="rom">6</span></div>
+      <div class="cell"><span class="thai xl">๗</span><span class="rom">7</span></div>
+      <div class="cell"><span class="thai xl">๘</span><span class="rom">8</span></div>
+      <div class="cell"><span class="thai xl">๙</span><span class="rom">9</span></div>
+      <div class="cell"><span class="thai xl">ๆ</span><span class="rom">mai yamok</span><span class="gloss">repeat preceding word</span></div>
+      <div class="cell"><span class="thai xl">ก์</span><span class="rom">thanthakhat</span><span class="gloss">◌์ silences a consonant</span></div>
+    </div>
+  </div>
+
+  <!-- ── READING TIPS ── -->
+  <div class="section full-width">
+    <div class="section-title">Reading tips for place names</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; font-size:9px; line-height:1.6;">
+      <div style="padding:5px 8px; border-right:1px solid var(--c-border);">
+        <strong style="color:var(--c-head)">No word boundaries</strong><br>
+        Thai is written without spaces between words. Spaces mark phrase or clause boundaries. In short place names this rarely causes ambiguity, but longer names may need to be parsed syllable by syllable.
+      </div>
+      <div style="padding:5px 8px; border-right:1px solid var(--c-border);">
+        <strong style="color:var(--c-head)">Inherent vowel</strong><br>
+        A consonant with no visible vowel sign has an inherent short <em>o</em> (or <em>a</em> in some environments). The inherent vowel is deleted in closed syllables. e.g. กรุงเทพ = Krung Thep (not Ko-ro-ung...).
+      </div>
+      <div style="padding:5px 8px;">
+        <strong style="color:var(--c-head)">ph / th / kh = aspirated</strong><br>
+        These are NOT f/voiced-th/ch. <em>ph</em> = aspirated p (as in <em>pot</em>), <em>th</em> = aspirated t (as in <em>top</em>), <em>kh</em> = aspirated k (as in <em>kin</em>). The unaspirated counterparts are plain p/t/k.
+      </div>
+      <div style="padding:5px 8px; border-right:1px solid var(--c-border); border-top:1px solid var(--c-border);">
+        <strong style="color:var(--c-head)">Final consonant mergers</strong><br>
+        All stops reduce to three final sounds: /k/, /t/, /p/. Many consonants share the same final — e.g. ก ข ค ฆ all end as /k/. Sonorants (ง น ม ย ว ร ล) keep their value or become a vowel glide.
+      </div>
+      <div style="padding:5px 8px; border-right:1px solid var(--c-border); border-top:1px solid var(--c-border);">
+        <strong style="color:var(--c-head)">Common prefixes in place names</strong><br>
+        <strong>บาง</strong> Bang- (waterway/settlement) &nbsp;·&nbsp;
+        <strong>นคร</strong> Nakhon (great city) &nbsp;·&nbsp;
+        <strong>บุรี</strong> Buri/Puri (city) &nbsp;·&nbsp;
+        <strong>เขา</strong> Khao (mountain) &nbsp;·&nbsp;
+        <strong>แม่</strong> Mae (river/mother) &nbsp;·&nbsp;
+        <strong>อ่าว</strong> Ao (bay)
+      </div>
+      <div style="padding:5px 8px; border-top:1px solid var(--c-border);">
+        <strong style="color:var(--c-head)">RTGS vs. common spellings</strong><br>
+        Official RTGS romanisation often differs from established English spellings: Krung Thep (not Bangkok), Chiang Mai (official; RTGS would be Chiang Mai), Phuket (from ภูเก็ต Phu Ket). Older maps may use pre-1999 RTGS conventions.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <span>Romanisation follows <abbr title="Royal Thai General System of Transcription, revised 1999">RTGS 1999</abbr> as used on Thai road signs and official maps. Tones are not marked in RTGS.</span>
+  <span>Thai Unicode block: U+0E00–U+0E7F</span>
+</div>
+
+</body>
+</html>

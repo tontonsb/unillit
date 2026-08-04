@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyrillic Script — Quick Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sans: 'Noto Sans', system-ui, sans-serif;
+    --cyr:  'Noto Serif', Georgia, serif;   /* serif renders Cyrillic more distinctly */
+    --c-bg:     #fafaf8;
+    --c-border: #d8d4c8;
+    --c-head:   #2b3a2b;
+    --c-label:  #4e6350;
+    --c-accent: #3a6e45;
+    --c-muted:  #8a9e8a;
+    --c-cell:   #ffffff;
+    --c-alt:    #f2f5f2;
+  }
+
+  body {
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.4;
+    background: var(--c-bg);
+    color: var(--c-head);
+    padding: 18mm 14mm;
+    max-width: 210mm;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--c-accent);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .page-header h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.02em; }
+  .page-header .subtitle { font-size: 10px; color: var(--c-label); }
+  .cyr-title { font-family: var(--cyr); font-size: 22px; font-weight: 600; color: var(--c-accent); }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .full-width { grid-column: 1 / -1; }
+
+  .section { border: 1px solid var(--c-border); border-radius: 4px; overflow: hidden; }
+  .section-title {
+    background: var(--c-head);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+  }
+  .section-note {
+    font-size: 8.5px;
+    color: var(--c-muted);
+    padding: 3px 7px 2px;
+    background: var(--c-alt);
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  /* char grid */
+  .char-grid { display: grid; gap: 0; }
+  .char-grid.cols-6  { grid-template-columns: repeat(6, 1fr); }
+  .char-grid.cols-4  { grid-template-columns: repeat(4, 1fr); }
+  .char-grid.cols-5  { grid-template-columns: repeat(5, 1fr); }
+
+  .cell {
+    background: var(--c-cell);
+    border-right: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    padding: 4px 3px 3px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  .cols-6 .cell:nth-child(6n),
+  .cols-4 .cell:nth-child(4n),
+  .cols-5 .cell:nth-child(5n) { border-right: none; }
+
+  /* row stripes — even rows */
+  .cols-6 .cell:nth-child(12n+7), .cols-6 .cell:nth-child(12n+8),
+  .cols-6 .cell:nth-child(12n+9), .cols-6 .cell:nth-child(12n+10),
+  .cols-6 .cell:nth-child(12n+11),.cols-6 .cell:nth-child(12n+12),
+  .cols-4 .cell:nth-child(8n+5),  .cols-4 .cell:nth-child(8n+6),
+  .cols-4 .cell:nth-child(8n+7),  .cols-4 .cell:nth-child(8n+8),
+  .cols-5 .cell:nth-child(10n+6), .cols-5 .cell:nth-child(10n+7),
+  .cols-5 .cell:nth-child(10n+8), .cols-5 .cell:nth-child(10n+9),
+  .cols-5 .cell:nth-child(10n+10) { background: var(--c-alt); }
+
+  .group-label {
+    grid-column: 1 / -1;
+    background: var(--c-alt);
+    color: var(--c-label);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .cyr  { font-family: var(--cyr); font-size: 17px; line-height: 1.2; }
+  .cyr.lg { font-size: 21px; }
+  .rom  { font-size: 8.5px; color: var(--c-accent); font-weight: 600; letter-spacing: 0.02em; }
+  .gloss { font-size: 7.5px; color: var(--c-muted); text-align: center; line-height: 1.3; }
+
+  /* language badge */
+  .lang {
+    display: inline-block;
+    font-size: 6.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    padding: 0 2px;
+    line-height: 1.5;
+    margin-top: 1px;
+    color: #fff;
+  }
+  .ru { background: #c0392b; }
+  .uk { background: #2980b9; }
+  .sr { background: #8e44ad; }
+  .mk { background: #d35400; }
+  .bg { background: #27ae60; }
+  .be { background: #16a085; }
+  .kz { background: #1a6b9a; }
+  .kg { background: #2e7d32; }
+  .tj { background: #6a1b9a; }
+  .uz { background: #e65100; }
+  .mn { background: #78909c; }
+
+  /* lookalike warning table */
+  .lookalike {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    gap: 0;
+    font-size: 9px;
+  }
+  .lookalike .lh {
+    background: var(--c-alt);
+    font-weight: 600;
+    color: var(--c-label);
+    font-size: 8px;
+    padding: 2px 6px;
+    border-bottom: 1px solid var(--c-border);
+    border-right: 1px solid var(--c-border);
+  }
+  .lookalike .ld {
+    padding: 3px 6px;
+    border-bottom: 1px solid var(--c-border);
+    border-right: 1px solid var(--c-border);
+    vertical-align: middle;
+  }
+  .lookalike .ld:last-child { border-right: none; }
+
+  abbr { border-bottom: 1px dotted var(--c-muted); cursor: help; text-decoration: none; }
+
+  .footnote {
+    margin-top: 8px;
+    font-size: 8px;
+    color: var(--c-muted);
+    border-top: 1px solid var(--c-border);
+    padding-top: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: white; padding: 12mm 10mm; font-size: 10.5px; }
+    @page { size: A4 portrait; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div>
+    <h1>Cyrillic &nbsp;<span class="cyr-title">Кириллица</span></h1>
+    <div class="subtitle">Script reference for place names &nbsp;·&nbsp; <abbr title="BGN/PCGN 1947 romanisation, as used on English-language maps">BGN/PCGN</abbr> romanisation (Russian base)</div>
+  </div>
+  <div class="subtitle" style="text-align:right">
+    Used in: Russia · Ukraine · Bulgaria · Serbia · Belarus · N. Macedonia<br>
+    &amp; Central Asian languages · Direction: left → right
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── CORE ALPHABET ── -->
+  <div class="section full-width">
+    <div class="section-title">Core Alphabet — Russian (33 letters) &nbsp;·&nbsp; uppercase / lowercase</div>
+    <div class="char-grid cols-6">
+
+      <div class="cell"><span class="cyr lg">А а</span><span class="rom">a</span></div>
+      <div class="cell"><span class="cyr lg">Б б</span><span class="rom">b</span></div>
+      <div class="cell"><span class="cyr lg">В в</span><span class="rom">v</span></div>
+      <div class="cell"><span class="cyr lg">Г г</span><span class="rom">g</span></div>
+      <div class="cell"><span class="cyr lg">Д д</span><span class="rom">d</span></div>
+      <div class="cell"><span class="cyr lg">Е е</span><span class="rom">ye / e</span><span class="gloss">ye- after vowel or word-start</span></div>
+
+      <div class="cell"><span class="cyr lg">Ё ё</span><span class="rom">yo</span><span class="gloss">often written as е in text</span></div>
+      <div class="cell"><span class="cyr lg">Ж ж</span><span class="rom">zh</span><span class="gloss">like <em>s</em> in <em>measure</em></span></div>
+      <div class="cell"><span class="cyr lg">З з</span><span class="rom">z</span></div>
+      <div class="cell"><span class="cyr lg">И и</span><span class="rom">i</span></div>
+      <div class="cell"><span class="cyr lg">Й й</span><span class="rom">y</span><span class="gloss">short <em>i</em>; glide</span></div>
+      <div class="cell"><span class="cyr lg">К к</span><span class="rom">k</span></div>
+
+      <div class="cell"><span class="cyr lg">Л л</span><span class="rom">l</span></div>
+      <div class="cell"><span class="cyr lg">М м</span><span class="rom">m</span></div>
+      <div class="cell"><span class="cyr lg">Н н</span><span class="rom">n</span></div>
+      <div class="cell"><span class="cyr lg">О о</span><span class="rom">o</span></div>
+      <div class="cell"><span class="cyr lg">П п</span><span class="rom">p</span></div>
+      <div class="cell"><span class="cyr lg">Р р</span><span class="rom">r</span><span class="gloss">rolled</span></div>
+
+      <div class="cell"><span class="cyr lg">С с</span><span class="rom">s</span></div>
+      <div class="cell"><span class="cyr lg">Т т</span><span class="rom">t</span></div>
+      <div class="cell"><span class="cyr lg">У у</span><span class="rom">u</span></div>
+      <div class="cell"><span class="cyr lg">Ф ф</span><span class="rom">f</span></div>
+      <div class="cell"><span class="cyr lg">Х х</span><span class="rom">kh</span><span class="gloss">like Scottish <em>loch</em></span></div>
+      <div class="cell"><span class="cyr lg">Ц ц</span><span class="rom">ts</span></div>
+
+      <div class="cell"><span class="cyr lg">Ч ч</span><span class="rom">ch</span></div>
+      <div class="cell"><span class="cyr lg">Ш ш</span><span class="rom">sh</span></div>
+      <div class="cell"><span class="cyr lg">Щ щ</span><span class="rom">shch</span><span class="gloss">or long <em>sh</em></span></div>
+      <div class="cell"><span class="cyr lg">Ъ ъ</span><span class="rom">"</span><span class="gloss">hard sign — no sound, marks hard consonant</span></div>
+      <div class="cell"><span class="cyr lg">Ы ы</span><span class="rom">y</span><span class="gloss">back unrounded vowel; like <em>i</em> said deep in throat</span></div>
+      <div class="cell"><span class="cyr lg">Ь ь</span><span class="rom">'</span><span class="gloss">soft sign — palatalises preceding consonant</span></div>
+
+      <div class="cell"><span class="cyr lg">Э э</span><span class="rom">e</span><span class="gloss">plain <em>e</em>, not palatal</span></div>
+      <div class="cell"><span class="cyr lg">Ю ю</span><span class="rom">yu</span></div>
+      <div class="cell"><span class="cyr lg">Я я</span><span class="rom">ya</span></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+
+    </div>
+  </div>
+
+  <!-- ── EXTENDED LETTERS ── -->
+  <div class="section full-width">
+    <div class="section-title">Extended Letters — Slavic &amp; Central Asian scripts</div>
+    <div class="section-note">Letters not in the Russian alphabet, with the languages they appear in.</div>
+    <div class="char-grid cols-6">
+
+      <div class="group-label">Ukrainian &nbsp;Українська</div>
+      <div class="cell"><span class="cyr lg">І і</span><span class="rom">i</span><span class="lang uk">UK</span></div>
+      <div class="cell"><span class="cyr lg">Ї ї</span><span class="rom">yi</span><span class="lang uk">UK</span></div>
+      <div class="cell"><span class="cyr lg">Є є</span><span class="rom">ye</span><span class="lang uk">UK</span></div>
+      <div class="cell"><span class="cyr lg">Ґ ґ</span><span class="rom">g</span><span class="gloss">hard g (rare)</span><span class="lang uk">UK</span></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+
+      <div class="group-label">Belarusian &nbsp;Беларуская</div>
+      <div class="cell"><span class="cyr lg">Ў ў</span><span class="rom">w / ŭ</span><span class="gloss">non-syllabic <em>u</em></span><span class="lang be">BE</span></div>
+      <div class="cell"><span class="cyr lg">І і</span><span class="rom">i</span><span class="lang be">BE</span></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+
+      <div class="group-label">Serbian &nbsp;Српски &nbsp;(1:1 mapping with Latin alphabet)</div>
+      <div class="cell"><span class="cyr lg">Ј ј</span><span class="rom">j</span><span class="lang sr">SR</span></div>
+      <div class="cell"><span class="cyr lg">Љ љ</span><span class="rom">lj</span><span class="lang sr">SR</span></div>
+      <div class="cell"><span class="cyr lg">Њ њ</span><span class="rom">nj</span><span class="lang sr">SR</span></div>
+      <div class="cell"><span class="cyr lg">Ћ ћ</span><span class="rom">ć</span><span class="gloss">soft <em>ch</em></span><span class="lang sr">SR</span></div>
+      <div class="cell"><span class="cyr lg">Ђ ђ</span><span class="rom">đ / dj</span><span class="gloss">soft <em>dj</em></span><span class="lang sr">SR</span></div>
+      <div class="cell"><span class="cyr lg">Џ џ</span><span class="rom">dž</span><span class="lang sr">SR</span></div>
+
+      <div class="group-label">Macedonian &nbsp;Македонски</div>
+      <div class="cell"><span class="cyr lg">Ѓ ѓ</span><span class="rom">gj</span><span class="lang mk">MK</span></div>
+      <div class="cell"><span class="cyr lg">Ѕ ѕ</span><span class="rom">dz</span><span class="lang mk">MK</span></div>
+      <div class="cell"><span class="cyr lg">Ќ ќ</span><span class="rom">kj</span><span class="lang mk">MK</span></div>
+      <div class="cell"><span class="cyr lg">Ј ј</span><span class="rom">j</span><span class="lang mk">MK</span></div>
+      <div class="cell"><span class="cyr lg">Љ љ</span><span class="rom">lj</span><span class="lang mk">MK</span></div>
+      <div class="cell"><span class="cyr lg">Њ њ</span><span class="rom">nj</span><span class="lang mk">MK</span></div>
+
+      <div class="group-label">Shared Central Asian letters — uvulars, front rounded vowels &amp; nasal</div>
+      <div class="cell"><span class="cyr lg">Қ қ</span><span class="rom">q</span><span class="gloss">uvular stop, further back than к</span><span><span class="lang kz">KZ</span> <span class="lang kg">KG</span> <span class="lang tj">TJ</span> <span class="lang uz">UZ</span></span></div>
+      <div class="cell"><span class="cyr lg">Ғ ғ</span><span class="rom">gh</span><span class="gloss">voiced uvular fricative</span><span><span class="lang kz">KZ</span> <span class="lang tj">TJ</span> <span class="lang uz">UZ</span></span></div>
+      <div class="cell"><span class="cyr lg">Ң ң</span><span class="rom">ng</span><span class="gloss">velar nasal, like <em>sing</em></span><span><span class="lang kz">KZ</span> <span class="lang kg">KG</span> <span class="lang mn">MN</span></span></div>
+      <div class="cell"><span class="cyr lg">Ө ө</span><span class="rom">ö</span><span class="gloss">like German <em>ö</em></span><span><span class="lang kz">KZ</span> <span class="lang kg">KG</span> <span class="lang mn">MN</span></span></div>
+      <div class="cell"><span class="cyr lg">Ү ү</span><span class="rom">ü</span><span class="gloss">like German <em>ü</em></span><span><span class="lang kz">KZ</span> <span class="lang kg">KG</span> <span class="lang mn">MN</span></span></div>
+      <div class="cell"><span class="cyr lg">Ҳ ҳ</span><span class="rom">h</span><span class="gloss">pharyngeal/glottal h</span><span><span class="lang tj">TJ</span> <span class="lang uz">UZ</span></span></div>
+
+      <div class="group-label">Kazakh only &nbsp;Қазақ &nbsp;— 9 extra letters total; note: also uses І і (see Ukrainian row)</div>
+      <div class="cell"><span class="cyr lg">Ә ә</span><span class="rom">ä</span><span class="gloss">open front vowel</span><span class="lang kz">KZ</span></div>
+      <div class="cell"><span class="cyr lg">Ұ ұ</span><span class="rom">u</span><span class="gloss">back unrounded vowel</span><span class="lang kz">KZ</span></div>
+      <div class="cell"><span class="cyr lg">І і</span><span class="rom">i</span><span class="gloss">front vowel (≠ Russian и)</span><span class="lang kz">KZ</span></div>
+      <div class="cell"><span class="cyr lg">Һ һ</span><span class="rom">h</span><span class="gloss">lighter h than Ҳ</span><span class="lang kz">KZ</span></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+
+      <div class="group-label">Tajik only &nbsp;Тоҷик &nbsp;— long vowels &amp; j-sound</div>
+      <div class="cell"><span class="cyr lg">Ӣ ӣ</span><span class="rom">ī</span><span class="gloss">long i</span><span class="lang tj">TJ</span></div>
+      <div class="cell"><span class="cyr lg">Ӯ ӯ</span><span class="rom">ū</span><span class="gloss">long u</span><span class="lang tj">TJ</span></div>
+      <div class="cell"><span class="cyr lg">Ҷ ҷ</span><span class="rom">j</span><span class="gloss">like English <em>j</em></span><span class="lang tj">TJ</span></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+      <div class="cell" style="background:var(--c-alt)"></div>
+
+      <div class="group-label">Uzbek &amp; Mongolian notes</div>
+      <div class="cell"><span class="cyr lg">Ў ў</span><span class="rom">oʻ</span><span class="gloss">rounded back vowel; see also Belarusian row</span><span class="lang uz">UZ</span></div>
+      <div class="cell" style="background:var(--c-alt); padding:4px 6px; font-size:8px; color:var(--c-muted); text-align:left; grid-column: span 5">
+        <strong style="color:var(--c-label)">Uzbek <span class="lang uz">UZ</span></strong> officially switched to Latin in 2000; Cyrillic still seen in older maps &amp; signs. Extra letters beyond Russian: Қ Ғ Ҳ Ў.<br>
+        <strong style="color:var(--c-label)">Mongolian <span class="lang mn">MN</span></strong> standard Cyrillic alphabet = Russian 33 + Ө + Ү. No further additions.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── LOOKALIKES ── -->
+  <div class="section">
+    <div class="section-title">Latin lookalikes — different sounds!</div>
+    <div class="section-note">These Cyrillic letters look like Latin letters but are pronounced differently.</div>
+    <div style="padding: 0;">
+      <div class="lookalike">
+        <div class="lh">Cyrillic</div><div class="lh">Looks like</div><div class="lh">Sounds like</div><div class="lh">Example</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">В в</span></div><div class="ld">B b</div><div class="ld"><strong>V</strong></div><div class="ld">Владивосток → Vladivostok</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">Е е</span></div><div class="ld">E e</div><div class="ld"><strong>YE</strong></div><div class="ld">Екатеринбург → Yekaterinburg</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">Н н</span></div><div class="ld">H h / N n</div><div class="ld"><strong>N</strong></div><div class="ld">Новосибирск → Novosibirsk</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">Р р</span></div><div class="ld">P p</div><div class="ld"><strong>R</strong></div><div class="ld">Ростов → Rostov</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">С с</span></div><div class="ld">C c</div><div class="ld"><strong>S</strong></div><div class="ld">Самара → Samara</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">У у</span></div><div class="ld">Y y</div><div class="ld"><strong>U</strong></div><div class="ld">Урал → Ural</div>
+        <div class="ld"><span class="cyr" style="font-size:14px">Х х</span></div><div class="ld">X x</div><div class="ld"><strong>KH</strong></div><div class="ld">Хабаровск → Khabarovsk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── READING TIPS ── -->
+  <div class="section">
+    <div class="section-title">Reading tips for place names</div>
+    <div style="padding: 5px 8px; font-size: 9px; line-height: 1.7; color: var(--c-label); display:flex; flex-direction:column; gap:5px;">
+      <div><strong style="color:var(--c-head)">Stress &amp; vowel reduction</strong><br>
+      Unstressed <em>о</em> is often pronounced like <em>a</em>: Москва sounds like <em>Mas-KVA</em>. Romanisations write <em>o</em> regardless.</div>
+      <div><strong style="color:var(--c-head)">Soft sign ь</strong><br>
+      Palatalises the consonant before it — shown as apostrophe in strict romanisation (Пермь → Perm'), often dropped in everyday use.</div>
+      <div><strong style="color:var(--c-head)">Ё ё vs Е е</strong><br>
+      The two dots (diaeresis) are optional in Russian text — both may appear as е. BGN/PCGN writes Е as <em>ye</em> after a vowel or at word start, <em>e</em> elsewhere; Ё always as <em>yo</em>.</div>
+      <div><strong style="color:var(--c-head)">Serbian: two scripts</strong><br>
+      Serbian uses Cyrillic and Latin interchangeably. The Latin equivalent is always derivable: Београд = Beograd.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <span>Romanisation follows <abbr title="United States Board on Geographic Names / Permanent Committee on Geographical Names for British Official Use, 1947 system">BGN/PCGN 1947</abbr> for Russian. Other languages use their own national romanisation standards; mappings shown are simplified for toponym reading.</span>
+  <span>Cyrillic Unicode blocks: U+0400–U+04FF (Slavic) · U+0500–U+052F (supplement)</span>
+</div>
+
+</body>
+</html>

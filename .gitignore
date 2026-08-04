@@ -45,9 +45,3 @@ playwright-report/
 .impeccable/live/sessions/
 .impeccable/live/roots.json
 .impeccable/live/inject-journal.json
-
-
-#temp.... wip...
-/examples/
-/src/scripts/arabic
-/src/scripts/bengali
