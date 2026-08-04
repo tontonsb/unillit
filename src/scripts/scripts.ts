@@ -65,10 +65,10 @@ export const scriptList: ScriptConfig[] = [
 		nativeName: 'العربية',
 		abbr: 'ع',
 		meta: 'Abjad written right to left, 28 letters with up to 4 forms each',
-		status: 'coming',
+		status: 'beta',
 		infoTabs: [
-			/*{
-				label: 'Shape × Dots',
+			{
+				label: 'Grid',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicDotsGrid.vue')),
 			},
 			{
@@ -78,7 +78,7 @@ export const scriptList: ScriptConfig[] = [
 			{
 				label: 'Shape families +',
 				component: defineAsyncComponent(() => import('@/scripts/arabic/ArabicShapeFamiliesPlus.vue')),
-			},*/
+			},
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: [
@@ -122,10 +122,26 @@ export const scriptList: ScriptConfig[] = [
 				label: 'Reading tips',
 				component: defineAsyncComponent(() => import('@/scripts/cyrillic/ReadingTips.vue')),
 			},
-			/*{
+			{
+				label: 'Familiarity',
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicFamiliarity.vue')),
+			},
+			{
 				label: 'Alphabet',
-				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicSheet.vue')),
-			},*/
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicAlphabet.vue')),
+			},
+			{
+				label: 'All letters',
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicIndex.vue')),
+			},
+			{
+				label: 'Letterforms',
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicLetterforms.vue')),
+			},
+			{
+				label: 'Which language?',
+				component: defineAsyncComponent(() => import('@/scripts/cyrillic/CyrillicWhichLanguage.vue')),
+			},
 			{ label: 'None', component: NoContent },
 		],
 		practiceTabs: (() => {

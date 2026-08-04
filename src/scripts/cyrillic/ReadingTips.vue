@@ -143,7 +143,7 @@ import LB from '@/components/LangBadge.vue'
 			| Йошкар-Ола      | Yoshkar-Ola    |
 
 			The last one is a Mari toponym. In Russian words йо does not form,
-			*yo* is written using ё.
+			*yo* is written using ё. But for borrowed words like йога (*yoga*) it's fine.
 		</Markdown>
 
 		<Markdown wrap="section">
