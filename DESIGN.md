@@ -225,19 +225,126 @@ becomes a costume.
 `#3e4842`, `#67716b`) rather than being true greys. Never substitute a pure neutral;
 the greens only read as deliberate because the ink quietly agrees with them.
 
+### Measured contrast — both systems
+
+Run `node tools/contrast.mjs` to regenerate. The script's WCAG and APCA
+implementations are validated against apcacontrast.com (white-on-teal Lc −72.8,
+black-on-teal Lc +36.8, both exact).
+
+**Read APCA first.** WCAG 2.x's ratio mis-ranks mid-tone saturated colours, and this
+palette is full of them — see the two inversions marked ⚠ below, where WCAG and APCA
+disagree about which choice is *better*, and APCA is right. Negative Lc means light
+text on a dark ground. APCA bands: |Lc| 90 preferred body · 75 min body · 60
+large/secondary · 45 headlines · 30 spot · 15 non-text floor.
+
+| Text / mark | Ground | WCAG | APCA Lc | Usable for |
+|---|---|---|---|---|
+| **Ink on paper** | | | | |
+| Deep Ink `#242b26` | Warm Sheet | 13.87:1 | +98.2 | body, preferred |
+| Deep Ink `#242b26` | Cell White | 14.50:1 | +101.3 | body, preferred |
+| Body Ink `#3e4842` | Warm Sheet | 9.09:1 | +88.9 | body, min |
+| Body Ink `#3e4842` | Cell White | 9.50:1 | +92.0 | body, preferred |
+| Faded Ink `#67716b` | Warm Sheet | 4.84:1 | +71.9 | large/secondary |
+| Faded Ink `#67716b` | Cell White | 5.06:1 | +75.0 | body, min |
+| Highway Green `#006747` | Warm Sheet | 6.63:1 | +80.3 | body, min |
+| Highway Green `#006747` | Cell White | 6.93:1 | +83.4 | body, min |
+| Signal Teal `#0a8f6f` | Warm Sheet | 3.89:1 | +64.2 | large/secondary |
+| Signal Teal `#0a8f6f` | Cell White | 4.06:1 | +67.3 | large/secondary |
+| **On Mint Wash** (zebra, hover, active pill) | | | | |
+| Deep Ink | Mint Wash | 12.63:1 | +91.9 | body, preferred |
+| Body Ink | Mint Wash | 8.28:1 | +82.6 | body, min |
+| Faded Ink | Mint Wash | 4.41:1 | +65.6 | large/secondary |
+| Highway Green | Mint Wash | 6.04:1 | +74.0 | large/secondary |
+| Signal Teal | Mint Wash | 3.54:1 | +57.9 | headlines only |
+| **Reversed on Highway Green** | | | | |
+| Cell White `#ffffff` | Highway Green | 6.93:1 | **−88.4** | body, min |
+| Warm Sheet `#fafaf8` | Highway Green | 6.63:1 | −85.0 | body, min |
+| Mint Wash `#e3f3ec` | Highway Green | 6.04:1 | −78.1 | body, min |
+| Mint Rule `#c2dccb` | Highway Green | 4.75:1 | −62.0 | large/secondary |
+| Deep Ink `#242b26` | Highway Green | 2.09:1 | +15.9 | non-text only |
+| Body Ink `#3e4842` | Highway Green | 1.37:1 | **+0.0** | invisible |
+| Faded Ink `#67716b` | Highway Green | 1.37:1 | **+0.0** | invisible |
+| ⚠ Pure Black | Highway Green | 3.03:1 | +20.6 | non-text only |
+| **Reversed on Signal Teal** | | | | |
+| Cell White `#ffffff` | Signal Teal | 4.06:1 | **−72.8** | large/secondary |
+| Warm Sheet `#fafaf8` | Signal Teal | 3.89:1 | −69.4 | large/secondary |
+| Mint Wash `#e3f3ec` | Signal Teal | 3.54:1 | −62.4 | large/secondary |
+| Mint Rule `#c2dccb` | Signal Teal | 2.78:1 | −46.4 | headlines only |
+| Deep Ink `#242b26` | Signal Teal | 3.57:1 | +32.0 | spot text only |
+| Body Ink `#3e4842` | Signal Teal | 2.34:1 | +22.8 | non-text only |
+| Faded Ink `#67716b` | Signal Teal | 1.25:1 | **+0.0** | invisible |
+| ⚠ Pure Black | Signal Teal | 5.17:1 | +36.8 | spot text only |
+| **Status on feedback grounds** | | | | |
+| Tally Good | ok-bg | 4.56:1 | +68.0 | large/secondary |
+| Tally Bad | wrong-bg | 4.88:1 | +68.9 | large/secondary |
+| Fuzzy Ink | fuzzy-bg | 4.94:1 | +69.8 | large/secondary |
+| Fuzzy Echo Ink | fuzzy-user-bg | 4.87:1 | +70.1 | large/secondary |
+| Tally Warn | Cell White | 5.69:1 | +78.2 | body, min |
+| Tally Bad | Cell White | 5.43:1 | +76.1 | body, min |
+| **Non-text marks** (WCAG 1.4.11 wants 3:1) | | | | |
+| Mint Rule `#c2dccb` | Cell White | 1.46:1 | +21.8 | non-text only |
+| Mint Rule `#c2dccb` | Warm Sheet | 1.40:1 | +18.7 | non-text only |
+| Mint Wash `#e3f3ec` | Cell White | 1.15:1 | +0.0 | below threshold |
+| Mint Wash `#e3f3ec` | Warm Sheet | 1.10:1 | +0.0 | below threshold |
+
+**What the two inversions mean.** On both green plates, WCAG scores *black* higher
+than white — and APCA says black is unreadable there (Lc +20.6 and +36.8) while white
+is excellent (−88.4) or fine (−72.8). Reversing a plate to dark text because a WCAG
+ratio told you to would make it materially harder to read. **Light stays on the plates.**
+
+**The ink trap.** Body Ink and Faded Ink sit almost exactly at Highway Green's
+luminance, so on a plate they are not merely low-contrast — they are **literally
+invisible** (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that
+reads fine everywhere on paper vanishes the moment it lands on a plate, and both
+contrast systems agree. Never demote plate text to an ink tone to make it look
+secondary; use a lighter tone instead.
+
+**Room the palette already has, unused.** Reversed text on a plate does not have to be
+pure white:
+- **Warm Sheet on Highway Green (−85.0)** is within 3 Lc of pure white and is the
+  paper colour, so it fits the handout metaphor better than `#fff` does.
+- **Mint Wash on Highway Green (−78.1)** still clears APCA's body-text minimum, which
+  means a mint-tinted *secondary* tone on a plate is viable — currently the active nav
+  item sets both the Latin name and the native script name to the same pure white, and
+  this is the tone that could separate them without weakening either.
+- **Mint Rule on Highway Green (−62.0)** goes one step quieter again, for large or
+  secondary text only.
+
+Signal Teal is the tighter plate: it supports white, Warm Sheet and Mint Wash for
+large/secondary text, but nothing reaches the body-text band, which is consistent with
+it being a fill colour that happens to carry short labels.
+
+Two rows to know rather than act on: Mint Wash on paper is *below the perceptual
+threshold* (Lc 0.0). That is fine — it bands rows and marks hover, it never has to be
+discriminated as a mark. Mint Rule at Lc ~20 is likewise fine as a sheet rule but is
+the honest weak point for **interactive** boundaries, where 1.4.11's 3:1 does apply.
+
 ### On Signal Teal (working position, not settled)
 
-Signal Teal at body size measures **3.9:1 on Warm Sheet** — under the 4.5:1 AA
-threshold for normal text, over the 3:1 threshold for large text and non-text UI. The
-current working split is therefore: Signal Teal takes fills, large text (`h1`/`h2`),
-graphic marks and focus rings; Highway Green takes anything that must be read as text
-at body size.
+Signal Teal measures **3.89:1 / Lc +64.2 on Warm Sheet** — a WCAG "fail" for body
+text, but squarely in APCA's large/secondary band, which is exactly the role it holds
+(`h1`, `h2`, list markers, blockquote borders). The current working split: Signal Teal
+takes fills, large text, graphic marks and focus rings; Highway Green takes anything
+read as text at body size.
 
 This is a position, not a law. The tension is real and unresolved — the colour is more
 characterful than its contrast permits, which is precisely why it is non-standard and
 worth keeping. If you want it doing more, the routes that stay honest are: larger type,
-larger fills, graphic or iconographic use, and non-text UI. The route that is not
-honest is body-size text on Warm Sheet.
+larger fills, graphic or iconographic use, and non-text UI.
+
+**WCAG 2.x is the wrong model for this colour, and the numbers say so.** White on
+Signal Teal measures 4.1:1 by the WCAG ratio — nominally a fail — but
+[**APCA Lc −72.8**](https://apcacontrast.com/?BG=0a8f6f&TXT=ffffff&DEV=G4g&BUF=A22),
+which is comfortably usable for body text. Black on the same ground *passes* WCAG at
+5:1 and scores **Lc 36.8** on APCA, which is genuinely unreadable. WCAG 2.x's ratio is
+known to mis-rank mid-tone saturated colours in exactly this way, and here it inverts
+the correct answer.
+
+So: **white on Signal Teal is fine**, and a WCAG-only reading that says otherwise
+should be checked against APCA before anything is changed. The case that stays
+genuinely weak is Signal Teal *as* body-size text on Warm Sheet — but even that is a
+guideline to weigh, not a prohibition. This colour is here to break rules a bit; the
+job is to break them knowingly.
 
 ## Typography
 
@@ -501,8 +608,10 @@ on hover. A control at full Deep Ink is either active or a bug.
 ### Don't:
 - **Don't** add a shadow, glow, blur, gradient or glassmorphic surface. Not for depth,
   not for state, not for emphasis.
-- **Don't** set Signal Teal as body-size text on Warm Sheet (3.9:1). Large text, fills,
-  graphic marks and focus rings only.
+- **Don't** treat a WCAG 2.x ratio as the last word on Signal Teal. Check APCA before
+  changing anything — white-on-teal is Lc −72.8 and fine, despite reading as a 4.1:1
+  "fail". Signal Teal *as* body-size text on Warm Sheet stays the weak case, but it is
+  a guideline to weigh, not a prohibition. See "On Signal Teal" above.
 - **Don't** drift toward a gamified language app: no mascots, streak flames, confetti,
   bouncy oversized rounded buttons, cartoon illustration or celebratory motion.
 - **Don't** drift toward a generic SaaS dashboard: no card-on-card stacking, gradient
