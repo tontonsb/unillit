@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 2,
-	"generatedAt": "2026-08-03T00:00:00.000Z",
+	"generatedAt": "2026-08-07T21:24:22.150Z",
 	"title": "Design System: Unillit",
 	"extensions": {
 		"colorMeta": {
@@ -8,7 +8,7 @@
 				"role": "primary",
 				"displayName": "Signal Teal",
 				"canonical": "oklch(56% 0.11 165)",
-				"note": "The mischief. 3.9:1 on Warm Sheet — large text, fills, graphic marks and focus rings only.",
+				"note": "The mischief. 3.89:1 / Lc +64.2 on Warm Sheet — APCA large/secondary band, which is the role it holds. White on Signal Teal is Lc −72.8 and fine despite a 4.1:1 WCAG \"fail\"; black passes WCAG and is unreadable (Lc +36.8). Read APCA first.",
 				"tonalRamp": ["oklch(15% 0.11 165)", "oklch(26% 0.11 165)", "oklch(37% 0.11 165)", "oklch(48% 0.11 165)", "oklch(59% 0.11 165)", "oklch(70% 0.11 165)", "oklch(81% 0.11 165)", "oklch(92% 0.11 165)"]
 			},
 			"highway-green": {
@@ -22,14 +22,14 @@
 				"role": "tertiary",
 				"displayName": "Mint Wash",
 				"canonical": "oklch(95% 0.02 165)",
-				"note": "The tint. Zebra striping, row bands, hover fills, code backgrounds, selection.",
+				"note": "The tint. Zebra striping, row bands, hover fills, code backgrounds, selection. Below the perceptual threshold on paper (Lc 0.0) — correct, it bands rows rather than carrying meaning.",
 				"tonalRamp": ["oklch(15% 0.02 165)", "oklch(26% 0.02 165)", "oklch(37% 0.02 165)", "oklch(48% 0.02 165)", "oklch(59% 0.02 165)", "oklch(70% 0.02 165)", "oklch(81% 0.02 165)", "oklch(92% 0.02 165)"]
 			},
 			"mint-rule": {
 				"role": "tertiary",
 				"displayName": "Mint Rule",
 				"canonical": "oklch(87% 0.035 155)",
-				"note": "The hairline. In a system with no shadows, this is the entire vocabulary of separation.",
+				"note": "The hairline. In a system with no shadows, this is the entire vocabulary of separation. Lc ~20 on paper: fine as a sheet rule, the honest weak point for interactive boundaries where WCAG 1.4.11's 3:1 applies.",
 				"tonalRamp": ["oklch(15% 0.035 155)", "oklch(26% 0.035 155)", "oklch(37% 0.035 155)", "oklch(48% 0.035 155)", "oklch(59% 0.035 155)", "oklch(70% 0.035 155)", "oklch(81% 0.035 155)", "oklch(92% 0.035 155)"]
 			},
 			"warm-sheet": {
@@ -50,21 +50,21 @@
 				"role": "neutral",
 				"displayName": "Deep Ink",
 				"canonical": "oklch(25% 0.01 155)",
-				"note": "Glyphs, specimens, sheet headings, emphasised values. 13.9:1.",
+				"note": "Glyphs, specimens, sheet headings, emphasised values. 13.9:1 / Lc +98.2 on paper. Non-text only on a plate (Lc +15.9).",
 				"tonalRamp": ["oklch(15% 0.01 155)", "oklch(26% 0.01 155)", "oklch(37% 0.01 155)", "oklch(48% 0.01 155)", "oklch(59% 0.01 155)", "oklch(70% 0.01 155)", "oklch(81% 0.01 155)", "oklch(92% 0.01 155)"]
 			},
 			"body-ink": {
 				"role": "neutral",
 				"displayName": "Body Ink",
 				"canonical": "oklch(36% 0.012 155)",
-				"note": "Running prose, table cells, nav labels. 9.1:1.",
+				"note": "Running prose, table cells, nav labels. 9.1:1 / Lc +88.9 on paper. Invisible on a Highway Green plate (Lc 0.0).",
 				"tonalRamp": ["oklch(15% 0.012 155)", "oklch(26% 0.012 155)", "oklch(37% 0.012 155)", "oklch(48% 0.012 155)", "oklch(59% 0.012 155)", "oklch(70% 0.012 155)", "oklch(81% 0.012 155)", "oklch(92% 0.012 155)"]
 			},
 			"faded-ink": {
 				"role": "neutral",
 				"displayName": "Faded Ink",
 				"canonical": "oklch(53% 0.01 155)",
-				"note": "Metadata, captions, inactive controls, micro-labels. 4.8:1 — still AA at body size.",
+				"note": "Metadata, captions, inactive controls, micro-labels. 4.8:1 / Lc +71.9 on paper. Invisible on either plate (Lc 0.0).",
 				"tonalRamp": ["oklch(15% 0.01 155)", "oklch(26% 0.01 155)", "oklch(37% 0.01 155)", "oklch(48% 0.01 155)", "oklch(59% 0.01 155)", "oklch(70% 0.01 155)", "oklch(81% 0.01 155)", "oklch(92% 0.01 155)"]
 			},
 			"tally-good": {
@@ -210,6 +210,7 @@
 		"rules": [
 			{ "name": "The Plate Rule", "body": "White-on-Highway-Green is reserved for surfaces that genuinely behave like a plate: sheet section headers, the active tab, the active nav item. It is the roadsign nod, and it works because it is rationed — a handful per screen. Applied to anything that is merely selected, prominent, or in need of attention, the nod becomes a costume.", "section": "colors" },
 			{ "name": "The Neutral Ink Rule", "body": "All three ink tones carry a faint green cast (#242b26, #3e4842, #67716b) rather than being true greys. Never substitute a pure neutral; the greens only read as deliberate because the ink quietly agrees with them.", "section": "colors" },
+			{ "name": "The ink trap", "body": "Body Ink and Faded Ink sit almost exactly at Highway Green's luminance, so on a plate they are not merely low-contrast — they are literally invisible (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that reads fine everywhere on paper vanishes the moment it lands on a plate, and both contrast systems agree. Never demote plate text to an ink tone to make it look secondary; use a lighter tone instead.", "section": "colors" },
 			{ "name": "The Butterick Rule", "body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.", "section": "typography" },
 			{ "name": "The Specimen Rule", "body": "The foreign glyph is the only thing allowed to be large. Every other element is set between 10px and 1.6rem. When a new element wants to be big, it is almost always trying to be the specimen — and it isn't.", "section": "typography" },
 			{ "name": "The Weight Split Rule", "body": "Lora runs at 500 in full-page prose and 600 in panels. The larger prose sizes carry more ink per stroke, so they want the lighter weight; the compact panel sizes need the heavier one. Do not homogenise these to a single weight.", "section": "typography" },
@@ -233,7 +234,7 @@
 		],
 		"donts": [
 			"Don't add a shadow, glow, blur, gradient or glassmorphic surface. Not for depth, not for state, not for emphasis.",
-			"Don't set Signal Teal as body-size text on Warm Sheet (3.9:1). Large text, fills, graphic marks and focus rings only.",
+			"Don't treat a WCAG 2.x ratio as the last word on Signal Teal. Check APCA before changing anything — white-on-teal is Lc −72.8 and fine, despite reading as a 4.1:1 \"fail\". Signal Teal as body-size text on Warm Sheet stays the weak case, but it is a guideline to weigh, not a prohibition. See \"On Signal Teal\" in DESIGN.md.",
 			"Don't drift toward a gamified language app: no mascots, streak flames, confetti, bouncy oversized rounded buttons, cartoon illustration or celebratory motion.",
 			"Don't drift toward a generic SaaS dashboard: no card-on-card stacking, gradient headers, purple/blue tech palette, floating widgets or comfort padding.",
 			"Don't chase trends: no neon, no heavy blur, no animated gradients, no dark-mode-first inversion of a system built as printed paper.",
