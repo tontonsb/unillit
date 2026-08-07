@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { useId } from 'vue'
+
 defineProps<{ fonts: { id: string, label: string }[] }>()
 const model = defineModel<string>({ required: true })
+
+const id = useId()
 </script>
 
 <template>
 	<div class="font-picker">
-		<label class="picker-label">Font</label>
-		<select v-model="model" class="picker-select">
+		<label class="picker-label" :for="id">Font</label>
+		<select :id v-model="model" class="picker-select">
 			<option v-for="f in fonts" :key="f.id" :value="f.id">{{ f.label }}</option>
 		</select>
 	</div>

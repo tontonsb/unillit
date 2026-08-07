@@ -30,7 +30,7 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   contained in QuizPanel, covering quiz mode, sampling mode and count. Deliberately
   not guarded: the practice tab bar and the main menu (leaving the panel is
   self-evidently leaving), page navigation, and share links applying prefs on load.*
-- [ ] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
+- [x] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
   answer input (placeholder is not an accessible name). Also the count input.
 - [ ] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
 - [ ] **`#c8952a`** at `StatsPanel.vue:324` — the one genuinely undocumented colour.

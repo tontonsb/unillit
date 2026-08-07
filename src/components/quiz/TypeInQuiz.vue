@@ -57,6 +57,7 @@ function handleSubmit() {
 			v-model="userInput"
 			class="answer-input"
 			type="text"
+			aria-label="Romanisation"
 			placeholder="Type romanisation…"
 			autocomplete="off"
 			autocorrect="off"

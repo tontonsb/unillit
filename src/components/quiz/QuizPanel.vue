@@ -234,6 +234,7 @@ const { resultCopied, copyResults } = useResultShare({
 					type="number"
 					min="1"
 					class="count-input"
+					title="Questions per run"
 					@change="setCount"
 				>
 			</div>
