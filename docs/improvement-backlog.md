@@ -12,15 +12,19 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
 
 ## 1. Low-hanging fruit
 
-- [ ] ✅ **Quiz state resets on tab switch.** `QuizShell.vue` renders `QuizPanel`
+- [x] ✅ **Quiz state resets on tab switch.** `QuizShell.vue` renders `QuizPanel`
   behind `v-if`; opening STATS/RUNS unmounts it and returning starts a fresh
   session. Verified 5/77 → STATS → 0/77. Use `v-show`, or hoist the session into a
-  composable keyed by dataset.
+  composable keyed by dataset. *Done: `v-show` on QuizPanel, STATS/RUNS keep `v-if`
+  so they refetch on open.*
 - [ ] ✅ **Empty `<h1>` on every script page.** `ScriptView.vue:79` passes no
   `title` to the practice panel, so `ScriptPanel.vue:25` renders an empty heading.
   Give it a title or make the heading conditional. Also two unlabelled tablists.
-- [ ] ✅ **Warn before destroying a started run** when sampling mode or count
-  changes mid-run (`index > 0`).
+- [x] ✅ **Warn before destroying a started run** when sampling mode or count
+  changes mid-run (`index > 0`). *Done: native `confirm()` from `confirmAbandon()`,
+  contained in QuizPanel, covering quiz mode, sampling mode and count. Deliberately
+  not guarded: the practice tab bar and the main menu (leaving the panel is
+  self-evidently leaving), page navigation, and share links applying prefs on load.*
 - [ ] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
   answer input (placeholder is not an accessible name). Also the count input.
 - [ ] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
