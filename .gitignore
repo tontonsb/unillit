@@ -46,6 +46,7 @@ playwright-report/
 .impeccable/live/roots.json
 .impeccable/live/inject-journal.json
 
+.playwright-mcp/
 
 #temp.... wip...
 /examples/
