@@ -66,6 +66,7 @@ function copyLink() {
 				:title="config.name"
 				:title-native="config.nativeName"
 				:title-lang="config.id"
+				:tabs-label="`${config.name} sheets`"
 			>
 				<template #header-end>
 					<button
@@ -79,6 +80,7 @@ function copyLink() {
 			<ScriptPanel
 				v-model:active-index="practiceTab"
 				:tabs="config.practiceTabs ?? []"
+				:tabs-label="`${config.name} practice`"
 			>
 				<template v-if="config.infoHeaderEnd" #header-end>
 					<component :is="config.infoHeaderEnd" />

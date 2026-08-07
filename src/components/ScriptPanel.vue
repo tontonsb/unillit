@@ -7,6 +7,8 @@ const props = defineProps<{
 	title?: string
 	titleNative?: string
 	titleLang?: string
+	/** accessible name for the tab bar — the panels are told apart by it */
+	tabsLabel?: string
 }>()
 
 const activeIndex = defineModel<number>('activeIndex', { default: 0 })
@@ -22,12 +24,12 @@ const id = useId()
 <template>
 	<section>
 		<header>
-			<h1>
+			<h1 v-if="title || titleNative">
 				<span class="panel-name">{{ title }}</span>
 				<span v-if="titleNative" class="panel-native" :lang="titleLang">{{ titleNative }}</span>
 			</h1>
 
-			<nav role="tablist">
+			<nav role="tablist" :aria-label="tabsLabel">
 				<button
 					v-for="(tab, i) in tabs"
 					:key="i"

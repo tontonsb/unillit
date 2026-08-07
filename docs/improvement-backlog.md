@@ -17,9 +17,14 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   session. Verified 5/77 → STATS → 0/77. Use `v-show`, or hoist the session into a
   composable keyed by dataset. *Done: `v-show` on QuizPanel, STATS/RUNS keep `v-if`
   so they refetch on open.*
-- [ ] ✅ **Empty `<h1>` on every script page.** `ScriptView.vue:79` passes no
+- [x] ✅ **Empty `<h1>` on every script page.** `ScriptView.vue:79` passes no
   `title` to the practice panel, so `ScriptPanel.vue:25` renders an empty heading.
   Give it a title or make the heading conditional. Also two unlabelled tablists.
+  *Done: heading is conditional, and a `tabsLabel` prop names both tablists
+  ("Cyrillic sheets" / "Cyrillic practice"). Only layout effect: the practice tab
+  bar sits 12px further left, flush with the panel padding, where the zero-width
+  heading's flex gap used to be. Header height is unchanged — it comes from
+  `min-height: 36px`.*
 - [x] ✅ **Warn before destroying a started run** when sampling mode or count
   changes mid-run (`index > 0`). *Done: native `confirm()` from `confirmAbandon()`,
   contained in QuizPanel, covering quiz mode, sampling mode and count. Deliberately
