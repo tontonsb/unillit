@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/components/quiz/QuizPanel.vue"
+        ],
+        "createdAt": "2026-08-07T23:16:25.532Z",
+        "reason": "User confirmed: progress-fill animates width once per answered question on a 4px bar; scaleX would distort its border-radius"
+      }
+    ]
+  }
+}
