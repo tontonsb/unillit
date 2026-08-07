@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, nextTick } from 'vue'
 import type { QuizDataset } from './dataset'
 import QuizPanel from './QuizPanel.vue'
 import StatsPanel from './StatsPanel.vue'
@@ -14,12 +14,19 @@ const props = defineProps<{
 
 type Tab = 'quiz' | 'stats' | 'runs'
 const activeTab = ref<Tab>('quiz')
+const quizPanel = ref<InstanceType<typeof QuizPanel> | null>(null)
+
+// the panel is only hidden, not remounted, so it needs a nudge to take focus back
+watch(activeTab, (tab) => {
+	if (tab === 'quiz') nextTick(() => quizPanel.value?.focus())
+})
 </script>
 
 <template>
 	<div class="quiz">
 		<QuizPanel
-			v-if="activeTab === 'quiz'"
+			ref="quizPanel"
+			v-show="activeTab === 'quiz'"
 			:dataset="props.dataset"
 			:prompt-class="promptClass"
 			:prompt-font-family="promptFontFamily"
@@ -27,14 +34,14 @@ const activeTab = ref<Tab>('quiz')
 		/>
 
 		<StatsPanel
-			v-else-if="activeTab === 'stats'"
+			v-if="activeTab === 'stats'"
 			:script-id="scriptId"
 			:prompt-class="promptClass"
 			:dataset="props.dataset"
 		/>
 
 		<RunsPanel
-			v-else-if="activeTab === 'runs'"
+			v-if="activeTab === 'runs'"
 			:script-id="scriptId"
 			:dataset="props.dataset"
 		/>

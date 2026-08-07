@@ -50,6 +50,7 @@ watch(maxTolerance, (max) => {
 const { user } = useAuth()
 
 const nextBtn = ref<HTMLButtonElement | null>(null)
+const typeIn = ref<InstanceType<typeof TypeInQuiz> | null>(null)
 const loadingSession = ref(false)
 let runStarted = false
 
@@ -102,11 +103,49 @@ watch(() => props.dataset, async () => {
 
 watch([samplingMode, randomCount], () => { startSession() })
 
+/** A run worth warning about: at least one answer given, not yet finished. */
+const runInProgress = computed(() =>
+	phase.value !== 'done' && (index.value > 0 || phase.value === 'answered')
+)
+
+function confirmAbandon() {
+	if (!runInProgress.value) return true
+
+	return confirm(`Changing the settings will end the current run (${progress.value}). Change them?`)
+}
+
 function switchMode(newMode: QuizMode) {
 	if (mode.value === newMode) return
+	if (!confirmAbandon()) return
+
 	mode.value = newMode
 	preferredMode.value = newMode
 	startSession()
+}
+
+function switchSampling(newMode: typeof samplingMode.value) {
+	if (samplingMode.value === newMode) return
+	if (!confirmAbandon()) return
+
+	samplingMode.value = newMode
+}
+
+/**
+ * Bound to @change rather than v-model: the count only takes effect once the
+ * field is committed, so typing "20" doesn't restart the run twice.
+ */
+function setCount(event: Event) {
+	const input = event.target as HTMLInputElement
+	const n = Math.trunc(Number(input.value))
+
+	if (!Number.isFinite(n) || n < 1 || n === randomCount.value || !confirmAbandon()) {
+		input.value = String(randomCount.value)
+
+		return
+	}
+
+	randomCount.value = n
+	input.value = String(n)
 }
 
 async function handleSubmit(correct: boolean, errors?: number) {
@@ -136,6 +175,14 @@ function advance() {
 	if (phase.value === 'done') stats.value?.completeRun()
 }
 
+/** Called by QuizShell when the quiz tab comes back into view. */
+defineExpose({
+	focus: () => {
+		if (phase.value === 'answered') nextBtn.value?.focus()
+		else typeIn.value?.focus()
+	},
+})
+
 const { resultCopied, copyResults } = useResultShare({
 	mode: () => mode.value,
 	correct: () => tally.value.correct,
@@ -161,20 +208,20 @@ const { resultCopied, copyResults } = useResultShare({
 					type="button"
 					class="pill"
 					:class="{ active: samplingMode === 'shuffled' }"
-					@click="samplingMode = 'shuffled'"
+					@click="switchSampling('shuffled')"
 				>Shuffled</button>
 				<button
 					type="button"
 					class="pill"
 					:class="{ active: samplingMode === 'random' }"
-					@click="samplingMode = 'random'"
+					@click="switchSampling('random')"
 				>Random</button>
 				<button
 					v-if="user"
 					type="button"
 					class="pill"
 					:class="{ active: samplingMode === 'revision' }"
-					@click="samplingMode = 'revision'"
+					@click="switchSampling('revision')"
 				>Revision</button>
 				<span
 					v-else
@@ -183,10 +230,11 @@ const { resultCopied, copyResults } = useResultShare({
 				>Revision</span>
 				<input
 					v-if="samplingMode !== 'shuffled'"
-					v-model.number="randomCount"
+					:value="randomCount"
 					type="number"
 					min="1"
 					class="count-input"
+					@change="setCount"
 				>
 			</div>
 		</div>
@@ -224,6 +272,7 @@ const { resultCopied, copyResults } = useResultShare({
 				<div class="prompt" :class="promptClass" :style="promptFontFamily ? { fontFamily: promptFontFamily } : {}">{{ current.prompt }}</div>
 				<TypeInQuiz
 					v-if="mode === 'typein'"
+					ref="typeIn"
 					:current
 					:phase
 					:dataset="props.dataset"

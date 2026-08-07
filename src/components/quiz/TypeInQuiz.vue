@@ -26,6 +26,8 @@ const instructions = computed(() => props.dataset.instructions)
 
 onMounted(() => answerInput.value?.focus())
 
+defineExpose({ focus: () => answerInput.value?.focus() })
+
 watch(() => props.phase, (phase) => {
 	if (phase === 'question') {
 		userInput.value = ''
