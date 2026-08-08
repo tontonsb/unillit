@@ -53,10 +53,11 @@
 			<li><strong>Discord</strong> — used for logging in.</li>
 			<li><strong>Supabase</strong> — stores the data described above.</li>
 			<li>
-				<strong>Google Fonts</strong> — the typefaces are loaded from
-				Google, so opening a page sends a request to Google servers
-				which may see your IP address and other request headers as
-				part of fetching the fonts.
+				<strong>GitHub</strong> — the site is hosted on GitHub Pages.
+				According to <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener noreferrer">them</a>:
+				<blockquote>
+					When a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes [..]
+				</blockquote>
 			</li>
 		</ul>
 
