@@ -321,7 +321,6 @@ const nudge = computed(() => {
 
 .mastery-badge {
 	font-size: 11px;
-	color: #c8952a;
 	line-height: 1;
 }
 
