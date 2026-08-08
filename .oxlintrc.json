@@ -1,5 +1,12 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"ignorePatterns": [
+		"dist/**",
+		"dist-ssr/**",
+		"coverage/**",
+		".claude/**",
+		".github/**"
+	],
 	"plugins": [
 		"eslint",
 		"typescript",

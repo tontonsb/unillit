@@ -17,12 +17,22 @@ export default defineConfigWithVueTs(
 		files: ['**/*.{vue,ts,mts,tsx}'],
 	},
 
-	globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+	// vendored agent skills ship their own (spaces, semicolons) style — not ours to lint
+	globalIgnores([
+		'**/dist/**',
+		'**/dist-ssr/**',
+		'**/coverage/**',
+		'.claude/**',
+		'.github/**',
+	]),
 
 	...pluginVue.configs['flat/essential'],
 	vueTsConfigs.recommended,
 
 	{
+		// without `files`, these house-style rules would apply to every file ESLint visits
+		files: ['**/*.{vue,ts,mts,tsx}'],
+
 		plugins: {
 			'@stylistic': pluginStylistic,
 		},
