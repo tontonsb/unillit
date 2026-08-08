@@ -1,6 +1,6 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
-import type { QuizDataset } from '@/components/quiz/dataset'
+import type { QuizDatasetConfig } from '@/components/quiz/dataset'
 import { thaiDatasets } from './thai/datasets'
 import { cyrillicDatasets } from './cyrillic/datasets'
 
@@ -41,7 +41,7 @@ export const scriptList: ScriptConfig[] = [
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
 		practiceTabs: (() => {
 			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return thaiDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'thai', promptClass: 'thai', promptFontFamily: 'var(--font-thai)' } }))
+			return thaiDatasets.map(dataset => ({ label: dataset.label, component: c, props: { datasetConfig: dataset, scriptId: 'thai', promptClass: 'thai', promptFontFamily: 'var(--font-thai)' } }))
 		})(),
 		infoTabs: [
 			{
@@ -130,7 +130,7 @@ export const scriptList: ScriptConfig[] = [
 		],
 		practiceTabs: (() => {
 			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
+			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { datasetConfig: dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
 		})(),
 	},
 	{
@@ -163,7 +163,7 @@ export const sortedScriptList = [...scriptList]
 export const scriptsById = Object.fromEntries(scriptList.map((s) => [s.id, s]))
 
 // indexed the same as the practice tabs (which are built from these)
-export const datasetsById: Record<string, QuizDataset[]> = {
+export const datasetsById: Record<string, QuizDatasetConfig[]> = {
 	thai: thaiDatasets,
 	cyrillic: cyrillicDatasets,
 }

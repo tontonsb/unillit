@@ -79,14 +79,14 @@ Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. Key fields:
 }
 ```
 
-Practice tabs for a script with a quiz: use `QuizShell` as the component, pass `{ dataset, scriptId, promptClass, promptFontFamily }` as props.
+Practice tabs for a script with a quiz: use `QuizShell` as the component, pass `{ datasetConfig, scriptId, promptClass, promptFontFamily }` as props.
 
 ## Quiz system
 
 ### Data model (`src/components/quiz/dataset.ts`)
 
 ```ts
-type QuizMode = 'typein' | 'multiplechoice'
+type QuizMode = 'typein' | 'multiplechoice' | 'multiselect'
 
 interface Question {
   prompt: string        // the foreign-script string shown to user
@@ -94,14 +94,29 @@ interface Question {
   hint?: string         // shown after answering
 }
 
-interface QuizDataset {
+// what a script's datasets.ts exports — metadata is eager, questions are not
+interface QuizDatasetConfig {
   label: string
-  questions: Question[]
+  load: () => Promise<QuizDatasetData>
   maxTolerance?: number   // max Levenshtein errors allowed in typein mode
   instructions?: string   // shown above input in typein mode
   modes?: QuizMode[]      // defaults to ['typein'] if omitted
+  kind?: QuizKind         // flavours the result share text
 }
+
+interface QuizDatasetData {
+  questions: Question[]
+  options?: string[]      // multiselect — derived from questions when omitted
+}
+
+// the resolved form; QuizShell awaits load(), everything below it sees this
+interface QuizDataset extends QuizDatasetConfig, QuizDatasetData {}
 ```
+
+**Why `load` is split out:** `scripts.ts` reads `label` at module scope to build the
+tab strip, and `MainMenu` imports `scripts.ts` on every route — so anything in the
+dataset literal is on the critical path. Only metadata belongs there; per-question
+data (including multiselect `options`) travels in the `load()` payload.
 
 ### Component tree
 

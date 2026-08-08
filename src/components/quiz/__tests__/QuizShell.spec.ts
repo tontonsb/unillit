@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, type VueWrapper } from '@vue/test-utils'
+import { mount, flushPromises, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import QuizShell from '../QuizShell.vue'
-import type { QuizDataset } from '../dataset'
+import type { QuizDatasetConfig } from '../dataset'
 import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizPrefs'
 
 vi.mock('@/composables/useAuth', async () => {
@@ -19,13 +19,28 @@ vi.mock('@/composables/useResultShare', async () => {
 	return { useResultShare: () => ({ resultCopied: ref(false), copyResults: () => {} }) }
 })
 
-const dataset: QuizDataset = {
+const datasetConfig: QuizDatasetConfig = {
 	label: 'Test',
-	questions: [
-		{ prompt: 'а', answer: 'a' },
-		{ prompt: 'б', answer: 'b' },
-		{ prompt: 'в', answer: 'v' },
-	],
+	load: async () => ({
+		questions: [
+			{ prompt: 'а', answer: 'a' },
+			{ prompt: 'б', answer: 'b' },
+			{ prompt: 'в', answer: 'v' },
+		],
+	}),
+}
+
+/** The shell resolves its questions asynchronously, so nothing renders on mount. */
+async function mountShell(options: { attachTo?: HTMLElement } = {}) {
+	const wrapper = mount(QuizShell, {
+		props: { datasetConfig },
+		global: { stubs: { StatsPanel: true, RunsPanel: true } },
+		...options,
+	})
+
+	await flushPromises()
+
+	return wrapper
 }
 
 function tab(wrapper: VueWrapper, label: string) {
@@ -48,10 +63,7 @@ beforeEach(() => {
 
 describe('QuizShell tabs', () => {
 	it('keeps the run when stats are opened and closed', async () => {
-		const wrapper = mount(QuizShell, {
-			props: { dataset },
-			global: { stubs: { StatsPanel: true, RunsPanel: true } },
-		})
+		const wrapper = await mountShell()
 
 		await wrapper.find('input[type="text"]').setValue('a')
 		await wrapper.find('form').trigger('submit')
@@ -64,11 +76,7 @@ describe('QuizShell tabs', () => {
 	})
 
 	it('hands focus back to the answer field on return', async () => {
-		const wrapper = mount(QuizShell, {
-			props: { dataset },
-			attachTo: document.body,
-			global: { stubs: { StatsPanel: true, RunsPanel: true } },
-		})
+		const wrapper = await mountShell({ attachTo: document.body })
 
 		const answer = wrapper.find<HTMLInputElement>('input[type="text"]').element
 		expect(document.activeElement).toBe(answer)

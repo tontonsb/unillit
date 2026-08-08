@@ -269,10 +269,14 @@ real code · `em`-relative sheet scaling · `outline-offset: -2px` on edge-flush
   Home page went from 11 render-blocking Google stylesheets to none, 17 font files
   to 4, and FCP 588ms → 136ms locally. Nothing contacts Google any more, so the
   Google Fonts paragraph on `/privacy` is now inaccurate and should be dropped.
-- [ ] **All quiz datasets load on every route** — `scripts.ts:4-5` statically imports
-  `thaiDatasets`/`cyrillicDatasets`, so 60 kB raw / 21 kB gzip of question data is on
-  the critical path for the About page. Every *component* is properly lazy; only the
-  data isn't.
+- [x] **All quiz datasets load on every route** — `QuizDataset` split into a
+  `QuizDatasetConfig` (label + settings, eager, so `scripts.ts` can still build the tab
+  strip) and a `load()` payload holding the questions. QuizShell awaits it; the five
+  components below it were untouched. `/about` JS is 96 → 90.5 kB.
+
+  The audit's "60 kB raw / 21 kB gzip of question data" was wrong: `scripts-*.js` is a
+  shared chunk that also carries vue-router. The question data was **~6 kB gzip**, and
+  that is what moved. Worth knowing before costing similar work off chunk names.
 
 ## 8. Open questions, not yet decided
 

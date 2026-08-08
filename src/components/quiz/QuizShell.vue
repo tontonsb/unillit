@@ -1,16 +1,31 @@
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue'
-import type { QuizDataset } from './dataset'
+import { ref, watch, nextTick, watchEffect } from 'vue'
+import type { QuizDataset, QuizDatasetConfig } from './dataset'
 import QuizPanel from './QuizPanel.vue'
 import StatsPanel from './StatsPanel.vue'
 import RunsPanel from './RunsPanel.vue'
 
 const props = defineProps<{
-	dataset: QuizDataset
+	datasetConfig: QuizDatasetConfig
 	promptClass?: string
 	promptFontFamily?: string
 	scriptId?: string
 }>()
+
+// The questions arrive separately from the rest of the dataset (see QuizDatasetConfig).
+// Everything below this component takes a whole QuizDataset and knows nothing about it.
+const dataset = ref<QuizDataset | null>(null)
+
+watchEffect(async () => {
+	const config = props.datasetConfig
+
+	dataset.value = null
+
+	const data = await config.load()
+
+	// a tab switch mid-load must not overwrite the newer dataset
+	if (props.datasetConfig === config) dataset.value = { ...config, ...data }
+})
 
 type Tab = 'quiz' | 'stats' | 'runs'
 const activeTab = ref<Tab>('quiz')
@@ -24,27 +39,31 @@ watch(activeTab, (tab) => {
 
 <template>
 	<div class="quiz">
-		<QuizPanel
-			ref="quizPanel"
-			v-show="activeTab === 'quiz'"
-			:dataset="props.dataset"
-			:prompt-class="promptClass"
-			:prompt-font-family="promptFontFamily"
-			:script-id="scriptId"
-		/>
+		<template v-if="dataset">
+			<QuizPanel
+				ref="quizPanel"
+				v-show="activeTab === 'quiz'"
+				:dataset="dataset"
+				:prompt-class="promptClass"
+				:prompt-font-family="promptFontFamily"
+				:script-id="scriptId"
+			/>
 
-		<StatsPanel
-			v-if="activeTab === 'stats'"
-			:script-id="scriptId"
-			:prompt-class="promptClass"
-			:dataset="props.dataset"
-		/>
+			<StatsPanel
+				v-if="activeTab === 'stats'"
+				:script-id="scriptId"
+				:prompt-class="promptClass"
+				:dataset="dataset"
+			/>
 
-		<RunsPanel
-			v-if="activeTab === 'runs'"
-			:script-id="scriptId"
-			:dataset="props.dataset"
-		/>
+			<RunsPanel
+				v-if="activeTab === 'runs'"
+				:script-id="scriptId"
+				:dataset="dataset"
+			/>
+		</template>
+
+		<p v-else class="loading">Loading…</p>
 
 		<div class="bottom-bar">
 			<button
@@ -67,6 +86,16 @@ watch(activeTab, (tab) => {
 	flex-direction: column;
 	height: 100%;
 	background: var(--c-bg);
+}
+
+/* Only seen if the questions chunk is slow — usually it resolves within the same
+   tick as the shell itself, so this must not flash any layout of its own. */
+.loading {
+	flex: 1;
+	align-content: center;
+	color: var(--c-muted);
+	font-size: var(--fs-chrome);
+	text-align: center;
 }
 
 .bottom-bar {

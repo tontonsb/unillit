@@ -1,18 +1,20 @@
-import type { QuizDataset } from '@/components/quiz/dataset'
-import { allLettersQuestions, toponymQuestions } from './cyrillicQuestions'
-import { languageIdQuestions, LANGUAGE_OPTIONS } from './languageIdQuestions'
+import type { QuizDatasetConfig } from '@/components/quiz/dataset'
 
-export const cyrillicDatasets: QuizDataset[] = [
+// Loaded on demand — see QuizDatasetConfig.
+const letters = () => import('./cyrillicQuestions')
+const languages = () => import('./languageIdQuestions')
+
+export const cyrillicDatasets: QuizDatasetConfig[] = [
 	{
 		label: 'Letters',
-		questions: allLettersQuestions,
+		load: () => letters().then(m => ({ questions: m.allLettersQuestions })),
 		maxTolerance: 1,
 		modes: ['typein'],
 		instructions: '[beta, set will change]',
 	},
 	{
 		label: 'Toponyms',
-		questions: toponymQuestions,
+		load: () => letters().then(m => ({ questions: m.toponymQuestions })),
 		maxTolerance: 3,
 		modes: ['typein', 'multiplechoice'],
 		kind: 'toponyms',
@@ -20,9 +22,13 @@ export const cyrillicDatasets: QuizDataset[] = [
 	},
 	{
 		label: 'Identification',
-		questions: languageIdQuestions,
+		// The option list travels with its questions — it is per-question data, and
+		// nothing outside an open quiz reads it.
+		load: () => languages().then(m => ({
+			questions: m.languageIdQuestions,
+			options: m.LANGUAGE_OPTIONS,
+		})),
 		modes: ['multiselect'],
-		options: LANGUAGE_OPTIONS,
 		instructions: '[minimal beta set as proof of concept] Select every language whose alphabet this spelling fits.',
 		kind: 'language',
 	},
