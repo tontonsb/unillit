@@ -255,6 +255,7 @@ import LB from '@/components/LangBadge.vue'
 			<figure>
 				<img
 					src="/bulgarian-vs-russian-cyrillic.png"
+					loading="lazy"
 					alt="Bulgarian and Russian Cyrillic letterforms with differences highlighted"
 				>
 				<figcaption>
