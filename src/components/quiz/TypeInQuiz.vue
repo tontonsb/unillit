@@ -24,6 +24,8 @@ const answerInput = ref<HTMLInputElement | null>(null)
 const maxTolerance = computed(() => props.dataset.maxTolerance ?? 0)
 const instructions = computed(() => props.dataset.instructions)
 
+let cardShownAt = Date.now()
+
 onMounted(() => answerInput.value?.focus())
 
 defineExpose({ focus: () => answerInput.value?.focus() })
@@ -31,6 +33,7 @@ defineExpose({ focus: () => answerInput.value?.focus() })
 watch(() => props.phase, (phase) => {
 	if (phase === 'question') {
 		userInput.value = ''
+		cardShownAt = Date.now()
 		nextTick(() => answerInput.value?.focus())
 	}
 })
@@ -40,6 +43,14 @@ watch(maxTolerance, (max) => {
 })
 
 function handleSubmit() {
+	/**
+	 * Enter on the answered card advances, and a second tap arrives while the next
+	 * card is already focused — scoring a blank the user never meant, with no undo.
+	 * Empty *is* a valid answer for silent characters, so this filters by timing,
+	 * not by emptiness: a deliberate blank comes after reading the prompt.
+	 */
+	if (!userInput.value && Date.now() - cardShownAt < 400) return
+
 	const inputNorm = userInput.value.toLowerCase().trim()
 	const minErrors = Math.min(...allAnswers(props.current).map(a => levenshtein(inputNorm, a.toLowerCase().trim())))
 	lastExact.value = isMatch(userInput.value, props.current.answer)

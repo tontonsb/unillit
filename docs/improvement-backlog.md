@@ -77,8 +77,9 @@ agrees this is worth investing product-specific design in.
   is valid — Thai's อ ships `answer: ['o', '-', '']` and the Cyrillic hard/soft signs
   ship `rom: ['"', '']` / `["'", '']`. A guard would make correct answers
   unsubmittable. Only defensible on datasets whose answers are always multi-character,
-  derived from the dataset. (The double-Enter-burns-a-question issue is separate and
-  still real.)
+  derived from the dataset. (The double-Enter-burns-a-question issue was separate, and
+  is now fixed by timing: an empty submit within 400ms of a new card is ignored, so a
+  deliberate blank still works.)
 
 ## 3. Microcopy
 
