@@ -80,7 +80,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	color: var(--c-label);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	font-family: var(--sans);
 	cursor: pointer;
 	text-align: left;
@@ -99,7 +99,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 .choice.dim     { opacity: 0.4; }
 
 .also-accepted {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	color: var(--c-muted);
 	text-align: center;
 	margin: 0;

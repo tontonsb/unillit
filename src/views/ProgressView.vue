@@ -47,7 +47,7 @@ article {
 }
 
 h1 {
-	font-size: 1.5rem;
+	font-size: var(--fs-24);
 	font-weight: 600;
 	color: var(--c-head);
 	margin-bottom: 1.5rem;
@@ -67,7 +67,7 @@ h1 {
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;

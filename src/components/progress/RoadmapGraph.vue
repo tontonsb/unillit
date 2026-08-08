@@ -236,7 +236,7 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 }
 
 .step-label {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	color: var(--c-label);
 	line-height: 1.3;
 }
@@ -245,13 +245,13 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 .step.never .step-label { color: var(--c-muted); }
 
 .step-hint {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 	line-height: 1.3;
 }
 
 .step-date {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 	white-space: nowrap;
 }

@@ -14,6 +14,45 @@
 	--font-thai: 'Noto Sans Thai', system-ui, sans-serif;
 
 	/**
+	  * Type ramp. Written in rem so type honours the browser's font-size
+	  * preference; chosen in px, because the chrome register needs 1px
+	  * resolution in the 10–15px band (DESIGN.md → The Two Registers Rule).
+	  *
+	  * This is an extraction, not yet a consolidation: every size the codebase
+	  * had is still here, at the size it was. Ordering the ladder by px makes
+	  * the residue visible — the sub-pixel neighbours below are what a later
+	  * pass has to rule on, one register at a time.
+	  *
+	  * Named by role where a value has one (four are DESIGN.md's own typography
+	  * roles); named by value where it does not, rather than given invented
+	  * semantics. Sheets and reading tips scale in `em` off a clamped base and
+	  * are deliberately absent — those are ratios, not steps.
+	  */
+	--fs-9: 0.5625rem;
+	--fs-micro: 0.625rem; /* 10px — uppercase micro-labels */
+	--fs-10-4: 0.65rem;
+	--fs-11: 0.6875rem;
+	--fs-11-2: 0.7rem;
+	--fs-12: 0.75rem;
+	--fs-12-8: 0.8rem;
+	--fs-chrome: 0.8125rem; /* 13px — nav, buttons, default chrome text */
+	--fs-body: 0.875rem; /* 14px — the app base */
+	--fs-prose: 0.9rem; /* 14.4px — DESIGN.md “body”: running prose */
+	--fs-15: 0.9375rem;
+	--fs-title: 0.95rem; /* 15.2px — DESIGN.md “title” */
+	--fs-16: 1rem;
+	--fs-17: 1.0625rem;
+	--fs-headline: 1.1rem; /* 17.6px — DESIGN.md “headline” */
+	--fs-18: 1.125rem;
+	--fs-22: 1.375rem;
+	--fs-22-4: 1.4rem;
+	--fs-24: 1.5rem;
+	--fs-display: 1.6rem; /* 25.6px — DESIGN.md “display” */
+	--fs-28: 1.75rem;
+	--fs-48: 3rem;
+	--fs-prompt: 4rem; /* 64px — the quiz specimen */
+
+	/**
 	  * Ink is near-neutral (faint green cast); the greens carry the brand:
 	  * - quirky teal-green accent pair
 	  * - mint borders/stripes
@@ -89,7 +128,7 @@ html, body, #app {
 
 body {
 	font-family: var(--sans);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	line-height: 1.5;
 	background: var(--c-bg);
 	color: var(--c-head);

@@ -113,7 +113,7 @@ article {
 .home-sub {
 	color: var(--c-muted);
 	margin-bottom: 1.25rem;
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 }
 
 .approaches {
@@ -132,14 +132,14 @@ dl {
 }
 
 dt {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	font-weight: 600;
 	color: var(--c-head);
 	padding-top: 0.1em;
 }
 
 dd {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	color: var(--c-label);
 }
 
@@ -183,7 +183,7 @@ dd {
 }
 
 .card-soon {
-	font-size: 0.65rem;
+	font-size: var(--fs-10-4);
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
@@ -192,26 +192,26 @@ dd {
 }
 
 .card-native {
-	font-size: 1.75rem;
+	font-size: var(--fs-28);
 	line-height: 1.2;
 	color: var(--c-head);
 }
 
 .card-name {
 	font-family: var(--serif);
-	font-size: 1rem;
+	font-size: var(--fs-16);
 	font-weight: 600;
 	color: var(--c-label);
 }
 
 .card-meta {
-	font-size: 0.75rem;
+	font-size: var(--fs-12);
 	color: var(--c-muted);
 	line-height: 1.4;
 }
 
 .card-countries {
-	font-size: 0.7rem;
+	font-size: var(--fs-11-2);
 	color: var(--c-muted);
 	line-height: 1.4;
 	opacity: 0.7;

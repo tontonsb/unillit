@@ -248,7 +248,7 @@ const nudge = computed(() => {
 	justify-content: center;
 	height: 100%;
 	color: var(--c-muted);
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 }
 
 .stats-login {
@@ -274,7 +274,7 @@ const nudge = computed(() => {
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	font-family: var(--sans);
 	font-weight: 600;
 	letter-spacing: 0.04em;
@@ -304,7 +304,7 @@ const nudge = computed(() => {
 	padding: 6px 12px;
 	border-bottom: 1px solid var(--c-border);
 	background: var(--c-cell);
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 }
 
@@ -320,14 +320,14 @@ const nudge = computed(() => {
 }
 
 .mastery-badge {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	line-height: 1;
 }
 
 .stats-table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 12px;
+	font-size: var(--fs-12);
 }
 
 .stats-table th {
@@ -338,7 +338,7 @@ const nudge = computed(() => {
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
 	border-bottom: 1px solid var(--c-border);
@@ -351,7 +351,7 @@ const nudge = computed(() => {
 }
 
 .prompt-cell {
-	font-size: 1.4rem;
+	font-size: var(--fs-22-4);
 	line-height: 1.3;
 	color: var(--c-head);
 }
@@ -369,7 +369,7 @@ const nudge = computed(() => {
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;
@@ -378,7 +378,7 @@ const nudge = computed(() => {
 .btn-primary:hover { opacity: 0.85; }
 
 .login-note {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 }
 

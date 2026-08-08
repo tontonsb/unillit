@@ -8,7 +8,7 @@
  * nav plate) stay with the parent — Vue puts the parent's scope on this root too.
  */
 .beta-badge {
-	font-size: 9px;
+	font-size: var(--fs-9);
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;

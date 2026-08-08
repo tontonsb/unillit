@@ -399,35 +399,57 @@ addition looks reasonable in isolation. Treat a smaller palette as the default-c
 answer: reach for an existing step before adding one, and when two steps are close
 enough that nobody could name the difference, they are one step.
 
-### Open: the type ramp is not yet resolved
+**The Written-in-rem, Chosen-in-px Rule.** Every absolute size is a `--fs-*` token in
+`:root`, written as an exact sixteenth of a rem so type honours the reader's browser
+font-size preference — but *chosen* in px, because the chrome register needs 1px
+resolution in the 10–15px band and a rem-native ladder (0.05–0.1rem, i.e. 0.8–1.6px
+steps) cannot express that. The px in each token's comment is the real intent; the rem
+is how it is spelled. Sizes that scale with their container stay in `em` and are
+deliberately not tokens — see the ramp note below.
 
-The seven roles above describe the system's *intent*. The implementation currently
-also uses 10px, 11px, 12px, 13px, 14px, 16px and 3rem as live values, and the ramp
-above does not account for them — so the detector's `design-system-font-size` rule
-will flag much of the codebase against this file.
+### Open: the type ramp is extracted, not yet resolved
 
-This is a known, deliberately deferred question, not an oversight. The honest position
-is that a meaningful share of those steps are the residue of separate manual and
-AI-assisted iterations rather than decisions, while a real subset is load-bearing —
-and telling them apart requires looking at each use in context, not reading a list.
-Two things follow:
+The ramp now has **one base and one home**: all 92 absolute declarations resolve to 23
+`--fs-*` tokens in `main.css`, and no component carries a literal px or rem font-size.
+That was an *extraction* — every size the codebase had is still here, at the size it
+was. The consolidation question below is untouched.
+
+**A correction that made the extraction possible.** Earlier passes computed rem against
+`body { font-size: 14px }` and concluded that `px` for chrome and `rem` for prose was a
+principled split. Nothing sets `html`'s font-size, so **`1rem` was always 16px**, and
+the prose register was 7–14% larger than believed. The two ramps were not serving
+different registers; they were the same ramp measured against two bases, which is what
+produced seven pairs of sub-pixel neighbours nobody chose.
+
+Those pairs are the remaining residue, and the token ladder is ordered by px so they
+stay visible:
+
+| | | Δ |
+|---|---|---|
+| `--fs-micro` 10px | `--fs-10-4` 10.4px | 0.4 |
+| `--fs-11` 11px | `--fs-11-2` 11.2px | 0.2 |
+| `--fs-12-8` 12.8px | `--fs-chrome` 13px | 0.2 |
+| `--fs-body` 14px | `--fs-prose` 14.4px | 0.4 |
+| `--fs-15` 15px | `--fs-title` 15.2px | 0.2 |
+| `--fs-headline` 17.6px | `--fs-18` 18px | 0.4 |
+| `--fs-22` 22px | `--fs-22-4` 22.4px | 0.4 |
+
+Tokens named by value (`--fs-12-8`) are deliberately ugly: each one is a size with no
+role that some other token does not already serve. A token that earns a name gets one —
+four of them are this file's own typography roles.
+
+Two standing cautions, unchanged:
 
 - **Do not "fix" this by widening the ramp** to whatever the code happens to contain.
   That would launder the mess into doctrine and make the file useless as a check.
 - **Do not collapse sizes wholesale** to make the detector quiet. Each merge is a
   judgment call about a specific surface.
 
-Until it is resolved, `design-system-font-size` findings are noise rather than
-defects. Either leave the detector hook off, or silence that one rule while keeping
-the rest:
-
-```jsonc
-// .impeccable/config.json
-{ "detector": { "ignoreRules": ["design-system-font-size"] } }
-```
-
 Resolving it means one pass per register — sheets, panel chrome, prose, quiz — deciding
-which steps that register actually needs, then writing the surviving ramp here.
+which steps that register actually needs, then writing the surviving ramp here. Two
+role collisions are already known and want deciding first: `--fs-display` (25.6px,
+`.prose h1`) versus `--fs-24` (Roadmap and Progress `h1`) are one role at two sizes,
+and `--fs-9` / `--fs-17` are lone one-pixel neighbours of `--fs-micro` / `--fs-18`.
 
 ## Layout
 

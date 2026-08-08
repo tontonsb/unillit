@@ -26,7 +26,7 @@ const id = useId()
 }
 
 .picker-label {
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.07em;
@@ -34,7 +34,7 @@ const id = useId()
 }
 
 .picker-select {
-	font-size: 12px;
+	font-size: var(--fs-12);
 	font-family: var(--sans);
 	color: var(--c-head);
 	background: var(--c-cell);

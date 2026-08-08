@@ -12,7 +12,7 @@
    ink per stroke, so they want the lighter weight */
 .prose h1 {
 	font-family: var(--serif);
-	font-size: 1.6rem;
+	font-size: var(--fs-display);
 	font-weight: 500;
 	color: var(--c-accent);
 	margin-bottom: 0.25rem;
@@ -20,7 +20,7 @@
 
 .prose h2 {
 	font-family: var(--serif);
-	font-size: 1.1rem;
+	font-size: var(--fs-headline);
 	font-weight: 500;
 	color: var(--c-accent);
 	margin-top: 1.75rem;
@@ -33,14 +33,14 @@
 
 .prose h3 {
 	font-family: var(--serif);
-	font-size: 0.95rem;
+	font-size: var(--fs-title);
 	font-weight: 600;
 	color: var(--c-label);
 	margin-bottom: 0.4rem;
 }
 
 .prose p {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	color: var(--c-label);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .prose li {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	color: var(--c-label);
 }
 

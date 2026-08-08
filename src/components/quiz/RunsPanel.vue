@@ -80,7 +80,7 @@ watch(() => user.value?.id, loadRuns)
 	justify-content: center;
 	height: 100%;
 	color: var(--c-muted);
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 }
 
 .runs-login {
@@ -93,7 +93,7 @@ watch(() => user.value?.id, loadRuns)
 .runs-table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 12px;
+	font-size: var(--fs-12);
 }
 
 .runs-table th {
@@ -104,7 +104,7 @@ watch(() => user.value?.id, loadRuns)
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
 	border-bottom: 1px solid var(--c-border);
@@ -130,7 +130,7 @@ watch(() => user.value?.id, loadRuns)
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;
@@ -139,7 +139,7 @@ watch(() => user.value?.id, loadRuns)
 .btn-primary:hover { opacity: 0.85; }
 
 .login-note {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 }
 

@@ -33,27 +33,16 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
 - [x] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
   answer input (placeholder is not an accessible name). Also the count input.
 - [x] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
-- [ ] **Collapse the 9 imperceptible font sizes.** 21 of 42 sizes are used exactly
-  once; nine sit within 1px of an existing multi-use value, so this is mechanical
-  with nothing to decide. Takes the ramp 42 → 33.
+- [x] **Extract the font sizes to a palette.** All 92 absolute declarations now
+  resolve to 23 `--fs-*` tokens in `main.css`; no component carries a literal px or
+  rem font-size. Sizes are unchanged — the tokens are written in rem (exact
+  sixteenths) but chosen in px, so the chrome register keeps its 1px resolution while
+  type follows the reader's browser font-size preference. `em` ratios and the
+  `clamp()` bases stay literal; they are ratios, not steps.
 
-  | collapse | Δ | file |
-  |---|---|---|
-  | `0.7rem` → `10px` | 0.2px | HomeView |
-  | `0.8rem` → `11px` | 0.2px | AboutView |
-  | `0.95rem` → `13px` | 0.3px | prose.css |
-  | `1.1rem` → `15px` | 0.4px | prose.css |
-  | `0.75rem` → `10px` | 0.5px | HomeView |
-  | `0.65rem` → `10px` | 0.9px | HomeView |
-  | `9px` → `10px` | 1.0px | MainMenu |
-  | `17px` → `18px` | 1.0px | MainMenu |
-  | `22px` → `1.5rem` | 1.0px | cyrillic/ReadingTips |
-
-  **Send the `9px` / `0.65rem` cluster to `11px` rather than `10px`** and the audit's
-  `undersized-ui-text` findings clear in the same pass. Leave `1.75rem`, `3rem`,
-  `4rem` alone — genuine role sizes (home card glyph, done score, quiz prompt).
-  Three borderline cases need one judgement each: `0.6rem`, `1.4rem`, `1.6rem`
-  (1.4–1.6px off their nearest neighbour).
+  Collapsing the ramp is now a token-value edit in one file rather than a hunt through
+  125 declarations — see "Redundancies" below and DESIGN.md → "Open: the type ramp is
+  extracted, not yet resolved" for the residue and the two known role collisions.
 - [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
 
@@ -225,31 +214,29 @@ that is consistent use rather than overload. The real reason `card-countries` re
 for opacity is **compositional** — see the HomeView note below.
 
 ### Redundancies — too many steps
-- [ ] **42 font sizes are three coexisting unit systems:** `px` 11 steps (chrome) ·
-  `rem` 15 steps (prose) · `em` 11 steps (sheets) · 5 fluid. The `em` system is the
-  best-designed thing in the codebase — sheets scale as one unit off a clamped base,
-  exactly right for a printable handout. **Leave it alone.**
+- [ ] **23 type steps where far fewer would do.** The absolute ramp is now one unit
+  system in one file (§1), which makes the redundancy legible: **seven pairs of tokens
+  sit 0.2–0.4px apart** — 10/10.4, 11/11.2, 12.8/13, 14/14.4, 15/15.2, 17.6/18,
+  22/22.4. Nobody could name the difference in any pair, so by the Shrinking Scale
+  Rule each is one step. Merging all seven takes 23 → 16 and touches only token values
+  plus the call sites of the losing token.
 
-  *Correction to an earlier pass:* px-vs-rem was described as redundancy across
-  registers. It is not. `px` for chrome and `rem` for prose is a principled split —
-  chrome should not rescale with the user's root font size, prose should. Nearby
-  values like `0.9rem` (12.6px) and `13px` serve different registers and are not
-  competing for the same job.
+  Beyond that the merges stop being mechanical and need per-register judgement:
+  `--fs-9`/`--fs-micro` and `--fs-17`/`--fs-18` are 1px apart, and `--fs-display`
+  (25.6px) versus `--fs-24` is one role — the page `h1` — at two sizes.
 
-  **The real finding is singletons: 21 of 42 sizes are used exactly once**, which by
-  definition is not a scale. Nine of them collapse imperceptibly — that list now sits
-  in §1 as low-hanging fruit. **This reframes the deferred ramp question** (DESIGN.md →
-  "Open: the type ramp"): the mechanical singleton pass runs first and needs no
-  contentious decisions; only what remains needs per-register judgement.
+  The `em` system stays out of it and is the best-designed thing in the codebase —
+  sheets scale as one unit off a clamped base, exactly right for a printable handout.
+  **Leave it alone.**
 - [ ] **Tracking: 6 values where 3 would do** — `0.06em`×7, `0.04em`×6, `0.08em`×2,
   `0`×2, plus singleton strays `0.07em` and `0.01em`.
-- [ ] **HomeView is the highest-leverage single edit in this document.** It contributes
-  4 of the 21 singleton sizes (`0.6` / `0.65` / `0.7` / `0.75rem`, all between 8.4 and
-  10.5px) *and* the worst opacity stacking — from one root cause: four typographic
-  levels (1.75rem glyph / 1rem name / 0.75rem meta / 0.7rem countries) crammed into a
-  ~200px card. Size and colour were exhausted, so opacity became level four. Fix the
-  card's composition — merge or drop a level — and a chunk of both problems disappears
-  at once.
+- [ ] **HomeView is the highest-leverage single edit in this document.** Its script
+  card is the sole consumer of three of the value-named tokens (`--fs-10-4`,
+  `--fs-11-2`, `--fs-28`) *and* the worst opacity stacking — from one root cause: five
+  typographic levels (28px glyph / 16px name / 12px meta / 11.2px countries / 10.4px
+  "soon") crammed into a ~200px card. Size and colour were exhausted, so opacity became
+  the next level. Fix the card's composition — merge or drop a level — and a chunk of
+  both problems disappears at once, along with two of the seven sub-pixel pairs.
 
 ### Preserve — do not "improve" these
 Radius discipline (2 tokens, held everywhere but 4 stray 3px) · the depth ladder being
@@ -287,9 +274,9 @@ real code · `em`-relative sheet scaling · `outline-offset: -2px` on edge-flush
 
 ## 8. Open questions, not yet decided
 
-- **The type ramp** (DESIGN.md → "Open: the type ramp is not yet resolved"). The
-  px/rem redundancy above is a mechanical first pass that does not require the
-  contentious decisions.
+- **The type ramp** (DESIGN.md → "Open: the type ramp is extracted, not yet
+  resolved"). Extraction is done; the seven sub-pixel merges above need no contentious
+  decisions, and only what remains after them needs per-register judgement.
 - **Sheet-conventions pass** — DESIGN.md licenses moving the stats table and
   reading-tips panels toward sheet typography (hairline rules, Mint Wash banding,
   uppercase micro-label headers, tight cell padding). Not started.

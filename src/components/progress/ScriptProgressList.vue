@@ -75,7 +75,7 @@ h2 {
 	display: flex;
 	align-items: baseline;
 	gap: 8px;
-	font-size: 1rem;
+	font-size: var(--fs-16);
 	font-weight: 600;
 }
 
@@ -87,7 +87,7 @@ h2 {
 }
 
 .practice-link {
-	font-size: 12px;
+	font-size: var(--fs-12);
 	color: var(--c-muted);
 	text-decoration: none;
 	margin-left: auto;
@@ -96,7 +96,7 @@ h2 {
 .practice-link:hover { color: var(--c-sign); }
 
 .note {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	color: var(--c-muted);
 	padding-left: 2px;
 }
@@ -104,7 +104,7 @@ h2 {
 .dataset-table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 }
 
 .dataset-table th {
@@ -112,7 +112,7 @@ h2 {
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	padding: 4px 8px 6px;
 	text-align: left;
 	border-bottom: 1px solid var(--c-border);
@@ -147,7 +147,7 @@ h2 {
 }
 
 .tag {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 	background: var(--c-alt);
 	border: 1px solid var(--c-border);

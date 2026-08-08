@@ -147,7 +147,7 @@ function optClass(opt: string): string {
 
 <style scoped>
 .instructions {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	color: var(--c-muted);
 	text-align: center;
 	margin: 0;
@@ -170,7 +170,7 @@ function optClass(opt: string): string {
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	color: var(--c-label);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	font-family: var(--sans);
 	cursor: pointer;
 	text-align: left;
@@ -184,7 +184,7 @@ function optClass(opt: string): string {
 	background: var(--c-alt);
 }
 
-.box { font-size: 16px; line-height: 1; }
+.box { font-size: var(--fs-16); line-height: 1; }
 
 .choice.selected { border-color: var(--c-sign); background: var(--c-alt); color: var(--c-head); }
 .choice.correct  { background: var(--fb-ok-bg); border-color: var(--c-good); color: var(--c-good); }
@@ -198,7 +198,7 @@ function optClass(opt: string): string {
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;

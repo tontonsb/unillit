@@ -179,7 +179,7 @@ aside.collapsed {
 	justify-content: center;
 	border-bottom: 1px solid var(--c-border);
 	color: var(--c-label);
-	font-size: 18px;
+	font-size: var(--fs-18);
 	transition: background 0.15s;
 }
 
@@ -272,20 +272,20 @@ nav {
 }
 
 .item-label {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-weight: 600;
 	letter-spacing: 0.01em;
 }
 
 .item-native {
-	font-size: 15px;
+	font-size: var(--fs-15);
 	color: var(--c-sign);
 	line-height: 1.3;
 }
 
 .item-abbr {
 	display: none;
-	font-size: 17px;
+	font-size: var(--fs-17);
 	color: var(--c-sign);
 	line-height: 1;
 }

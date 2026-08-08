@@ -89,21 +89,21 @@ onMounted(() => goToPage(0))
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: var(--fs-16);
 	font-weight: 600;
 	color: var(--c-head);
 	margin-bottom: 1rem;
 }
 
 .empty {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	color: var(--c-muted);
 }
 
 .runs-table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 }
 
 .runs-table th {
@@ -111,7 +111,7 @@ h2 {
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	font-size: 10px;
+	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
 	border-bottom: 1px solid var(--c-border);
@@ -144,7 +144,7 @@ h2 {
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
-	font-size: 12px;
+	font-size: var(--fs-12);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: background 0.15s;
@@ -154,7 +154,7 @@ h2 {
 .page-btn:hover:not(:disabled) { background: var(--c-alt); }
 
 .page-label {
-	font-size: 12px;
+	font-size: var(--fs-12);
 	color: var(--c-muted);
 }
 </style>

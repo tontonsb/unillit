@@ -29,7 +29,7 @@ const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 
 .cons-btn {
 	font-family: var(--font-thai);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	font-weight: 400;
 	line-height: 1;
 	padding: 0 5px 1px;

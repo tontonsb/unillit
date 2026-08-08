@@ -102,7 +102,7 @@ function copyLink() {
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
-	font-size: 11px;
+	font-size: var(--fs-11);
 	font-family: var(--sans);
 	white-space: nowrap;
 	cursor: pointer;

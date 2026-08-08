@@ -179,7 +179,7 @@ article {
 }
 
 .version {
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	font-weight: 400;
 	color: var(--c-muted);
 	vertical-align: middle;
@@ -193,7 +193,7 @@ article {
 }
 
 .changelog dt {
-	font-size: 0.8rem;
+	font-size: var(--fs-12-8);
 	font-weight: 600;
 	color: var(--c-muted);
 	letter-spacing: 0.04em;

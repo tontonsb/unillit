@@ -80,7 +80,7 @@ article {
 }
 
 h1 {
-	font-size: 1.5rem;
+	font-size: var(--fs-24);
 	font-weight: 600;
 	color: var(--c-head);
 	margin-bottom: 1.5rem;
@@ -88,12 +88,12 @@ h1 {
 
 .empty {
 	color: var(--c-muted);
-	font-size: 0.9rem;
+	font-size: var(--fs-prose);
 	margin-bottom: 1rem;
 }
 
 .login-nudge {
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	color: var(--c-muted);
 	margin-bottom: 1.5rem;
 }
@@ -125,7 +125,7 @@ h2 {
 	display: flex;
 	align-items: baseline;
 	gap: 8px;
-	font-size: 1rem;
+	font-size: var(--fs-16);
 	font-weight: 600;
 }
 
@@ -137,7 +137,7 @@ h2 {
 }
 
 .practice-link {
-	font-size: 12px;
+	font-size: var(--fs-12);
 	color: var(--c-muted);
 	text-decoration: none;
 	margin-left: auto;

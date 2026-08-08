@@ -104,10 +104,15 @@ function handleSubmit() {
 
 .answer-input {
 	flex: 1;
+
+	/* an input's intrinsic width tracks its font-size, and a flex item will not
+	   shrink past that on its own — without this the row overflows once the
+	   reader raises their browser font size */
+	min-width: 0;
 	padding: 8px 12px;
 	border: 1px solid var(--c-border);
 	border-radius: var(--radius);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	font-family: var(--sans);
 	background: var(--c-cell);
 	color: var(--c-head);
@@ -131,7 +136,7 @@ function handleSubmit() {
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	font-size: 14px;
+	font-size: var(--fs-body);
 	padding: 6px 12px;
 	border-radius: var(--radius);
 	width: 100%;
@@ -143,7 +148,7 @@ function handleSubmit() {
 .feedback-row.wrong    { background: var(--fb-wrong-bg); color: var(--c-bad); text-decoration: line-through; }
 
 .feedback-icon {
-	font-size: 14px;
+	font-size: var(--fs-body);
 	flex-shrink: 0;
 }
 
@@ -153,7 +158,7 @@ function handleSubmit() {
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;
@@ -170,7 +175,7 @@ function handleSubmit() {
 }
 
 .tolerance-label {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 	white-space: nowrap;
 	min-width: 80px;
@@ -182,7 +187,7 @@ function handleSubmit() {
 }
 
 .instructions {
-	font-size: 12px;
+	font-size: var(--fs-12);
 	color: var(--c-muted);
 	text-align: center;
 	max-width: 360px;

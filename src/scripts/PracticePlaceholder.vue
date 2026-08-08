@@ -12,6 +12,6 @@ article {
 	height: 100%;
 	min-height: 200px;
 	color: var(--c-muted);
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 }
 </style>

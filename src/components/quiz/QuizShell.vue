@@ -81,7 +81,7 @@ watch(activeTab, (tab) => {
 	border: none;
 	background: none;
 	color: var(--c-muted);
-	font-size: 11px;
+	font-size: var(--fs-11);
 	font-weight: 600;
 	font-family: var(--sans);
 	letter-spacing: 0.06em;

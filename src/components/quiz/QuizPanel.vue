@@ -352,7 +352,7 @@ const { resultCopied, copyResults } = useResultShare({
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
-	font-size: 11px;
+	font-size: var(--fs-11);
 	font-family: var(--sans);
 	text-align: center;
 }
@@ -367,7 +367,7 @@ const { resultCopied, copyResults } = useResultShare({
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
-	font-size: 11px;
+	font-size: var(--fs-11);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: all 0.15s;
@@ -420,7 +420,7 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .progress-label {
-	font-size: 11px;
+	font-size: var(--fs-11);
 	color: var(--c-muted);
 	white-space: nowrap;
 }
@@ -428,7 +428,7 @@ const { resultCopied, copyResults } = useResultShare({
 .tally {
 	display: flex;
 	gap: 8px;
-	font-size: 11px;
+	font-size: var(--fs-11);
 }
 
 .tally-correct { color: var(--c-good); }
@@ -454,14 +454,14 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .prompt {
-	font-size: 4rem;
+	font-size: var(--fs-prompt);
 	line-height: 1.2;
 	color: var(--c-head);
 	text-align: center;
 }
 
 .hint {
-	font-size: 16px;
+	font-size: var(--fs-16);
 	color: var(--c-muted);
 	text-align: center;
 }
@@ -472,7 +472,7 @@ const { resultCopied, copyResults } = useResultShare({
 	border-radius: var(--radius);
 	background: var(--c-accent);
 	color: #fff;
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: opacity 0.15s;
@@ -486,7 +486,7 @@ const { resultCopied, copyResults } = useResultShare({
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	transition: color 0.15s, border-color 0.15s;
@@ -510,19 +510,19 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .done-score {
-	font-size: 3rem;
+	font-size: var(--fs-48);
 	font-weight: 600;
 	color: var(--c-head);
 	line-height: 1;
 }
 
 .done-label {
-	font-size: 14px;
+	font-size: var(--fs-body);
 	color: var(--c-muted);
 }
 
 .loading-label {
-	font-size: 14px;
+	font-size: var(--fs-body);
 	color: var(--c-muted);
 }
 </style>

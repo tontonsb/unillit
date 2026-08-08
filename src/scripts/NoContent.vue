@@ -11,7 +11,7 @@ article {
 	justify-content: center;
 	height: 100%;
 	color: var(--c-muted);
-	font-size: 13px;
+	font-size: var(--fs-chrome);
 	padding: 12px;
 }
 </style>

@@ -280,14 +280,14 @@ import LB from '@/components/LangBadge.vue'
    Shared prose/table/blockquote styles live in assets/reading-tips.css */
 .cyr-up {
 	font-family: Lora, serif;
-	font-size: 18px;
+	font-size: var(--fs-18);
 	text-align: center;
 }
 
 .cur {
 	font-family: Lora, serif;
 	font-style: italic;
-	font-size: 22px;
+	font-size: var(--fs-22);
 	text-align: center;
 }
 

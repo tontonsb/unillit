@@ -88,13 +88,13 @@ h1 {
 
 .panel-name {
 	font-family: var(--serif);
-	font-size: 14px;
+	font-size: var(--fs-body);
 	font-weight: 600;
 	color: var(--c-head);
 }
 
 .panel-native {
-	font-size: 15px;
+	font-size: var(--fs-15);
 	color: var(--c-sign);
 }
 
@@ -117,7 +117,7 @@ nav::-webkit-scrollbar { display: none; }
 	border-radius: var(--radius-sm);
 	background: transparent;
 	color: var(--c-muted);
-	font-size: 12px;
+	font-size: var(--fs-12);
 	font-family: var(--sans);
 	cursor: pointer;
 	white-space: nowrap;
