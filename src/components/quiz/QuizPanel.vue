@@ -7,7 +7,7 @@ import { activeFont, activeInfoSheet } from '@/composables/useScriptContext'
 import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizPrefs'
 import { useResultShare } from '@/composables/useResultShare'
 import { useAuth } from '@/composables/useAuth'
-import { revisionSample } from './utils'
+import { formatAnswers, revisionSample } from './utils'
 import TypeInQuiz from './TypeInQuiz.vue'
 import MultipleChoiceQuiz from './MultipleChoiceQuiz.vue'
 import MultiSelectQuiz from './MultiSelectQuiz.vue'
@@ -50,6 +50,21 @@ watch(maxTolerance, (max) => {
 const { user } = useAuth()
 
 const nextBtn = ref<HTMLButtonElement | null>(null)
+const answeredCorrect = ref(false)
+
+/**
+ * Submitting is otherwise silent to a screen reader: focus lands on a button
+ * labelled only "Next", so the verdict never reaches the user.
+ */
+const verdict = computed(() => {
+	if (phase.value !== 'answered' || !current.value) return ''
+
+	const outcome = answeredCorrect.value
+		? 'Correct.'
+		: `Incorrect. Answer: ${formatAnswers(current.value)}.`
+
+	return current.value.hint ? `${outcome} ${current.value.hint}` : outcome
+})
 const typeIn = ref<InstanceType<typeof TypeInQuiz> | null>(null)
 const loadingSession = ref(false)
 let runStarted = false
@@ -149,6 +164,7 @@ function setCount(event: Event) {
 }
 
 async function handleSubmit(correct: boolean, errors?: number) {
+	answeredCorrect.value = correct
 	_submit(correct)
 	nextTick(() => nextBtn.value?.focus())
 	if (current.value) {
@@ -192,6 +208,9 @@ const { resultCopied, copyResults } = useResultShare({
 
 <template>
 	<div class="quiz-panel">
+		<!-- always rendered: a live region added at the same time as its text stays silent -->
+		<p class="sr-only" role="status">{{ verdict }}</p>
+
 		<div class="toolbar">
 			<div v-if="currentModes.length > 1" class="mode-toggle">
 				<button
@@ -454,7 +473,9 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .prompt {
-	font-size: var(--fs-prompt);
+	/* a long single-word toponym has no wrap opportunity, so it scales instead of
+	   clipping; full size from ~500px up, where it already fits */
+	font-size: clamp(var(--fs-48), 13vw, var(--fs-prompt));
 	line-height: 1.2;
 	color: var(--c-head);
 	text-align: center;
