@@ -19,6 +19,18 @@ shared state lives in module-level refs (composables).
 - Don't compress JS lines too close together, e.g. leave empty lines before a `return` unless it's the first statement.
 - Extract components whenever it makes sense
 
+### Comments and docs: don't narrate
+
+A comment earns its place only when the code would otherwise read as a mistake — a
+non-obvious constraint, a footgun, a decision someone would reasonably undo. A normal
+choice needs no defence, and readable code needs no summary.
+
+- Don't justify ordinary decisions (`<!-- a div, not a <nav> ... -->`), restate what
+  the next line does, or narrate the history of a change ("changed X to Y because Z").
+- In docs, write what is true now. When something is done, collapse it to the outcome
+  and delete the superseded description; correcting a wrong assumption is one clause,
+  not a paragraph.
+
 ## Tools
 
 - Check types: `npm run type-check`
@@ -27,17 +39,14 @@ shared state lives in module-level refs (composables).
 
 ## Fonts
 
-Self-hosted via Fontsource — nothing is fetched from Google at runtime. Every family
-is imported in `src/assets/fonts.ts`; adding a picker font means editing **both** that
-file and the relevant `src/scripts/{script}/font.ts`.
+Self-hosted via Fontsource, imported in `src/assets/fonts.ts`. Adding a picker font
+means editing **both** that file and the relevant `src/scripts/{script}/font.ts`.
 
-Fontsource names its variable builds `'<Family> Variable'` (e.g. `'Lora Variable'`);
-static packages keep the plain name. **A family name that matches no `@font-face` falls
-back to a system font silently**, so after touching fonts, check in the browser that
-every declared family shows up in `document.fonts`.
+Fontsource names variable builds `'<Family> Variable'`; static packages keep the plain
+name. **A name matching no `@font-face` falls back to a system font silently** — after
+touching fonts, check every declared family appears in `document.fonts`.
 
-Use the `wght` / `wght-italic` entrypoints, not `standard` / `wdth` — the latter carry
-a width axis this design never varies.
+Use the `wght` / `wght-italic` entrypoints, not `standard` / `wdth`.
 
 ## Known issues
 
@@ -113,10 +122,9 @@ interface QuizDatasetData {
 interface QuizDataset extends QuizDatasetConfig, QuizDatasetData {}
 ```
 
-**Why `load` is split out:** `scripts.ts` reads `label` at module scope to build the
-tab strip, and `MainMenu` imports `scripts.ts` on every route — so anything in the
-dataset literal is on the critical path. Only metadata belongs there; per-question
-data (including multiselect `options`) travels in the `load()` payload.
+`scripts.ts` reads `label` at module scope and `MainMenu` imports it on every route, so
+anything in the dataset literal is on the critical path. Only metadata belongs there;
+per-question data, `options` included, travels in the `load()` payload.
 
 ### Component tree
 

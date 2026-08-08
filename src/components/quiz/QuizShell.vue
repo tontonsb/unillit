@@ -12,8 +12,6 @@ const props = defineProps<{
 	scriptId?: string
 }>()
 
-// The questions arrive separately from the rest of the dataset (see QuizDatasetConfig).
-// Everything below this component takes a whole QuizDataset and knows nothing about it.
 const dataset = ref<QuizDataset | null>(null)
 
 watchEffect(async () => {
@@ -88,8 +86,6 @@ watch(activeTab, (tab) => {
 	background: var(--c-bg);
 }
 
-/* Only seen if the questions chunk is slow — usually it resolves within the same
-   tick as the shell itself, so this must not flash any layout of its own. */
 .loading {
 	flex: 1;
 	align-content: center;

@@ -5,9 +5,8 @@
 }
 
 :root {
-	/* Fontsource names its variable builds '<Family> Variable'; the static ones
-	   (Spectral, Pacifico, Great Vibes, Trirong, Sarabun) keep the plain name.
-	   A name that matches no @font-face falls back silently — see src/assets/fonts.ts. */
+	/* Fontsource suffixes its variable builds 'Variable'; static ones keep the plain
+	   name. A name matching no @font-face falls back silently. */
 	--sans: 'Noto Sans Variable', system-ui, sans-serif;
 	--serif: 'Lora Variable', 'Noto Serif Variable', Georgia, serif;
 	--font-cyrillic: 'Noto Serif Variable', Georgia, serif;

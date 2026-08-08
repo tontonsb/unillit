@@ -1,16 +1,9 @@
 /**
- * Every webfont the app ships, self-hosted via Fontsource (same files Google
- * serves, same unicode-range subsetting, no third-party request at runtime).
+ * Every webfont the app ships. A picker font added to
+ * src/scripts/{cyrillic,thai}/font.ts needs its import added here too.
  *
- * Imported for side effects only — each module is a stylesheet of @font-face
- * rules. Subsets stay unicode-range gated, so listing a family here costs the
- * visitor nothing until a glyph that needs it is actually rendered.
- *
- * `wght` is the variable axis; the `standard`/`wdth` entrypoints ship a second
- * axis this design never varies, so they are deliberately not used.
- *
- * The picker families mirror src/scripts/{cyrillic,thai}/font.ts — a font added
- * there needs its import added here too.
+ * `wght` rather than the `standard`/`wdth` entrypoints: those carry a width axis
+ * this design never varies.
  */
 
 // UI — needed on every route

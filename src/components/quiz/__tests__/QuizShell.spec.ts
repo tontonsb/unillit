@@ -30,7 +30,6 @@ const datasetConfig: QuizDatasetConfig = {
 	}),
 }
 
-/** The shell resolves its questions asynchronously, so nothing renders on mount. */
 async function mountShell(options: { attachTo?: HTMLElement } = {}) {
 	const wrapper = mount(QuizShell, {
 		props: { datasetConfig },

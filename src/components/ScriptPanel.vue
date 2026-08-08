@@ -22,17 +22,14 @@ const id = useId()
 
 const tablist = ref<HTMLElement | null>(null)
 
-// queried rather than collected through a v-for ref, which Vue does not
-// guarantee to keep in source order
+// queried, not collected via v-for refs — Vue does not guarantee their order
 function focusTab(i: number) {
 	tablist.value?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[i]?.focus()
 }
 
 /**
- * Manual activation (WAI-ARIA APG): arrows move focus, Enter/Space activates —
- * the latter for free, since these are real buttons. Automatic activation would
- * mount a panel per keypress, and each one is an async component that remounts
- * from scratch; a quiz is not something to spin up on the way past.
+ * Manual activation (WAI-ARIA APG): arrows move focus, Enter/Space activates.
+ * Automatic would mount a panel per keypress, and each one remounts from scratch.
  */
 function onTabKeydown(event: KeyboardEvent, i: number) {
 	const last = props.tabs.length - 1
@@ -60,7 +57,6 @@ function onTabKeydown(event: KeyboardEvent, i: number) {
 				<span v-if="titleNative" class="panel-native" :lang="titleLang">{{ titleNative }}</span>
 			</h1>
 
-			<!-- a div, not a <nav>: role="tablist" would override the landmark anyway -->
 			<div
 				ref="tablist"
 				class="tabs"
@@ -144,8 +140,7 @@ h1 {
 	scrollbar-width: none;
 	flex: 1;
 
-	/* matches the fade below, so the last tab can always scroll clear of it —
-	   otherwise its focus ring dims at the edge once arrow keys land there */
+	/* matches the fade, so the last tab can scroll clear of it */
 	padding-right: 28px;
 	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
 }

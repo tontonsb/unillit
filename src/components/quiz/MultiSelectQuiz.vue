@@ -36,7 +36,6 @@ const pool = computed<string[]>(() => {
 	return [...set]
 })
 
-// Options for the current question.
 const options = ref<string[]>([])
 
 /**
@@ -59,7 +58,6 @@ function buildOptions(): string[] {
 	// Add the others to seeded, remove dupes (the seeded remain first).
 	const list = [...new Set([...seeded, ...shuffle(pool.value)])]
 
-	// Trim and then shuffle the final option list.
 	return shuffle(list.slice(0, MAX_OPTIONS))
 }
 

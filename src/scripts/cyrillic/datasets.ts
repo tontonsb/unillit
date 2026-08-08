@@ -1,6 +1,5 @@
 import type { QuizDatasetConfig } from '@/components/quiz/dataset'
 
-// Loaded on demand — see QuizDatasetConfig.
 const letters = () => import('./cyrillicQuestions')
 const languages = () => import('./languageIdQuestions')
 
@@ -22,8 +21,6 @@ export const cyrillicDatasets: QuizDatasetConfig[] = [
 	},
 	{
 		label: 'Identification',
-		// The option list travels with its questions — it is per-question data, and
-		// nothing outside an open quiz reads it.
 		load: () => languages().then(m => ({
 			questions: m.languageIdQuestions,
 			options: m.LANGUAGE_OPTIONS,

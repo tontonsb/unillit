@@ -12,37 +12,22 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
 
 ## 1. Low-hanging fruit
 
-- [x] ✅ **Quiz state resets on tab switch.** `QuizShell.vue` renders `QuizPanel`
-  behind `v-if`; opening STATS/RUNS unmounts it and returning starts a fresh
-  session. Verified 5/77 → STATS → 0/77. Use `v-show`, or hoist the session into a
-  composable keyed by dataset. *Done: `v-show` on QuizPanel, STATS/RUNS keep `v-if`
-  so they refetch on open.*
-- [x] ✅ **Empty `<h1>` on every script page.** `ScriptView.vue:79` passes no
-  `title` to the practice panel, so `ScriptPanel.vue:25` renders an empty heading.
-  Give it a title or make the heading conditional. Also two unlabelled tablists.
-  *Done: heading is conditional, and a `tabsLabel` prop names both tablists
-  ("Cyrillic sheets" / "Cyrillic practice"). Only layout effect: the practice tab
-  bar sits 12px further left, flush with the panel padding, where the zero-width
-  heading's flex gap used to be. Header height is unchanged — it comes from
-  `min-height: 36px`.*
-- [x] ✅ **Warn before destroying a started run** when sampling mode or count
-  changes mid-run (`index > 0`). *Done: native `confirm()` from `confirmAbandon()`,
-  contained in QuizPanel, covering quiz mode, sampling mode and count. Deliberately
-  not guarded: the practice tab bar and the main menu (leaving the panel is
-  self-evidently leaving), page navigation, and share links applying prefs on load.*
+- [x] ✅ **Quiz state resets on tab switch.** `v-show` on QuizPanel; STATS/RUNS keep
+  `v-if` so they refetch on open.
+- [x] ✅ **Empty `<h1>` on every script page.** The heading is conditional, and a
+  `tabsLabel` prop names both tablists ("Cyrillic sheets" / "Cyrillic practice").
+  The practice panel now has no heading at all.
+- [x] ✅ **Warn before destroying a started run.** Native `confirm()` in QuizPanel,
+  covering quiz mode, sampling mode and count. Deliberately not guarded: the practice
+  tab bar, the main menu, page navigation, and share links applying prefs on load.
 - [x] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
   answer input (placeholder is not an accessible name). Also the count input.
 - [x] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
-- [x] **Extract the font sizes to a palette.** All 92 absolute declarations now
-  resolve to 23 `--fs-*` tokens in `main.css`; no component carries a literal px or
-  rem font-size. Sizes are unchanged — the tokens are written in rem (exact
-  sixteenths) but chosen in px, so the chrome register keeps its 1px resolution while
-  type follows the reader's browser font-size preference. `em` ratios and the
-  `clamp()` bases stay literal; they are ratios, not steps.
-
-  Collapsing the ramp is now a token-value edit in one file rather than a hunt through
-  125 declarations — see "Redundancies" below and DESIGN.md → "Open: the type ramp is
-  extracted, not yet resolved" for the residue and the two known role collisions.
+- [x] **Extract the font sizes to a palette.** 92 absolute declarations now resolve to
+  23 `--fs-*` tokens in `main.css`, at unchanged sizes. Tokens are written in rem but
+  chosen in px, so the chrome register keeps 1px resolution; `em` ratios and `clamp()`
+  bases stay literal. Residue: DESIGN.md → "Open: the type ramp is extracted, not yet
+  resolved".
 - [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
 
@@ -264,19 +249,14 @@ real code · `em`-relative sheet scaling · `outline-offset: -2px` on edge-flush
 
 ## 7. Performance (from the audit, untouched since)
 
-- [x] **13 render-blocking font stylesheets + 17 font files on every page** —
-  Fonts are now self-hosted via Fontsource, listed in `src/assets/fonts.ts`.
-  Home page went from 11 render-blocking Google stylesheets to none, 17 font files
-  to 4, and FCP 588ms → 136ms locally. Nothing contacts Google any more, so the
-  Google Fonts paragraph on `/privacy` is now inaccurate and should be dropped.
-- [x] **All quiz datasets load on every route** — `QuizDataset` split into a
-  `QuizDatasetConfig` (label + settings, eager, so `scripts.ts` can still build the tab
-  strip) and a `load()` payload holding the questions. QuizShell awaits it; the five
-  components below it were untouched. `/about` JS is 96 → 90.5 kB.
-
-  The audit's "60 kB raw / 21 kB gzip of question data" was wrong: `scripts-*.js` is a
-  shared chunk that also carries vue-router. The question data was **~6 kB gzip**, and
-  that is what moved. Worth knowing before costing similar work off chunk names.
+- [x] **13 render-blocking font stylesheets + 17 font files on every page** — fonts are
+  self-hosted via Fontsource, listed in `src/assets/fonts.ts`. Home page: no
+  render-blocking font stylesheets, 4 font files, FCP 136ms local. Nothing contacts
+  Google any more, so **the Google Fonts paragraph on `/privacy` should be dropped**.
+- [x] **All quiz datasets load on every route** — `QuizDatasetConfig` (eager metadata,
+  so `scripts.ts` can still build the tab strip) plus a `load()` payload holding the
+  questions, resolved by QuizShell. `/about` JS is 96 → 90.5 kB; the audit's 21 kB gzip
+  figure counted a shared chunk that also carries vue-router.
 
 ## 8. Open questions, not yet decided
 

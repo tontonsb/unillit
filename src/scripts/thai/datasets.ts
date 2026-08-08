@@ -2,8 +2,6 @@ import type { Question, QuizDatasetConfig } from '@/components/quiz/dataset'
 
 const vowelNote = 'Type the full syllable — include the k (e.g. ka, not just a)'
 
-// Loaded on demand — see QuizDatasetConfig. All six share one chunk, so opening any
-// quiz tab fetches the rest for free.
 const load = (pick: (m: typeof import('./questions')) => Question[]) =>
 	() => import('./questions').then(m => ({ questions: pick(m) }))
 

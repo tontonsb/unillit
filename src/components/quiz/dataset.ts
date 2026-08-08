@@ -13,11 +13,7 @@ export interface Question {
 	hint?: string
 }
 
-/**
- * The parts a dataset needs before any quiz is opened: scripts.ts reads `label` at
- * module scope to build the tab strip, and scripts.ts is reachable from the menu on
- * every route. Everything here is on the critical path, so keep it small.
- */
+/** On the critical path — scripts.ts reads `label` at module scope. Keep it small. */
 interface QuizDatasetMeta {
 	label: string
 	maxTolerance?: number
@@ -26,16 +22,13 @@ interface QuizDatasetMeta {
 	kind?: QuizKind
 }
 
-/** The per-question payload — only ever read from inside an open quiz. */
+/** Loaded only when a quiz opens. */
 export interface QuizDatasetData {
 	questions: Question[]
 	options?: string[] // for multiselect — the full list of selectables
 }
 
-/**
- * The authored form, held by scripts.ts. `load` keeps the bulk of a script's data
- * out of the entry graph until a quiz tab is actually opened.
- */
+/** The authored form, held by scripts.ts. */
 export interface QuizDatasetConfig extends QuizDatasetMeta {
 	load: () => Promise<QuizDatasetData>
 }
