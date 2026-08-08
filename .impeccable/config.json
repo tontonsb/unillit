@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-08-07T23:16:25.532Z",
         "reason": "User confirmed: progress-fill animates width once per answered question on a 4px bar; scaleX would distort its border-radius"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/components/MainMenu.vue"
+        ],
+        "createdAt": "2026-08-08T00:32:14.089Z",
+        "reason": "It's ok to reflow the page when expanding or collapsing the menu."
       }
     ]
   }
