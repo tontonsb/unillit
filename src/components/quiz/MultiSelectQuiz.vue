@@ -83,7 +83,10 @@ function toggle(opt: string) {
 		return
 
 	const next = new Set(selected.value)
-	next.has(opt) ? next.delete(opt) : next.add(opt)
+
+	if (next.has(opt)) next.delete(opt)
+	else next.add(opt)
+
 	selected.value = next
 }
 
