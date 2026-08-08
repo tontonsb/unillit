@@ -54,6 +54,19 @@
 	accent-color: var(--c-accent);
 }
 
+/* Every transition here is a 0.15–0.25s state change, so collapsing them to
+   near-zero costs nothing and honours the OS setting. Near-zero rather than
+   `none` keeps transitionend/animationend firing, should anything ever wait
+   on them. */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 /* Accent is below AA for text, but focus rings and selection are
    non-text UI (3:1), so the brand green is free to show up there. */
 :focus-visible {

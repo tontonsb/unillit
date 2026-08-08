@@ -54,7 +54,7 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   `4rem` alone — genuine role sizes (home card glyph, done score, quiz prompt).
   Three borderline cases need one judgement each: `0.6rem`, `1.4rem`, `1.6rem`
   (1.4–1.6px off their nearest neighbour).
-- [ ] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
+- [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
 
 ## 2. Quiz — the big cluster
