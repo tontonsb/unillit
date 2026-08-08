@@ -11,6 +11,13 @@ export default defineConfig({
 	define: {
 		__APP_VERSION__: JSON.stringify(pkg.version),
 	},
+	build: {
+		// Never inline a font as a data: URI. Small subsets would otherwise be
+		// base64'd into the CSS, which downloads them regardless of unicode-range
+		// — silently undoing the per-subset lazy loading Fontsource ships.
+		// Covers .woff too: the non-variable packages ship it as a legacy fallback.
+		assetsInlineLimit: (file) => (/\.(woff2?|ttf|otf|eot)$/.test(file) ? false : undefined),
+	},
 	plugins: [
 		markdown(),
 		vue(),

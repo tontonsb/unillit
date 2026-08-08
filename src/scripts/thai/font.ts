@@ -8,9 +8,9 @@ export interface ThaiFont {
 }
 
 export const thaiFonts: ThaiFont[] = [
-	{ id: 'sans', label: 'Sans',   family: '\'Noto Sans Thai\', system-ui, sans-serif' },
+	{ id: 'sans', label: 'Sans',   family: '\'Noto Sans Thai Variable\', system-ui, sans-serif' },
 	{ id: 'sarabun', label: 'Sarabun', family: '\'Sarabun\', system-ui, sans-serif' },
-	{ id: 'serif', label: 'Serif',  family: '\'Noto Serif Thai\', serif' },
+	{ id: 'serif', label: 'Serif',  family: '\'Noto Serif Thai Variable\', serif' },
 	{ id: 'trirong', label: 'Trirong', family: '\'Trirong\', serif' },
 ]
 

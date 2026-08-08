@@ -25,6 +25,20 @@ shared state lives in module-level refs (composables).
 - Build: `npm run build`
 - Style checks: `npm run lint:eslint` and `npm run lint:stylelint`
 
+## Fonts
+
+Self-hosted via Fontsource — nothing is fetched from Google at runtime. Every family
+is imported in `src/assets/fonts.ts`; adding a picker font means editing **both** that
+file and the relevant `src/scripts/{script}/font.ts`.
+
+Fontsource names its variable builds `'<Family> Variable'` (e.g. `'Lora Variable'`);
+static packages keep the plain name. **A family name that matches no `@font-face` falls
+back to a system font silently**, so after touching fonts, check in the browser that
+every declared family shows up in `document.fonts`.
+
+Use the `wght` / `wght-italic` entrypoints, not `standard` / `wdth` — the latter carry
+a width axis this design never varies.
+
 ## Known issues
 
 If npm is not available, I've forgotten to launch it. Just ask for it and I'll resume Claude with npm launched.

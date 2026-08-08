@@ -254,7 +254,7 @@
 }
 
 .f-sans {
-	font-family: 'Noto Sans Thai', sans-serif;
+	font-family: 'Noto Sans Thai Variable', sans-serif;
 	font-size: 1.6em;
 	line-height: 1;
 }
@@ -266,7 +266,7 @@
 }
 
 .f-serif {
-	font-family: 'Noto Serif Thai', serif;
+	font-family: 'Noto Serif Thai Variable', serif;
 	font-size: 1.6em;
 	line-height: 1;
 }

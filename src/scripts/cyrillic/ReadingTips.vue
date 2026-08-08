@@ -279,13 +279,13 @@ import LB from '@/components/LangBadge.vue'
 /* Cyrillic-specific: letterform font for the first table column and cursive cells.
    Shared prose/table/blockquote styles live in assets/reading-tips.css */
 .cyr-up {
-	font-family: Lora, serif;
+	font-family: 'Lora Variable', serif;
 	font-size: var(--fs-18);
 	text-align: center;
 }
 
 .cur {
-	font-family: Lora, serif;
+	font-family: 'Lora Variable', serif;
 	font-style: italic;
 	font-size: var(--fs-22);
 	text-align: center;

@@ -1,3 +1,4 @@
+import './assets/fonts'
 import './assets/main.css'
 import './assets/reading-tips.css'
 import './assets/prose.css'

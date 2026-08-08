@@ -5,13 +5,14 @@
 }
 
 :root {
-	--sans: 'Noto Sans', system-ui, sans-serif;
-	--serif: 'Lora', 'Noto Serif', Georgia, serif;
-	--font-arabic: 'Noto Naskh Arabic', serif;
-	--font-bengali: 'Noto Sans Bengali', sans-serif;
-	--font-cyrillic: 'Noto Serif', Georgia, serif;
+	/* Fontsource names its variable builds '<Family> Variable'; the static ones
+	   (Spectral, Pacifico, Great Vibes, Trirong, Sarabun) keep the plain name.
+	   A name that matches no @font-face falls back silently — see src/assets/fonts.ts. */
+	--sans: 'Noto Sans Variable', system-ui, sans-serif;
+	--serif: 'Lora Variable', 'Noto Serif Variable', Georgia, serif;
+	--font-cyrillic: 'Noto Serif Variable', Georgia, serif;
 	--font-cyrillic-style: normal;
-	--font-thai: 'Noto Sans Thai', system-ui, sans-serif;
+	--font-thai: 'Noto Sans Thai Variable', system-ui, sans-serif;
 
 	/**
 	  * Type ramp. Written in rem so type honours the browser's font-size

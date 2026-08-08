@@ -264,9 +264,11 @@ real code · `em`-relative sheet scaling · `outline-offset: -2px` on edge-flush
 
 ## 7. Performance (from the audit, untouched since)
 
-- [ ] **13 render-blocking font stylesheets + 17 font files on every page** —
-  `index.html:11-24`. The home page uses two families and downloads Thai, Cyrillic,
-  Arabic, Bengali, Pacifico and Great Vibes before first paint. Biggest single perf win.
+- [x] **13 render-blocking font stylesheets + 17 font files on every page** —
+  Fonts are now self-hosted via Fontsource, listed in `src/assets/fonts.ts`.
+  Home page went from 11 render-blocking Google stylesheets to none, 17 font files
+  to 4, and FCP 588ms → 136ms locally. Nothing contacts Google any more, so the
+  Google Fonts paragraph on `/privacy` is now inaccurate and should be dropped.
 - [ ] **All quiz datasets load on every route** — `scripts.ts:4-5` statically imports
   `thaiDatasets`/`cyrillicDatasets`, so 60 kB raw / 21 kB gzip of question data is on
   the critical path for the About page. Every *component* is properly lazy; only the
