@@ -125,7 +125,7 @@ components:
   badge-beta:
     backgroundColor: "transparent"
     textColor: "{colors.highway-green}"
-    rounded: "3px"
+    rounded: "{rounded.sm}"
     padding: "0 3px"
 ---
 

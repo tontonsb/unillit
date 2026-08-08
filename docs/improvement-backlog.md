@@ -32,7 +32,7 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   self-evidently leaving), page navigation, and share links applying prefs on load.*
 - [x] **Unlabelled form controls** — font `<select>` (both FontPickers) and the
   answer input (placeholder is not an accessible name). Also the count input.
-- [ ] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
+- [x] **`border-radius: 3px`** in 4 places, outside the 2px/4px scale.
 - [ ] **Collapse the 9 imperceptible font sizes.** 21 of 42 sizes are used exactly
   once; nine sit within 1px of an existing multi-use value, so this is mechanical
   with nothing to decide. Takes the ramp 42 → 33.

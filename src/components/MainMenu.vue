@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 import { useAuth } from '@/composables/useAuth'
+import BetaBadge from '@/components/BetaBadge.vue'
 
 const collapsed = ref(true)
 const route = useRoute()
@@ -59,7 +60,7 @@ onBeforeUnmount(() => observer?.disconnect())
 			>
 				<span class="item-label">
 					{{ script.name }}
-					<span v-if="scriptStatus(script) === 'beta'" class="beta-badge">beta</span>
+					<BetaBadge v-if="scriptStatus(script) === 'beta'" />
 				</span>
 				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
 				<span class="item-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
@@ -254,18 +255,6 @@ nav {
 .nav-item.beta:hover,
 .nav-item.beta.active {
 	opacity: 1;
-}
-
-.beta-badge {
-	font-size: 9px;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
-	color: var(--c-sign);
-	border: 1px solid var(--c-sign);
-	border-radius: 3px;
-	padding: 0 3px;
-	vertical-align: middle;
 }
 
 .collapsed .beta-badge {
