@@ -30,6 +30,13 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   resolved".
 - [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
+- [ ] **Extract the hairline, plate white and measures to tokens.** `--hairline`
+  (41 uses), `--c-on-sign` (10 literal `#fff`), `--c-border-plate` (2), and the three
+  prose/quiz measures. Mechanical, no value changes. See §5 → "Other literals".
+- [ ] **Extract the spacing scale — step 1 of 3.** Tokenise the general ramp
+  (menus, buttons, prose, tables, stats) at unchanged values, collapsing exact
+  duplicates only. The sheet register stays out of it. No judgement calls; steps 2 and 3
+  are separate. See §5 → "Spacing has no scale".
 
 ## 2. Quiz — the big cluster
 
@@ -212,7 +219,8 @@ for opacity is **compositional** — see the HomeView note below.
 
   The `em` system stays out of it and is the best-designed thing in the codebase —
   sheets scale as one unit off a clamped base, exactly right for a printable handout.
-  **Leave it alone.**
+  **Leave it alone.** (Type only — the *spacing* in those registers is absolute, see
+  "Spacing has no scale" below.)
 - [ ] **Tracking: 6 values where 3 would do** — `0.06em`×7, `0.04em`×6, `0.08em`×2,
   `0`×2, plus singleton strays `0.07em` and `0.01em`.
 - [ ] **HomeView is the highest-leverage single edit in this document.** Its script
@@ -223,11 +231,134 @@ for opacity is **compositional** — see the HomeView note below.
   the next level. Fix the card's composition — merge or drop a level — and a chunk of
   both problems disappears at once, along with two of the seven sub-pixel pairs.
 
+### Spacing has no scale
+
+**230 literal margin/padding/gap values, 26 distinct steps, zero tokens in `:root`.**
+
+#### The mess is localised, and the reference ramp already exists
+
+Split by register, the disorder is not evenly spread. Uses-per-step is the tell:
+
+| Group | Steps | Uses | per step | Values |
+|---|---|---|---|---|
+| **prose views** (Home/About/Privacy) | 6 | 19 | 3.2 | `4 12 16 20 28` (+one 3.2 stray) |
+| **menu/nav** (MainMenu, ScriptPanel, FontPickers) | 8 | 25 | 3.1 | `2 4 6 8 10 12` (+`1`, `28`) |
+| **prose.css** | 7 | 7 | 1.0 | round rem throughout; only `0.4rem` off-grid |
+| quiz | 11 | 42 | 3.8 | `8`×18 dominant; `4 6 10 12 16 20`; strays `2 3 24 32` |
+| tables (Stats, Runs, RunHistory, ScriptProgressList) | 12 | 50 | 4.2 | good spine `12 8 6 4`; carries `1 5×3 7×2 48` |
+| **roadmap** (RoadmapGraph, Roadmap/Progress views) | 11 | 20 | 1.8 | `3 6 10 14 20 40` all ×1 — ad hoc |
+| **reading-tips.css** | 12 | 24 | 2.0 | px **and** rem; owns 5 of the 6 off-grid values |
+
+So the answer to "is the non-sheet side a mess" is **no, only two corners of it are.**
+Menus and the prose views are disciplined and agree with each other; between them they
+establish the ramp without anyone having to invent one:
+
+> **`2 4 6 8 10 12 16 20 28 32`** — 2px resolution to 12, 4px to 20, 8px above.
+
+Quiz and tables already sit on it apart from named strays. **`reading-tips.css` and the
+roadmap group are the two files/areas that are genuinely ad hoc**, and they are what
+"stats should eventually follow the scale" should mean: snap those two to the ramp
+above, don't renegotiate the ramp.
+
+#### Findings
+
+- [ ] **The declared scale is unimplemented and wrong.** DESIGN.md's sidecar declares
+  `hair 2 / xs 4 / sm 8 / md 12 / lg 1.25rem / xl 2rem`. Nothing implements it, and
+  those six cover 132 of 230 uses. The uncovered 43% is not noise — `6px`×17, `16px`×13,
+  `3px`×11 and `10px`×10 are top-ten values with no slot. Rewrite the sidecar from
+  measured usage before extracting, or the extraction inherits the error.
+- [ ] **The type ramp's two-bases residue exists in spacing too — and lives entirely in
+  prose.** Chrome is authored in px, prose in rem, `1rem` is 16px, so they interleave
+  off-grid in six pairs: `3px`×11 / `0.2rem`(3.2px)×3 · `5px`×6 / `0.3rem`(4.8px)×4 ·
+  `6px`×17 / `0.4rem`(6.4px)×4 · `10px`×10 / `0.6rem`(9.6px)×3 · `12px`×29 /
+  `0.8rem`(12.8px)×1 · `14px`×1 / `0.9rem`(14.4px)×1. **All 16 off-grid uses are in the
+  seven prose files, five of the six values in `reading-tips.css` alone** — so this is a
+  contained conversion, not a codebase-wide sweep.
+- [ ] **The clamped registers spend fixed space.** `.sheet` and `.reading-tips` scale
+  `font-size` with `clamp()` and set every margin, padding and gap absolutely. Sheet
+  type runs 11→14px (+27%) against `padding: 10px` and cells at `3px 4px 2px`, fixed;
+  reading tips 13→16px (+23%) against fixed rem. At 1440px the sheet sits on its 11px
+  floor, at 1920px the type is 27% larger and the padding is unchanged — **the sheet
+  reads tighter on the big monitor than on the laptop**, which inverts the intent.
+- [ ] **Three sibling tables, three metrics.** `StatsPanel` and `RunsPanel` td
+  `5px 12px`, `RunHistory` td `7px 12px`, `ScriptProgressList` `5px 8px`. `.runs-table`
+  is the same class name in two files with different padding — a component, not a
+  convention.
+- [ ] **`.btn-primary` is redeclared in 7 scoped blocks**, all at `8px 20px`. Consistent
+  today, unenforced.
+
+#### Two sets, and only one of them is pixels ✅ (author)
+
+The general ramp covers menus, buttons, prose, tables and stats, so those stay
+consistent with each other. The **sheet register is deliberately separate, so that
+sheet packing microsteps never leak into the scale offered for controls** — including
+genuinely one-off sheet layouts (e.g. planned Arabic baseline alignment that has to fit
+font rendering) which are not worth tokenising at all.
+
+A sharpening from the measurements: **the sheet register should not get a px token set
+either.** Its 11 steps are `1 2 3 4 5 6 7 8 10` — every integer up to 8, which is the
+absence of a scale rather than a granular one; tokenising `--sp-sheet-5` and
+`--sp-sheet-7` would launder that into doctrine. Convert sheet spacing to `em` first
+(previous finding), matching what its type already does. Then the granularity question
+is about ratios against the glyph rather than pixels against nothing, and the one-offs
+have no scale to leak into.
+
+#### Sequence ✅ (author) — three steps, mirroring the font work
+
+1. **Extract, collapse exact duplicates.** Tokenise the general ramp at unchanged
+   values; every repeated value gets a name. No value changes, no judgement calls.
+   Standalone, listed in §1.
+2. **Collapse near-neighbours.** The six rem/px pairs above (keep the px neighbour),
+   then `1→2`, `7→8` and the `5`/`7` table paddings. Standalone.
+3. **Rethink the ramp.** Best done *with* the type-ramp rethink above, since both are
+   per-register judgement calls over the same registers, plus tracking (6 values) and
+   line-height (6 values: `1`×10, `1.3`×5, `1.5`×3, `1.4`×2, `1.2`×2, `1.15`×2).
+
+**Do not import a geometric ramp.** A ~2.2×-per-step ladder is built for prose pages;
+60% of this product's space sits between 2px and 12px because the Handout Density and
+Two Registers rules put it there, and no geometric ladder expresses `3px 4px 2px`.
+Extra variety is acceptable here — the target is a discoverable scale, not a short one.
+
+### Other literals worth tokenising
+
+Adherence wins in the radius mould: the token exists (or obviously should), and naming
+it is what stops the next edit inventing a neighbour.
+
+- [ ] **The hairline — 41 uses, no token.** 17 `border:` shorthand + 24 longhand, all
+  `1px solid var(--c-border)`. Longhands accept a shorthand value, so a single
+  `--hairline: 1px solid var(--c-border)` covers all 41 and enforces width *and* colour
+  in one reach — which is how the No-Shadow Rule already thinks about it. **Do not ship
+  a width palette** (`--border-light/base/thick`): the only other widths are one `2px`
+  thead rule and one `3px` blockquote border, both role-specific, and advertising three
+  widths invites widths this system has deliberately never had.
+- [ ] **`color: #fff` in 10 files** — the plate text colour, written as a literal
+  everywhere. DESIGN.md notes that Warm Sheet on Highway Green (Lc −85.0) fits the
+  handout metaphor better than pure white; as it stands that experiment is 10 edits
+  instead of 1. Wants `--c-on-sign`, not `--c-cell` — the semantic is "text on a plate".
+- [ ] **`rgba(255, 255, 255, 0.6)` ×2** (`ConsonantPicker`, `MainMenu`) — the hairline
+  reversed on a plate. A real role, absent from DESIGN.md's colour list. `--c-border-plate`.
+- [ ] **Measures.** `640px`×4 and `800px`×1 are DESIGN.md doctrine written as literals;
+  `360px`×6 is the quiz measure and undocumented; `720px`×1 (`ProgressView`) is a stray
+  that a token would have prevented. Three tokens, and the stray resolves itself.
+- [ ] **`transition: … 0.15s` ×19** across 10 declaration shapes, plus `0.2s` and
+  `0.25s` singletons. Already noted under Omissions as low value for *easing*; the
+  duration token is separately cheap and is what stops a `0.12s` appearing.
+
+Deliberately excluded: `font-weight: 600`×28 (a CSS keyword with universal meaning, not
+a scale) and the five `minmax()` cell minimums (`56 60 96 170 200px` — per-layout
+geometry, correctly literal).
+
 ### Preserve — do not "improve" these
 Radius discipline (2 tokens, held everywhere but 4 stray 3px) · the depth ladder being
 explicit and actually followed · the Two Registers distinction surviving contact with
-real code · `em`-relative sheet scaling · `outline-offset: -2px` on edge-flush controls
-· `autocomplete/autocorrect/spellcheck` off on the answer input.
+real code · `em`-relative sheet **type** scaling · `outline-offset: -2px` on edge-flush
+controls · `autocomplete/autocorrect/spellcheck` off on the answer input · **no
+`z-index` anywhere in the codebase** — stacking is pure document order, and the sticky
+panel headers work without it.
+
+Also holding on their own, and useful as the reference when snapping other areas:
+menu/nav spacing (8 steps, 25 uses, a clean 2px ladder) and the prose views
+(6 steps, 19 uses). These are what "follow the existing scale" points at.
 
 ## 6. Explicitly rejected
 
