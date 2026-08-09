@@ -85,7 +85,7 @@ onMounted(() => goToPage(0))
 .run-history {
 	margin-top: 3rem;
 	padding-top: 2rem;
-	border-top: 1px solid var(--c-border);
+	border-top: var(--hairline);
 }
 
 h2 {
@@ -114,12 +114,12 @@ h2 {
 	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 .runs-table td {
 	padding: 7px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
 
@@ -140,7 +140,7 @@ h2 {
 
 .page-btn {
 	padding: 4px 12px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);

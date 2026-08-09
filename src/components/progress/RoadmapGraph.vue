@@ -201,7 +201,7 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 	flex-direction: column;
 	gap: 6px;
 	padding: 10px 14px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	flex: 1;

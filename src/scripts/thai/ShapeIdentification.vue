@@ -242,7 +242,7 @@ section > h2 {
 
 figure {
 	margin: 0;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	overflow: hidden;
 	min-width: 0;
@@ -267,7 +267,7 @@ ul {
 }
 
 li {
-	border-right: 1px solid var(--c-border);
+	border-right: var(--hairline);
 	min-width: 38px;
 	min-height: 74px;
 }

@@ -96,7 +96,7 @@ watch(activeTab, (tab) => {
 
 .bottom-bar {
 	display: flex;
-	border-top: 1px solid var(--c-border);
+	border-top: var(--hairline);
 	background: var(--c-cell);
 }
 
@@ -120,7 +120,7 @@ watch(activeTab, (tab) => {
 .tab-btn:focus-visible { outline-offset: -2px; }
 
 .tab-btn.active {
-	color: #fff;
+	color: var(--c-on-sign);
 	background: var(--c-sign);
 }
 </style>

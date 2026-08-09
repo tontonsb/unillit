@@ -107,12 +107,12 @@ watch(() => user.value?.id, loadRuns)
 	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 .runs-table td {
 	padding: 5px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
 
@@ -129,7 +129,7 @@ watch(() => user.value?.id, loadRuns)
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;

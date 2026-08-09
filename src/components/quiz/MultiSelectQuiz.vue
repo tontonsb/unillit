@@ -156,7 +156,7 @@ function optClass(opt: string): string {
 	flex-direction: column;
 	gap: 8px;
 	width: 100%;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 
 .choice {
@@ -164,7 +164,7 @@ function optClass(opt: string): string {
 	align-items: center;
 	gap: 8px;
 	padding: 10px 16px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	color: var(--c-label);
@@ -195,7 +195,7 @@ function optClass(opt: string): string {
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;

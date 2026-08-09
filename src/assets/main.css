@@ -71,6 +71,11 @@
 	--c-cell: #ffffff;
 	--c-alt: #e3f3ec;
 
+	/* Plates only: text and borders reversed onto Highway Green or Signal Teal.
+	   Not --c-cell — that is a ground, this is ink. */
+	--c-on-sign: #ffffff;
+	--c-border-plate: rgba(255, 255, 255, 0.6);
+
 	/* semantic status (accuracy, freshness, tallies) */
 	--c-good: #3a7d44;
 	--c-warn: #8a5e10;
@@ -86,6 +91,21 @@
 
 	--radius-sm: 2px;
 	--radius: 4px;
+
+	/* Longhands accept a shorthand value, so this one token covers `border:` and
+	   `border-top:` alike, and holds width and colour together. There is no width
+	   palette on purpose: the only other widths are one thead rule and one
+	   blockquote border, both role-specific. */
+	--hairline: 1px solid var(--c-border);
+
+	/* --measure-prose caps running text; --measure-wide caps pages whose content is
+	   grids or tables. A page that holds both (Home) takes the wide cap and puts the
+	   measure back on its prose children — the card grid needs 736px of content to
+	   keep three columns, where the same width runs prose to ~105 characters.
+	   The quiz width is not a measure: it is sized to the widest control in the card. */
+	--measure-prose: 640px;
+	--measure-wide: 800px;
+	--w-quiz-control: 360px;
 
 	--sidebar-width: 200px;
 	--sidebar-collapsed-width: 40px;

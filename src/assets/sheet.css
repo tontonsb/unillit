@@ -15,7 +15,7 @@
 }
 
 .sheet section {
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	overflow: hidden;
 }
@@ -23,7 +23,7 @@
 /* white-on-highway-green as a quiet nod to roadsign aesthetics */
 .sheet section > h2 {
 	background: var(--c-sign);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: 0.8em;
 	font-weight: 600;
 	letter-spacing: 0.08em;
@@ -46,7 +46,7 @@
 	padding: 3px 7px 2px;
 	font-size: 0.75em;
 	color: var(--c-label);
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 /* glyph-cell grid — sheets set --cell-min to fit their glyph width */
@@ -78,8 +78,8 @@
 }
 
 .sheet .ruled .cell {
-	border-right: 1px solid var(--c-border);
-	border-bottom: 1px solid var(--c-border);
+	border-right: var(--hairline);
+	border-bottom: var(--hairline);
 }
 
 .sheet .rom {
@@ -103,7 +103,7 @@
 .sheet footer {
 	font-size: 0.75em;
 	color: var(--c-muted);
-	border-top: 1px solid var(--c-border);
+	border-top: var(--hairline);
 	padding-top: 4px;
 	display: flex;
 	justify-content: space-between;

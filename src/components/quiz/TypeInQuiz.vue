@@ -110,7 +110,7 @@ function handleSubmit() {
 	display: flex;
 	gap: 8px;
 	width: 100%;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 
 .answer-input {
@@ -121,7 +121,7 @@ function handleSubmit() {
 	   reader raises their browser font size */
 	min-width: 0;
 	padding: 8px 12px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	font-size: var(--fs-body);
 	font-family: var(--sans);
@@ -140,7 +140,7 @@ function handleSubmit() {
 	align-items: center;
 	gap: 0.5rem;
 	width: 100%;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 
 .feedback-row {
@@ -168,7 +168,7 @@ function handleSubmit() {
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
@@ -182,7 +182,7 @@ function handleSubmit() {
 	align-items: center;
 	gap: 10px;
 	width: 100%;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 
 .tolerance-label {
@@ -201,6 +201,6 @@ function handleSubmit() {
 	font-size: var(--fs-12);
 	color: var(--c-muted);
 	text-align: center;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 </style>

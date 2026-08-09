@@ -345,7 +345,7 @@ const { resultCopied, copyResults } = useResultShare({
 	padding: 8px 12px;
 	gap: 8px;
 	flex-shrink: 0;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	background: var(--c-cell);
 	overflow-x: auto;
 }
@@ -367,7 +367,7 @@ const { resultCopied, copyResults } = useResultShare({
 .count-input {
 	width: 52px;
 	padding: 2px 6px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
@@ -382,7 +382,7 @@ const { resultCopied, copyResults } = useResultShare({
 
 .pill {
 	padding: 3px 10px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
@@ -420,7 +420,7 @@ const { resultCopied, copyResults } = useResultShare({
 	align-items: center;
 	gap: 8px;
 	padding: 6px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 .progress-bar {
@@ -492,7 +492,7 @@ const { resultCopied, copyResults } = useResultShare({
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
@@ -503,7 +503,7 @@ const { resultCopied, copyResults } = useResultShare({
 
 .btn-secondary {
 	padding: 8px 20px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);

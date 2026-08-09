@@ -115,12 +115,12 @@ h2 {
 	font-size: var(--fs-micro);
 	padding: 4px 8px 6px;
 	text-align: left;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 .dataset-table td {
 	padding: 5px 8px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	vertical-align: middle;
 }
 
@@ -150,7 +150,7 @@ h2 {
 	font-size: var(--fs-11);
 	color: var(--c-muted);
 	background: var(--c-alt);
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	padding: 1px 7px;
 	white-space: nowrap;

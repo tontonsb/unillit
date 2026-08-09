@@ -4,7 +4,7 @@
 
 .reading-tips {
 	padding: 1.25rem 1.5rem;
-	max-width: 640px;
+	max-width: var(--measure-prose);
 	font-size: clamp(13px, 0.9vw, 16px);
 	color: var(--c-label);
 }
@@ -101,7 +101,7 @@
 	display: block;
 	width: 100%;
 	height: auto;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 }
 
@@ -137,7 +137,7 @@
 
 .reading-tips dl > div {
 	padding: 0.4rem 0.6rem;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 }

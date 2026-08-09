@@ -157,7 +157,7 @@ aside {
 	display: flex;
 	flex-direction: column;
 	background: var(--c-cell);
-	border-right: 1px solid var(--c-border);
+	border-right: var(--hairline);
 	transition: width 0.2s ease;
 	overflow: hidden;
 	position: relative;
@@ -177,7 +177,7 @@ aside.collapsed {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	color: var(--c-label);
 	font-size: var(--fs-18);
 	transition: background 0.15s;
@@ -234,7 +234,7 @@ nav {
 
 .nav-item.active {
 	background: var(--c-sign);
-	color: #fff;
+	color: var(--c-on-sign);
 	margin-left: 0;
 	border-radius: 0 var(--radius) var(--radius) 0;
 }
@@ -262,8 +262,8 @@ nav {
 }
 
 .nav-item.active .beta-badge {
-	color: #fff;
-	border-color: rgba(255, 255, 255, 0.6);
+	color: var(--c-on-sign);
+	border-color: var(--c-border-plate);
 }
 
 .item-label,
@@ -301,7 +301,7 @@ nav {
 
 .nav-item.active .item-native,
 .nav-item.active .item-abbr {
-	color: #fff;
+	color: var(--c-on-sign);
 }
 
 .collapsed .nav-item {

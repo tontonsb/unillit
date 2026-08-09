@@ -235,7 +235,7 @@ const specialMarks: Mark[] = [
 	padding: 3px 7px;
 	font-size: 0.75em;
 	color: var(--c-label);
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	flex-wrap: wrap;
 }
 

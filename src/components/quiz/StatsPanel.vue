@@ -264,13 +264,13 @@ const nudge = computed(() => {
 	flex-wrap: wrap;
 	gap: 4px;
 	padding: 6px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	background: var(--c-cell);
 }
 
 .filter-pill {
 	padding: 2px 8px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
@@ -302,7 +302,7 @@ const nudge = computed(() => {
 
 .nudge-bar {
 	padding: 6px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	background: var(--c-cell);
 	font-size: var(--fs-11);
 	color: var(--c-muted);
@@ -341,12 +341,12 @@ const nudge = computed(() => {
 	font-size: var(--fs-micro);
 	padding: 6px 12px;
 	text-align: left;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 }
 
 .stats-table td {
 	padding: 5px 12px;
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
 
@@ -368,7 +368,7 @@ const nudge = computed(() => {
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;

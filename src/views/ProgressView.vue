@@ -42,7 +42,7 @@ onMounted(load)
 <style scoped>
 article {
 	padding: 2rem;
-	max-width: 720px;
+	max-width: var(--measure-wide);
 	margin: 0 auto;
 }
 
@@ -66,7 +66,7 @@ h1 {
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
-	color: #fff;
+	color: var(--c-on-sign);
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;

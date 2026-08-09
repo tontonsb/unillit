@@ -107,7 +107,11 @@ import BetaBadge from '@/components/BetaBadge.vue'
 
 <style scoped>
 article {
-	max-width: 800px;
+	max-width: var(--measure-wide);
+}
+
+article > :is(h1, h2, p) {
+	max-width: var(--measure-prose);
 }
 
 .home-sub {
@@ -156,7 +160,7 @@ dd {
 	flex-direction: column;
 	gap: 0.25rem;
 	padding: 1rem 1.25rem;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	text-decoration: none;

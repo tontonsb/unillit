@@ -98,7 +98,7 @@ function copyLink() {
 .link-btn {
 	flex-shrink: 0;
 	padding: 3px 8px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-muted);
@@ -129,7 +129,7 @@ function copyLink() {
 }
 
 .panels > :first-child {
-	border-right: 1px solid var(--c-border);
+	border-right: var(--hairline);
 }
 
 .not-found {

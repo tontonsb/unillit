@@ -75,7 +75,7 @@ onMounted(load)
 <style scoped>
 article {
 	padding: 2rem;
-	max-width: 640px;
+	max-width: var(--measure-prose);
 	margin: 0 auto;
 }
 

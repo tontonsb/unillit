@@ -30,9 +30,14 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   resolved".
 - [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
-- [ ] **Extract the hairline, plate white and measures to tokens.** `--hairline`
-  (41 uses), `--c-on-sign` (10 literal `#fff`), `--c-border-plate` (2), and the three
-  prose/quiz measures. Mechanical, no value changes. See §5 → "Other literals".
+- [x] **Extract the hairline, plate white and measures to tokens.** `--hairline` (41),
+  `--c-on-sign` (12 `#fff`, in 10 files), `--c-border-plate` (2), and `--measure-prose`
+  / `--measure-wide` / `--w-quiz-control`. DESIGN.md's colour list gains Plate Ink and
+  Plate Rule. Two value changes, not mechanical: ProgressView's stray `720px` took
+  `--measure-wide` (800px), and HomeView now caps its prose children at the 640 measure
+  while the article keeps the wide cap — measured in-browser, the 640 cap alone costs
+  the card grid its third column and squeezes *Suggested approach* to 280px columns.
+  The quiz's 360px is not a measure and no longer named like one.
 - [ ] **Extract the spacing scale — step 1 of 3.** Tokenise the general ramp
   (menus, buttons, prose, tables, stats) at unchanged values, collapsing exact
   duplicates only. The sheet register stays out of it. No judgement calls; steps 2 and 3

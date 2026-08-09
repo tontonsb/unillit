@@ -84,7 +84,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	flex-direction: column;
 	gap: 8px;
 	width: 100%;
-	max-width: 360px;
+	max-width: var(--w-quiz-control);
 }
 
 .choice {
@@ -92,7 +92,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	align-items: baseline;
 	gap: 8px;
 	padding: 10px 16px;
-	border: 1px solid var(--c-border);
+	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	color: var(--c-label);

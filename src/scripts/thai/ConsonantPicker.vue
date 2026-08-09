@@ -33,7 +33,7 @@ const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 	font-weight: 400;
 	line-height: 1;
 	padding: 0 5px 1px;
-	border: 1px solid rgba(255, 255, 255, 0.6);
+	border: 1px solid var(--c-border-plate);
 	border-radius: var(--radius);
 	background: transparent;
 	color: rgba(255, 255, 255, 0.92);

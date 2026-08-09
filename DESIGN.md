@@ -8,6 +8,8 @@ colors:
   mint-rule: "#c2dccb"
   warm-sheet: "#fafaf8"
   cell-white: "#ffffff"
+  plate-ink: "#ffffff"
+  plate-rule: "rgba(255, 255, 255, 0.6)"
   deep-ink: "#242b26"
   body-ink: "#3e4842"
   faded-ink: "#67716b"
@@ -198,6 +200,13 @@ tints, and a brighter teal that exists to misbehave.
   content — off-white and slightly warm, so white cells read as *paper laid on paper*.
 - **Cell White** (`#ffffff`): the specimen ground. Sheet cells, sidebar, panel headers,
   toolbars, cards, inputs. It is the colour of "something is mounted here".
+- **Plate Ink** (`#ffffff`, `--c-on-sign`): the same white, but reversed *onto* a plate
+  rather than laid *under* content. Kept as its own token because the two move
+  independently — see "Room the palette already has, unused" below.
+- **Plate Rule** (`rgba(255, 255, 255, 0.6)`, `--c-border-plate`): the hairline reversed
+  on a plate, for controls that sit inside one (the beta badge on an active nav item,
+  the Thai consonant picker). Mint Rule is invisible on Highway Green; this is its
+  counterpart.
 - **Deep Ink** (`#242b26`): glyphs, specimens, headings inside sheets, emphasised
   values. 13.9:1.
 - **Body Ink** (`#3e4842`): running prose, table cells, nav labels. 9.1:1.
@@ -302,7 +311,8 @@ secondary; use a lighter tone instead.
 **Room the palette already has, unused.** Reversed text on a plate does not have to be
 pure white:
 - **Warm Sheet on Highway Green (−85.0)** is within 3 Lc of pure white and is the
-  paper colour, so it fits the handout metaphor better than `#fff` does.
+  paper colour, so it fits the handout metaphor better than `#fff` does. Trying it is
+  now one edit to `--c-on-sign`.
 - **Mint Wash on Highway Green (−78.1)** still clears APCA's body-text minimum, which
   means a mint-tinted *secondary* tone on a plate is viable — currently the active nav
   item sets both the Latin name and the native script name to the same pure white, and
@@ -368,8 +378,15 @@ publications.
   extra weight.
 - **Title** (Lora 600, 0.95rem–14px): sub-headings, panel names, term-card `dt`.
 - **Body** (Noto Sans 400, 0.9rem; 14px app base, 1.5 line-height): running prose,
-  table cells, quiz choices. Prose columns are capped at 640px (reading tips, About,
-  Privacy) and 800px (Home).
+  table cells, quiz choices. **Running text is capped at `--measure-prose` (640px)
+  everywhere** — reading tips, About, Privacy, Roadmap, and Home's paragraphs and
+  headings. `--measure-wide` (800px) caps pages whose content is grids or tables
+  (Home, Progress); it is a container width, not a measure. Home needs both: at the
+  640 cap its card grid drops from three columns to two and the two-up *Suggested
+  approach* falls to 280px columns, so the page takes the wide cap and puts the
+  measure back on its prose children. The quiz's 360px (`--w-quiz-control`) is
+  deliberately not filed here — it is sized to the widest control in the answer card,
+  not to reading.
 - **Label** (Noto Sans 600–700, 10–11px, 0.06em tracking, uppercase): sheet section
   headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
   the interface read as apparatus rather than content.
@@ -492,7 +509,9 @@ the codebase, and this is doctrine rather than an omission. The system is a prin
 sheet; ink does not float.
 
 Depth is expressed three ways, in order of strength: a **1px Mint Rule hairline**
-(cell boundaries, section outlines, panel dividers, table underscores); a **tonal
+(`--hairline`, holding width and colour together, since longhands accept the shorthand
+value — 41 uses on cell boundaries, section outlines, panel dividers, table
+underscores); a **tonal
 fill** (Cell White mounted on Warm Sheet to say "specimen here", Mint Wash to band a
 row or mark a hover); and **a plate** (white on Highway Green, for the small set of
 surfaces that are genuinely active). Ruled sheet grids clip their outer edges with

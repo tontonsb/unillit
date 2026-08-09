@@ -109,7 +109,7 @@ header {
 	gap: 12px;
 	padding: 0 12px;
 	background: var(--c-cell);
-	border-bottom: 1px solid var(--c-border);
+	border-bottom: var(--hairline);
 	min-height: 36px;
 }
 
@@ -171,7 +171,7 @@ h1 {
 }
 
 .tab.active {
-	color: #fff;
+	color: var(--c-on-sign);
 	background: var(--c-sign);
 }
 

@@ -76,6 +76,6 @@
 
 <style scoped>
 article {
-	max-width: 640px;
+	max-width: var(--measure-prose);
 }
 </style>
