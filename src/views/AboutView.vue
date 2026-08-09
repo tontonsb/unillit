@@ -41,6 +41,18 @@ const version = __APP_VERSION__
 		you may notice skipped versions.
 
 		<dl class="changelog">
+			<dt>1.0.2</dt>
+			<dd>
+				This is a large under-the-hood update that should have very few noticable effects.
+				<ul>
+					<li>Switching to stats no longer resets the quiz run</li>
+					<li>Changing settings still has to reset it, but you get a warning that it will happen</li>
+					<li>Some accessibility and performance improvements have also landed</li>
+					<li>We have a custom favicon now, inspired by u, μ and ч</li>
+					<li>Fonts are now locally hosted, no more requests to Google Fonts so a bit more privacy to you</li>
+				</ul>
+			</dd>
+
 			<dt>1.0</dt>
 			<dd>
 				The project seems stable enough to pin v1 now.
