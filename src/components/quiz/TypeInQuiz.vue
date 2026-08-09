@@ -108,7 +108,7 @@ function handleSubmit() {
 <style scoped>
 .input-row {
 	display: flex;
-	gap: 8px;
+	gap: var(--sp-8);
 	width: 100%;
 	max-width: var(--w-quiz-control);
 }
@@ -120,7 +120,7 @@ function handleSubmit() {
 	   shrink past that on its own — without this the row overflows once the
 	   reader raises their browser font size */
 	min-width: 0;
-	padding: 8px 12px;
+	padding: var(--sp-8) var(--sp-12);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	font-size: var(--fs-body);
@@ -138,7 +138,7 @@ function handleSubmit() {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 0.5rem;
+	gap: var(--sp-8);
 	width: 100%;
 	max-width: var(--w-quiz-control);
 }
@@ -146,9 +146,9 @@ function handleSubmit() {
 .feedback-row {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: var(--sp-8);
 	font-size: var(--fs-body);
-	padding: 6px 12px;
+	padding: var(--sp-6) var(--sp-12);
 	border-radius: var(--radius);
 	width: 100%;
 }
@@ -164,7 +164,7 @@ function handleSubmit() {
 }
 
 .btn-primary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
@@ -180,7 +180,7 @@ function handleSubmit() {
 .tolerance-row {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: var(--sp-10);
 	width: 100%;
 	max-width: var(--w-quiz-control);
 }

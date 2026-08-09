@@ -84,7 +84,7 @@ onMounted(() => goToPage(0))
 <style scoped>
 .run-history {
 	margin-top: 3rem;
-	padding-top: 2rem;
+	padding-top: var(--sp-32);
 	border-top: var(--hairline);
 }
 
@@ -92,7 +92,7 @@ h2 {
 	font-size: var(--fs-16);
 	font-weight: 600;
 	color: var(--c-head);
-	margin-bottom: 1rem;
+	margin-bottom: var(--sp-16);
 }
 
 .empty {
@@ -112,13 +112,13 @@ h2 {
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	font-size: var(--fs-micro);
-	padding: 6px 12px;
+	padding: var(--sp-6) var(--sp-12);
 	text-align: left;
 	border-bottom: var(--hairline);
 }
 
 .runs-table td {
-	padding: 7px 12px;
+	padding: 7px var(--sp-12);
 	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
@@ -134,12 +134,12 @@ h2 {
 .pagination {
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	margin-top: 12px;
+	gap: var(--sp-12);
+	margin-top: var(--sp-12);
 }
 
 .page-btn {
-	padding: 4px 12px;
+	padding: var(--sp-4) var(--sp-12);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;

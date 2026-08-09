@@ -116,23 +116,23 @@ article > :is(h1, h2, p) {
 
 .home-sub {
 	color: var(--c-muted);
-	margin-bottom: 1.25rem;
+	margin-bottom: var(--sp-20);
 	font-size: var(--fs-prose);
 }
 
 .approaches {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
-	margin-top: 1.75rem;
-	margin-bottom: 1.75rem;
+	gap: var(--sp-16);
+	margin-top: var(--sp-28);
+	margin-bottom: var(--sp-28);
 }
 
 dl {
 	display: grid;
 	grid-template-columns: max-content 1fr;
-	gap: 0.25rem 1.25rem;
-	margin: 0.75rem 0 1rem;
+	gap: var(--sp-4) var(--sp-20);
+	margin: var(--sp-12) 0 var(--sp-16);
 }
 
 dt {
@@ -150,16 +150,16 @@ dd {
 .script-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	gap: 1rem;
-	margin-top: 1.75rem;
-	margin-bottom: 1.75rem;
+	gap: var(--sp-16);
+	margin-top: var(--sp-28);
+	margin-bottom: var(--sp-28);
 }
 
 .script-card {
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
-	padding: 1rem 1.25rem;
+	gap: var(--sp-4);
+	padding: var(--sp-16) var(--sp-20);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);

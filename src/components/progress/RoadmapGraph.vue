@@ -192,15 +192,15 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 
 .row {
 	display: flex;
-	gap: 12px;
+	gap: var(--sp-12);
 	flex-wrap: wrap;
 }
 
 .step {
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
-	padding: 10px 14px;
+	gap: var(--sp-6);
+	padding: var(--sp-10) 14px;
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
@@ -212,7 +212,7 @@ watch(() => props.steps, () => nextTick(recompute), { deep: true })
 .step-header {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: var(--sp-8);
 }
 
 .step-dot {

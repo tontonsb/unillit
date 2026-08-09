@@ -253,8 +253,8 @@ const nudge = computed(() => {
 
 .stats-login {
 	flex-direction: column;
-	gap: 1rem;
-	padding: 2rem;
+	gap: var(--sp-16);
+	padding: var(--sp-32);
 	text-align: center;
 }
 
@@ -262,14 +262,14 @@ const nudge = computed(() => {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 4px;
-	padding: 6px 12px;
+	gap: var(--sp-4);
+	padding: var(--sp-6) var(--sp-12);
 	border-bottom: var(--hairline);
 	background: var(--c-cell);
 }
 
 .filter-pill {
-	padding: 2px 8px;
+	padding: var(--sp-2) var(--sp-8);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
@@ -297,11 +297,11 @@ const nudge = computed(() => {
 	width: 1px;
 	height: 14px;
 	background: var(--c-border);
-	margin: 0 2px;
+	margin: 0 var(--sp-2);
 }
 
 .nudge-bar {
-	padding: 6px 12px;
+	padding: var(--sp-6) var(--sp-12);
 	border-bottom: var(--hairline);
 	background: var(--c-cell);
 	font-size: var(--fs-11);
@@ -315,7 +315,7 @@ const nudge = computed(() => {
 
 .badge-cell {
 	width: 20px;
-	padding: 0 4px !important;
+	padding: 0 var(--sp-4) !important;
 	text-align: center;
 }
 
@@ -339,13 +339,13 @@ const nudge = computed(() => {
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	font-size: var(--fs-micro);
-	padding: 6px 12px;
+	padding: var(--sp-6) var(--sp-12);
 	text-align: left;
 	border-bottom: var(--hairline);
 }
 
 .stats-table td {
-	padding: 5px 12px;
+	padding: 5px var(--sp-12);
 	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
@@ -364,7 +364,7 @@ const nudge = computed(() => {
 .muted { color: var(--c-muted); }
 
 .btn-primary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);

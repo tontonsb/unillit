@@ -61,20 +61,20 @@ function urgencyClass(lastRunAt: string | null): string {
 .script-list {
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: var(--sp-32);
 }
 
 section header {
 	display: flex;
 	align-items: baseline;
-	gap: 12px;
-	margin-bottom: 0.5rem;
+	gap: var(--sp-12);
+	margin-bottom: var(--sp-8);
 }
 
 h2 {
 	display: flex;
 	align-items: baseline;
-	gap: 8px;
+	gap: var(--sp-8);
 	font-size: var(--fs-16);
 	font-weight: 600;
 }
@@ -98,7 +98,7 @@ h2 {
 .note {
 	font-size: var(--fs-chrome);
 	color: var(--c-muted);
-	padding-left: 2px;
+	padding-left: var(--sp-2);
 }
 
 .dataset-table {
@@ -113,13 +113,13 @@ h2 {
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	font-size: var(--fs-micro);
-	padding: 4px 8px 6px;
+	padding: var(--sp-4) var(--sp-8) var(--sp-6);
 	text-align: left;
 	border-bottom: var(--hairline);
 }
 
 .dataset-table td {
-	padding: 5px 8px;
+	padding: 5px var(--sp-8);
 	border-bottom: var(--hairline);
 	vertical-align: middle;
 }
@@ -133,7 +133,7 @@ h2 {
 
 .ds-date {
 	white-space: nowrap;
-	padding-right: 16px;
+	padding-right: var(--sp-16);
 }
 
 .ds-date.never { color: var(--c-muted); }
@@ -143,7 +143,7 @@ h2 {
 .ds-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 4px;
+	gap: var(--sp-4);
 }
 
 .tag {

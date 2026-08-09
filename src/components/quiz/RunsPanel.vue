@@ -85,8 +85,8 @@ watch(() => user.value?.id, loadRuns)
 
 .runs-login {
 	flex-direction: column;
-	gap: 1rem;
-	padding: 2rem;
+	gap: var(--sp-16);
+	padding: var(--sp-32);
 	text-align: center;
 }
 
@@ -105,13 +105,13 @@ watch(() => user.value?.id, loadRuns)
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	font-size: var(--fs-micro);
-	padding: 6px 12px;
+	padding: var(--sp-6) var(--sp-12);
 	text-align: left;
 	border-bottom: var(--hairline);
 }
 
 .runs-table td {
-	padding: 5px 12px;
+	padding: 5px var(--sp-12);
 	border-bottom: var(--hairline);
 	color: var(--c-label);
 }
@@ -125,7 +125,7 @@ watch(() => user.value?.id, loadRuns)
 .muted { color: var(--c-muted); }
 
 .btn-primary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);

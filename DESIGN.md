@@ -63,12 +63,17 @@ rounded:
   md: "4px"
   full: "50%"
 spacing:
-  hair: "2px"
-  xs: "4px"
-  sm: "8px"
-  md: "12px"
-  lg: "1.25rem"
-  xl: "2rem"
+  sp-2: "0.125rem"
+  sp-4: "0.25rem"
+  sp-6: "0.375rem"
+  sp-8: "0.5rem"
+  sp-10: "0.625rem"
+  sp-12: "0.75rem"
+  sp-16: "1rem"
+  sp-20: "1.25rem"
+  sp-24: "1.5rem"
+  sp-28: "1.75rem"
+  sp-32: "2rem"
 components:
   button-primary:
     backgroundColor: "{colors.signal-teal}"
@@ -486,6 +491,22 @@ Density is tiered by register. Sheets run on a 2–10px rhythm (`padding: 10px`,
 minmax(var(--cell-min), 1fr))` grid so a listing reflows without ever going ragged.
 Panel chrome runs on 4–12px. Full-page prose relaxes to a `0.25–2rem` rhythm, because
 those pages are read rather than consulted.
+
+**The spacing ramp is `--sp-2 … --sp-32`** — 2px resolution to 12, 4px above:
+`2 4 6 8 10 12 16 20 24 28 32`. It was measured off the menu and prose registers, which
+already agreed with each other, rather than imported; a geometric ~2.2×-per-step ladder
+is built for prose pages and cannot express `3px 4px 2px`. Extra variety is acceptable
+here — the target is a discoverable scale, not a short one.
+
+Like the type ramp, the tokens are **written in rem and chosen in px**, so spacing and
+type scale together under a browser font-size preference instead of type growing into
+frozen padding. At the default 16px root every step is its px name exactly.
+
+Two things are deliberately outside it. **The sheet register** keeps its own microsteps
+and is heading for `em`, so that sheet packing never leaks into the scale offered for
+controls. **The strays** — `1 3 5 7 14 40 48` and the off-grid rem values inherited from
+prose — are still literal on purpose: they are what a later pass collapses, and naming
+them would launder them into the scale.
 
 Sheet type scales with the viewport rather than stepping at breakpoints:
 `font-size: clamp(11px, 0.75vw, 14px)` with `--glyph: clamp(24px, 1.56vw, 30px)`. The

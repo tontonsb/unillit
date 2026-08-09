@@ -106,8 +106,8 @@ header {
 	flex-shrink: 0;
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	padding: 0 12px;
+	gap: var(--sp-12);
+	padding: 0 var(--sp-12);
 	background: var(--c-cell);
 	border-bottom: var(--hairline);
 	min-height: 36px;
@@ -116,9 +116,9 @@ header {
 h1 {
 	display: flex;
 	align-items: baseline;
-	gap: 6px;
+	gap: var(--sp-6);
 	flex-shrink: 0;
-	padding: 6px 0;
+	padding: var(--sp-6) 0;
 }
 
 .panel-name {
@@ -135,13 +135,13 @@ h1 {
 
 .tabs {
 	display: flex;
-	gap: 2px;
+	gap: var(--sp-2);
 	overflow-x: auto;
 	scrollbar-width: none;
 	flex: 1;
 
 	/* matches the fade, so the last tab can scroll clear of it */
-	padding-right: 28px;
+	padding-right: var(--sp-28);
 	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
 }
 
@@ -149,7 +149,7 @@ h1 {
 
 .tab {
 	align-self: center;
-	padding: 4px 10px;
+	padding: var(--sp-4) var(--sp-10);
 	border: none;
 	border-radius: var(--radius-sm);
 	background: transparent;

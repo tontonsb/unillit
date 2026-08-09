@@ -97,7 +97,7 @@ function copyLink() {
 <style scoped>
 .link-btn {
 	flex-shrink: 0;
-	padding: 3px 8px;
+	padding: 3px var(--sp-8);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
@@ -133,7 +133,7 @@ function copyLink() {
 }
 
 .not-found {
-	padding: 32px;
+	padding: var(--sp-32);
 	color: var(--c-muted);
 }
 

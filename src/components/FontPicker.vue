@@ -20,7 +20,7 @@ const id = useId()
 .font-picker {
 	display: flex;
 	align-items: center;
-	gap: 6px;
+	gap: var(--sp-6);
 	margin-left: auto;
 	flex-shrink: 0;
 }
@@ -40,7 +40,7 @@ const id = useId()
 	background: var(--c-cell);
 	border: var(--hairline);
 	border-radius: var(--radius);
-	padding: 2px 4px;
+	padding: var(--sp-2) var(--sp-4);
 	cursor: pointer;
 }
 

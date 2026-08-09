@@ -41,7 +41,7 @@ onMounted(load)
 
 <style scoped>
 article {
-	padding: 2rem;
+	padding: var(--sp-32);
 	max-width: var(--measure-wide);
 	margin: 0 auto;
 }
@@ -50,19 +50,19 @@ h1 {
 	font-size: var(--fs-24);
 	font-weight: 600;
 	color: var(--c-head);
-	margin-bottom: 1.5rem;
+	margin-bottom: var(--sp-24);
 }
 
 .login {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: var(--sp-16);
 }
 
 .muted { color: var(--c-muted); }
 
 .btn-primary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);

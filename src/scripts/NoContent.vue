@@ -12,6 +12,6 @@ article {
 	height: 100%;
 	color: var(--c-muted);
 	font-size: var(--fs-chrome);
-	padding: 12px;
+	padding: var(--sp-12);
 }
 </style>

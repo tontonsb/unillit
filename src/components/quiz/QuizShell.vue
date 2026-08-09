@@ -102,7 +102,7 @@ watch(activeTab, (tab) => {
 
 .tab-btn {
 	flex: 1;
-	padding: 8px;
+	padding: var(--sp-8);
 	border: none;
 	background: none;
 	color: var(--c-muted);

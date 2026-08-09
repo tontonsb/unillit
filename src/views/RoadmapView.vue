@@ -74,7 +74,7 @@ onMounted(load)
 
 <style scoped>
 article {
-	padding: 2rem;
+	padding: var(--sp-32);
 	max-width: var(--measure-prose);
 	margin: 0 auto;
 }
@@ -83,19 +83,19 @@ h1 {
 	font-size: var(--fs-24);
 	font-weight: 600;
 	color: var(--c-head);
-	margin-bottom: 1.5rem;
+	margin-bottom: var(--sp-24);
 }
 
 .empty {
 	color: var(--c-muted);
 	font-size: var(--fs-prose);
-	margin-bottom: 1rem;
+	margin-bottom: var(--sp-16);
 }
 
 .login-nudge {
 	font-size: var(--fs-chrome);
 	color: var(--c-muted);
-	margin-bottom: 1.5rem;
+	margin-bottom: var(--sp-24);
 }
 
 .btn-link {
@@ -111,20 +111,20 @@ h1 {
 .script-list {
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: var(--sp-32);
 }
 
 section header {
 	display: flex;
 	align-items: baseline;
-	gap: 12px;
-	margin-bottom: 0.75rem;
+	gap: var(--sp-12);
+	margin-bottom: var(--sp-12);
 }
 
 h2 {
 	display: flex;
 	align-items: baseline;
-	gap: 8px;
+	gap: var(--sp-8);
 	font-size: var(--fs-16);
 	font-weight: 600;
 }

@@ -199,7 +199,7 @@ aside.collapsed {
 nav {
 	display: flex;
 	flex-direction: column;
-	padding: 8px 0;
+	padding: var(--sp-8) 0;
 	overflow-y: auto;
 	scrollbar-width: thin;
 	flex: 1;
@@ -210,21 +210,21 @@ nav {
 	height: 1px;
 	flex-shrink: 0;
 	background: var(--c-border);
-	margin: 4px 10px;
+	margin: var(--sp-4) var(--sp-10);
 }
 
 .nav-item {
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
-	padding: 8px 10px;
+	padding: var(--sp-8) var(--sp-10);
 	margin-block: 1px;
-	margin-inline: 6px;
+	margin-inline: var(--sp-6);
 	border-radius: var(--radius);
 	text-decoration: none;
 	color: var(--c-label);
 	transition: background 0.15s, color 0.15s;
-	gap: 2px;
+	gap: var(--sp-2);
 	overflow: hidden;
 }
 
@@ -306,12 +306,12 @@ nav {
 
 .collapsed .nav-item {
 	align-items: center;
-	padding: 8px 0;
-	margin-inline: 4px;
+	padding: var(--sp-8) 0;
+	margin-inline: var(--sp-4);
 }
 
 .collapsed .nav-item.active {
-	margin-left: 4px;
+	margin-left: var(--sp-4);
 	border-radius: var(--radius);
 }
 
@@ -330,7 +330,7 @@ nav {
 	display: block;
 	height: 1px;
 	background: var(--c-border);
-	margin: 4px 10px;
+	margin: var(--sp-4) var(--sp-10);
 }
 
 .nav-btn {
@@ -344,7 +344,7 @@ nav {
 .user-item {
 	flex-direction: row;
 	align-items: center;
-	gap: 8px;
+	gap: var(--sp-8);
 }
 
 .user-avatar {

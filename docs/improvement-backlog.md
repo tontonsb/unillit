@@ -38,10 +38,17 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   while the article keeps the wide cap — measured in-browser, the 640 cap alone costs
   the card grid its third column and squeezes *Suggested approach* to 280px columns.
   The quiz's 360px is not a measure and no longer named like one.
-- [ ] **Extract the spacing scale — step 1 of 3.** Tokenise the general ramp
-  (menus, buttons, prose, tables, stats) at unchanged values, collapsing exact
-  duplicates only. The sheet register stays out of it. No judgement calls; steps 2 and 3
-  are separate. See §5 → "Spacing has no scale".
+- [x] **Extract the spacing scale — step 1 of 3.** 154 values across 21 files now resolve
+  to eleven `--sp-*` tokens (`2 4 6 8 10 12 16 20 24 28 32`), at unchanged rendered
+  values. `24` joined the measured ramp (×4 uses); the strays `1 3 5 7 14 40 48` and the
+  off-grid rem values are deliberately still literal, since they are what step 2
+  collapses and naming them would launder them into the scale. Sheet register and
+  `reading-tips.css` untouched. **The tokens are rem, not px** — written in rem and
+  chosen in px like the type ramp, so spacing scales with a browser font-size preference
+  instead of type growing into frozen padding; verified at a 20px root, where type and
+  padding both scale ×1.25. Same reasoning moved the three widths to rem. DESIGN.md's
+  spacing sidecar is rewritten from measured usage (it previously declared a six-step
+  scale nothing implemented).
 
 ## 2. Quiz — the big cluster
 
@@ -267,18 +274,18 @@ above, don't renegotiate the ramp.
 
 #### Findings
 
-- [ ] **The declared scale is unimplemented and wrong.** DESIGN.md's sidecar declares
-  `hair 2 / xs 4 / sm 8 / md 12 / lg 1.25rem / xl 2rem`. Nothing implements it, and
-  those six cover 132 of 230 uses. The uncovered 43% is not noise — `6px`×17, `16px`×13,
-  `3px`×11 and `10px`×10 are top-ten values with no slot. Rewrite the sidecar from
-  measured usage before extracting, or the extraction inherits the error.
-- [ ] **The type ramp's two-bases residue exists in spacing too — and lives entirely in
-  prose.** Chrome is authored in px, prose in rem, `1rem` is 16px, so they interleave
-  off-grid in six pairs: `3px`×11 / `0.2rem`(3.2px)×3 · `5px`×6 / `0.3rem`(4.8px)×4 ·
-  `6px`×17 / `0.4rem`(6.4px)×4 · `10px`×10 / `0.6rem`(9.6px)×3 · `12px`×29 /
-  `0.8rem`(12.8px)×1 · `14px`×1 / `0.9rem`(14.4px)×1. **All 16 off-grid uses are in the
-  seven prose files, five of the six values in `reading-tips.css` alone** — so this is a
-  contained conversion, not a codebase-wide sweep.
+- [x] **The declared scale is unimplemented and wrong.** Was `hair 2 / xs 4 / sm 8 /
+  md 12 / lg 1.25rem / xl 2rem`, covering 132 of 230 uses while `6px`×17, `16px`×13 and
+  `10px`×10 had no slot. The sidecar now lists the eleven measured steps that step 1
+  extracted.
+- [ ] **The two-bases residue in spacing — now purely a value question, not a unit one.**
+  The off-grid pairs were `3px`/`0.2rem`(3.2) · `5px`/`0.3rem`(4.8) · `6px`/`0.4rem`(6.4)
+  · `10px`/`0.6rem`(9.6) · `12px`/`0.8rem`(12.8) · `14px`/`0.9rem`(14.4). Step 1 settled
+  the base — **the ramp is one rem set, written in rem and chosen in px** — so what
+  remains is snapping each off-grid value to its ramp neighbour. Two survive in scope
+  (`0.2rem` in AboutView, `0.4rem` in prose.css); the rest are in `reading-tips.css`,
+  which step 1 left alone. Note the old instruction "keep the px neighbour" now means
+  "keep the ramp step of that px name", not "author it in px".
 - [ ] **The clamped registers spend fixed space.** `.sheet` and `.reading-tips` scale
   `font-size` with `clamp()` and set every margin, padding and gap absolutely. Sheet
   type runs 11→14px (+27%) against `padding: 10px` and cells at `3px 4px 2px`, fixed;
@@ -292,13 +299,19 @@ above, don't renegotiate the ramp.
 - [ ] **`.btn-primary` is redeclared in 7 scoped blocks**, all at `8px 20px`. Consistent
   today, unenforced.
 
-#### Two sets, and only one of them is pixels ✅ (author)
+#### Two sets ✅ (author)
 
 The general ramp covers menus, buttons, prose, tables and stats, so those stay
 consistent with each other. The **sheet register is deliberately separate, so that
 sheet packing microsteps never leak into the scale offered for controls** — including
 genuinely one-off sheet layouts (e.g. planned Arabic baseline alignment that has to fit
 font rendering) which are not worth tokenising at all.
+
+*Amended at step 1:* the heading used to read "and only one of them is pixels". The
+general ramp is **not** pixels — it is rem chosen in px, because every value in it is
+padding, a gap or a margin around text, and all of it should scale when a reader raises
+their default font size. The px/em contrast that mattered was always general-vs-sheet,
+which still holds.
 
 A sharpening from the measurements: **the sheet register should not get a px token set
 either.** Its 11 steps are `1 2 3 4 5 6 7 8 10` — every integer up to 8, which is the
@@ -310,11 +323,11 @@ have no scale to leak into.
 
 #### Sequence ✅ (author) — three steps, mirroring the font work
 
-1. **Extract, collapse exact duplicates.** Tokenise the general ramp at unchanged
-   values; every repeated value gets a name. No value changes, no judgement calls.
-   Standalone, listed in §1.
-2. **Collapse near-neighbours.** The six rem/px pairs above (keep the px neighbour),
-   then `1→2`, `7→8` and the `5`/`7` table paddings. Standalone.
+1. ✅ **Done.** Eleven `--sp-*` tokens, 154 call sites, rendered values unchanged.
+2. **Collapse near-neighbours.** The remaining off-grid values (snap to the ramp step of
+   that px name), then `1→2`, `3→2 or 4`, `7→8` and the `5`/`7` table paddings —
+   the last of which is the "Three sibling tables, three metrics" finding above, so do
+   them together. Standalone.
 3. **Rethink the ramp.** Best done *with* the type-ramp rethink above, since both are
    per-register judgement calls over the same registers, plus tracking (6 values) and
    line-height (6 values: `1`×10, `1.3`×5, `1.5`×3, `1.4`×2, `1.2`×2, `1.15`×2).

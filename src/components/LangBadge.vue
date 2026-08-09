@@ -70,7 +70,7 @@ function textOn(hex: string): string {
 /* single wrapper so a badge group stays one row even in flex columns */
 .langs {
 	display: inline-flex;
-	gap: 2px;
+	gap: var(--sp-2);
 	vertical-align: middle;
 }
 

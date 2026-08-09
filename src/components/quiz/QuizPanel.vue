@@ -342,8 +342,8 @@ const { resultCopied, copyResults } = useResultShare({
 .toolbar {
 	display: flex;
 	align-items: center;
-	padding: 8px 12px;
-	gap: 8px;
+	padding: var(--sp-8) var(--sp-12);
+	gap: var(--sp-8);
 	flex-shrink: 0;
 	border-bottom: var(--hairline);
 	background: var(--c-cell);
@@ -352,21 +352,21 @@ const { resultCopied, copyResults } = useResultShare({
 
 .mode-toggle {
 	display: flex;
-	gap: 4px;
+	gap: var(--sp-4);
 	flex-shrink: 0;
 }
 
 .mode-picker {
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	gap: var(--sp-4);
 	flex-shrink: 0;
 	margin-left: auto;
 }
 
 .count-input {
 	width: 52px;
-	padding: 2px 6px;
+	padding: var(--sp-2) var(--sp-6);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
@@ -381,7 +381,7 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .pill {
-	padding: 3px 10px;
+	padding: 3px var(--sp-10);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
@@ -418,8 +418,8 @@ const { resultCopied, copyResults } = useResultShare({
 .progress-row {
 	display: flex;
 	align-items: center;
-	gap: 8px;
-	padding: 6px 12px;
+	gap: var(--sp-8);
+	padding: var(--sp-6) var(--sp-12);
 	border-bottom: var(--hairline);
 }
 
@@ -446,7 +446,7 @@ const { resultCopied, copyResults } = useResultShare({
 
 .tally {
 	display: flex;
-	gap: 8px;
+	gap: var(--sp-8);
 	font-size: var(--fs-11);
 }
 
@@ -465,8 +465,8 @@ const { resultCopied, copyResults } = useResultShare({
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1.5rem;
-	padding: 2rem;
+	gap: var(--sp-24);
+	padding: var(--sp-32);
 	margin: auto;
 	width: 100%;
 	box-sizing: border-box;
@@ -488,7 +488,7 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .btn-primary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: none;
 	border-radius: var(--radius);
 	background: var(--c-accent);
@@ -502,7 +502,7 @@ const { resultCopied, copyResults } = useResultShare({
 .btn-primary:hover { opacity: 0.85; }
 
 .btn-secondary {
-	padding: 8px 20px;
+	padding: var(--sp-8) var(--sp-20);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: transparent;
@@ -519,13 +519,13 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .done-card .card-body {
-	gap: 0.75rem;
+	gap: var(--sp-12);
 	text-align: center;
 }
 
 .done-actions {
 	display: flex;
-	gap: 8px;
+	gap: var(--sp-8);
 	flex-wrap: wrap;
 	justify-content: center;
 }

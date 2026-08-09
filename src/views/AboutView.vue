@@ -200,8 +200,8 @@ article {
 .changelog {
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
-	margin: 0.75rem 0 1rem;
+	gap: var(--sp-12);
+	margin: var(--sp-12) 0 var(--sp-16);
 }
 
 .changelog dt {
@@ -218,6 +218,6 @@ article {
 
 .changelog ul {
 	margin: 0;
-	padding-left: 1.25rem;
+	padding-left: var(--sp-20);
 }
 </style>
