@@ -45,9 +45,8 @@ agrees this is worth investing product-specific design in.
   only a score the user already knows from the tally. The misses are the one thing they
   cannot reconstruct, and for a logged-out user this app is the only place that
   information ever existed.
-- [ ] ✅ **✓/✗ icons in multiple choice.** Correct/wrong are currently red-vs-green
-  border and fill only, with no icon — while type-in mode has ✓/✗ and a strikethrough.
-  Deuteranopia is ~5% of men and GeoGuessr's audience skews male.
+- [x] ✅ **✓/✗ icons in multiple choice.** Each choice has a fixed icon gutter, so
+  answering adds ✓/✗ without shifting the labels.
 - [ ] ✅ **Disabled pill with a tooltip when a mode is unavailable.** Consonants,
   Vowels and All vowels are `modes: ['typein']`, so the Type-in/Multiple-choice toggle
   vanishes with no explanation — including for a user following the site's own
@@ -60,8 +59,8 @@ agrees this is worth investing product-specific design in.
 - [ ] **The prompt glyph jumps on feedback.** `card-body` is `margin: auto`, so the
   card grows and the glyph moves 463px → 391px at the exact moment the user needs to
   compare it. Reserve the space.
-- [ ] **No `aria-live` anywhere.** Submitting announces nothing; focus then lands on
-  "Next". Wrap the feedback block in `role="status"`.
+- [x] **No `aria-live` anywhere.** A visually-hidden `role="status"` in QuizPanel
+  announces the verdict, the answer and the hint, for all three quiz modes.
 - [ ] **`[beta, set will change]`** renders on every one of 66 Cyrillic questions;
   the sidebar badge already carries this.
 - [ ] **"Shuffled" vs "Random"** names nothing a user can decode. The real difference

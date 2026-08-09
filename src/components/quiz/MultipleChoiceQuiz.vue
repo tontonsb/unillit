@@ -40,6 +40,16 @@ function handleSelect(choice: string) {
 	emit('answer', correct, correct ? 0 : undefined)
 }
 
+// colour alone fails deuteranopia; type-in already uses this ✓/✗ vocabulary
+function choiceIcon(choice: string): string {
+	const state = choiceState(choice)
+
+	if (state === 'correct') return '✓'
+	if (state === 'wrong') return '✗'
+
+	return ''
+}
+
 function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	if (props.phase !== 'answered') return null
 	if (isMatch(choice, props.current.answer)) return 'correct'
@@ -58,7 +68,10 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 			:class="choiceState(choice)"
 			:disabled="phase === 'answered'"
 			@click="handleSelect(choice)"
-		>{{ choice }}</button>
+		>
+			<span class="choice-icon" aria-hidden="true">{{ choiceIcon(choice) }}</span>
+			<span>{{ choice }}</span>
+		</button>
 	</div>
 	<p v-if="phase === 'answered' && allAnswers(current).length > 1" class="also-accepted">
 		accepted: {{ allAnswers(current).join(' / ') }}
@@ -75,6 +88,9 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 }
 
 .choice {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
 	padding: 10px 16px;
 	border: 1px solid var(--c-border);
 	border-radius: var(--radius);
@@ -85,6 +101,13 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	cursor: pointer;
 	text-align: left;
 	transition: border-color 0.15s, background 0.15s;
+}
+
+/* always present, so answering never shifts the labels */
+.choice-icon {
+	flex-shrink: 0;
+	width: 1em;
+	text-align: center;
 }
 
 .choice:disabled { cursor: default; }
