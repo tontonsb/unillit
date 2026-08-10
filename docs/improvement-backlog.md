@@ -30,25 +30,15 @@ Author-confirmed items are marked ✅. Unmarked items are proposals not yet rule
   resolved".
 - [x] **`prefers-reduced-motion`** — about five lines, and the valuable half of the
   motion item.
-- [x] **Extract the hairline, plate white and measures to tokens.** `--hairline` (41),
-  `--c-on-sign` (12 `#fff`, in 10 files), `--c-border-plate` (2), and `--measure-prose`
-  / `--measure-wide` / `--w-quiz-control`. DESIGN.md's colour list gains Plate Ink and
-  Plate Rule. Two value changes, not mechanical: ProgressView's stray `720px` took
-  `--measure-wide` (800px), and HomeView now caps its prose children at the 640 measure
-  while the article keeps the wide cap — measured in-browser, the 640 cap alone costs
-  the card grid its third column and squeezes *Suggested approach* to 280px columns.
-  The quiz's 360px is not a measure and no longer named like one.
-- [x] **Extract the spacing scale — step 1 of 3.** 154 values across 21 files now resolve
-  to eleven `--sp-*` tokens (`2 4 6 8 10 12 16 20 24 28 32`), at unchanged rendered
-  values. `24` joined the measured ramp (×4 uses); the strays `1 3 5 7 14 40 48` and the
-  off-grid rem values are deliberately still literal, since they are what step 2
-  collapses and naming them would launder them into the scale. Sheet register and
-  `reading-tips.css` untouched. **The tokens are rem, not px** — written in rem and
-  chosen in px like the type ramp, so spacing scales with a browser font-size preference
-  instead of type growing into frozen padding; verified at a 20px root, where type and
-  padding both scale ×1.25. Same reasoning moved the three widths to rem. DESIGN.md's
-  spacing sidecar is rewritten from measured usage (it previously declared a six-step
-  scale nothing implemented).
+- [x] **Extract the hairline, plate white and measures to tokens.** `--hairline`,
+  `--c-on-sign`, `--c-border-plate`, and `--measure-prose` / `--measure-wide` /
+  `--w-quiz-control`. DESIGN.md's colour list gains Plate Ink and Plate Rule.
+- [x] **Extract the spacing scale — step 1 of 3.** 154 values across 21 files resolve to
+  eleven `--sp-*` tokens (`2 4 6 8 10 12 16 20 24 28 32`) at unchanged rendered values.
+  Written in rem, chosen in px, like the type ramp, so spacing scales with the browser's
+  font-size preference; the widths moved to rem for the same reason. Strays and the
+  sheet register left literal for step 2. DESIGN.md's spacing sidecar rewritten from
+  measured usage.
 
 ## 2. Quiz — the big cluster
 
@@ -218,23 +208,24 @@ that is consistent use rather than overload. The real reason `card-countries` re
 for opacity is **compositional** — see the HomeView note below.
 
 ### Redundancies — too many steps
-- [ ] **23 type steps where far fewer would do.** The absolute ramp is now one unit
-  system in one file (§1), which makes the redundancy legible: **seven pairs of tokens
-  sit 0.2–0.4px apart** — 10/10.4, 11/11.2, 12.8/13, 14/14.4, 15/15.2, 17.6/18,
-  22/22.4. Nobody could name the difference in any pair, so by the Shrinking Scale
-  Rule each is one step. Merging all seven takes 23 → 16 and touches only token values
-  plus the call sites of the losing token.
+- [ ] **22 type steps where far fewer would do.** The absolute ramp is one unit system
+  in one file (§1), which makes the redundancy legible: **seven pairs of tokens sit
+  0.2–0.4px apart** — 10/10.4, 11/11.2, 12.8/13, 14/14.4, 15/15.2, 17.6/18, 22/22.4.
+  Nobody could name the difference in any pair, so by the Shrinking Scale Rule each is
+  one step. Merging all seven takes 22 → 15 and touches only token values plus the call
+  sites of the losing token.
 
   Beyond that the merges stop being mechanical and need per-register judgement:
-  `--fs-9`/`--fs-micro` and `--fs-17`/`--fs-18` are 1px apart, and `--fs-display`
-  (25.6px) versus `--fs-24` is one role — the page `h1` — at two sizes.
+  `--fs-9`/`--fs-micro` and `--fs-17`/`--fs-18` are 1px apart.
 
   The `em` system stays out of it and is the best-designed thing in the codebase —
   sheets scale as one unit off a clamped base, exactly right for a printable handout.
   **Leave it alone.** (Type only — the *spacing* in those registers is absolute, see
   "Spacing has no scale" below.)
-- [ ] **Tracking: 6 values where 3 would do** — `0.06em`×7, `0.04em`×6, `0.08em`×2,
-  `0`×2, plus singleton strays `0.07em` and `0.01em`.
+- [x] **Tracking: 6 values → 2 tokens**, split by case rather than by value.
+  `--tracking-caps` (0.07em, collapsing a 0.06/0.07/0.08 spread) for uppercase
+  micro-labels; `--tracking-wide` (0.04em) for sentence case. The menu label's `0.01em`
+  was dropped as below perception, and `letter-spacing: 0` stays literal as a reset.
 - [ ] **HomeView is the highest-leverage single edit in this document.** Its script
   card is the sole consumer of three of the value-named tokens (`--fs-10-4`,
   `--fs-11-2`, `--fs-28`) *and* the worst opacity stacking — from one root cause: five
@@ -307,14 +298,11 @@ sheet packing microsteps never leak into the scale offered for controls** — in
 genuinely one-off sheet layouts (e.g. planned Arabic baseline alignment that has to fit
 font rendering) which are not worth tokenising at all.
 
-*Amended at step 1:* the heading used to read "and only one of them is pixels". The
-general ramp is **not** pixels — it is rem chosen in px, because every value in it is
-padding, a gap or a margin around text, and all of it should scale when a reader raises
-their default font size. The px/em contrast that mattered was always general-vs-sheet,
-which still holds.
+The general ramp is rem chosen in px, not px: every value in it is padding, a gap or a
+margin around text, all of which should scale when a reader raises their default font
+size. The contrast that matters is general-vs-sheet, not px-vs-rem.
 
-A sharpening from the measurements: **the sheet register should not get a px token set
-either.** Its 11 steps are `1 2 3 4 5 6 7 8 10` — every integer up to 8, which is the
+**The sheet register should not get a px token set either.** Its 11 steps are `1 2 3 4 5 6 7 8 10` — every integer up to 8, which is the
 absence of a scale rather than a granular one; tokenising `--sp-sheet-5` and
 `--sp-sheet-7` would launder that into doctrine. Convert sheet spacing to `em` first
 (previous finding), matching what its type already does. Then the granularity question
@@ -323,7 +311,7 @@ have no scale to leak into.
 
 #### Sequence ✅ (author) — three steps, mirroring the font work
 
-1. ✅ **Done.** Eleven `--sp-*` tokens, 154 call sites, rendered values unchanged.
+1. **Extract, collapse exact duplicates.** Done — see §1.
 2. **Collapse near-neighbours.** The remaining off-grid values (snap to the ramp step of
    that px name), then `1→2`, `3→2 or 4`, `7→8` and the `5`/`7` table paddings —
    the last of which is the "Three sibling tables, three metrics" finding above, so do
@@ -337,27 +325,34 @@ have no scale to leak into.
 Two Registers rules put it there, and no geometric ladder expresses `3px 4px 2px`.
 Extra variety is acceptable here — the target is a discoverable scale, not a short one.
 
+### Prose roles across pages
+
+- [ ] **Logged-out Progress sits narrow and off the shared centre.** `main.app-main` is
+  a flex *column*, so the article's width is its cross size, where `margin: 0 auto`
+  suppresses the default stretch and leaves it fit-content — 252px when the page holds
+  only a title and a login button. `width: 100%` fixes the centring but, under
+  `content-box`, overflows by the gutters once the viewport is narrower than the cap, so
+  it needs them folded into the cap. Deferred: Progress is a WIP page and not worth
+  complicating `.prose` for.
+- [ ] **Reading tips are a third prose register.** 13px clamped base, `h2` at 14.95px,
+  `p + p` at 8px, against page prose's 14.4px / 17.6px / 12px, plus a Deep Ink `h3`
+  where `.prose` uses Faded Ink. The Two Registers Rule is *chrome vs quiz* and requires
+  both to share palette and type families, so it does not license this. Also still on
+  raw rem spacing and its own `--measure-tips`.
+- [ ] **`.prose blockquote` has no styling at all** — no border, indent or italic, so
+  the quotation on Privacy is indistinguishable from a paragraph. Reading tips style
+  theirs.
+
 ### Other literals worth tokenising
 
 Adherence wins in the radius mould: the token exists (or obviously should), and naming
 it is what stops the next edit inventing a neighbour.
 
-- [ ] **The hairline — 41 uses, no token.** 17 `border:` shorthand + 24 longhand, all
-  `1px solid var(--c-border)`. Longhands accept a shorthand value, so a single
-  `--hairline: 1px solid var(--c-border)` covers all 41 and enforces width *and* colour
-  in one reach — which is how the No-Shadow Rule already thinks about it. **Do not ship
-  a width palette** (`--border-light/base/thick`): the only other widths are one `2px`
-  thead rule and one `3px` blockquote border, both role-specific, and advertising three
-  widths invites widths this system has deliberately never had.
-- [ ] **`color: #fff` in 10 files** — the plate text colour, written as a literal
-  everywhere. DESIGN.md notes that Warm Sheet on Highway Green (Lc −85.0) fits the
-  handout metaphor better than pure white; as it stands that experiment is 10 edits
-  instead of 1. Wants `--c-on-sign`, not `--c-cell` — the semantic is "text on a plate".
-- [ ] **`rgba(255, 255, 255, 0.6)` ×2** (`ConsonantPicker`, `MainMenu`) — the hairline
-  reversed on a plate. A real role, absent from DESIGN.md's colour list. `--c-border-plate`.
-- [ ] **Measures.** `640px`×4 and `800px`×1 are DESIGN.md doctrine written as literals;
-  `360px`×6 is the quiz measure and undocumented; `720px`×1 (`ProgressView`) is a stray
-  that a token would have prevented. Three tokens, and the stray resolves itself.
+**Do not ship a border-width palette** (`--border-light/base/thick`): besides
+`--hairline` the only widths are one `2px` thead rule and one `3px` blockquote border,
+both role-specific, and advertising three widths invites widths this system has
+deliberately never had.
+
 - [ ] **`transition: … 0.15s` ×19** across 10 declaration shapes, plus `0.2s` and
   `0.25s` singletons. Already noted under Omissions as low value for *easing*; the
   duration token is separately cheap and is what stops a `0.12s` appearing.

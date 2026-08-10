@@ -3,9 +3,8 @@
    prose lives separately in reading-tips.css. Only rules that are identical
    across the pages live here; page-specific bits stay in each component. */
 
-/* content-box against the global border-box reset, so --measure-* bounds the text
-   column and the padding sits outside it. Under border-box the padding eats into
-   the measure, and the column silently comes out 64px narrower than it is named. */
+/* content-box against the global border-box reset: under border-box the padding
+   eats into --measure-prose and the column comes out 64px narrower than it names. */
 .prose {
 	box-sizing: content-box;
 	max-width: var(--measure-prose);
@@ -36,15 +35,13 @@
 	margin-top: 0;
 }
 
-/* A lede paragraph or an immediate section heading hugs the title; any other
-   content block starts the page proper and takes a full gap. */
+/* A lede or an immediate section heading hugs the title; other content blocks
+   start the page proper. */
 .prose h1 + :not(p, h2) {
 	margin-top: var(--sp-24);
 }
 
-/* Set apart by register rather than by weight of ink, the way the changelog `dt` is:
-   tracked and muted at an unchanged size, so it reads as a label over its block
-   without either shouting or dropping below the text it introduces. */
+/* Muted and tracked rather than darker: set apart by register, not by weight of ink. */
 .prose h3 {
 	font-family: var(--serif);
 	font-size: var(--fs-title);
@@ -54,8 +51,6 @@
 	margin-bottom: 0.4rem;
 }
 
-/* `dd` belongs here too — left out, it silently falls back to the 14px app base and
-   every page that noticed had to patch it locally. */
 .prose :is(p, li, dd) {
 	font-size: var(--fs-prose);
 	color: var(--c-label);
@@ -65,8 +60,7 @@
 	margin-top: var(--sp-12);
 }
 
-/* Tighter above than `p + p` because a list is the continuation of the line that
-   introduces it; normal paragraph spacing below, where the thought rejoins the flow. */
+/* Tighter above than `p + p`: a list continues the line that introduces it. */
 .prose ul,
 .prose ol {
 	padding-left: var(--sp-20);
@@ -74,11 +68,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--sp-4);
-}
-
-.prose li {
-	font-size: var(--fs-prose);
-	color: var(--c-label);
 }
 
 .prose li::marker {

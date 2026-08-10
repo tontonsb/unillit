@@ -106,9 +106,8 @@ import BetaBadge from '@/components/BetaBadge.vue'
 </template>
 
 <style scoped>
-/* The wide cap is for the grids below, which need the extra room to hold three
-   columns. The prose keeps the shared measure and stays centred on it, so moving
-   between Home and the other prose pages does not shift the text sideways. */
+/* The wide cap is for the grids: at the prose measure the card grid drops to two
+   columns. Prose children keep the shared measure so the text stays put across pages. */
 article {
 	max-width: var(--measure-wide);
 }

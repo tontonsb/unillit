@@ -47,7 +47,7 @@ typography:
     fontFamily: "'Noto Sans', system-ui, sans-serif"
     fontSize: "10px"
     fontWeight: 600
-    letterSpacing: "0.06em"
+    letterSpacing: "0.07em"
   glyph:
     fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
     fontSize: "clamp(24px, 1.56vw, 30px)"
@@ -206,8 +206,8 @@ tints, and a brighter teal that exists to misbehave.
 - **Cell White** (`#ffffff`): the specimen ground. Sheet cells, sidebar, panel headers,
   toolbars, cards, inputs. It is the colour of "something is mounted here".
 - **Plate Ink** (`#ffffff`, `--c-on-sign`): the same white, but reversed *onto* a plate
-  rather than laid *under* content. Kept as its own token because the two move
-  independently — see "Room the palette already has, unused" below.
+  rather than laid *under* content. Its own token because the two move independently —
+  see "Room the palette already has, unused" below.
 - **Plate Rule** (`rgba(255, 255, 255, 0.6)`, `--c-border-plate`): the hairline reversed
   on a plate, for controls that sit inside one (the beta badge on an active nav item,
   the Thai consonant picker). Mint Rule is invisible on Highway Green; this is its
@@ -316,8 +316,8 @@ secondary; use a lighter tone instead.
 **Room the palette already has, unused.** Reversed text on a plate does not have to be
 pure white:
 - **Warm Sheet on Highway Green (−85.0)** is within 3 Lc of pure white and is the
-  paper colour, so it fits the handout metaphor better than `#fff` does. Trying it is
-  now one edit to `--c-on-sign`.
+  paper colour, so it fits the handout metaphor better than `#fff` does. One edit to
+  `--c-on-sign` tries it.
 - **Mint Wash on Highway Green (−78.1)** still clears APCA's body-text minimum, which
   means a mint-tinted *secondary* tone on a plate is viable — currently the active nav
   item sets both the Latin name and the native script name to the same pure white, and
@@ -383,18 +383,24 @@ publications.
   extra weight.
 - **Title** (Lora 600, 0.95rem–14px): sub-headings, panel names, term-card `dt`.
 - **Body** (Noto Sans 400, 0.9rem; 14px app base, 1.5 line-height): running prose,
-  table cells, quiz choices. **Running text is capped at `--measure-prose` (640px)
-  everywhere** — reading tips, About, Privacy, Roadmap, and Home's paragraphs and
-  headings. `--measure-wide` (800px) caps pages whose content is grids or tables
-  (Home, Progress); it is a container width, not a measure. Home needs both: at the
-  640 cap its card grid drops from three columns to two and the two-up *Suggested
-  approach* falls to 280px columns, so the page takes the wide cap and puts the
-  measure back on its prose children. The quiz's 360px (`--w-quiz-control`) is
-  deliberately not filed here — it is sized to the widest control in the answer card,
-  not to reading.
-- **Label** (Noto Sans 600–700, 10–11px, 0.06em tracking, uppercase): sheet section
+  table cells, quiz choices. **Running text is capped at `--measure-prose` (36rem /
+  576px) on every prose page.** The measures name the *text column*, not the box around
+  it: `.prose` is `content-box` and adds its gutters outside the cap. `--measure-wide`
+  (46rem / 736px) is the same kind of content width for grid and table pages. Home takes
+  the wide cap for its card grid and re-centres its prose children on the measure, so
+  text occupies the same rectangle on every prose page. The quiz's `--w-quiz-control`
+  (22.5rem) is not a measure — it fits the widest control in the answer card. Reading
+  tips sit on `--measure-tips` pending their own pass.
+- **Label** (Noto Sans 600–700, 10–11px, `--tracking-caps`, uppercase): sheet section
   headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
   the interface read as apparatus rather than content.
+
+**Tracking is two steps, split by case.** `--tracking-caps` (0.07em) opens up uppercase;
+`--tracking-wide` (0.04em) is the lighter touch for sentence-case labels — the changelog
+`dt`, prose `h3`, filter pills. One value cannot serve both: tracking compensates for
+case, and prose at reading sizes wants almost none. Tracked-and-muted is how the system
+marks something without making it louder, and is why `.prose h3` is not darkened.
+`letter-spacing: 0` is a reset, not a third step.
 - **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
   exposed as `--glyph` so cells can scale relative to it.
 - **Prompt** (script font, 4rem): the single character or toponym under test.
@@ -492,21 +498,17 @@ minmax(var(--cell-min), 1fr))` grid so a listing reflows without ever going ragg
 Panel chrome runs on 4–12px. Full-page prose relaxes to a `0.25–2rem` rhythm, because
 those pages are read rather than consulted.
 
-**The spacing ramp is `--sp-2 … --sp-32`** — 2px resolution to 12, 4px above:
-`2 4 6 8 10 12 16 20 24 28 32`. It was measured off the menu and prose registers, which
-already agreed with each other, rather than imported; a geometric ~2.2×-per-step ladder
-is built for prose pages and cannot express `3px 4px 2px`. Extra variety is acceptable
-here — the target is a discoverable scale, not a short one.
+**The spacing ramp is `--sp-2 … --sp-32`** — `2 4 6 8 10 12 16 20 24 28 32`, 2px
+resolution to 12 and 4px above. It is measured off the menu and prose registers rather
+than imported: a geometric ~2.2×-per-step ladder is built for prose pages and cannot
+express `3px 4px 2px`. Extra variety is acceptable — the target is a discoverable scale,
+not a short one. Like the type ramp, the tokens are **written in rem and chosen in px**,
+so spacing and type scale together under a font-size preference.
 
-Like the type ramp, the tokens are **written in rem and chosen in px**, so spacing and
-type scale together under a browser font-size preference instead of type growing into
-frozen padding. At the default 16px root every step is its px name exactly.
-
-Two things are deliberately outside it. **The sheet register** keeps its own microsteps
-and is heading for `em`, so that sheet packing never leaks into the scale offered for
-controls. **The strays** — `1 3 5 7 14 40 48` and the off-grid rem values inherited from
-prose — are still literal on purpose: they are what a later pass collapses, and naming
-them would launder them into the scale.
+Two things sit outside it. **The sheet register** keeps its own microsteps and is heading
+for `em`, so sheet packing never leaks into the scale offered for controls. **The
+strays** — `1 3 5 7 14 40 48` and the off-grid rem values — stay literal until a pass
+collapses them; naming one would launder it into the scale.
 
 Sheet type scales with the viewport rather than stepping at breakpoints:
 `font-size: clamp(11px, 0.75vw, 14px)` with `--glyph: clamp(24px, 1.56vw, 30px)`. The
@@ -530,8 +532,7 @@ the codebase, and this is doctrine rather than an omission. The system is a prin
 sheet; ink does not float.
 
 Depth is expressed three ways, in order of strength: a **1px Mint Rule hairline**
-(`--hairline`, holding width and colour together, since longhands accept the shorthand
-value — 41 uses on cell boundaries, section outlines, panel dividers, table
+(`--hairline`, on cell boundaries, section outlines, panel dividers and table
 underscores); a **tonal
 fill** (Cell White mounted on Warm Sheet to say "specimen here", Mint Wash to band a
 row or mark a hover); and **a plate** (white on Highway Green, for the small set of
