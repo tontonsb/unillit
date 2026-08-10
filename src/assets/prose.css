@@ -35,7 +35,7 @@
 	font-family: var(--serif);
 	font-size: var(--fs-title);
 	font-weight: 600;
-	color: var(--c-label);
+	letter-spacing: var(--tracking-wide);
 	margin-bottom: 0.4rem;
 }
 

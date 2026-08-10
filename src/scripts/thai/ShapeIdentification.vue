@@ -257,7 +257,7 @@ figcaption {
 	font-weight: 600;
 	padding: 2px 6px;
 	white-space: nowrap;
-	letter-spacing: 0.04em;
+	letter-spacing: var(--tracking-wide);
 }
 
 ul {

@@ -208,7 +208,7 @@ article {
 	font-size: var(--fs-12-8);
 	font-weight: 600;
 	color: var(--c-muted);
-	letter-spacing: 0.04em;
+	letter-spacing: var(--tracking-wide);
 	margin-bottom: 0.2rem;
 }
 

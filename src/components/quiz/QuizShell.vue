@@ -109,7 +109,7 @@ watch(activeTab, (tab) => {
 	font-size: var(--fs-11);
 	font-weight: 600;
 	font-family: var(--sans);
-	letter-spacing: 0.06em;
+	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: background 0.15s, color 0.15s;

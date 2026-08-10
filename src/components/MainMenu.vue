@@ -274,7 +274,6 @@ nav {
 .item-label {
 	font-size: var(--fs-chrome);
 	font-weight: 600;
-	letter-spacing: 0.01em;
 }
 
 .item-native {

@@ -11,7 +11,7 @@
 	font-size: var(--fs-9);
 	font-weight: 700;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	letter-spacing: var(--tracking-caps);
 	color: var(--c-sign);
 	border: 1px solid var(--c-sign);
 	border-radius: var(--radius-sm);

@@ -26,7 +26,7 @@
 	color: var(--c-on-sign);
 	font-size: 0.8em;
 	font-weight: 600;
-	letter-spacing: 0.08em;
+	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
 	padding: 3px 8px;
 	display: flex;

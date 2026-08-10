@@ -29,7 +29,7 @@ const id = useId()
 	font-size: var(--fs-micro);
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.07em;
+	letter-spacing: var(--tracking-caps);
 	color: var(--c-muted);
 }
 

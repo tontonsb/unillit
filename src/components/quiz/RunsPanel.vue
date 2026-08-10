@@ -103,7 +103,7 @@ watch(() => user.value?.id, loadRuns)
 	color: var(--c-muted);
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	letter-spacing: var(--tracking-caps);
 	font-size: var(--fs-micro);
 	padding: var(--sp-6) var(--sp-12);
 	text-align: left;

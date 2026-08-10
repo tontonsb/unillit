@@ -34,7 +34,7 @@ span {
 	line-height: 1.5;
 	vertical-align: middle;
 	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	letter-spacing: var(--tracking-caps);
 }
 
 .obsolete { background: #fde8d8; color: #9a3412; border: 1px solid #fca97e; }

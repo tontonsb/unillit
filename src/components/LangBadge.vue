@@ -77,7 +77,7 @@ function textOn(hex: string): string {
 .lang {
 	font-size: 0.6em;
 	font-weight: 700;
-	letter-spacing: 0.04em;
+	letter-spacing: var(--tracking-wide);
 	border-radius: var(--radius-sm);
 	padding: 0 3px;
 	line-height: 1.5;

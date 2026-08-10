@@ -52,6 +52,9 @@
 	--fs-48: 3rem;
 	--fs-prompt: 4rem; /* 64px — the quiz specimen */
 
+	--tracking-caps: 0.07em; /* uppercase micro-labels */
+	--tracking-wide: 0.04em; /* emphasized sentence case */
+
 	/**
 	  * Ink is near-neutral (faint green cast); the greens carry the brand:
 	  * - quirky teal-green accent pair

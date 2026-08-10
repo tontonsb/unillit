@@ -190,7 +190,7 @@ dd {
 	font-size: var(--fs-10-4);
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.08em;
+	letter-spacing: var(--tracking-caps);
 	color: var(--c-muted);
 	margin-top: auto;
 }
