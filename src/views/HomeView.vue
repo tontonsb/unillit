@@ -9,13 +9,18 @@ import BetaBadge from '@/components/BetaBadge.vue'
 		<h1>Unillit</h1>
 
 		<p class="home-sub">
-			Some road signs in a foreign land make you feel illiterate? Well un-illiterate yourself!
+			Road signs in a foreign land make you feel illiterate? Well un-illiterate yourself!
 		</p>
 
 		<p>
-			Tips and lookup sheets to transliterate different scripts into Latin characters.
-			Mostly assembled for GeoGuessr purposes — to learn how to decipher what a sign in a foreign script says.
-			Compared to other resources I tried to make the descriptions even shorter, i.e. just the basics, lookup sheets and off you go.
+			What's here? Lookup sheets that are crafted for quickly learning to
+			transliterate different scripts into Latin characters.
+		</p>
+
+		<p>
+			This is mostly made with GeoGuessr in mind: read the basics,
+			develop the skill using sheets and quizzes, and off you go:
+			decipher the foreign-script signs without having to learn the language itself.
 		</p>
 
 		<h2>Suggested approach</h2>
