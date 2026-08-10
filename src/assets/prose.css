@@ -51,9 +51,14 @@
 	margin-bottom: 0.4rem;
 }
 
+.prose :is(h1, h2, h3) {
+	text-wrap: balance;
+}
+
 .prose :is(p, li, dd) {
 	font-size: var(--fs-prose);
 	color: var(--c-label);
+	text-wrap: pretty;
 }
 
 .prose p + p {
@@ -72,6 +77,19 @@
 
 .prose li::marker {
 	color: var(--c-accent);
+}
+
+/* the reading-tips callout at page-prose scale */
+.prose blockquote {
+	margin: var(--sp-12) 0;
+	padding: var(--sp-4) 0 var(--sp-4) var(--sp-12);
+	border-left: 3px solid var(--c-accent);
+	color: var(--c-head);
+	font-style: italic;
+}
+
+.prose blockquote p {
+	color: inherit;
 }
 
 /* links within running text (not standalone card/nav links) */
