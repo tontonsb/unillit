@@ -34,6 +34,17 @@ const router = createRouter({
 			component: () => import('../views/PrivacyView.vue'),
 		},
 	],
+
+	/* `main.app-main` is the scroller, not the window, so returning a position would
+	   do nothing. Path-only: query changes are tab links and the share-query cleanup. */
+	scrollBehavior(to, from) {
+		if (to.path === from.path)
+			return false
+
+		document.querySelector('.app-main')?.scrollTo({ top: 0 })
+
+		return false
+	},
 })
 
 export default router
