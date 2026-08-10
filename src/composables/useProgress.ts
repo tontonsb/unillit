@@ -1,6 +1,5 @@
 import { supabase } from '@/lib/supabase'
-import { scriptList, scriptStatus } from '@/scripts/scripts'
-import type { QuizDataset } from '@/components/quiz/dataset'
+import { scriptList, scriptStatus, datasetsById } from '@/scripts/scripts'
 
 export interface DatasetProgress {
 	label: string
@@ -55,9 +54,7 @@ export async function fetchScriptProgress(): Promise<ScriptProgress[]> {
 	return scriptList
 		.filter(s => scriptStatus(s) !== 'coming')
 		.map(script => {
-			const expectedDatasets = (script.practiceTabs ?? [])
-				.map(tab => (tab.props?.dataset as QuizDataset | undefined)?.label)
-				.filter((l): l is string => !!l)
+			const expectedDatasets = (datasetsById[script.id] ?? []).map(d => d.label)
 
 			const datasets: DatasetProgress[] = expectedDatasets.map(label => {
 				const entry = runMap.get(`${script.id}::${label}`)
