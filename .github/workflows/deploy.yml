@@ -30,8 +30,6 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
 
-      - run: cp dist/index.html dist/404.html
-
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist

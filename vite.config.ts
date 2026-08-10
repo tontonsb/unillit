@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import markdown from './plugins/markdown'
+import routePages from './plugins/routePages'
 import pkg from './package.json'
 
 // https://vite.dev/config/
@@ -20,6 +21,7 @@ export default defineConfig({
 		markdown(),
 		vue(),
 		vueDevTools(),
+		routePages(),
 		{
 			name: 'inject-version-meta',
 			transformIndexHtml(html) {
