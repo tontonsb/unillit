@@ -185,16 +185,20 @@ const version = __APP_VERSION__
 .changelog {
 	display: flex;
 	flex-direction: column;
-	gap: var(--sp-12);
+	gap: var(--sp-4);
 	margin: var(--sp-12) 0 var(--sp-16);
 }
 
 .changelog dt {
-	font-size: var(--fs-12-8);
+	font-size: var(--fs-prose);
 	font-weight: 600;
 	color: var(--c-muted);
 	letter-spacing: var(--tracking-wide);
-	margin-bottom: 0.2rem;
+}
+
+/* the entry separator sits above the term, so a version binds to its own notes */
+.changelog dt:not(:first-child) {
+	margin-top: var(--sp-16);
 }
 
 .changelog dd {

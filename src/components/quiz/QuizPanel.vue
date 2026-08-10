@@ -482,7 +482,7 @@ const { resultCopied, copyResults } = useResultShare({
 }
 
 .hint {
-	font-size: var(--fs-16);
+	font-size: var(--fs-prose);
 	color: var(--c-muted);
 	text-align: center;
 }

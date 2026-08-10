@@ -41,10 +41,11 @@
 	margin-top: var(--sp-24);
 }
 
-/* Muted and tracked rather than darker: set apart by register, not by weight of ink. */
+/* Body-sized on purpose: set apart by register — serif, weight, tracking, muting —
+   rather than by growing into a title. */
 .prose h3 {
 	font-family: var(--serif);
-	font-size: var(--fs-title);
+	font-size: var(--fs-prose);
 	font-weight: 600;
 	letter-spacing: var(--tracking-wide);
 	color: var(--c-muted);
@@ -73,6 +74,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--sp-4);
+	line-height: var(--lh-tight);
 }
 
 .prose li::marker {
@@ -86,6 +88,7 @@
 	border-left: 3px solid var(--c-accent);
 	color: var(--c-head);
 	font-style: italic;
+	line-height: var(--lh-tight);
 }
 
 .prose blockquote p {

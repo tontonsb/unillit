@@ -27,22 +27,17 @@ typography:
     fontFamily: "Lora, 'Noto Serif', Georgia, serif"
     fontSize: "1.6rem"
     fontWeight: 500
-    lineHeight: 1.5
+    lineHeight: 1.4
   headline:
     fontFamily: "Lora, 'Noto Serif', Georgia, serif"
     fontSize: "1.1rem"
     fontWeight: 500
-    lineHeight: 1.5
-  title:
-    fontFamily: "Lora, 'Noto Serif', Georgia, serif"
-    fontSize: "0.95rem"
-    fontWeight: 600
-    lineHeight: 1.5
+    lineHeight: 1.4
   body:
     fontFamily: "'Noto Sans', system-ui, sans-serif"
-    fontSize: "0.9rem"
+    fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.4
   label:
     fontFamily: "'Noto Sans', system-ui, sans-serif"
     fontSize: "10px"
@@ -381,29 +376,33 @@ publications.
 - **Headline** (Lora 500, 1.1rem): section headings in prose views; in reading-tips
   panels the same role runs at 600/1.15em because the smaller panel size needs the
   extra weight.
-- **Title** (Lora 600, 0.95rem–14px): sub-headings, panel names, term-card `dt`.
-- **Body** (Noto Sans 400, 0.9rem; 14px app base, 1.5 line-height): running prose,
-  table cells, quiz choices. **Running text is capped at `--measure-prose` (36rem /
-  576px) on every prose page.** The measures name the *text column*, not the box around
-  it: `.prose` is `content-box` and adds its gutters outside the cap. `--measure-wide`
-  (46rem / 736px) is the same kind of content width for grid and table pages. Home takes
-  the wide cap for its card grid and re-centres its prose children on the measure, so
-  text occupies the same rectangle on every prose page. The quiz's `--w-quiz-control`
-  (22.5rem) is not a measure — it fits the widest control in the answer card. Reading
-  tips sit on `--measure-tips` pending their own pass.
+- **Body** (Noto Sans 400, `--fs-prose` 1rem): running prose, table cells, quiz
+  choices. `--fs-body` (14px) is the inherited base, not body copy — chrome sits at or
+  below it.
 - **Label** (Noto Sans 600–700, 10–11px, `--tracking-caps`, uppercase): sheet section
   headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
   the interface read as apparatus rather than content.
-
-**Tracking is two steps, split by case.** `--tracking-caps` (0.07em) opens up uppercase;
-`--tracking-wide` (0.04em) is the lighter touch for sentence-case labels — the changelog
-`dt`, prose `h3`, filter pills. One value cannot serve both: tracking compensates for
-case, and prose at reading sizes wants almost none. Tracked-and-muted is how the system
-marks something without making it louder, and is why `.prose h3` is not darkened.
-`letter-spacing: 0` is a reset, not a third step.
 - **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
   exposed as `--glyph` so cells can scale relative to it.
 - **Prompt** (script font, 4rem): the single character or toponym under test.
+
+**Sub-headings are body-sized.** A heading distinguishes itself by kind, not by growing
+— `.prose h3` is serif 600, tracked and muted at `--fs-prose`. There is no Title step.
+
+**Tracking is two steps, split by case.** `--tracking-caps` (0.07em) opens up uppercase;
+`--tracking-wide` (0.04em) is the lighter touch for sentence-case labels. Tracked and
+muted is how the system marks something without making it louder. `letter-spacing: 0`
+is a reset, not a third step.
+
+**Line-height** is `--lh` 1.4, with `--lh-tight` 1.25 for text that should read as a
+block rather than a column of lines: list items and callouts.
+
+**Measures** name the text column, not the box around it — `.prose` is `content-box`
+and adds its gutters outside the cap. Running text is capped at `--measure-prose`
+(36rem) on every prose page; `--measure-wide` (46rem) is the same kind of content width
+for grid and table pages, and a page holding both re-centres its prose children on the
+measure. `--w-quiz-control` (22.5rem) is not a measure — it fits the widest control in
+the answer card. Reading tips sit on `--measure-tips` pending their own pass.
 
 ### Named Rules
 
@@ -437,47 +436,35 @@ deliberately not tokens — see the ramp note below.
 
 ### Open: the type ramp is extracted, not yet resolved
 
-The ramp now has **one base and one home**: all 92 absolute declarations resolve to 23
-`--fs-*` tokens in `main.css`, and no component carries a literal px or rem font-size.
-That was an *extraction* — every size the codebase had is still here, at the size it
-was. The consolidation question below is untouched.
+Nineteen `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
+`html`'s font-size), and no component carrying a literal font-size. Every size the
+codebase had is still here; the consolidation is unfinished.
 
-**A correction that made the extraction possible.** Earlier passes computed rem against
-`body { font-size: 14px }` and concluded that `px` for chrome and `rem` for prose was a
-principled split. Nothing sets `html`'s font-size, so **`1rem` was always 16px**, and
-the prose register was 7–14% larger than believed. The two ramps were not serving
-different registers; they were the same ramp measured against two bases, which is what
-produced seven pairs of sub-pixel neighbours nobody chose.
-
-Those pairs are the remaining residue, and the token ladder is ordered by px so they
-stay visible:
+The ladder is ordered by px so the residue stays visible — pairs nobody could name the
+difference between:
 
 | | | Δ |
 |---|---|---|
 | `--fs-micro` 10px | `--fs-10-4` 10.4px | 0.4 |
 | `--fs-11` 11px | `--fs-11-2` 11.2px | 0.2 |
-| `--fs-12-8` 12.8px | `--fs-chrome` 13px | 0.2 |
-| `--fs-body` 14px | `--fs-prose` 14.4px | 0.4 |
-| `--fs-15` 15px | `--fs-title` 15.2px | 0.2 |
+| `--fs-17` 17px | `--fs-headline` 17.6px | 0.6 |
 | `--fs-headline` 17.6px | `--fs-18` 18px | 0.4 |
 | `--fs-22` 22px | `--fs-22-4` 22.4px | 0.4 |
 
-Tokens named by value (`--fs-12-8`) are deliberately ugly: each one is a size with no
-role that some other token does not already serve. A token that earns a name gets one —
-four of them are this file's own typography roles.
+Every one of those value-named tokens has a single call site. Tokens named by value are
+deliberately ugly: each is a size with no role that some other token does not already
+serve. A token that earns a name gets one.
 
-Two standing cautions, unchanged:
+Two standing cautions:
 
 - **Do not "fix" this by widening the ramp** to whatever the code happens to contain.
   That would launder the mess into doctrine and make the file useless as a check.
 - **Do not collapse sizes wholesale** to make the detector quiet. Each merge is a
   judgment call about a specific surface.
 
-Resolving it means one pass per register — sheets, panel chrome, prose, quiz — deciding
-which steps that register actually needs, then writing the surviving ramp here. Two
-role collisions are already known and want deciding first: `--fs-display` (25.6px,
-`.prose h1`) versus `--fs-24` (Roadmap and Progress `h1`) are one role at two sizes,
-and `--fs-9` / `--fs-17` are lone one-pixel neighbours of `--fs-micro` / `--fs-18`.
+Resolving it means one pass per register — sheets, panel chrome, menu, quiz — deciding
+which steps that register needs, then writing the surviving ramp here. Prose is done:
+simplifying it retired four tokens.
 
 ## Layout
 

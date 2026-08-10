@@ -201,7 +201,7 @@ dt {
 
 .card-name {
 	font-family: var(--serif);
-	font-size: var(--fs-16);
+	font-size: var(--fs-prose);
 	font-weight: 600;
 	color: var(--c-label);
 }

@@ -24,13 +24,13 @@
 	--fs-11: 0.6875rem;
 	--fs-11-2: 0.7rem;
 	--fs-12: 0.75rem;
-	--fs-12-8: 0.8rem;
 	--fs-chrome: 0.8125rem; /* 13px — nav, buttons, default chrome text */
-	--fs-body: 0.875rem; /* 14px — the app base */
-	--fs-prose: 0.9rem; /* 14.4px — DESIGN.md “body”: running prose */
+
+	/* The base every unstyled element inherits, not the size of body copy — running
+	   text is --fs-prose. Chrome sits at or below this; prose sits above it. */
+	--fs-body: 0.875rem; /* 14px */
 	--fs-15: 0.9375rem;
-	--fs-title: 0.95rem; /* 15.2px — DESIGN.md “title” */
-	--fs-16: 1rem;
+	--fs-prose: 1rem; /* 16px — DESIGN.md “body”: running prose */
 	--fs-17: 1.0625rem;
 	--fs-headline: 1.1rem; /* 17.6px — DESIGN.md “headline” */
 	--fs-18: 1.125rem;
@@ -43,6 +43,11 @@
 
 	--tracking-caps: 0.07em; /* uppercase micro-labels */
 	--tracking-wide: 0.04em; /* emphasized sentence case */
+
+	/* --lh-tight is for text that should read as one block rather than as a column of
+	   lines: list items, callouts, dense cells. */
+	--lh: 1.4;
+	--lh-tight: 1.25;
 
 	/**
 	  * Ink is near-neutral (faint green cast); the greens carry the brand:
@@ -165,7 +170,7 @@ html, body, #app {
 body {
 	font-family: var(--sans);
 	font-size: var(--fs-body);
-	line-height: 1.5;
+	line-height: var(--lh);
 	background: var(--c-bg);
 	color: var(--c-head);
 	text-rendering: optimizeLegibility;

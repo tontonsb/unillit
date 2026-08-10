@@ -182,7 +182,7 @@ function optClass(opt: string): string {
 	background: var(--c-alt);
 }
 
-.box { font-size: var(--fs-16); line-height: 1; }
+.box { font-size: 16px; line-height: 1; }
 
 .choice.selected { border-color: var(--c-sign); background: var(--c-alt); color: var(--c-head); }
 .choice.correct  { background: var(--fb-ok-bg); border-color: var(--c-good); color: var(--c-good); }

@@ -49,6 +49,7 @@
 	border-left: 3px solid var(--c-accent);
 	color: var(--c-head);
 	font-style: italic;
+	line-height: var(--lh-tight);
 }
 
 .reading-tips blockquote p { color: inherit; }
