@@ -73,9 +73,3 @@
 		</p>
 	</article>
 </template>
-
-<style scoped>
-article {
-	max-width: var(--measure-prose);
-}
-</style>

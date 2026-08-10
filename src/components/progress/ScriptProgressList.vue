@@ -71,15 +71,12 @@ section header {
 	margin-bottom: var(--sp-8);
 }
 
-h2 {
+header h2 {
 	display: flex;
 	align-items: baseline;
 	gap: var(--sp-8);
-	font-size: var(--fs-16);
-	font-weight: 600;
+	margin: 0;
 }
-
-.script-name { color: var(--c-head); }
 
 .script-native {
 	font-size: 1.1em;

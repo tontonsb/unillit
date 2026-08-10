@@ -106,12 +106,16 @@ import BetaBadge from '@/components/BetaBadge.vue'
 </template>
 
 <style scoped>
+/* The wide cap is for the grids below, which need the extra room to hold three
+   columns. The prose keeps the shared measure and stays centred on it, so moving
+   between Home and the other prose pages does not shift the text sideways. */
 article {
 	max-width: var(--measure-wide);
 }
 
 article > :is(h1, h2, p) {
 	max-width: var(--measure-prose);
+	margin-inline: auto;
 }
 
 .home-sub {
@@ -140,11 +144,6 @@ dt {
 	font-weight: 600;
 	color: var(--c-head);
 	padding-top: 0.1em;
-}
-
-dd {
-	font-size: var(--fs-prose);
-	color: var(--c-label);
 }
 
 .script-grid {

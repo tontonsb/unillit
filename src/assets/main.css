@@ -46,7 +46,6 @@
 	--fs-18: 1.125rem;
 	--fs-22: 1.375rem;
 	--fs-22-4: 1.4rem;
-	--fs-24: 1.5rem;
 	--fs-display: 1.6rem; /* 25.6px — DESIGN.md “display” */
 	--fs-28: 1.75rem;
 	--fs-48: 3rem;
@@ -106,15 +105,19 @@
 	  * length*, so if the type honours the browser's font-size preference and the
 	  * bound does not, the measure it enforces silently widens in characters.
 	  *
-	  * --measure-prose caps running text; --measure-wide caps pages whose content is
-	  * grids or tables. A page that holds both (Home) takes the wide cap and puts the
-	  * measure back on its prose children — the card grid needs 46rem of content to
-	  * keep three columns, where the same width runs prose to ~105 characters.
+	  * --measure-prose is the text column, not the box around it: `.prose` adds its own
+	  * padding on top. Everything with `box-sizing: border-box` would otherwise read
+	  * this as a container width and quietly deliver a narrower column than it names.
+	  *
+	  * --measure-wide caps pages whose content is grids or tables. A page that holds
+	  * both (Home) takes the wide cap and re-centres its prose children on the measure,
+	  * so the text sits in the same rectangle it occupies on every other prose page.
 	  * --w-quiz-control is not a measure: it is sized to the widest control in the
 	  * answer card. It scales anyway, because those controls carry text.
 	  */
-	--measure-prose: 40rem; /* 640px */
-	--measure-wide: 50rem; /* 800px */
+	--measure-prose: 36rem; /* 576px — the text column itself, padding excluded */
+	--measure-wide: 46rem; /* 736px */
+	--measure-tips: 40rem; /* 640px — parked at today's value pending the reading-tips pass */
 	--w-quiz-control: 22.5rem; /* 360px */
 
 	/**

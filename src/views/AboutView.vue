@@ -37,8 +37,10 @@ const version = __APP_VERSION__
 
 		<h2>Changelog</h2>
 
-		I sometimes bump the version on bugfixes (and sometimes don't), but those won't appear here, that's why
-		you may notice skipped versions.
+		<p>
+			I sometimes bump the version on bugfixes (and sometimes don't), but those won't appear here, that's why
+			you may notice skipped versions.
+		</p>
 
 		<dl class="changelog">
 			<dt>1.0.2</dt>
@@ -186,10 +188,6 @@ const version = __APP_VERSION__
 </template>
 
 <style scoped>
-article {
-	max-width: var(--measure-prose);
-}
-
 .version {
 	font-size: var(--fs-prose);
 	font-weight: 400;

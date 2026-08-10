@@ -45,7 +45,7 @@ onMounted(load)
 </script>
 
 <template>
-	<article>
+	<article class="prose">
 		<h1>Roadmap</h1>
 
 		<p v-if="!user" class="login-nudge">
@@ -73,19 +73,6 @@ onMounted(load)
 </template>
 
 <style scoped>
-article {
-	padding: var(--sp-32);
-	max-width: var(--measure-prose);
-	margin: 0 auto;
-}
-
-h1 {
-	font-size: var(--fs-24);
-	font-weight: 600;
-	color: var(--c-head);
-	margin-bottom: var(--sp-24);
-}
-
 .empty {
 	color: var(--c-muted);
 	font-size: var(--fs-prose);
@@ -121,15 +108,12 @@ section header {
 	margin-bottom: var(--sp-12);
 }
 
-h2 {
+header h2 {
 	display: flex;
 	align-items: baseline;
 	gap: var(--sp-8);
-	font-size: var(--fs-16);
-	font-weight: 600;
+	margin: 0;
 }
-
-.script-name { color: var(--c-head); }
 
 .script-native {
 	font-size: 1.1em;

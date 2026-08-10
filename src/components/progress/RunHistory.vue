@@ -88,11 +88,8 @@ onMounted(() => goToPage(0))
 	border-top: var(--hairline);
 }
 
-h2 {
-	font-size: var(--fs-16);
-	font-weight: 600;
-	color: var(--c-head);
-	margin-bottom: var(--sp-16);
+.run-history h2 {
+	margin-top: 0;
 }
 
 .empty {

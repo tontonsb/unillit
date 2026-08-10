@@ -4,7 +4,7 @@
 
 .reading-tips {
 	padding: 1.25rem 1.5rem;
-	max-width: var(--measure-prose);
+	max-width: var(--measure-tips);
 	font-size: clamp(13px, 0.9vw, 16px);
 	color: var(--c-label);
 }

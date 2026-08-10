@@ -22,7 +22,7 @@ onMounted(load)
 </script>
 
 <template>
-	<article>
+	<article class="prose">
 		<h1>Progress</h1>
 
 		<div v-if="!user" class="login">
@@ -41,16 +41,7 @@ onMounted(load)
 
 <style scoped>
 article {
-	padding: var(--sp-32);
 	max-width: var(--measure-wide);
-	margin: 0 auto;
-}
-
-h1 {
-	font-size: var(--fs-24);
-	font-weight: 600;
-	color: var(--c-head);
-	margin-bottom: var(--sp-24);
 }
 
 .login {
