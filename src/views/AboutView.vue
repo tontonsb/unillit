@@ -4,43 +4,34 @@ const version = __APP_VERSION__
 
 <template>
 	<article class="prose">
-		<h1>About Unillit <span class="version">v{{ version }}</span></h1>
+		<Markdown>
+			# About Unillit <span class="version">v{{ version }}</span>
 
-		<h2>The goal of the project</h2>
-		<p>
+			## The goal of the project
+
 			Most of the other resources are focused on the whole language: reading correctly, pronouncing, understanding.
 			Learning the script is treated as a part of a bigger journey.
-		</p>
 
-		<p>
 			But if you're looking at a map or at a sign while travelling or playing GeoGuessr?
 			You only need
 			to parse the characters and make some sense of them.
-		</p>
 
-		<p>
-			The idea here is to arrange the characters for recognition — to group them by visual traits and
+			The idea here is to arrange the characters for recognition --- to group them by visual traits and
 			order them by similarity rather than alphabetic order, meaning, role or pronunciation.
 			You can look at a sign, take the sheet and quickly look up the characters you see on the sign.
-		</p>
 
-		<p>
 			Of course, each script has its quirks so we also need some reading tips, but those will be kept
 			to minimum here and strongly focused on transliterating.
-		</p>
 
-		<p>
 			To provide you with the "road signs", there is a quiz panel put side-by-side with the info sheets so you
 			can practice it all in one place. And once you feel like you start to remember the shapes, you can
 			switch the info panel to None and test yourself.
-		</p>
 
-		<h2>Changelog</h2>
+			## Changelog
 
-		<p>
 			I sometimes bump the version on bugfixes (and sometimes don't), but those won't appear here, that's why
 			you may notice skipped versions.
-		</p>
+		</Markdown>
 
 		<dl class="changelog">
 			<dt>1.0.2</dt>
@@ -164,26 +155,22 @@ const version = __APP_VERSION__
 			</dd>
 		</dl>
 
-		<h2>Errors and feedback</h2>
+		<Markdown>
+			## Errors and feedback
 
-		<p>
 			I'm just learning most of these scripts myself by reading wikipedia, docs and resources curated by
 			the GeoGuessr community as well as consulting with AI chat bots. And practicing on this site.
-		</p>
 
-		<p>
 			If you see something wrong on this site, let me know.
-		</p>
-		<ul>
-			<li>Github: <a href="https://github.com/tontonsb/unillit">Unillit project</a></li>
-			<li>Discord: Džuris (@tontonsb)</li>
-		</ul>
 
-		<h2>Privacy</h2>
-		<p>
+			- Github: [Unillit project](https://github.com/tontonsb/unillit)
+			- Discord: Džuris (@tontonsb)
+
+			## Privacy
+
 			See the <RouterLink to="/privacy">privacy page</RouterLink> to
 			know what data and when we're gathering.
-		</p>
+		</Markdown>
 	</article>
 </template>
 

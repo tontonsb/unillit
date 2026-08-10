@@ -76,7 +76,7 @@ import BetaBadge from '@/components/BetaBadge.vue'
 				<span class="card-name">{{ script.name }}</span>
 				<span class="card-meta">{{ script.meta }}</span>
 				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
-				<span class="card-soon">Maybe in future...</span>
+				<span class="card-soon">Maybe in future…</span>
 			</div>
 		</section>
 
