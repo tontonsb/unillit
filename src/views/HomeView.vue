@@ -123,9 +123,10 @@ article > :is(h1, h2, p) {
 }
 
 .home-sub {
+	font-family: var(--serif);
+	font-style: italic;
 	color: var(--c-muted);
 	margin-bottom: var(--sp-20);
-	font-size: var(--fs-prose);
 }
 
 .approaches {
