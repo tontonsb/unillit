@@ -40,8 +40,16 @@ onMounted(load)
 </template>
 
 <style scoped>
+/* The wide cap is for the tables; everything that is read as prose keeps the shared
+   measure, so the heading sits where it does on every other page. */
 article {
 	max-width: var(--measure-wide);
+}
+
+article > :is(h1, p),
+.login {
+	max-width: var(--measure-prose);
+	margin-inline: auto;
 }
 
 .login {
