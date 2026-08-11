@@ -129,10 +129,11 @@ components:
     rounded: "{rounded.md}"
     padding: "12px 16px 16px"
   badge-beta:
-    backgroundColor: "transparent"
-    textColor: "{colors.highway-green}"
+    backgroundColor: "{colors.highway-green}"
+    textColor: "{colors.plate-ink}"
+    typography: "{typography.label}"
     rounded: "{rounded.sm}"
-    padding: "0 3px"
+    padding: "2px 4px"
 ---
 
 # Design System: Unillit
@@ -229,10 +230,11 @@ tints, and a brighter teal that exists to misbehave.
 ### Named Rules
 
 **The Plate Rule.** White-on-Highway-Green is reserved for surfaces that genuinely
-behave like a plate: sheet section headers, the active tab, the active nav item. It is
-the roadsign nod, and it works because it is rationed — a handful per screen. Applied
-to anything that is merely selected, prominent, or in need of attention, the nod
-becomes a costume.
+behave like a plate: sheet section headers, the active tab, the active nav item, and the
+beta badge. It is the roadsign nod, and it works because it is rationed — a handful per
+screen. Applied to anything that is merely selected, prominent, or in need of attention,
+the nod becomes a costume. A plate laid on a plate takes a Plate Rule outline to
+separate the two, as the badge does on the active nav item.
 
 **The Neutral Ink Rule.** All three ink tones carry a faint green cast (`#242b26`,
 `#3e4842`, `#67716b`) rather than being true greys. Never substitute a pure neutral;

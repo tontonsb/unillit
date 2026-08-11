@@ -261,8 +261,8 @@ nav {
 	display: none;
 }
 
+/* the badge is a plate sitting on the nav plate — an outline is what separates them */
 .nav-item.active .beta-badge {
-	color: var(--c-on-sign);
 	border-color: var(--c-border-plate);
 }
 

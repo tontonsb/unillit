@@ -18,7 +18,6 @@
 	   value has one, by value where it does not. The sub-pixel neighbours are residue
 	   awaiting a consolidation. Sheets and reading tips scale in `em` off a clamped
 	   base and are deliberately absent. */
-	--fs-9: 0.5625rem;
 	--fs-micro: 0.625rem; /* 10px — uppercase micro-labels */
 	--fs-11: 0.6875rem;
 	--fs-12: 0.75rem;
