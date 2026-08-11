@@ -36,7 +36,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Thai',
 		nativeName: 'อักษรไทย',
 		abbr: 'ภ',
-		meta: 'Abugida written left to right, 44 consonants and 20+ vowel forms',
+		meta: 'Abugida — 44 consonants and 20+ vowel forms around them',
 		countries: 'Thailand',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
 		practiceTabs: (() => {
@@ -64,7 +64,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Arabic',
 		nativeName: 'العربية',
 		abbr: 'ع',
-		meta: 'Abjad written right to left, 28 letters with up to 4 forms each',
+		meta: 'Abjad, written right to left; 28 letters with up to 4 forms each',
 		status: 'coming',
 		infoTabs: [
 			/*{
@@ -90,8 +90,8 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Bengali',
 		nativeName: 'বাংলা',
 		abbr: 'ব',
-		meta: 'Abugida written left to right, 39 consonants and 11 vowels',
-		countries: 'Bangladesh, West Bengal',
+		meta: 'Abugida. 39 consonants and 11 vowel chars',
+		countries: 'Bangladesh, India',
 		status: 'coming',
 		infoTabs: [
 			/*{
@@ -113,7 +113,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Cyrillic',
 		nativeName: 'Кириллица',
 		abbr: 'Ж',
-		meta: 'Alphabet written left to right, 23 shared letters + per-lang additions',
+		meta: 'Family of alphabets with 23 shared letters + per-lang additions',
 		countries: 'Russia, Ukraine, Belarus, Balkans, Central Asia',
 		status: 'beta',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
@@ -138,7 +138,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Greek',
 		nativeName: 'Ελληνικά',
 		abbr: 'Ω',
-		meta: 'Alphabet written left to right, 24 letters',
+		meta: 'Alphabet of 24 letters',
 		countries: 'Greece, Cyprus',
 		status: 'coming',
 	},
@@ -146,7 +146,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'lao',
 		name: 'Lao',
 		nativeName: 'ພາສາລາວ',
-		meta: 'Abugida written left to right, 27 consonants',
+		meta: 'Abugida. 27 consonants and lots of vowels',
 		countries: 'Laos',
 		status: 'coming',
 	},

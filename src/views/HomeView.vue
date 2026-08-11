@@ -64,24 +64,30 @@ import BetaBadge from '@/components/BetaBadge.vue'
 				class="script-card"
 				:class="{ beta: scriptStatus(script) === 'beta' }"
 			>
-				<span class="card-native">{{ script.nativeName }}</span>
-				<span class="card-name">
-					{{ script.name }}
+				<header>
+					<span class="card-name">{{ script.name }}</span>
+					<span class="card-native">{{ script.nativeName }}</span>
+				</header>
+				<span class="card-detail">{{ script.meta }}</span>
+				<footer v-if="script.countries || scriptStatus(script) === 'beta'">
+					<span v-if="script.countries" class="card-where">{{ script.countries }}</span>
 					<BetaBadge v-if="scriptStatus(script) === 'beta'" />
-				</span>
-				<span class="card-meta">{{ script.meta }}</span>
-				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
+				</footer>
 			</RouterLink>
 			<div
 				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
 				class="script-card coming-soon"
 			>
-				<span class="card-native">{{ script.nativeName }}</span>
-				<span class="card-name">{{ script.name }}</span>
-				<span class="card-meta">{{ script.meta }}</span>
-				<span v-if="script.countries" class="card-countries">{{ script.countries }}</span>
-				<span class="card-soon">Maybe in future…</span>
+				<header>
+					<span class="card-name">{{ script.name }}</span>
+					<span class="card-native">{{ script.nativeName }}</span>
+				</header>
+				<span class="card-detail">{{ script.meta }}</span>
+				<footer>
+					<span v-if="script.countries" class="card-where">{{ script.countries }}</span>
+					<span class="card-soon">Not here yet…</span>
+				</footer>
 			</div>
 		</section>
 
@@ -147,14 +153,12 @@ dl {
 dt {
 	font-size: var(--fs-prose);
 	font-weight: 600;
-	color: var(--c-head);
-	padding-top: 0.1em;
 }
 
 .script-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	gap: var(--sp-16);
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: var(--sp-24) var(--sp-20);
 	margin-top: var(--sp-28);
 	margin-bottom: var(--sp-28);
 }
@@ -162,66 +166,92 @@ dt {
 .script-card {
 	display: flex;
 	flex-direction: column;
-	gap: var(--sp-4);
-	padding: var(--sp-16) var(--sp-20);
-	border: var(--hairline);
+	gap: var(--sp-8);
+	padding: var(--sp-12) var(--sp-16) var(--sp-16);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 	text-decoration: none;
 	color: inherit;
-	transition: border-color 0.15s, background 0.15s;
+	transition: background 0.15s, color 0.15s;
 }
 
-.script-card:hover {
-	border-color: var(--c-sign);
-	background: var(--c-alt);
-}
-
-.script-card.coming-soon {
-	opacity: 0.5;
-	cursor: default;
-}
-
-.script-card.beta {
-	opacity: 0.8;
-}
-
-.script-card.beta:hover {
-	opacity: 1;
-}
-
-.card-soon {
-	font-size: var(--fs-10-4);
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: var(--tracking-caps);
-	color: var(--c-muted);
-	margin-top: auto;
-}
-
-.card-native {
-	font-size: var(--fs-28);
-	line-height: 1.2;
-	color: var(--c-head);
+.script-card header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--sp-8);
+	padding-bottom: var(--sp-8);
+	border-bottom: var(--hairline);
 }
 
 .card-name {
 	font-family: var(--serif);
 	font-size: var(--fs-prose);
 	font-weight: 600;
-	color: var(--c-label);
+	color: var(--c-accent);
 }
 
-.card-meta {
+.card-native {
+	font-size: var(--fs-headline);
+	color: var(--c-head);
+}
+
+.card-detail {
 	font-size: var(--fs-12);
 	color: var(--c-muted);
-	line-height: 1.4;
+	line-height: var(--lh-tight);
 }
 
-.card-countries {
-	font-size: var(--fs-11-2);
+/* the foot of the card: where you meet the script, then what state it is in. Stacked
+   rather than a row, so the status keeps one position no matter how long the country
+   list runs — the five-entry one would otherwise push it to a line of its own. */
+.script-card footer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--sp-4);
+	margin-top: auto;
+	padding-top: var(--sp-8);
+}
+
+.card-where {
+	font-size: var(--fs-12);
 	color: var(--c-muted);
-	line-height: 1.4;
-	opacity: 0.7;
+	line-height: var(--lh-tight);
+}
+
+.card-soon {
+	font-size: var(--fs-micro);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps);
+	color: var(--c-muted);
+}
+
+/* the ground lifts and the ink deepens by about as much, so the name holds its
+   contrast through the change instead of fading into the hover fill */
+.script-card:hover {
+	background: var(--c-alt);
+}
+
+.script-card:hover .card-name {
+	color: var(--c-sign);
+}
+
+/* beta: still mounted and interactive — the greens fall back rather than dim, and
+   the name stays inert on hover, which is half of what separates it from live */
+.script-card.beta :is(.card-name, .card-native) {
+	color: var(--c-muted);
+}
+
+/* unwritten: the same fallback, then unmounted and dimmed as one card */
+.script-card.coming-soon {
+	background: transparent;
+	cursor: default;
+	opacity: var(--o-inert);
+}
+
+.script-card.coming-soon :is(.card-name, .card-native) {
+	color: var(--c-muted);
 }
 </style>
