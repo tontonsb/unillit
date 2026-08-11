@@ -131,47 +131,13 @@ Not too many cards — one misapplication.
 
 See §"Omissions" below for why these are system gaps rather than discipline failures.
 
-- [ ] ✅ **De-emphasis is done three ways and stacks multiplicatively.** Seven distinct
-  opacity values (0.35/0.4/0.5/0.7/0.75/0.8/0.85) layered on top of `--c-muted` and on
-  top of smaller sizes. On HomeView they compound because element opacity × card
-  opacity:
-
-  | element | effective | WCAG | APCA Lc |
-  |---|---|---|---|
-  | `card-countries`, live card | `#959c97` | 2.81:1 | +54.0 |
-  | `card-countries`, beta card | `#aaafac` | 2.23:1 | +43.9 |
-  | `card-meta`, coming-soon | `#b3b8b5` | 2.01:1 | +39.0 |
-  | **`card-countries`, coming-soon** | **`#cacdcb`** | **1.60:1** | **+27.2** |
-  | sidebar coming-soon label | `#b2b6b3` | 2.05:1 | +40.0 |
-
-  Nobody chose 0.35 — it is the product of two independent reasonable choices.
-
-  **The bug is compounding, not variety.** Standardising to "one or two opacity
-  values" would not fix it: two standard values still multiply. And a first count
-  mis-grouped `0.85 ×6`, which is *hover dimming on buttons*, not de-emphasis at all.
-
-  **There are four distinct states, and they are not interchangeable** ✅ (author):
-  "not written yet" and "written, works, deliberately quiet" carry different
-  messages, and beta content is genuinely available to anyone interested enough.
-
-  Recommended treatment — the depth ladder run backwards, using surfaces that already
-  exist, with **no text dimming in any state**:
-
-  | State | Treatment | card-name | card-meta |
-  |---|---|---|---|
-  | live | Cell White fill + border — *mounted* | 9.50:1 | 5.06:1 |
-  | beta (works, quiet) | Warm Sheet fill + border — *flush* | 9.09:1 | 4.84:1 |
-  | not written | transparent + dashed border — *empty slot* | — | — |
-  | control locked pending an action | one opacity token, container level, never nested | — | — |
-
-  Beta reads quieter because the card stops being *mounted*, not because its content
-  got harder to read. If literal dimming is preferred for beta instead, the numbers
-  say **0.85, not the current 0.75/0.8** — at 0.8 the meta line falls to Lc 61.6, at
-  0.85 it holds Lc 65.0 — but 0.85 already means "hover" elsewhere, so it would collide.
-
-  **Rules to add:** de-emphasis is a surface or token change, never an opacity change
-  on text; opacity applies at one level only and never nests; each unavailable-ish
-  state gets its own named token rather than an ad-hoc value.
+- [ ] **De-emphasis outside the cards still dims text.** The rule is settled and
+  written into DESIGN.md — recede by changing surface or ink, never by dimming text;
+  opacity applies to a whole inert element at one level only. The script cards follow
+  it. Still to convert: the sidebar's `coming-soon` (0.4) and `beta` (0.75) nav items,
+  and `pill-locked` (0.4). Four states exist and are not interchangeable ✅ (author) —
+  "not written yet" and "written, works, deliberately quiet" carry different messages,
+  and beta content is genuinely available to anyone interested enough.
 
 ### Omissions — missing rungs
 - [ ] **The depth ladder was only ever described forwards** — hairline → fill → plate
@@ -187,8 +153,10 @@ See §"Omissions" below for why these are system gaps rather than discipline fai
   Category 20 values for `LangBadge` and 8 taxonomy tags / 24 hexes for `CharBadge`.
   Both reached outside the system; one grabbed Tailwind's defaults. **Biggest single
   gap.**
-- [ ] **No token for "unavailable."** One semantic, four values: `pill-locked` 0.4,
-  nav `coming-soon` 0.4, card `coming-soon` 0.5, `beta` 0.75/0.8.
+- [ ] **One "unavailable" semantic, still several values.** `--o-inert` (0.8) covers the
+  script cards; `pill-locked` 0.4, nav `coming-soon` 0.4 and nav `beta` 0.75 are
+  unreviewed and stay literal until their own pass. Button hover dimming (0.85 ×6) is a
+  different semantic and consistent already.
 - [ ] **Motion has durations but no easing** — three durations, zero easing tokens,
   everything on browser-default `ease`. *Honest value: low.* The 0.15s transitions are
   colour and border, where easing is perceptually irrelevant; only two places have
@@ -226,13 +194,12 @@ for opacity is **compositional** — see the HomeView note below.
   `--tracking-caps` (0.07em, collapsing a 0.06/0.07/0.08 spread) for uppercase
   micro-labels; `--tracking-wide` (0.04em) for sentence case. The menu label's `0.01em`
   was dropped as below perception, and `letter-spacing: 0` stays literal as a reset.
-- [ ] **HomeView is the highest-leverage single edit in this document.** Its script
-  card is the sole consumer of three of the value-named tokens (`--fs-10-4`,
-  `--fs-11-2`, `--fs-28`) *and* the worst opacity stacking — from one root cause: five
-  typographic levels (28px glyph / 16px name / 12px meta / 11.2px countries / 10.4px
-  "soon") crammed into a ~200px card. Size and colour were exhausted, so opacity became
-  the next level. Fix the card's composition — merge or drop a level — and a chunk of
-  both problems disappears at once, along with two of the seven sub-pixel pairs.
+- [x] **HomeView's script card, redesigned.** Five typographic levels became three —
+  header row (name + specimen), description, footer (countries + state) — which retired
+  `--fs-10-4`, `--fs-11-2` and `--fs-28` outright. Text opacity is gone: state rides on
+  fill and ink, with `--o-inert` dimming only the whole unwritten card. Hover deepens
+  the name to Highway Green as the ground lifts, holding Lc 74 instead of dropping to
+  57.9. The `dl` below it was escaping the measure and now shares the prose rectangle.
 
 ### Spacing has no scale
 
@@ -339,9 +306,8 @@ Extra variety is acceptable here — the target is a discoverable scale, not a s
   where `.prose` uses Faded Ink. The Two Registers Rule is *chrome vs quiz* and requires
   both to share palette and type families, so it does not license this. Also still on
   raw rem spacing and its own `--measure-tips`.
-- [ ] **`.prose blockquote` has no styling at all** — no border, indent or italic, so
-  the quotation on Privacy is indistinguishable from a paragraph. Reading tips style
-  theirs.
+- [x] **`.prose blockquote` had no styling at all.** It now carries the reading-tips
+  callout at page-prose scale: accent left rule, italic, Deep Ink, `--lh-tight`.
 
 ### Other literals worth tokenising
 

@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 2,
-	"generatedAt": "2026-08-07T21:24:22.150Z",
+	"generatedAt": "2026-08-11T01:40:07.904Z",
 	"title": "Design System: Unillit",
 	"extensions": {
 		"colorMeta": {
@@ -9,109 +9,312 @@
 				"displayName": "Signal Teal",
 				"canonical": "oklch(56% 0.11 165)",
 				"note": "The mischief. 3.89:1 / Lc +64.2 on Warm Sheet — APCA large/secondary band, which is the role it holds. White on Signal Teal is Lc −72.8 and fine despite a 4.1:1 WCAG \"fail\"; black passes WCAG and is unreadable (Lc +36.8). Read APCA first.",
-				"tonalRamp": ["oklch(15% 0.11 165)", "oklch(26% 0.11 165)", "oklch(37% 0.11 165)", "oklch(48% 0.11 165)", "oklch(59% 0.11 165)", "oklch(70% 0.11 165)", "oklch(81% 0.11 165)", "oklch(92% 0.11 165)"]
+				"tonalRamp": [
+					"oklch(15% 0.11 165)",
+					"oklch(26% 0.11 165)",
+					"oklch(37% 0.11 165)",
+					"oklch(48% 0.11 165)",
+					"oklch(59% 0.11 165)",
+					"oklch(70% 0.11 165)",
+					"oklch(81% 0.11 165)",
+					"oklch(92% 0.11 165)"
+				]
 			},
 			"highway-green": {
 				"role": "primary",
 				"displayName": "Highway Green",
 				"canonical": "oklch(41% 0.09 163)",
 				"note": "The only green trusted with text. 6.6:1 on Warm Sheet, 6.9:1 reversed under white.",
-				"tonalRamp": ["oklch(15% 0.09 163)", "oklch(26% 0.09 163)", "oklch(37% 0.09 163)", "oklch(48% 0.09 163)", "oklch(59% 0.09 163)", "oklch(70% 0.09 163)", "oklch(81% 0.09 163)", "oklch(92% 0.09 163)"]
+				"tonalRamp": [
+					"oklch(15% 0.09 163)",
+					"oklch(26% 0.09 163)",
+					"oklch(37% 0.09 163)",
+					"oklch(48% 0.09 163)",
+					"oklch(59% 0.09 163)",
+					"oklch(70% 0.09 163)",
+					"oklch(81% 0.09 163)",
+					"oklch(92% 0.09 163)"
+				]
 			},
 			"mint-wash": {
 				"role": "tertiary",
 				"displayName": "Mint Wash",
 				"canonical": "oklch(95% 0.02 165)",
 				"note": "The tint. Zebra striping, row bands, hover fills, code backgrounds, selection. Below the perceptual threshold on paper (Lc 0.0) — correct, it bands rows rather than carrying meaning.",
-				"tonalRamp": ["oklch(15% 0.02 165)", "oklch(26% 0.02 165)", "oklch(37% 0.02 165)", "oklch(48% 0.02 165)", "oklch(59% 0.02 165)", "oklch(70% 0.02 165)", "oklch(81% 0.02 165)", "oklch(92% 0.02 165)"]
+				"tonalRamp": [
+					"oklch(15% 0.02 165)",
+					"oklch(26% 0.02 165)",
+					"oklch(37% 0.02 165)",
+					"oklch(48% 0.02 165)",
+					"oklch(59% 0.02 165)",
+					"oklch(70% 0.02 165)",
+					"oklch(81% 0.02 165)",
+					"oklch(92% 0.02 165)"
+				]
 			},
 			"mint-rule": {
 				"role": "tertiary",
 				"displayName": "Mint Rule",
 				"canonical": "oklch(87% 0.035 155)",
 				"note": "The hairline. In a system with no shadows, this is the entire vocabulary of separation. Lc ~20 on paper: fine as a sheet rule, the honest weak point for interactive boundaries where WCAG 1.4.11's 3:1 applies.",
-				"tonalRamp": ["oklch(15% 0.035 155)", "oklch(26% 0.035 155)", "oklch(37% 0.035 155)", "oklch(48% 0.035 155)", "oklch(59% 0.035 155)", "oklch(70% 0.035 155)", "oklch(81% 0.035 155)", "oklch(92% 0.035 155)"]
+				"tonalRamp": [
+					"oklch(15% 0.035 155)",
+					"oklch(26% 0.035 155)",
+					"oklch(37% 0.035 155)",
+					"oklch(48% 0.035 155)",
+					"oklch(59% 0.035 155)",
+					"oklch(70% 0.035 155)",
+					"oklch(81% 0.035 155)",
+					"oklch(92% 0.035 155)"
+				]
 			},
 			"warm-sheet": {
 				"role": "neutral",
 				"displayName": "Warm Sheet",
 				"canonical": "oklch(98% 0.003 100)",
 				"note": "The page. Slightly warm, so white cells read as paper laid on paper.",
-				"tonalRamp": ["oklch(15% 0.003 100)", "oklch(26% 0.003 100)", "oklch(37% 0.003 100)", "oklch(48% 0.003 100)", "oklch(59% 0.003 100)", "oklch(70% 0.003 100)", "oklch(81% 0.003 100)", "oklch(92% 0.003 100)"]
+				"tonalRamp": [
+					"oklch(15% 0.003 100)",
+					"oklch(26% 0.003 100)",
+					"oklch(37% 0.003 100)",
+					"oklch(48% 0.003 100)",
+					"oklch(59% 0.003 100)",
+					"oklch(70% 0.003 100)",
+					"oklch(81% 0.003 100)",
+					"oklch(92% 0.003 100)"
+				]
 			},
 			"cell-white": {
 				"role": "neutral",
 				"displayName": "Cell White",
 				"canonical": "oklch(100% 0 0)",
 				"note": "The specimen ground. The colour of \"something is mounted here\".",
-				"tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(37% 0 0)", "oklch(48% 0 0)", "oklch(59% 0 0)", "oklch(70% 0 0)", "oklch(81% 0 0)", "oklch(92% 0 0)"]
+				"tonalRamp": [
+					"oklch(15% 0 0)",
+					"oklch(26% 0 0)",
+					"oklch(37% 0 0)",
+					"oklch(48% 0 0)",
+					"oklch(59% 0 0)",
+					"oklch(70% 0 0)",
+					"oklch(81% 0 0)",
+					"oklch(92% 0 0)"
+				]
+			},
+			"plate-ink": {
+				"role": "neutral",
+				"displayName": "Plate Ink",
+				"canonical": "oklch(100% 0 0)",
+				"note": "The same white as Cell White, but reversed onto a plate rather than laid under content. Its own token because the two move independently — DESIGN.md keeps an open question about setting plates in Warm Sheet instead.",
+				"tonalRamp": [
+					"oklch(15% 0 0)",
+					"oklch(26% 0 0)",
+					"oklch(37% 0 0)",
+					"oklch(48% 0 0)",
+					"oklch(59% 0 0)",
+					"oklch(70% 0 0)",
+					"oklch(81% 0 0)",
+					"oklch(92% 0 0)"
+				]
+			},
+			"plate-rule": {
+				"role": "neutral",
+				"displayName": "Plate Rule",
+				"canonical": "oklch(100% 0 0 / 0.6)",
+				"note": "The hairline reversed on a plate, for controls sitting inside one (the beta badge on an active nav item, the Thai consonant picker). Mint Rule is invisible on Highway Green; this is its counterpart.",
+				"tonalRamp": [
+					"oklch(15% 0 0)",
+					"oklch(26% 0 0)",
+					"oklch(37% 0 0)",
+					"oklch(48% 0 0)",
+					"oklch(59% 0 0)",
+					"oklch(70% 0 0)",
+					"oklch(81% 0 0)",
+					"oklch(92% 0 0)"
+				]
 			},
 			"deep-ink": {
 				"role": "neutral",
 				"displayName": "Deep Ink",
 				"canonical": "oklch(25% 0.01 155)",
 				"note": "Glyphs, specimens, sheet headings, emphasised values. 13.9:1 / Lc +98.2 on paper. Non-text only on a plate (Lc +15.9).",
-				"tonalRamp": ["oklch(15% 0.01 155)", "oklch(26% 0.01 155)", "oklch(37% 0.01 155)", "oklch(48% 0.01 155)", "oklch(59% 0.01 155)", "oklch(70% 0.01 155)", "oklch(81% 0.01 155)", "oklch(92% 0.01 155)"]
+				"tonalRamp": [
+					"oklch(15% 0.01 155)",
+					"oklch(26% 0.01 155)",
+					"oklch(37% 0.01 155)",
+					"oklch(48% 0.01 155)",
+					"oklch(59% 0.01 155)",
+					"oklch(70% 0.01 155)",
+					"oklch(81% 0.01 155)",
+					"oklch(92% 0.01 155)"
+				]
 			},
 			"body-ink": {
 				"role": "neutral",
 				"displayName": "Body Ink",
 				"canonical": "oklch(36% 0.012 155)",
 				"note": "Running prose, table cells, nav labels. 9.1:1 / Lc +88.9 on paper. Invisible on a Highway Green plate (Lc 0.0).",
-				"tonalRamp": ["oklch(15% 0.012 155)", "oklch(26% 0.012 155)", "oklch(37% 0.012 155)", "oklch(48% 0.012 155)", "oklch(59% 0.012 155)", "oklch(70% 0.012 155)", "oklch(81% 0.012 155)", "oklch(92% 0.012 155)"]
+				"tonalRamp": [
+					"oklch(15% 0.012 155)",
+					"oklch(26% 0.012 155)",
+					"oklch(37% 0.012 155)",
+					"oklch(48% 0.012 155)",
+					"oklch(59% 0.012 155)",
+					"oklch(70% 0.012 155)",
+					"oklch(81% 0.012 155)",
+					"oklch(92% 0.012 155)"
+				]
 			},
 			"faded-ink": {
 				"role": "neutral",
 				"displayName": "Faded Ink",
 				"canonical": "oklch(53% 0.01 155)",
 				"note": "Metadata, captions, inactive controls, micro-labels. 4.8:1 / Lc +71.9 on paper. Invisible on either plate (Lc 0.0).",
-				"tonalRamp": ["oklch(15% 0.01 155)", "oklch(26% 0.01 155)", "oklch(37% 0.01 155)", "oklch(48% 0.01 155)", "oklch(59% 0.01 155)", "oklch(70% 0.01 155)", "oklch(81% 0.01 155)", "oklch(92% 0.01 155)"]
+				"tonalRamp": [
+					"oklch(15% 0.01 155)",
+					"oklch(26% 0.01 155)",
+					"oklch(37% 0.01 155)",
+					"oklch(48% 0.01 155)",
+					"oklch(59% 0.01 155)",
+					"oklch(70% 0.01 155)",
+					"oklch(81% 0.01 155)",
+					"oklch(92% 0.01 155)"
+				]
 			},
 			"tally-good": {
 				"role": "status",
 				"displayName": "Tally Good",
 				"canonical": "oklch(52% 0.11 145)",
 				"note": "Accuracy ≥80%, fresh roadmap steps, correct tallies. Deliberately not a brand green.",
-				"tonalRamp": ["oklch(15% 0.11 145)", "oklch(26% 0.11 145)", "oklch(37% 0.11 145)", "oklch(48% 0.11 145)", "oklch(59% 0.11 145)", "oklch(70% 0.11 145)", "oklch(81% 0.11 145)", "oklch(92% 0.11 145)"]
+				"tonalRamp": [
+					"oklch(15% 0.11 145)",
+					"oklch(26% 0.11 145)",
+					"oklch(37% 0.11 145)",
+					"oklch(48% 0.11 145)",
+					"oklch(59% 0.11 145)",
+					"oklch(70% 0.11 145)",
+					"oklch(81% 0.11 145)",
+					"oklch(92% 0.11 145)"
+				]
 			},
 			"tally-warn": {
 				"role": "status",
 				"displayName": "Tally Warn",
 				"canonical": "oklch(48% 0.10 80)",
 				"note": "Accuracy 50–79%, stale roadmap steps.",
-				"tonalRamp": ["oklch(15% 0.10 80)", "oklch(26% 0.10 80)", "oklch(37% 0.10 80)", "oklch(48% 0.10 80)", "oklch(59% 0.10 80)", "oklch(70% 0.10 80)", "oklch(81% 0.10 80)", "oklch(92% 0.10 80)"]
+				"tonalRamp": [
+					"oklch(15% 0.10 80)",
+					"oklch(26% 0.10 80)",
+					"oklch(37% 0.10 80)",
+					"oklch(48% 0.10 80)",
+					"oklch(59% 0.10 80)",
+					"oklch(70% 0.10 80)",
+					"oklch(81% 0.10 80)",
+					"oklch(92% 0.10 80)"
+				]
 			},
 			"tally-bad": {
 				"role": "status",
 				"displayName": "Tally Bad",
 				"canonical": "oklch(53% 0.16 25)",
 				"note": "Accuracy <50%, wrong tallies, wrong-answer feedback.",
-				"tonalRamp": ["oklch(15% 0.16 25)", "oklch(26% 0.16 25)", "oklch(37% 0.16 25)", "oklch(48% 0.16 25)", "oklch(59% 0.16 25)", "oklch(70% 0.16 25)", "oklch(81% 0.16 25)", "oklch(92% 0.16 25)"]
+				"tonalRamp": [
+					"oklch(15% 0.16 25)",
+					"oklch(26% 0.16 25)",
+					"oklch(37% 0.16 25)",
+					"oklch(48% 0.16 25)",
+					"oklch(59% 0.16 25)",
+					"oklch(70% 0.16 25)",
+					"oklch(81% 0.16 25)",
+					"oklch(92% 0.16 25)"
+				]
 			},
-			"feedback-correct-bg": { "role": "feedback", "displayName": "Correct Ground", "canonical": "#edf7ee", "note": "Pastel ground for an exact answer; border and text reuse Tally Good." },
-			"feedback-wrong-bg": { "role": "feedback", "displayName": "Wrong Ground", "canonical": "#fdf0f0", "note": "Pastel ground for a wrong answer; text struck through in Tally Bad." },
-			"feedback-fuzzy-bg": { "role": "feedback", "displayName": "Fuzzy Ground", "canonical": "#eef5df", "note": "Olive-tinted rather than green, so \"almost right\" is visibly neither correct nor brand." },
-			"feedback-fuzzy-ink": { "role": "feedback", "displayName": "Fuzzy Ink", "canonical": "#5a7030", "note": "Text on the fuzzy ground." },
-			"feedback-fuzzy-user-bg": { "role": "feedback", "displayName": "Fuzzy Echo Ground", "canonical": "#f5f5e8", "note": "Ground for echoing back what the user actually typed on a tolerated near-miss." },
-			"feedback-fuzzy-user-ink": { "role": "feedback", "displayName": "Fuzzy Echo Ink", "canonical": "#726c3c", "note": "Text on the fuzzy echo ground." }
+			"feedback-correct-bg": {
+				"role": "feedback",
+				"displayName": "Correct Ground",
+				"canonical": "#edf7ee",
+				"note": "Pastel ground for an exact answer; border and text reuse Tally Good."
+			},
+			"feedback-wrong-bg": {
+				"role": "feedback",
+				"displayName": "Wrong Ground",
+				"canonical": "#fdf0f0",
+				"note": "Pastel ground for a wrong answer; text struck through in Tally Bad."
+			},
+			"feedback-fuzzy-bg": {
+				"role": "feedback",
+				"displayName": "Fuzzy Ground",
+				"canonical": "#eef5df",
+				"note": "Olive-tinted rather than green, so \"almost right\" is visibly neither correct nor brand."
+			},
+			"feedback-fuzzy-ink": {
+				"role": "feedback",
+				"displayName": "Fuzzy Ink",
+				"canonical": "#5a7030",
+				"note": "Text on the fuzzy ground."
+			},
+			"feedback-fuzzy-user-bg": {
+				"role": "feedback",
+				"displayName": "Fuzzy Echo Ground",
+				"canonical": "#f5f5e8",
+				"note": "Ground for echoing back what the user actually typed on a tolerated near-miss."
+			},
+			"feedback-fuzzy-user-ink": {
+				"role": "feedback",
+				"displayName": "Fuzzy Echo Ink",
+				"canonical": "#726c3c",
+				"note": "Text on the fuzzy echo ground."
+			}
 		},
 		"typographyMeta": {
-			"display": { "displayName": "Display", "purpose": "Page titles in full-page prose views. Lora 500, set in Signal Teal." },
-			"headline": { "displayName": "Headline", "purpose": "Section headings. Lora 500 in prose views, 600 at 1.15em in reading-tips panels." },
-			"title": { "displayName": "Title", "purpose": "Sub-headings, panel names, term-card terms. Lora 600." },
-			"body": { "displayName": "Body", "purpose": "Running prose, table cells, quiz choices. Measure capped at 640px (panels, About) or 800px (Home)." },
-			"label": { "displayName": "Label", "purpose": "Uppercase micro-register: sheet section headers, stats table headings, quiz-shell tabs, badges. Makes the interface read as apparatus rather than content." },
-			"glyph": { "displayName": "Glyph", "purpose": "The foreign-script specimen in sheet cells. Exposed as --glyph so cells scale relative to it." },
-			"prompt": { "displayName": "Prompt", "purpose": "The single character or toponym under test in the quiz. The largest type in the system." }
+			"display": {
+				"displayName": "Display",
+				"purpose": "Page titles in full-page prose views. Lora 500, set in Signal Teal."
+			},
+			"headline": {
+				"displayName": "Headline",
+				"purpose": "Section headings. Lora 500 in prose views, 600 at 1.15em in reading-tips panels. Also the native specimen in script cards. Sub-headings are body-sized instead — there is no Title step."
+			},
+			"body": {
+				"displayName": "Body",
+				"purpose": "Running prose, table cells, quiz choices. 1rem, capped at --measure-prose (36rem / 576px) on every prose page. --fs-body (14px) is the inherited base, not body copy."
+			},
+			"label": {
+				"displayName": "Label",
+				"purpose": "Uppercase micro-register: sheet section headers, stats table headings, quiz-shell tabs, badges. Makes the interface read as apparatus rather than content."
+			},
+			"glyph": {
+				"displayName": "Glyph",
+				"purpose": "The foreign-script specimen in sheet cells. Exposed as --glyph so cells scale relative to it."
+			},
+			"prompt": {
+				"displayName": "Prompt",
+				"purpose": "The single character or toponym under test in the quiz. The largest type in the system."
+			}
 		},
 		"shadows": [],
 		"motion": [
-			{ "name": "state", "value": "0.15s", "purpose": "Every interactive state change in the system — hover, active, focus, colour and border shifts. Browser-default easing; no custom curve exists." },
-			{ "name": "sidebar", "value": "0.2s ease", "purpose": "Sidebar collapse/expand width animation." },
-			{ "name": "progress", "value": "0.25s ease", "purpose": "Quiz progress-bar fill width. The only motion that reports data rather than state." }
+			{
+				"name": "state",
+				"value": "0.15s",
+				"purpose": "Every interactive state change in the system — hover, active, focus, colour and border shifts. Browser-default easing; no custom curve exists."
+			},
+			{
+				"name": "sidebar",
+				"value": "0.2s ease",
+				"purpose": "Sidebar collapse/expand width animation."
+			},
+			{
+				"name": "progress",
+				"value": "0.25s ease",
+				"purpose": "Quiz progress-bar fill width. The only motion that reports data rather than state."
+			}
 		],
 		"breakpoints": [
-			{ "name": "stack", "value": "768px", "purpose": "The system's only media query: the two script panels go from a 1fr 1fr grid to stacked rows. Everything else scales fluidly through clamp()." }
+			{
+				"name": "stack",
+				"value": "768px",
+				"purpose": "The system's only media query: the two script panels go from a 1fr 1fr grid to stacked rows. Everything else scales fluidly through clamp()."
+			}
 		]
 	},
 	"components": [
@@ -194,6 +397,14 @@
 			"description": "Marks which languages a Cyrillic letter or rule applies to. Colours come from D3 Category 20 assigned by a fixed code order, with text colour chosen per-badge by luminance. Codes are BCP-47 so the same values double as lang attributes for OpenType locl substitutions.",
 			"html": "<span class=\"ds-langs\"><span class=\"ds-lang\" style=\"background:#1f77b4;color:#fff\" title=\"Russian\">RU</span><span class=\"ds-lang\" style=\"background:#aec7e8;color:#222\" title=\"Ukrainian\">UK</span><span class=\"ds-lang\" style=\"background:#ff7f0e;color:#fff\" title=\"Belarusian\">BE</span></span>",
 			"css": ".ds-langs { display: inline-flex; gap: 2px; vertical-align: middle; font-size: 20px; } .ds-lang { font-family: 'Noto Sans', system-ui, sans-serif; font-size: 0.6em; font-weight: 700; letter-spacing: 0.04em; border-radius: var(--radius-sm, 2px); padding: 0 3px; line-height: 1.5; cursor: help; }"
+		},
+		{
+			"name": "Script Card",
+			"kind": "card",
+			"refersTo": "script-card",
+			"description": "The Home index entry for one script. Three levels only, and state carried by surface and ink rather than by dimming text.",
+			"html": "<a class=\"ds-script-card\" href=\"#\">\n  <header class=\"ds-script-card-head\">\n    <span class=\"ds-script-card-name\">Thai</span>\n    <span class=\"ds-script-card-native\">อักษรไทย</span>\n  </header>\n  <span class=\"ds-script-card-detail\">Abugida — 44 consonants and 20+ vowel forms around them</span>\n  <footer class=\"ds-script-card-foot\"><span class=\"ds-script-card-where\">Thailand</span></footer>\n</a>",
+			"css": ".ds-script-card { display: flex; flex-direction: column; gap: var(--sp-8); padding: var(--sp-12) var(--sp-16) var(--sp-16); border-radius: var(--radius); background: var(--c-cell); text-decoration: none; color: inherit; transition: background 0.15s, color 0.15s; } .ds-script-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-8); padding-bottom: var(--sp-8); border-bottom: var(--hairline); } .ds-script-card-name { font-family: var(--serif); font-size: var(--fs-prose); font-weight: 600; color: var(--c-accent); } .ds-script-card-native { font-size: var(--fs-headline); color: var(--c-head); } .ds-script-card-detail { font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card-foot { margin-top: auto; padding-top: var(--sp-8); font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card:hover { background: var(--c-alt); } .ds-script-card:hover .ds-script-card-name { color: var(--c-sign); } .ds-script-card:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }"
 		}
 	],
 	"narrative": {
@@ -208,18 +419,71 @@
 			"Print-plausible: a sheet should survive being printed on A5 and still function"
 		],
 		"rules": [
-			{ "name": "The Plate Rule", "body": "White-on-Highway-Green is reserved for surfaces that genuinely behave like a plate: sheet section headers, the active tab, the active nav item. It is the roadsign nod, and it works because it is rationed — a handful per screen. Applied to anything that is merely selected, prominent, or in need of attention, the nod becomes a costume.", "section": "colors" },
-			{ "name": "The Neutral Ink Rule", "body": "All three ink tones carry a faint green cast (#242b26, #3e4842, #67716b) rather than being true greys. Never substitute a pure neutral; the greens only read as deliberate because the ink quietly agrees with them.", "section": "colors" },
-			{ "name": "The ink trap", "body": "Body Ink and Faded Ink sit almost exactly at Highway Green's luminance, so on a plate they are not merely low-contrast — they are literally invisible (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that reads fine everywhere on paper vanishes the moment it lands on a plate, and both contrast systems agree. Never demote plate text to an ink tone to make it look secondary; use a lighter tone instead.", "section": "colors" },
-			{ "name": "The Butterick Rule", "body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.", "section": "typography" },
-			{ "name": "The Specimen Rule", "body": "The foreign glyph is the only thing allowed to be large. Every other element is set between 10px and 1.6rem. When a new element wants to be big, it is almost always trying to be the specimen — and it isn't.", "section": "typography" },
-			{ "name": "The Weight Split Rule", "body": "Lora runs at 500 in full-page prose and 600 in panels. The larger prose sizes carry more ink per stroke, so they want the lighter weight; the compact panel sizes need the heavier one. Do not homogenise these to a single weight.", "section": "typography" },
-			{ "name": "The Shrinking Scale Rule", "body": "Every scale in this system — type sizes, spacing steps, radii, colours — is under permanent pressure to inflate, because each individual addition looks reasonable in isolation. Treat a smaller palette as the default-correct answer: reach for an existing step before adding one, and when two steps are close enough that nobody could name the difference, they are one step.", "section": "typography" },
-			{ "name": "The Handout Density Rule", "body": "A handout you paid for does not waste the sheet. Before adding padding, ask whether a printed reference sheet would spend that space. Usually it would not. Whitespace here is structural — it separates groups — and is not applied for comfort.", "section": "layout" },
-			{ "name": "The Print Test", "body": "A sheet should be printable on A5 and still work. If a design depends on hover, scroll position, or viewport height to be legible, it has stopped being a handout.", "section": "layout" },
-			{ "name": "The No-Shadow Rule", "body": "Never introduce a shadow, glow, blur or gradient to signal depth, state or importance. If something needs to come forward, give it a hairline, a tonal fill, or a plate — in that order.", "section": "elevation" },
-			{ "name": "The Two Registers Rule", "body": "Chrome and quiz are set differently on purpose. Chrome — sidebar, panel tabs, toolbars, stats filters — is the fixture around the handout: restrained, near-muted, typographic, 10–13px, hairline-bordered, no fills except on hover and active. The quiz is inhabited for an uninterrupted stretch, so its controls are frankly interactive: 14px targets, real buttons with fills, coloured feedback rows, generous 2rem card padding. Both obey the same palette, radii and type families; they differ in how much presence they are allowed. Do not flatten one into the other.", "section": "components" },
-			{ "name": "The Muted Chrome Rule", "body": "Interface controls rest at Faded Ink and step up to Body Ink on hover. A control at full Deep Ink is either active or a bug.", "section": "components" }
+			{
+				"name": "The Plate Rule",
+				"body": "White-on-Highway-Green is reserved for surfaces that genuinely behave like a plate: sheet section headers, the active tab, the active nav item. It is the roadsign nod, and it works because it is rationed — a handful per screen. Applied to anything that is merely selected, prominent, or in need of attention, the nod becomes a costume.",
+				"section": "colors"
+			},
+			{
+				"name": "The Neutral Ink Rule",
+				"body": "All three ink tones carry a faint green cast (#242b26, #3e4842, #67716b) rather than being true greys. Never substitute a pure neutral; the greens only read as deliberate because the ink quietly agrees with them.",
+				"section": "colors"
+			},
+			{
+				"name": "The ink trap",
+				"body": "Body Ink and Faded Ink sit almost exactly at Highway Green's luminance, so on a plate they are not merely low-contrast — they are literally invisible (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that reads fine everywhere on paper vanishes the moment it lands on a plate, and both contrast systems agree. Never demote plate text to an ink tone to make it look secondary; use a lighter tone instead.",
+				"section": "colors"
+			},
+			{
+				"name": "The Butterick Rule",
+				"body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.",
+				"section": "typography"
+			},
+			{
+				"name": "The Specimen Rule",
+				"body": "The foreign glyph is the only thing allowed to be large. Every other element is set between 10px and 1.6rem. When a new element wants to be big, it is almost always trying to be the specimen — and it isn't.",
+				"section": "typography"
+			},
+			{
+				"name": "The Weight Split Rule",
+				"body": "Lora runs at 500 in full-page prose and 600 in panels. The larger prose sizes carry more ink per stroke, so they want the lighter weight; the compact panel sizes need the heavier one. Do not homogenise these to a single weight.",
+				"section": "typography"
+			},
+			{
+				"name": "The Shrinking Scale Rule",
+				"body": "Every scale in this system — type sizes, spacing steps, radii, colours — is under permanent pressure to inflate, because each individual addition looks reasonable in isolation. Treat a smaller palette as the default-correct answer: reach for an existing step before adding one, and when two steps are close enough that nobody could name the difference, they are one step.",
+				"section": "typography"
+			},
+			{
+				"name": "The Handout Density Rule",
+				"body": "A handout you paid for does not waste the sheet. Before adding padding, ask whether a printed reference sheet would spend that space. Usually it would not. Whitespace here is structural — it separates groups — and is not applied for comfort.",
+				"section": "layout"
+			},
+			{
+				"name": "The Print Test",
+				"body": "A sheet should be printable on A5 and still work. If a design depends on hover, scroll position, or viewport height to be legible, it has stopped being a handout.",
+				"section": "layout"
+			},
+			{
+				"name": "The No-Shadow Rule",
+				"body": "Never introduce a shadow, glow, blur or gradient to signal depth, state or importance. If something needs to come forward, give it a hairline, a tonal fill, or a plate — in that order.",
+				"section": "elevation"
+			},
+			{
+				"name": "The De-emphasis Rule",
+				"body": "Something recedes by changing surface or ink, never by dimming text. Drop the greens to Faded Ink, or unmount the surface. Opacity applies to a whole inert element (--o-inert), at one level only — nested opacities multiply, and that is how the script cards once arrived at 1.6:1. The script card is the worked example: live is Cell White with a Signal Teal name, beta is the same card with the greens fallen back to Faded Ink, and unwritten is unmounted and dimmed as one element.",
+				"section": "elevation"
+			},
+			{
+				"name": "The Two Registers Rule",
+				"body": "Chrome and quiz are set differently on purpose. Chrome — sidebar, panel tabs, toolbars, stats filters — is the fixture around the handout: restrained, near-muted, typographic, 10–13px, hairline-bordered, no fills except on hover and active. The quiz is inhabited for an uninterrupted stretch, so its controls are frankly interactive: 14px targets, real buttons with fills, coloured feedback rows, generous 2rem card padding. Both obey the same palette, radii and type families; they differ in how much presence they are allowed. Do not flatten one into the other.",
+				"section": "components"
+			},
+			{
+				"name": "The Muted Chrome Rule",
+				"body": "Interface controls rest at Faded Ink and step up to Body Ink on hover. A control at full Deep Ink is either active or a bug.",
+				"section": "components"
+			}
 		],
 		"dos": [
 			"Do ask \"would a map-shop handout do this?\" before adding space, weight or colour. It answers most layout questions correctly.",

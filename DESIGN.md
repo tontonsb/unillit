@@ -124,6 +124,10 @@ components:
     textColor: "{colors.body-ink}"
     rounded: "{rounded.md}"
     padding: "10px 16px"
+  script-card:
+    backgroundColor: "{colors.cell-white}"
+    rounded: "{rounded.md}"
+    padding: "12px 16px 16px"
   badge-beta:
     backgroundColor: "transparent"
     textColor: "{colors.highway-green}"
@@ -436,24 +440,19 @@ deliberately not tokens — see the ramp note below.
 
 ### Open: the type ramp is extracted, not yet resolved
 
-Nineteen `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
-`html`'s font-size), and no component carrying a literal font-size. Every size the
-codebase had is still here; the consolidation is unfinished.
-
-The ladder is ordered by px so the residue stays visible — pairs nobody could name the
-difference between:
+Sixteen `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
+`html`'s font-size), and no component carrying a literal font-size. The consolidation is
+unfinished: the ladder is ordered by px so the residue stays visible.
 
 | | | Δ |
 |---|---|---|
-| `--fs-micro` 10px | `--fs-10-4` 10.4px | 0.4 |
-| `--fs-11` 11px | `--fs-11-2` 11.2px | 0.2 |
 | `--fs-17` 17px | `--fs-headline` 17.6px | 0.6 |
 | `--fs-headline` 17.6px | `--fs-18` 18px | 0.4 |
 | `--fs-22` 22px | `--fs-22-4` 22.4px | 0.4 |
 
-Every one of those value-named tokens has a single call site. Tokens named by value are
-deliberately ugly: each is a size with no role that some other token does not already
-serve. A token that earns a name gets one.
+Each value-named token has a single call site. Tokens named by value are deliberately
+ugly: each is a size with no role that some other token does not already serve. A token
+that earns a name gets one.
 
 Two standing cautions:
 
@@ -463,8 +462,9 @@ Two standing cautions:
   judgment call about a specific surface.
 
 Resolving it means one pass per register — sheets, panel chrome, menu, quiz — deciding
-which steps that register needs, then writing the surviving ramp here. Prose is done:
-simplifying it retired four tokens.
+which steps that register needs, then writing the surviving ramp here. Prose and the
+script cards are done: between them they retired seven tokens, all by removing levels
+rather than by merging values.
 
 ## Layout
 
@@ -527,11 +527,22 @@ surfaces that are genuinely active). Ruled sheet grids clip their outer edges wi
 negative margins (`margin: 0 -1px -1px 0`) against the section's `overflow: hidden`, so
 a grid reads as internally ruled rather than double-bordered.
 
+The ladder runs backwards too, on the same surfaces: **Cell White on Warm Sheet is
+mounted, Warm Sheet is flush, `transparent` is unmounted.** Something recedes by losing
+its mount, not by gaining a darker surface.
+
 ### Named Rules
 
 **The No-Shadow Rule.** Never introduce a shadow, glow, blur or gradient to signal
 depth, state or importance. If something needs to come forward, give it a hairline, a
 tonal fill, or a plate — in that order.
+
+**The De-emphasis Rule.** Something recedes by changing surface or ink, never by dimming
+text. Drop the greens to Faded Ink, or unmount the surface. Opacity applies to a whole
+inert element (`--o-inert`), at one level only — nested opacities multiply, and that is
+how the script cards once arrived at 1.6:1. The script card is the worked example: live
+is Cell White with a Signal Teal name, beta is the same card with the greens fallen back
+to Faded Ink, and unwritten is unmounted and dimmed as one element.
 
 ## Shapes
 
@@ -583,6 +594,11 @@ inconsistent. See **The Two Registers Rule** below.
   `footer` closes it with a hairline and Faded Ink metadata.
 - **Term cards** (reading-tips `dl > div`): Cell White on a `minmax(170px, 1fr)` grid,
   hairline border, Lora 600 Highway Green `dt` over Faded Ink `dd`.
+- **Script cards** (the Home index): fill, no border. Three levels only — a header row
+  pairing the Latin name (Lora 600 Signal Teal) with the native specimen over a
+  hairline, the description at `--fs-12`, and a footer carrying the countries and the
+  state mark. Hover lifts the ground *and* deepens the name to Highway Green: moving
+  only the ground would drop the name to Lc 57.9.
 - **Roadmap steps:** Cell White, hairline, 160–280px wide, led by a 10px status dot
   that fills Tally Good / Tally Warn / hollow-muted by practice recency.
 - **Internal padding:** `10px` for sheets, `10–14px` for chrome cards, `2rem` for quiz
