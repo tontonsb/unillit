@@ -123,7 +123,7 @@ article {
 	max-width: var(--measure-wide);
 }
 
-article > :is(h1, h2, p) {
+article > :is(h1, h2, p, dl) {
 	max-width: var(--measure-prose);
 	margin-inline: auto;
 }
