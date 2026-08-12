@@ -293,7 +293,7 @@ nav {
 	margin-left: auto;
 	font-size: var(--fs-15);
 	color: var(--c-head);
-	line-height: 1.3;
+	line-height: var(--lh-tight);
 }
 
 .item-abbr {
@@ -378,8 +378,8 @@ nav {
 }
 
 .user-avatar {
-	width: 22px;
-	height: 22px;
+	width: 20px;
+	height: 20px;
 	border-radius: 50%;
 	flex-shrink: 0;
 }
@@ -387,11 +387,6 @@ nav {
 .user-name {
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.collapsed .user-avatar {
-	width: 20px;
-	height: 20px;
 }
 
 .collapsed .user-item {
