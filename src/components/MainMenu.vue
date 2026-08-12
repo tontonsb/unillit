@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 import { useAuth } from '@/composables/useAuth'
 import BetaBadge from '@/components/BetaBadge.vue'
+import BrandMark from '@/components/BrandMark.vue'
 
 const collapsed = ref(true)
 const route = useRoute()
@@ -45,7 +46,7 @@ onBeforeUnmount(() => observer?.disconnect())
 				:class="{ active: route.name === 'home' }"
 				title="Home">
 				<span class="item-label">Home</span>
-				<span class="item-abbr" aria-hidden="true">⌂</span>
+				<BrandMark class="item-abbr" />
 			</RouterLink>
 
 			<div class="nav-divider"></div>
