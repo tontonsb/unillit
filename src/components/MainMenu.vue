@@ -3,10 +3,10 @@ import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { sortedScriptList, scriptStatus } from '@/scripts/scripts'
 import { useAuth } from '@/composables/useAuth'
+import { collapsed } from '@/composables/useMenuPrefs'
 import BetaBadge from '@/components/BetaBadge.vue'
 import BrandMark from '@/components/BrandMark.vue'
 
-const collapsed = ref(true)
 const route = useRoute()
 const { user, loginWithDiscord, logout } = useAuth()
 
