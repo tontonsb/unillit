@@ -18,6 +18,7 @@ export interface ScriptConfig {
 	id: string
 	name: string
 	nativeName: string
+	lang: string // BCP-47 tag
 	abbr?: string     // icon char for collapsed menu; defaults to nativeName[0]
 	meta: string
 	countries?: string
@@ -35,6 +36,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'thai',
 		name: 'Thai',
 		nativeName: 'อักษรไทย',
+		lang: 'th',
 		abbr: 'ภ',
 		meta: 'Abugida — 44 consonants and 20+ vowel forms around them',
 		countries: 'Thailand',
@@ -63,6 +65,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'arabic',
 		name: 'Arabic',
 		nativeName: 'العربية',
+		lang: 'ar',
 		abbr: 'ع',
 		meta: 'Abjad, written right to left; 28 letters with up to 4 forms each',
 		status: 'coming',
@@ -89,6 +92,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'bengali',
 		name: 'Bengali',
 		nativeName: 'বাংলা',
+		lang: 'bn',
 		abbr: 'ব',
 		meta: 'Abugida. 39 consonants and 11 vowel chars',
 		countries: 'Bangladesh, India',
@@ -111,10 +115,11 @@ export const scriptList: ScriptConfig[] = [
 	{
 		id: 'cyrillic',
 		name: 'Cyrillic',
-		nativeName: 'Кириллица',
+		nativeName: 'Кирилица',
+		lang: 'und-Cyrl',
 		abbr: 'Ж',
 		meta: 'Family of alphabets with 23 shared letters + per-lang additions',
-		countries: 'Russia, Ukraine, Belarus, Balkans, Central Asia',
+		countries: 'Balkans, Russia, Ukraine, Belarus, Central Asia',
 		status: 'beta',
 		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
 		infoTabs: [
@@ -137,6 +142,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'greek',
 		name: 'Greek',
 		nativeName: 'Ελληνικά',
+		lang: 'el',
 		abbr: 'Ω',
 		meta: 'Alphabet of 24 letters',
 		countries: 'Greece, Cyprus',
@@ -146,6 +152,7 @@ export const scriptList: ScriptConfig[] = [
 		id: 'lao',
 		name: 'Lao',
 		nativeName: 'ພາສາລາວ',
+		lang: 'lo',
 		meta: 'Abugida. 27 consonants and lots of vowels',
 		countries: 'Laos',
 		status: 'coming',

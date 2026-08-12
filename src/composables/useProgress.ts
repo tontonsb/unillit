@@ -13,6 +13,7 @@ export interface ScriptProgress {
 	id: string
 	name: string
 	nativeName: string
+	lang: string
 	datasets: DatasetProgress[]
 	anyRuns: boolean
 }
@@ -78,6 +79,6 @@ export async function fetchScriptProgress(): Promise<ScriptProgress[]> {
 
 			const anyRuns = datasets.some(d => d.lastRunAt !== null)
 
-			return { id: script.id, name: script.name, nativeName: script.nativeName, datasets, anyRuns }
+			return { id: script.id, name: script.name, nativeName: script.nativeName, lang: script.lang, datasets, anyRuns }
 		})
 }

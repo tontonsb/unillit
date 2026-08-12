@@ -65,7 +65,7 @@ function copyLink() {
 				:tabs="config.infoTabs ?? []"
 				:title="config.name"
 				:title-native="config.nativeName"
-				:title-lang="config.id"
+				:title-lang="config.lang"
 				:tabs-label="`${config.name} sheets`"
 			>
 				<template #header-end>

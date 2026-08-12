@@ -29,6 +29,7 @@ const roadmapScripts = computed(() => roadmaps.map(roadmap => {
 		id: roadmap.scriptId,
 		name: script.name,
 		nativeName: script.nativeName,
+		lang: script.lang,
 		steps: roadmap.steps.map(step => ({
 			id: step.id,
 			label: step.label,
@@ -59,7 +60,7 @@ onMounted(load)
 				<header>
 					<h2>
 						<span class="script-name">{{ script.name }}</span>
-						<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
+						<span class="script-native" :lang="script.lang">{{ script.nativeName }}</span>
 					</h2>
 					<RouterLink :to="`/scripts/${script.id}`" class="practice-link">Practice →</RouterLink>
 				</header>

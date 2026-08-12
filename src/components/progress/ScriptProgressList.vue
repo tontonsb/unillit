@@ -24,7 +24,7 @@ function urgencyClass(lastRunAt: string | null): string {
 			<header>
 				<h2>
 					<span class="script-name">{{ script.name }}</span>
-					<span class="script-native" :lang="script.id">{{ script.nativeName }}</span>
+					<span class="script-native" :lang="script.lang">{{ script.nativeName }}</span>
 				</h2>
 				<RouterLink :to="`/scripts/${script.id}`" class="practice-link">Practice →</RouterLink>
 			</header>

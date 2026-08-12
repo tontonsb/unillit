@@ -60,9 +60,9 @@ onBeforeUnmount(() => observer?.disconnect())
 				:title="scriptStatus(script) === 'beta' ? `${script.name} — beta` : script.name"
 			>
 				<span class="item-label">{{ script.name }}</span>
-				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
+				<span class="item-native" :lang="script.lang">{{ script.nativeName }}</span>
 				<BetaBadge v-if="scriptStatus(script) === 'beta'" />
-				<span class="item-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
+				<span class="item-abbr" :lang="script.lang" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</RouterLink>
 
 			<div class="nav-divider"></div>
@@ -74,8 +74,8 @@ onBeforeUnmount(() => observer?.disconnect())
 				:title="`${script.name} — not published yet`"
 			>
 				<span class="item-label">{{ script.name }}</span>
-				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
-				<span class="item-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
+				<span class="item-native" :lang="script.lang">{{ script.nativeName }}</span>
+				<span class="item-abbr" :lang="script.lang" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</div>
 
 			<div class="nav-divider"></div>
