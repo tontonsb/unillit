@@ -55,15 +55,13 @@ onBeforeUnmount(() => observer?.disconnect())
 				v-for="script in sortedScriptList.filter(s => scriptStatus(s) !== 'coming')"
 				:key="script.id"
 				:to="`/scripts/${script.id}`"
-				class="nav-item"
+				class="nav-item script-item"
 				:class="{ active: route.params.id === script.id, beta: scriptStatus(script) === 'beta' }"
 				:title="scriptStatus(script) === 'beta' ? `${script.name} — beta` : script.name"
 			>
-				<span class="item-label">
-					{{ script.name }}
-					<BetaBadge v-if="scriptStatus(script) === 'beta'" />
-				</span>
+				<span class="item-label">{{ script.name }}</span>
 				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
+				<BetaBadge v-if="scriptStatus(script) === 'beta'" />
 				<span class="item-abbr" :lang="script.id" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</RouterLink>
 
@@ -72,8 +70,8 @@ onBeforeUnmount(() => observer?.disconnect())
 			<div
 				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
-				class="nav-item coming-soon"
-				:title="`${script.name} — coming soon`"
+				class="nav-item script-item coming-soon"
+				:title="`${script.name} — not published yet`"
 			>
 				<span class="item-label">{{ script.name }}</span>
 				<span class="item-native" :lang="script.id">{{ script.nativeName }}</span>
@@ -180,6 +178,7 @@ aside.collapsed {
 	justify-content: center;
 	border-bottom: var(--hairline);
 	color: var(--c-label);
+	font-family: inherit;
 	font-size: var(--fs-18);
 	transition: background 0.15s;
 }
@@ -197,9 +196,12 @@ aside.collapsed {
 	font-style: normal;
 }
 
+/* Fixed to the destination width and deliberately not transitioned: the aside animates
+   its width, and a nav that animated with it would re-wrap every row on every frame. */
 nav {
 	display: flex;
 	flex-direction: column;
+	width: calc(var(--sidebar-width) + var(--scrollbar-width, 0px));
 	padding: var(--sp-8) 0;
 	overflow-y: auto;
 	scrollbar-width: thin;
@@ -207,16 +209,20 @@ nav {
 	min-height: 0;
 }
 
+.collapsed nav {
+	width: calc(var(--sidebar-collapsed-width) + var(--scrollbar-width, 0px));
+}
+
 .nav-divider {
 	height: 1px;
 	flex-shrink: 0;
 	background: var(--c-border);
-	margin: var(--sp-4) var(--sp-10);
+	margin: var(--sp-4) var(--sp-6);
 }
 
 .nav-item {
 	display: flex;
-	flex-direction: column;
+	align-items: baseline;
 	flex-shrink: 0;
 	padding: var(--sp-8) var(--sp-10);
 	margin-block: 1px;
@@ -225,7 +231,11 @@ nav {
 	text-decoration: none;
 	color: var(--c-label);
 	transition: background 0.15s, color 0.15s;
-	gap: var(--sp-2);
+
+	/* name and specimen share a baseline; only the beta badge ever needs the second
+	   line, and it lands where the index card puts it */
+	flex-wrap: wrap;
+	gap: var(--sp-4) var(--sp-8);
 	overflow: hidden;
 }
 
@@ -233,29 +243,23 @@ nav {
 	background: var(--c-alt);
 }
 
+/* the plate bleeds to the sidebar edge, so the margin it drops is added back as padding
+   — otherwise selecting a row shifts its own text 6px left */
 .nav-item.active {
 	background: var(--c-sign);
 	color: var(--c-on-sign);
 	margin-left: 0;
+	padding-left: calc(var(--sp-10) + var(--sp-6));
 	border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .nav-item.coming-soon {
-	opacity: 0.4;
+	opacity: var(--o-inert);
 	cursor: default;
 }
 
 .nav-item.coming-soon:hover {
 	background: none;
-}
-
-.nav-item.beta {
-	opacity: 0.75;
-}
-
-.nav-item.beta:hover,
-.nav-item.beta.active {
-	opacity: 1;
 }
 
 .collapsed .beta-badge {
@@ -277,9 +281,18 @@ nav {
 	font-weight: 600;
 }
 
+/* A script is named the way the index cards and the panel header name it: editorial
+   face, brand green, specimen set opposite on the same baseline. The utility rows stay
+   sans and inked, so the column says which five items are apparatus. */
+.script-item .item-label {
+	font-family: var(--serif);
+	color: var(--c-accent);
+}
+
 .item-native {
+	margin-left: auto;
 	font-size: var(--fs-15);
-	color: var(--c-sign);
+	color: var(--c-head);
 	line-height: 1.3;
 }
 
@@ -299,13 +312,30 @@ nav {
 	display: block;
 }
 
-.nav-item.active .item-native,
-.nav-item.active .item-abbr {
+/* the ground lifts and the name deepens together, so it holds its contrast through the
+   change instead of fading into the hover fill */
+.script-item:hover .item-label {
+	color: var(--c-sign);
+}
+
+/* Beta only loses its greens; unwritten also loses the specimen and dims as one row.
+   Both stay below the hover rule, so a beta name is inert on hover as on the card, and
+   above the active rule — Faded Ink on the plate is invisible. */
+.script-item:is(.beta, .coming-soon) :is(.item-label, .item-abbr) {
+	color: var(--c-muted);
+}
+
+.coming-soon .item-native {
+	color: var(--c-muted);
+}
+
+.nav-item.active :is(.item-label, .item-native, .item-abbr) {
 	color: var(--c-on-sign);
 }
 
 .collapsed .nav-item {
 	align-items: center;
+	justify-content: center;
 	padding: var(--sp-8) 0;
 	margin-inline: var(--sp-4);
 }
@@ -330,7 +360,7 @@ nav {
 	display: block;
 	height: 1px;
 	background: var(--c-border);
-	margin: var(--sp-4) var(--sp-10);
+	margin: var(--sp-4) var(--sp-6);
 }
 
 .nav-btn {

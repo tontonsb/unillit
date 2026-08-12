@@ -130,6 +130,7 @@ h1 {
 
 .panel-native {
 	font-size: var(--fs-15);
+	font-weight: 400;
 	color: var(--c-sign);
 }
 

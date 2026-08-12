@@ -48,7 +48,7 @@
 	/* Whole elements only, never text hierarchy — that is a colour or surface change.
 	   One level: opacities must not nest, or they multiply. The other opacities in the
 	   codebase are unreviewed and stay literal until their own pass. */
-	--o-inert: 0.8; /* content that exists but is not available yet */
+	--o-inert: 0.75; /* content that exists but is not available yet */
 
 	/**
 	  * Ink is near-neutral (faint green cast); the greens carry the brand:
