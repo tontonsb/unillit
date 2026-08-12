@@ -105,6 +105,8 @@ onBeforeUnmount(() => observer?.disconnect())
 			</RouterLink>
 
 			<div class="user-section">
+				<div class="nav-divider"></div>
+
 				<template v-if="!user">
 					<button
 						class="nav-item nav-btn"
@@ -214,10 +216,9 @@ nav {
 }
 
 .nav-divider {
-	height: 1px;
 	flex-shrink: 0;
-	background: var(--c-border);
-	margin: var(--sp-4) var(--sp-6);
+	border-top: var(--hairline);
+	margin: var(--sp-4) var(--sp-10);
 }
 
 .nav-item {
@@ -353,14 +354,6 @@ nav {
 
 .push-end {
 	margin-top: auto;
-}
-
-.user-section::before {
-	content: '';
-	display: block;
-	height: 1px;
-	background: var(--c-border);
-	margin: var(--sp-4) var(--sp-6);
 }
 
 .nav-btn {
