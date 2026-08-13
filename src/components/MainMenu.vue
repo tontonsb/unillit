@@ -298,14 +298,15 @@ nav {
 	margin-left: auto;
 	font-size: calc(1em * var(--label-scale, 1));
 	color: var(--c-head);
-	line-height: var(--lh-tight);
+	/* line height in px so the native font can be scaled optically without scaling the line */
+	line-height: calc(var(--fs-chrome) * var(--lh-tight));
 }
 
 .item-abbr {
 	display: none;
-	font-size: var(--fs-headline);
+	font-size: calc(var(--fs-headline) * var(--label-scale, 1));
 	color: var(--c-sign);
-	line-height: 1;
+	line-height: var(--fs-headline);
 }
 
 .collapsed .item-label,
@@ -365,7 +366,8 @@ nav {
 	background: none;
 	cursor: pointer;
 	text-align: left;
-	font: inherit;
+	font-family: inherit;
+	line-height: inherit;
 }
 
 .user-item {
