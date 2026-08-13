@@ -231,7 +231,6 @@ nav {
 	align-items: baseline;
 	flex-shrink: 0;
 	padding: var(--sp-8) var(--sp-10);
-	margin-block: 1px;
 	margin-inline: var(--sp-6);
 	border-radius: var(--radius);
 	text-decoration: none;
