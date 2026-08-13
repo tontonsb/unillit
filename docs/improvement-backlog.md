@@ -134,8 +134,8 @@ See §"Omissions" below for why these are system gaps rather than discipline fai
 - [ ] **De-emphasis outside the cards still dims text.** The rule is settled and
   written into DESIGN.md — recede by changing surface or ink, never by dimming text;
   opacity applies to a whole inert element at one level only. The script cards follow
-  it. Still to convert: the sidebar's `coming-soon` (0.4) and `beta` (0.75) nav items,
-  and `pill-locked` (0.4). Four states exist and are not interchangeable ✅ (author) —
+  it, and so do the sidebar's nav items. Still to convert: `pill-locked` (0.4).
+  Four states exist and are not interchangeable ✅ (author) —
   "not written yet" and "written, works, deliberately quiet" carry different messages,
   and beta content is genuinely available to anyone interested enough.
 
@@ -153,10 +153,10 @@ See §"Omissions" below for why these are system gaps rather than discipline fai
   Category 20 values for `LangBadge` and 8 taxonomy tags / 24 hexes for `CharBadge`.
   Both reached outside the system; one grabbed Tailwind's defaults. **Biggest single
   gap.**
-- [ ] **One "unavailable" semantic, still several values.** `--o-inert` (0.8) covers the
-  script cards; `pill-locked` 0.4, nav `coming-soon` 0.4 and nav `beta` 0.75 are
-  unreviewed and stay literal until their own pass. Button hover dimming (0.85 ×6) is a
-  different semantic and consistent already.
+- [ ] **One "unavailable" semantic, still several values.** `--o-inert` (0.75) covers the
+  script cards and the nav items; `pill-locked` 0.4 is unreviewed and stays literal until
+  its own pass. Button hover dimming (0.85 ×6) is a different semantic and consistent
+  already.
 - [ ] **Motion has durations but no easing** — three durations, zero easing tokens,
   everything on browser-default `ease`. *Honest value: low.* The 0.15s transitions are
   colour and border, where easing is perceptually irrelevant; only two places have

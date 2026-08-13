@@ -78,6 +78,8 @@ Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. Key fields:
   id: 'foo',          // used in route and stats
   name: 'Foo',
   nativeName: 'ፉ',
+  lang: 'am',         // required. BCP-47 tag for nativeName — not the id
+  labelScale: 1.15,   // optional. nativeName's optical size against a Latin label
   abbr: 'ፉ',          // single char for collapsed menu; defaults to nativeName[0]
   meta: 'Alphabet · left → right · N letters',
   countries: 'Country A · Country B',

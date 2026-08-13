@@ -43,6 +43,10 @@ typography:
     fontSize: "10px"
     fontWeight: 600
     letterSpacing: "0.07em"
+  letterform:
+    fontFamily: "Lora, 'Noto Serif', Georgia, serif"
+    fontSize: "1.4rem"
+    fontWeight: 400
   glyph:
     fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
     fontSize: "clamp(24px, 1.56vw, 30px)"
@@ -388,6 +392,10 @@ publications.
 - **Label** (Noto Sans 600–700, 10–11px, `--tracking-caps`, uppercase): sheet section
   headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
   the interface read as apparatus rather than content.
+- **Letterform** (`--fs-letterform`, 22.4px): a single character set inline, large enough
+  to read its detail — the reading-tips letterform tables, the stats prompt cell. Sits
+  between Headline and Display, and is the only step in that gap. Value unsettled;
+  experiment in 1.3–1.4rem as more uses arrive.
 - **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
   exposed as `--glyph` so cells can scale relative to it.
 - **Prompt** (script font, 4rem): the single character or toponym under test.
@@ -440,21 +448,28 @@ steps) cannot express that. The px in each token's comment is the real intent; t
 is how it is spelled. Sizes that scale with their container stay in `em` and are
 deliberately not tokens — see the ramp note below.
 
+### Native names scale per script
+
+A script's own name sits beside its Latin one on the index card, the sidebar row and the
+panel header. Latin-metric scripts (Cyrillic, Greek) read correctly at the Latin name's
+size; Thai, Arabic, Bengali and Lao render visibly smaller and lose the detail a learner
+is being taught to recognise.
+
+So the native name is a **ratio, not a step** — `calc(1em * var(--label-scale, 1))` off a
+base each surface sets for itself, with `labelScale` a per-script field in `ScriptConfig`.
+It is an optical correction, so per-script microadjustment is the point and the Shrinking
+Scale Rule does not apply.
+
+It corrects rendering, not layout: the row keeps its height whatever the glyph does.
+
 ### Open: the type ramp is extracted, not yet resolved
 
-Sixteen `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
-`html`'s font-size), and no component carrying a literal font-size. The consolidation is
-unfinished: the ladder is ordered by px so the residue stays visible.
+Eleven `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
+`html`'s font-size), and no component carrying a literal font-size. Two value-named
+tokens remain — `--fs-11` and `--fs-12` — and no two steps now sit under 1px apart.
 
-| | | Δ |
-|---|---|---|
-| `--fs-17` 17px | `--fs-headline` 17.6px | 0.6 |
-| `--fs-headline` 17.6px | `--fs-18` 18px | 0.4 |
-| `--fs-22` 22px | `--fs-22-4` 22.4px | 0.4 |
-
-Each value-named token has a single call site. Tokens named by value are deliberately
-ugly: each is a size with no role that some other token does not already serve. A token
-that earns a name gets one.
+Tokens named by value are deliberately ugly: each is a size with no role that some other
+token does not already serve. A token that earns a name gets one.
 
 Two standing cautions:
 
@@ -464,8 +479,8 @@ Two standing cautions:
   judgment call about a specific surface.
 
 Resolving it means one pass per register — sheets, panel chrome, menu, quiz — deciding
-which steps that register needs, then writing the surviving ramp here. Prose and the
-script cards are done: between them they retired seven tokens, all by removing levels
+which steps that register needs, then writing the surviving ramp here. Prose, the script
+cards and the menu are done: between them they retired ten tokens, all by removing levels
 rather than by merging values.
 
 ## Layout
@@ -614,12 +629,15 @@ inconsistent. See **The Two Registers Rule** below.
   browser must never help transliterate.
 
 ### Navigation
-- **Sidebar:** Cell White with a Mint Rule right border. Items are two-line — 13px 600
-  Latin name over the 15px native script name in Highway Green — and collapse to a
-  single 17px abbreviation glyph in the 40px rail. Hover fills Mint Wash; active becomes
-  the left-bled Highway Green plate with everything reversed to white. Beta scripts sit
-  at `opacity: 0.75` and come to full opacity on hover or when active; coming-soon
-  scripts sit at `0.4` and are inert `<div>`s rather than links.
+- **Sidebar:** Cell White with a Mint Rule right border. A script row pairs its name
+  (Lora 600, Signal Teal) with the native specimen (Deep Ink) on one baseline, specimen
+  set right, as the index card does; utility rows stay Noto Sans in Body Ink, so the
+  column separates content from apparatus. Rows collapse to a single Headline-sized
+  glyph in the 40px rail, Home to the brand mark. Hover fills Mint Wash and deepens the
+  name to Highway Green; active is the left-bled Highway Green plate with everything
+  reversed to white. Beta drops the name and rail glyph to Faded Ink and keeps its badge;
+  coming-soon carries that into the specimen, takes `--o-inert` as one row, and is an
+  inert `<div>`.
 - **Panel tabs:** 12px, `4px 10px`, 2px radius, Faded Ink; hover tints Mint Wash; active
   is the Highway Green plate. The tab strip scrolls horizontally with hidden scrollbars
   and a `mask-image` fade at the right edge that signals more tabs without spending a

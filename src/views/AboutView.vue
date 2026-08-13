@@ -34,6 +34,15 @@ const version = __APP_VERSION__
 		</Markdown>
 
 		<dl class="changelog">
+			<dt>1.0.4</dt>
+			<dd>
+				More design work, I must iron the mess into something standardized before adding more sheets...
+				<ul>
+					<li>Improved design consistency</li>
+					<li>Menu redesign, index redesign</li>
+				</ul>
+			</dd>
+
 			<dt>1.0.2</dt>
 			<dd>
 				This is a large under-the-hood update that should have very few noticable effects.

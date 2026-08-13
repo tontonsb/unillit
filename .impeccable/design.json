@@ -1,518 +1,522 @@
 {
-	"schemaVersion": 2,
-	"generatedAt": "2026-08-11T02:08:23.351Z",
-	"title": "Design System: Unillit",
-	"extensions": {
-		"colorMeta": {
-			"signal-teal": {
-				"role": "primary",
-				"displayName": "Signal Teal",
-				"canonical": "oklch(56% 0.11 165)",
-				"note": "The mischief. 3.89:1 / Lc +64.2 on Warm Sheet — APCA large/secondary band, which is the role it holds. White on Signal Teal is Lc −72.8 and fine despite a 4.1:1 WCAG \"fail\"; black passes WCAG and is unreadable (Lc +36.8). Read APCA first.",
-				"tonalRamp": [
-					"oklch(15% 0.11 165)",
-					"oklch(26% 0.11 165)",
-					"oklch(37% 0.11 165)",
-					"oklch(48% 0.11 165)",
-					"oklch(59% 0.11 165)",
-					"oklch(70% 0.11 165)",
-					"oklch(81% 0.11 165)",
-					"oklch(92% 0.11 165)"
-				]
-			},
-			"highway-green": {
-				"role": "primary",
-				"displayName": "Highway Green",
-				"canonical": "oklch(41% 0.09 163)",
-				"note": "The only green trusted with text. 6.6:1 on Warm Sheet, 6.9:1 reversed under white.",
-				"tonalRamp": [
-					"oklch(15% 0.09 163)",
-					"oklch(26% 0.09 163)",
-					"oklch(37% 0.09 163)",
-					"oklch(48% 0.09 163)",
-					"oklch(59% 0.09 163)",
-					"oklch(70% 0.09 163)",
-					"oklch(81% 0.09 163)",
-					"oklch(92% 0.09 163)"
-				]
-			},
-			"mint-wash": {
-				"role": "tertiary",
-				"displayName": "Mint Wash",
-				"canonical": "oklch(95% 0.02 165)",
-				"note": "The tint. Zebra striping, row bands, hover fills, code backgrounds, selection. Below the perceptual threshold on paper (Lc 0.0) — correct, it bands rows rather than carrying meaning.",
-				"tonalRamp": [
-					"oklch(15% 0.02 165)",
-					"oklch(26% 0.02 165)",
-					"oklch(37% 0.02 165)",
-					"oklch(48% 0.02 165)",
-					"oklch(59% 0.02 165)",
-					"oklch(70% 0.02 165)",
-					"oklch(81% 0.02 165)",
-					"oklch(92% 0.02 165)"
-				]
-			},
-			"mint-rule": {
-				"role": "tertiary",
-				"displayName": "Mint Rule",
-				"canonical": "oklch(87% 0.035 155)",
-				"note": "The hairline. In a system with no shadows, this is the entire vocabulary of separation. Lc ~20 on paper: fine as a sheet rule, the honest weak point for interactive boundaries where WCAG 1.4.11's 3:1 applies.",
-				"tonalRamp": [
-					"oklch(15% 0.035 155)",
-					"oklch(26% 0.035 155)",
-					"oklch(37% 0.035 155)",
-					"oklch(48% 0.035 155)",
-					"oklch(59% 0.035 155)",
-					"oklch(70% 0.035 155)",
-					"oklch(81% 0.035 155)",
-					"oklch(92% 0.035 155)"
-				]
-			},
-			"warm-sheet": {
-				"role": "neutral",
-				"displayName": "Warm Sheet",
-				"canonical": "oklch(98% 0.003 100)",
-				"note": "The page. Slightly warm, so white cells read as paper laid on paper.",
-				"tonalRamp": [
-					"oklch(15% 0.003 100)",
-					"oklch(26% 0.003 100)",
-					"oklch(37% 0.003 100)",
-					"oklch(48% 0.003 100)",
-					"oklch(59% 0.003 100)",
-					"oklch(70% 0.003 100)",
-					"oklch(81% 0.003 100)",
-					"oklch(92% 0.003 100)"
-				]
-			},
-			"cell-white": {
-				"role": "neutral",
-				"displayName": "Cell White",
-				"canonical": "oklch(100% 0 0)",
-				"note": "The specimen ground. The colour of \"something is mounted here\".",
-				"tonalRamp": [
-					"oklch(15% 0 0)",
-					"oklch(26% 0 0)",
-					"oklch(37% 0 0)",
-					"oklch(48% 0 0)",
-					"oklch(59% 0 0)",
-					"oklch(70% 0 0)",
-					"oklch(81% 0 0)",
-					"oklch(92% 0 0)"
-				]
-			},
-			"plate-ink": {
-				"role": "neutral",
-				"displayName": "Plate Ink",
-				"canonical": "oklch(100% 0 0)",
-				"note": "The same white as Cell White, but reversed onto a plate rather than laid under content. Its own token because the two move independently — DESIGN.md keeps an open question about setting plates in Warm Sheet instead.",
-				"tonalRamp": [
-					"oklch(15% 0 0)",
-					"oklch(26% 0 0)",
-					"oklch(37% 0 0)",
-					"oklch(48% 0 0)",
-					"oklch(59% 0 0)",
-					"oklch(70% 0 0)",
-					"oklch(81% 0 0)",
-					"oklch(92% 0 0)"
-				]
-			},
-			"plate-rule": {
-				"role": "neutral",
-				"displayName": "Plate Rule",
-				"canonical": "oklch(100% 0 0 / 0.6)",
-				"note": "The hairline reversed on a plate, for controls sitting inside one (the beta badge on an active nav item, the Thai consonant picker). Mint Rule is invisible on Highway Green; this is its counterpart.",
-				"tonalRamp": [
-					"oklch(15% 0 0)",
-					"oklch(26% 0 0)",
-					"oklch(37% 0 0)",
-					"oklch(48% 0 0)",
-					"oklch(59% 0 0)",
-					"oklch(70% 0 0)",
-					"oklch(81% 0 0)",
-					"oklch(92% 0 0)"
-				]
-			},
-			"deep-ink": {
-				"role": "neutral",
-				"displayName": "Deep Ink",
-				"canonical": "oklch(25% 0.01 155)",
-				"note": "Glyphs, specimens, sheet headings, emphasised values. 13.9:1 / Lc +98.2 on paper. Non-text only on a plate (Lc +15.9).",
-				"tonalRamp": [
-					"oklch(15% 0.01 155)",
-					"oklch(26% 0.01 155)",
-					"oklch(37% 0.01 155)",
-					"oklch(48% 0.01 155)",
-					"oklch(59% 0.01 155)",
-					"oklch(70% 0.01 155)",
-					"oklch(81% 0.01 155)",
-					"oklch(92% 0.01 155)"
-				]
-			},
-			"body-ink": {
-				"role": "neutral",
-				"displayName": "Body Ink",
-				"canonical": "oklch(36% 0.012 155)",
-				"note": "Running prose, table cells, nav labels. 9.1:1 / Lc +88.9 on paper. Invisible on a Highway Green plate (Lc 0.0).",
-				"tonalRamp": [
-					"oklch(15% 0.012 155)",
-					"oklch(26% 0.012 155)",
-					"oklch(37% 0.012 155)",
-					"oklch(48% 0.012 155)",
-					"oklch(59% 0.012 155)",
-					"oklch(70% 0.012 155)",
-					"oklch(81% 0.012 155)",
-					"oklch(92% 0.012 155)"
-				]
-			},
-			"faded-ink": {
-				"role": "neutral",
-				"displayName": "Faded Ink",
-				"canonical": "oklch(53% 0.01 155)",
-				"note": "Metadata, captions, inactive controls, micro-labels. 4.8:1 / Lc +71.9 on paper. Invisible on either plate (Lc 0.0).",
-				"tonalRamp": [
-					"oklch(15% 0.01 155)",
-					"oklch(26% 0.01 155)",
-					"oklch(37% 0.01 155)",
-					"oklch(48% 0.01 155)",
-					"oklch(59% 0.01 155)",
-					"oklch(70% 0.01 155)",
-					"oklch(81% 0.01 155)",
-					"oklch(92% 0.01 155)"
-				]
-			},
-			"tally-good": {
-				"role": "status",
-				"displayName": "Tally Good",
-				"canonical": "oklch(52% 0.11 145)",
-				"note": "Accuracy ≥80%, fresh roadmap steps, correct tallies. Deliberately not a brand green.",
-				"tonalRamp": [
-					"oklch(15% 0.11 145)",
-					"oklch(26% 0.11 145)",
-					"oklch(37% 0.11 145)",
-					"oklch(48% 0.11 145)",
-					"oklch(59% 0.11 145)",
-					"oklch(70% 0.11 145)",
-					"oklch(81% 0.11 145)",
-					"oklch(92% 0.11 145)"
-				]
-			},
-			"tally-warn": {
-				"role": "status",
-				"displayName": "Tally Warn",
-				"canonical": "oklch(48% 0.10 80)",
-				"note": "Accuracy 50–79%, stale roadmap steps.",
-				"tonalRamp": [
-					"oklch(15% 0.10 80)",
-					"oklch(26% 0.10 80)",
-					"oklch(37% 0.10 80)",
-					"oklch(48% 0.10 80)",
-					"oklch(59% 0.10 80)",
-					"oklch(70% 0.10 80)",
-					"oklch(81% 0.10 80)",
-					"oklch(92% 0.10 80)"
-				]
-			},
-			"tally-bad": {
-				"role": "status",
-				"displayName": "Tally Bad",
-				"canonical": "oklch(53% 0.16 25)",
-				"note": "Accuracy <50%, wrong tallies, wrong-answer feedback.",
-				"tonalRamp": [
-					"oklch(15% 0.16 25)",
-					"oklch(26% 0.16 25)",
-					"oklch(37% 0.16 25)",
-					"oklch(48% 0.16 25)",
-					"oklch(59% 0.16 25)",
-					"oklch(70% 0.16 25)",
-					"oklch(81% 0.16 25)",
-					"oklch(92% 0.16 25)"
-				]
-			},
-			"feedback-correct-bg": {
-				"role": "feedback",
-				"displayName": "Correct Ground",
-				"canonical": "#edf7ee",
-				"note": "Pastel ground for an exact answer; border and text reuse Tally Good."
-			},
-			"feedback-wrong-bg": {
-				"role": "feedback",
-				"displayName": "Wrong Ground",
-				"canonical": "#fdf0f0",
-				"note": "Pastel ground for a wrong answer; text struck through in Tally Bad."
-			},
-			"feedback-fuzzy-bg": {
-				"role": "feedback",
-				"displayName": "Fuzzy Ground",
-				"canonical": "#eef5df",
-				"note": "Olive-tinted rather than green, so \"almost right\" is visibly neither correct nor brand."
-			},
-			"feedback-fuzzy-ink": {
-				"role": "feedback",
-				"displayName": "Fuzzy Ink",
-				"canonical": "#5a7030",
-				"note": "Text on the fuzzy ground."
-			},
-			"feedback-fuzzy-user-bg": {
-				"role": "feedback",
-				"displayName": "Fuzzy Echo Ground",
-				"canonical": "#f5f5e8",
-				"note": "Ground for echoing back what the user actually typed on a tolerated near-miss."
-			},
-			"feedback-fuzzy-user-ink": {
-				"role": "feedback",
-				"displayName": "Fuzzy Echo Ink",
-				"canonical": "#726c3c",
-				"note": "Text on the fuzzy echo ground."
-			}
-		},
-		"typographyMeta": {
-			"display": {
-				"displayName": "Display",
-				"purpose": "Page titles in full-page prose views. Lora 500, set in Signal Teal."
-			},
-			"headline": {
-				"displayName": "Headline",
-				"purpose": "Section headings. Lora 500 in prose views, 600 at 1.15em in reading-tips panels. Also the native specimen in script cards. Sub-headings are body-sized instead — there is no Title step."
-			},
-			"body": {
-				"displayName": "Body",
-				"purpose": "Running prose, table cells, quiz choices. 1rem, capped at --measure-prose (36rem / 576px) on every prose page. --fs-body (14px) is the inherited base, not body copy."
-			},
-			"label": {
-				"displayName": "Label",
-				"purpose": "Uppercase micro-register: sheet section headers, stats table headings, quiz-shell tabs, badges. Makes the interface read as apparatus rather than content."
-			},
-			"glyph": {
-				"displayName": "Glyph",
-				"purpose": "The foreign-script specimen in sheet cells. Exposed as --glyph so cells scale relative to it."
-			},
-			"prompt": {
-				"displayName": "Prompt",
-				"purpose": "The single character or toponym under test in the quiz. The largest type in the system."
-			}
-		},
-		"shadows": [],
-		"motion": [
-			{
-				"name": "state",
-				"value": "0.15s",
-				"purpose": "Every interactive state change in the system — hover, active, focus, colour and border shifts. Browser-default easing; no custom curve exists."
-			},
-			{
-				"name": "sidebar",
-				"value": "0.2s ease",
-				"purpose": "Sidebar collapse/expand width animation."
-			},
-			{
-				"name": "progress",
-				"value": "0.25s ease",
-				"purpose": "Quiz progress-bar fill width. The only motion that reports data rather than state."
-			}
-		],
-		"breakpoints": [
-			{
-				"name": "stack",
-				"value": "768px",
-				"purpose": "The system's only media query: the two script panels go from a 1fr 1fr grid to stacked rows. Everything else scales fluidly through clamp()."
-			}
-		]
-	},
-	"components": [
-		{
-			"name": "Sheet Section",
-			"kind": "card",
-			"refersTo": "sheet-section-header",
-			"description": "The signature container: a hairline-bordered section opened by a full-bleed Highway Green plate in white uppercase micro-label type, holding a ruled grid of character cells.",
-			"html": "<section class=\"ds-sheet-section\"><h2>Mid-class consonants</h2><p class=\"ds-sheet-note\">Nine letters. The tone rules key off this class.</p><ol class=\"ds-char-grid ds-ruled\"><li class=\"ds-cell\"><span class=\"ds-glyph\">ก</span><span class=\"ds-rom\">k</span><span class=\"ds-gloss\">chicken</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">จ</span><span class=\"ds-rom\">ch</span><span class=\"ds-gloss\">plate</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">ด</span><span class=\"ds-rom\">d</span><span class=\"ds-gloss\">child</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">ต</span><span class=\"ds-rom\">t</span><span class=\"ds-gloss\">turtle</span></li></ol></section>",
-			"css": ".ds-sheet-section { border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); overflow: hidden; font-size: 13px; } .ds-sheet-section > h2 { background: var(--c-sign, #006747); color: #fff; font-size: 0.8em; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; margin: 0; } .ds-sheet-note { margin: 0; padding: 3px 7px 2px; font-size: 0.75em; color: var(--c-label, #3e4842); border-bottom: 1px solid var(--c-border, #c2dccb); } .ds-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); list-style: none; margin: 0; padding: 0; } .ds-ruled { margin: 0 -1px -1px 0; } .ds-ruled .ds-cell { border-right: 1px solid var(--c-border, #c2dccb); border-bottom: 1px solid var(--c-border, #c2dccb); } .ds-cell { background: #fff; text-align: center; padding: 3px 4px 2px; display: flex; flex-direction: column; align-items: center; } .ds-glyph { font-family: 'Noto Sans Thai', system-ui, sans-serif; font-size: 28px; line-height: 1.15; color: var(--c-head, #242b26); } .ds-rom { font-size: 1em; color: var(--c-sign, #006747); font-weight: 600; } .ds-gloss { font-size: 0.8em; color: var(--c-muted, #67716b); line-height: 1.3; }"
-		},
-		{
-			"name": "Character Cell",
-			"kind": "custom",
-			"refersTo": "cell",
-			"description": "The atom of the product: specimen glyph, romanisation in Highway Green, optional gloss in Faded Ink. Borderless by default; shares hairlines with neighbours in ruled listings.",
-			"html": "<div class=\"ds-cell-solo\"><span class=\"ds-cell-glyph\">Ж</span><span class=\"ds-cell-rom\">zh</span><span class=\"ds-cell-gloss\">beetle</span></div>",
-			"css": ".ds-cell-solo { background: #fff; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); text-align: center; padding: 6px 10px 4px; display: inline-flex; flex-direction: column; align-items: center; font-size: 13px; } .ds-cell-glyph { font-family: 'Noto Serif', Georgia, serif; font-size: 30px; line-height: 1.15; color: var(--c-head, #242b26); } .ds-cell-rom { color: var(--c-sign, #006747); font-weight: 600; } .ds-cell-gloss { font-size: 0.8em; color: var(--c-muted, #67716b); line-height: 1.3; }"
-		},
-		{
-			"name": "Primary Button",
-			"kind": "button",
-			"refersTo": "button-primary",
-			"description": "The single forward action in a view — Check, Next, Play another, Login. Signal Teal ground, no border.",
-			"html": "<button class=\"ds-btn-primary\">Check</button>",
-			"css": ".ds-btn-primary { padding: 8px 20px; border: none; border-radius: var(--radius, 4px); background: var(--c-accent, #0a8f6f); color: #fff; font-size: 13px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: opacity 0.15s; } .ds-btn-primary:hover { opacity: 0.85; } .ds-btn-primary:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
-		},
-		{
-			"name": "Secondary Button",
-			"kind": "button",
-			"refersTo": "button-secondary",
-			"description": "Optional actions alongside a primary — Copy results. Hairline on transparent; hover deepens ink and border rather than filling.",
-			"html": "<button class=\"ds-btn-secondary\">Copy results</button>",
-			"css": ".ds-btn-secondary { padding: 8px 20px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: transparent; color: var(--c-label, #3e4842); font-size: 13px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: color 0.15s, border-color 0.15s; } .ds-btn-secondary:hover { color: var(--c-head, #242b26); border-color: var(--c-label, #3e4842); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
-		},
-		{
-			"name": "Toolbar Pill",
-			"kind": "chip",
-			"refersTo": "pill",
-			"description": "Quiz toolbar and stats filter control. Muted at rest, ink and border step up on hover, Mint Wash fill plus Highway Green border when active. Locked variant is a span with a title, never a disabled button.",
-			"html": "<div class=\"ds-pill-row\"><button class=\"ds-pill ds-pill-active\">Shuffled</button><button class=\"ds-pill\">Random</button><span class=\"ds-pill ds-pill-locked\" title=\"Log in to store stats and use Revision mode\">Revision</span></div>",
-			"css": ".ds-pill-row { display: flex; gap: 4px; align-items: center; } .ds-pill { padding: 3px 10px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: transparent; color: var(--c-muted, #67716b); font-size: 11px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: all 0.15s; white-space: nowrap; } .ds-pill:hover { color: var(--c-label, #3e4842); border-color: var(--c-label, #3e4842); } .ds-pill-active { background: var(--c-alt, #e3f3ec); border-color: var(--c-sign, #006747); color: var(--c-head, #242b26); } .ds-pill-locked { opacity: 0.4; cursor: default; } .ds-pill-locked:hover { color: var(--c-muted, #67716b); border-color: var(--c-border, #c2dccb); } .ds-pill:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
-		},
-		{
-			"name": "Panel Tab Bar",
-			"kind": "nav",
-			"refersTo": "tab",
-			"description": "The info/practice panel tab strip. Scrolls horizontally with hidden scrollbars and a mask-image fade at the right edge that signals more tabs without spending a chevron. Active tab takes the Highway Green plate.",
-			"html": "<nav class=\"ds-tabs\"><button class=\"ds-tab ds-tab-active\">Reading tips</button><button class=\"ds-tab\">Alphabet</button><button class=\"ds-tab\">Letterforms</button><button class=\"ds-tab\">None</button></nav>",
-			"css": ".ds-tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 6px 16px 6px 0; background: #fff; mask-image: linear-gradient(to right, black calc(100% - 28px), transparent); } .ds-tabs::-webkit-scrollbar { display: none; } .ds-tab { padding: 4px 10px; border: none; border-radius: var(--radius-sm, 2px); background: transparent; color: var(--c-muted, #67716b); font-size: 12px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; white-space: nowrap; transition: color 0.15s, background-color 0.15s; } .ds-tab:hover { color: var(--c-label, #3e4842); background: var(--c-alt, #e3f3ec); } .ds-tab-active, .ds-tab-active:hover { color: #fff; background: var(--c-sign, #006747); } .ds-tab:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: -2px; }"
-		},
-		{
-			"name": "Sidebar Nav Item",
-			"kind": "nav",
-			"refersTo": "nav-item-active",
-			"description": "Two-line sidebar entry: Latin name over native script name in Highway Green. Active flattens its left corners and drops its left margin so it bleeds into the sidebar edge — a sign fixed to a post, not a floating chip.",
-			"html": "<div class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\"><span class=\"ds-nav-label\">Thai</span><span class=\"ds-nav-native\">อักษรไทย</span></a><a class=\"ds-nav-item\"><span class=\"ds-nav-label\">Cyrillic <span class=\"ds-beta\">beta</span></span><span class=\"ds-nav-native\">Кириллица</span></a></div>",
-			"css": ".ds-nav { display: flex; flex-direction: column; width: 200px; padding: 8px 0; background: #fff; border-right: 1px solid var(--c-border, #c2dccb); } .ds-nav-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; margin: 1px 6px; border-radius: var(--radius, 4px); text-decoration: none; color: var(--c-label, #3e4842); cursor: pointer; transition: background 0.15s, color 0.15s; } .ds-nav-item:hover { background: var(--c-alt, #e3f3ec); } .ds-nav-label { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; } .ds-nav-native { font-size: 15px; line-height: 1.3; color: var(--c-sign, #006747); white-space: nowrap; } .ds-nav-active { background: var(--c-sign, #006747); color: #fff; margin-left: 0; border-radius: 0 var(--radius, 4px) var(--radius, 4px) 0; } .ds-nav-active:hover { background: var(--c-sign, #006747); } .ds-nav-active .ds-nav-native { color: #fff; } .ds-beta { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c-sign, #006747); border: 1px solid var(--c-sign, #006747); border-radius: var(--radius-sm, 2px); padding: 0 3px; vertical-align: middle; }"
-		},
-		{
-			"name": "Answer Input",
-			"kind": "input",
-			"refersTo": "input-text",
-			"description": "The type-in quiz field. Border shifts to Highway Green on focus. Browser autocomplete, autocorrect and spellcheck are all disabled — the browser must never help transliterate.",
-			"html": "<form class=\"ds-input-row\"><input class=\"ds-input\" type=\"text\" placeholder=\"Type romanisation…\" autocomplete=\"off\" autocorrect=\"off\" spellcheck=\"false\"><button class=\"ds-btn-primary\" type=\"button\">Check</button></form>",
-			"css": ".ds-input-row { display: flex; gap: 8px; width: 100%; max-width: 360px; } .ds-input { flex: 1; padding: 8px 12px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); font-size: 14px; font-family: 'Noto Sans', system-ui, sans-serif; background: #fff; color: var(--c-head, #242b26); transition: border-color 0.15s; } .ds-input::placeholder { color: var(--c-muted, #67716b); } .ds-input:focus { border-color: var(--c-sign, #006747); outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
-		},
-		{
-			"name": "Choice Button",
-			"kind": "button",
-			"refersTo": "choice",
-			"description": "Multiple-choice option. Hover borders Highway Green and tints Mint Wash; answered states take the pastel feedback grounds with status-coloured borders and text, and eliminated options dim to 0.4.",
-			"html": "<div class=\"ds-choices\"><button class=\"ds-choice ds-choice-correct\">Kalasin</button><button class=\"ds-choice ds-choice-wrong\">Kalasit</button><button class=\"ds-choice ds-choice-dim\">Khon Kaen</button></div>",
-			"css": ".ds-choices { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 360px; } .ds-choice { padding: 10px 16px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: #fff; color: var(--c-label, #3e4842); font-size: 14px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; text-align: left; transition: border-color 0.15s, background 0.15s; } .ds-choice:hover { border-color: var(--c-sign, #006747); background: var(--c-alt, #e3f3ec); } .ds-choice-correct { background: var(--fb-ok-bg, #edf7ee); border-color: var(--c-good, #3a7d44); color: var(--c-good, #3a7d44); } .ds-choice-wrong { background: var(--fb-wrong-bg, #fdf0f0); border-color: var(--c-bad, #b94040); color: var(--c-bad, #b94040); } .ds-choice-dim { opacity: 0.4; }"
-		},
-		{
-			"name": "Beta Badge",
-			"kind": "chip",
-			"refersTo": "badge-beta",
-			"description": "Marks a script whose question set is still changing. A plate, so it reads as a small sign rather than an outlined chip; on the active nav item it takes a Plate Rule outline to separate it from the plate underneath.",
-			"html": "<span class=\"ds-badge-beta\">beta</span>\n<span class=\"ds-plate\"><span class=\"ds-badge-beta ds-badge-beta-on-plate\">beta</span></span>",
-			"css": ".ds-badge-beta { display: inline-block; font-family: var(--sans); font-size: var(--fs-micro); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-caps); line-height: 1; background: var(--c-sign); color: var(--c-on-sign); border: 1px solid transparent; border-radius: var(--radius-sm); padding: var(--sp-2) var(--sp-4); vertical-align: middle; } .ds-badge-beta-on-plate { border-color: var(--c-border-plate); } .ds-plate { display: inline-block; margin-left: 12px; padding: 8px 10px; background: var(--c-sign); border-radius: 0 4px 4px 0; }"
-		},
-		{
-			"name": "Language Badge",
-			"kind": "chip",
-			"description": "Marks which languages a Cyrillic letter or rule applies to. Colours come from D3 Category 20 assigned by a fixed code order, with text colour chosen per-badge by luminance. Codes are BCP-47 so the same values double as lang attributes for OpenType locl substitutions.",
-			"html": "<span class=\"ds-langs\"><span class=\"ds-lang\" style=\"background:#1f77b4;color:#fff\" title=\"Russian\">RU</span><span class=\"ds-lang\" style=\"background:#aec7e8;color:#222\" title=\"Ukrainian\">UK</span><span class=\"ds-lang\" style=\"background:#ff7f0e;color:#fff\" title=\"Belarusian\">BE</span></span>",
-			"css": ".ds-langs { display: inline-flex; gap: 2px; vertical-align: middle; font-size: 20px; } .ds-lang { font-family: 'Noto Sans', system-ui, sans-serif; font-size: 0.6em; font-weight: 700; letter-spacing: 0.04em; border-radius: var(--radius-sm, 2px); padding: 0 3px; line-height: 1.5; cursor: help; }"
-		},
-		{
-			"name": "Script Card",
-			"kind": "card",
-			"refersTo": "script-card",
-			"description": "The Home index entry for one script. Three levels only, and state carried by surface and ink rather than by dimming text.",
-			"html": "<a class=\"ds-script-card\" href=\"#\">\n  <header class=\"ds-script-card-head\">\n    <span class=\"ds-script-card-name\">Thai</span>\n    <span class=\"ds-script-card-native\">อักษรไทย</span>\n  </header>\n  <span class=\"ds-script-card-detail\">Abugida — 44 consonants and 20+ vowel forms around them</span>\n  <footer class=\"ds-script-card-foot\"><span class=\"ds-script-card-where\">Thailand</span></footer>\n</a>",
-			"css": ".ds-script-card { display: flex; flex-direction: column; gap: var(--sp-8); padding: var(--sp-12) var(--sp-16) var(--sp-16); border-radius: var(--radius); background: var(--c-cell); text-decoration: none; color: inherit; transition: background 0.15s, color 0.15s; } .ds-script-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-8); padding-bottom: var(--sp-8); border-bottom: var(--hairline); } .ds-script-card-name { font-family: var(--serif); font-size: var(--fs-prose); font-weight: 600; color: var(--c-accent); } .ds-script-card-native { font-size: var(--fs-headline); color: var(--c-head); } .ds-script-card-detail { font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card-foot { margin-top: auto; padding-top: var(--sp-8); font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card:hover { background: var(--c-alt); } .ds-script-card:hover .ds-script-card-name { color: var(--c-sign); } .ds-script-card:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }"
-		}
-	],
-	"narrative": {
-		"northStar": "The Map Shop Handout",
-		"overview": "The system is designed as though it were an A4/A5 reference sheet on sturdy glossy stock, made by a typographer whose day job is maps, and sold in a bookshop beside bird-species posters and wall maps of places worth visiting. That single image settles most questions before they are asked. Density is not a constraint to apologise for — a handout you paid for does not waste the sheet. Nothing is at a default value, because somebody competent set this. And the sheets are an object: if a sheet could not be printed on paper and still work, it has drifted.\n\nIts typographic lineage is textbooks, map legends, the supplementary lists tucked into a map's corner, and a little newspaper. The layout target is an engineering manual, not a magazine: condensed, tabulated, ruled. The system aims to be roughly 80–90% faithful to Matthew Butterick's Practical Typography, and the interesting part is the remaining 10–20%, where a screen and an interactive quiz demand things a printed page never had to answer.\n\nRoadsign iconography is the flavour, not the foundation — the kind of thematic nod a print designer might reach for anyway, since textbook and map design were never uniform either. It shows up as a highway-green plate under white lettering, and only where something genuinely behaves like a plate. Everything else is the paper, the rules, and the ink.",
-		"keyCharacteristics": [
-			"Condensed to engineering-manual density; whitespace is earned, never default",
-			"Mint hairlines and tonal fills do all the work that shadows would do elsewhere",
-			"The foreign glyph is the only element permitted to be large",
-			"Chrome is set at 10–13px and recedes; the sheet is the subject",
-			"A near-neutral ink with a faint green cast, so the greens read as deliberate",
-			"Print-plausible: a sheet should survive being printed on A5 and still function"
-		],
-		"rules": [
-			{
-				"name": "The Plate Rule",
-				"body": "White-on-Highway-Green is reserved for surfaces that genuinely behave like a plate: sheet section headers, the active tab, the active nav item. It is the roadsign nod, and it works because it is rationed — a handful per screen. Applied to anything that is merely selected, prominent, or in need of attention, the nod becomes a costume.",
-				"section": "colors"
-			},
-			{
-				"name": "The Neutral Ink Rule",
-				"body": "All three ink tones carry a faint green cast (#242b26, #3e4842, #67716b) rather than being true greys. Never substitute a pure neutral; the greens only read as deliberate because the ink quietly agrees with them.",
-				"section": "colors"
-			},
-			{
-				"name": "The ink trap",
-				"body": "Body Ink and Faded Ink sit almost exactly at Highway Green's luminance, so on a plate they are not merely low-contrast — they are literally invisible (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that reads fine everywhere on paper vanishes the moment it lands on a plate, and both contrast systems agree. Never demote plate text to an ink tone to make it look secondary; use a lighter tone instead.",
-				"section": "colors"
-			},
-			{
-				"name": "The Butterick Rule",
-				"body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.",
-				"section": "typography"
-			},
-			{
-				"name": "The Specimen Rule",
-				"body": "The foreign glyph is the only thing allowed to be large. Every other element is set between 10px and 1.6rem. When a new element wants to be big, it is almost always trying to be the specimen — and it isn't.",
-				"section": "typography"
-			},
-			{
-				"name": "The Weight Split Rule",
-				"body": "Lora runs at 500 in full-page prose and 600 in panels. The larger prose sizes carry more ink per stroke, so they want the lighter weight; the compact panel sizes need the heavier one. Do not homogenise these to a single weight.",
-				"section": "typography"
-			},
-			{
-				"name": "The Shrinking Scale Rule",
-				"body": "Every scale in this system — type sizes, spacing steps, radii, colours — is under permanent pressure to inflate, because each individual addition looks reasonable in isolation. Treat a smaller palette as the default-correct answer: reach for an existing step before adding one, and when two steps are close enough that nobody could name the difference, they are one step.",
-				"section": "typography"
-			},
-			{
-				"name": "The Handout Density Rule",
-				"body": "A handout you paid for does not waste the sheet. Before adding padding, ask whether a printed reference sheet would spend that space. Usually it would not. Whitespace here is structural — it separates groups — and is not applied for comfort.",
-				"section": "layout"
-			},
-			{
-				"name": "The Print Test",
-				"body": "A sheet should be printable on A5 and still work. If a design depends on hover, scroll position, or viewport height to be legible, it has stopped being a handout.",
-				"section": "layout"
-			},
-			{
-				"name": "The No-Shadow Rule",
-				"body": "Never introduce a shadow, glow, blur or gradient to signal depth, state or importance. If something needs to come forward, give it a hairline, a tonal fill, or a plate — in that order.",
-				"section": "elevation"
-			},
-			{
-				"name": "The De-emphasis Rule",
-				"body": "Something recedes by changing surface or ink, never by dimming text. Drop the greens to Faded Ink, or unmount the surface. Opacity applies to a whole inert element (--o-inert), at one level only — nested opacities multiply, and that is how the script cards once arrived at 1.6:1. The script card is the worked example: live is Cell White with a Signal Teal name, beta is the same card with the greens fallen back to Faded Ink, and unwritten is unmounted and dimmed as one element.",
-				"section": "elevation"
-			},
-			{
-				"name": "The Two Registers Rule",
-				"body": "Chrome and quiz are set differently on purpose. Chrome — sidebar, panel tabs, toolbars, stats filters — is the fixture around the handout: restrained, near-muted, typographic, 10–13px, hairline-bordered, no fills except on hover and active. The quiz is inhabited for an uninterrupted stretch, so its controls are frankly interactive: 14px targets, real buttons with fills, coloured feedback rows, generous 2rem card padding. Both obey the same palette, radii and type families; they differ in how much presence they are allowed. Do not flatten one into the other.",
-				"section": "components"
-			},
-			{
-				"name": "The Muted Chrome Rule",
-				"body": "Interface controls rest at Faded Ink and step up to Body Ink on hover. A control at full Deep Ink is either active or a bug.",
-				"section": "components"
-			}
-		],
-		"dos": [
-			"Do ask \"would a map-shop handout do this?\" before adding space, weight or colour. It answers most layout questions correctly.",
-			"Do carry the sheet's typographic conventions into every dense listing — hairline rules, Mint Wash banding, uppercase micro-label headers, tight cell padding. The sheets are the house style, not a special case. Known drift: the stats table and the reading-tips panels were built as app UI that happens to sit near sheets; moving them toward sheet conventions is a licensed improvement, not a redesign.",
-			"Do use the hairline → tonal fill → plate ladder, in that order, to express depth.",
-			"Do keep new radii to 2px or 4px.",
-			"Do spend an existing scale step before inventing one — for type, spacing, radii and colour alike. Scales only ever inflate; the smaller palette is the default-correct answer.",
-			"Do reserve white-on-Highway-Green for surfaces that genuinely act as plates.",
-			"Do let the glyph be the only large thing on screen.",
-			"Do state maturity per script with the existing beta badge and dimming, rather than hedging the whole interface.",
-			"Do deviate from Butterick when a screen genuinely demands it — and record why."
-		],
-		"donts": [
-			"Don't add a shadow, glow, blur, gradient or glassmorphic surface. Not for depth, not for state, not for emphasis.",
-			"Don't treat a WCAG 2.x ratio as the last word on Signal Teal. Check APCA before changing anything — white-on-teal is Lc −72.8 and fine, despite reading as a 4.1:1 \"fail\". Signal Teal as body-size text on Warm Sheet stays the weak case, but it is a guideline to weigh, not a prohibition. See \"On Signal Teal\" in DESIGN.md.",
-			"Don't drift toward a gamified language app: no mascots, streak flames, confetti, bouncy oversized rounded buttons, cartoon illustration or celebratory motion.",
-			"Don't drift toward a generic SaaS dashboard: no card-on-card stacking, gradient headers, purple/blue tech palette, floating widgets or comfort padding.",
-			"Don't chase trends: no neon, no heavy blur, no animated gradients, no dark-mode-first inversion of a system built as printed paper.",
-			"Don't produce undifferentiated walls of prose. Academic typography is part of the lineage; unstructured academic text is the failure mode — tabulate, rule and group instead.",
-			"Don't homogenise the two registers, or the Lora 500/600 split, in the name of consistency. Both differences are decisions.",
-			"Don't use the brand greens for status. Accuracy, freshness and correctness have their own palette so a score is never mistaken for branding.",
-			"Don't exceed one breakpoint's worth of complexity — reach for clamp() before reaching for a media query."
-		]
-	}
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-13T03:13:50.140Z",
+  "title": "Design System: Unillit",
+  "extensions": {
+    "colorMeta": {
+      "signal-teal": {
+        "role": "primary",
+        "displayName": "Signal Teal",
+        "canonical": "oklch(56% 0.11 165)",
+        "note": "The mischief. 3.89:1 / Lc +64.2 on Warm Sheet — APCA large/secondary band, which is the role it holds. White on Signal Teal is Lc −72.8 and fine despite a 4.1:1 WCAG \"fail\"; black passes WCAG and is unreadable (Lc +36.8). Read APCA first.",
+        "tonalRamp": [
+          "oklch(15% 0.11 165)",
+          "oklch(26% 0.11 165)",
+          "oklch(37% 0.11 165)",
+          "oklch(48% 0.11 165)",
+          "oklch(59% 0.11 165)",
+          "oklch(70% 0.11 165)",
+          "oklch(81% 0.11 165)",
+          "oklch(92% 0.11 165)"
+        ]
+      },
+      "highway-green": {
+        "role": "primary",
+        "displayName": "Highway Green",
+        "canonical": "oklch(41% 0.09 163)",
+        "note": "The only green trusted with text. 6.6:1 on Warm Sheet, 6.9:1 reversed under white.",
+        "tonalRamp": [
+          "oklch(15% 0.09 163)",
+          "oklch(26% 0.09 163)",
+          "oklch(37% 0.09 163)",
+          "oklch(48% 0.09 163)",
+          "oklch(59% 0.09 163)",
+          "oklch(70% 0.09 163)",
+          "oklch(81% 0.09 163)",
+          "oklch(92% 0.09 163)"
+        ]
+      },
+      "mint-wash": {
+        "role": "tertiary",
+        "displayName": "Mint Wash",
+        "canonical": "oklch(95% 0.02 165)",
+        "note": "The tint. Zebra striping, row bands, hover fills, code backgrounds, selection. Below the perceptual threshold on paper (Lc 0.0) — correct, it bands rows rather than carrying meaning.",
+        "tonalRamp": [
+          "oklch(15% 0.02 165)",
+          "oklch(26% 0.02 165)",
+          "oklch(37% 0.02 165)",
+          "oklch(48% 0.02 165)",
+          "oklch(59% 0.02 165)",
+          "oklch(70% 0.02 165)",
+          "oklch(81% 0.02 165)",
+          "oklch(92% 0.02 165)"
+        ]
+      },
+      "mint-rule": {
+        "role": "tertiary",
+        "displayName": "Mint Rule",
+        "canonical": "oklch(87% 0.035 155)",
+        "note": "The hairline. In a system with no shadows, this is the entire vocabulary of separation. Lc ~20 on paper: fine as a sheet rule, the honest weak point for interactive boundaries where WCAG 1.4.11's 3:1 applies.",
+        "tonalRamp": [
+          "oklch(15% 0.035 155)",
+          "oklch(26% 0.035 155)",
+          "oklch(37% 0.035 155)",
+          "oklch(48% 0.035 155)",
+          "oklch(59% 0.035 155)",
+          "oklch(70% 0.035 155)",
+          "oklch(81% 0.035 155)",
+          "oklch(92% 0.035 155)"
+        ]
+      },
+      "warm-sheet": {
+        "role": "neutral",
+        "displayName": "Warm Sheet",
+        "canonical": "oklch(98% 0.003 100)",
+        "note": "The page. Slightly warm, so white cells read as paper laid on paper.",
+        "tonalRamp": [
+          "oklch(15% 0.003 100)",
+          "oklch(26% 0.003 100)",
+          "oklch(37% 0.003 100)",
+          "oklch(48% 0.003 100)",
+          "oklch(59% 0.003 100)",
+          "oklch(70% 0.003 100)",
+          "oklch(81% 0.003 100)",
+          "oklch(92% 0.003 100)"
+        ]
+      },
+      "cell-white": {
+        "role": "neutral",
+        "displayName": "Cell White",
+        "canonical": "oklch(100% 0 0)",
+        "note": "The specimen ground. The colour of \"something is mounted here\".",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(59% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(81% 0 0)",
+          "oklch(92% 0 0)"
+        ]
+      },
+      "plate-ink": {
+        "role": "neutral",
+        "displayName": "Plate Ink",
+        "canonical": "oklch(100% 0 0)",
+        "note": "The same white as Cell White, but reversed onto a plate rather than laid under content. Its own token because the two move independently — DESIGN.md keeps an open question about setting plates in Warm Sheet instead.",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(59% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(81% 0 0)",
+          "oklch(92% 0 0)"
+        ]
+      },
+      "plate-rule": {
+        "role": "neutral",
+        "displayName": "Plate Rule",
+        "canonical": "oklch(100% 0 0 / 0.6)",
+        "note": "The hairline reversed on a plate, for controls sitting inside one (the beta badge on an active nav item, the Thai consonant picker). Mint Rule is invisible on Highway Green; this is its counterpart.",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(59% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(81% 0 0)",
+          "oklch(92% 0 0)"
+        ]
+      },
+      "deep-ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "oklch(25% 0.01 155)",
+        "note": "Glyphs, specimens, sheet headings, emphasised values. 13.9:1 / Lc +98.2 on paper. Non-text only on a plate (Lc +15.9).",
+        "tonalRamp": [
+          "oklch(15% 0.01 155)",
+          "oklch(26% 0.01 155)",
+          "oklch(37% 0.01 155)",
+          "oklch(48% 0.01 155)",
+          "oklch(59% 0.01 155)",
+          "oklch(70% 0.01 155)",
+          "oklch(81% 0.01 155)",
+          "oklch(92% 0.01 155)"
+        ]
+      },
+      "body-ink": {
+        "role": "neutral",
+        "displayName": "Body Ink",
+        "canonical": "oklch(36% 0.012 155)",
+        "note": "Running prose, table cells, nav labels. 9.1:1 / Lc +88.9 on paper. Invisible on a Highway Green plate (Lc 0.0).",
+        "tonalRamp": [
+          "oklch(15% 0.012 155)",
+          "oklch(26% 0.012 155)",
+          "oklch(37% 0.012 155)",
+          "oklch(48% 0.012 155)",
+          "oklch(59% 0.012 155)",
+          "oklch(70% 0.012 155)",
+          "oklch(81% 0.012 155)",
+          "oklch(92% 0.012 155)"
+        ]
+      },
+      "faded-ink": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "oklch(53% 0.01 155)",
+        "note": "Metadata, captions, inactive controls, micro-labels. 4.8:1 / Lc +71.9 on paper. Invisible on either plate (Lc 0.0).",
+        "tonalRamp": [
+          "oklch(15% 0.01 155)",
+          "oklch(26% 0.01 155)",
+          "oklch(37% 0.01 155)",
+          "oklch(48% 0.01 155)",
+          "oklch(59% 0.01 155)",
+          "oklch(70% 0.01 155)",
+          "oklch(81% 0.01 155)",
+          "oklch(92% 0.01 155)"
+        ]
+      },
+      "tally-good": {
+        "role": "status",
+        "displayName": "Tally Good",
+        "canonical": "oklch(52% 0.11 145)",
+        "note": "Accuracy ≥80%, fresh roadmap steps, correct tallies. Deliberately not a brand green.",
+        "tonalRamp": [
+          "oklch(15% 0.11 145)",
+          "oklch(26% 0.11 145)",
+          "oklch(37% 0.11 145)",
+          "oklch(48% 0.11 145)",
+          "oklch(59% 0.11 145)",
+          "oklch(70% 0.11 145)",
+          "oklch(81% 0.11 145)",
+          "oklch(92% 0.11 145)"
+        ]
+      },
+      "tally-warn": {
+        "role": "status",
+        "displayName": "Tally Warn",
+        "canonical": "oklch(48% 0.10 80)",
+        "note": "Accuracy 50–79%, stale roadmap steps.",
+        "tonalRamp": [
+          "oklch(15% 0.10 80)",
+          "oklch(26% 0.10 80)",
+          "oklch(37% 0.10 80)",
+          "oklch(48% 0.10 80)",
+          "oklch(59% 0.10 80)",
+          "oklch(70% 0.10 80)",
+          "oklch(81% 0.10 80)",
+          "oklch(92% 0.10 80)"
+        ]
+      },
+      "tally-bad": {
+        "role": "status",
+        "displayName": "Tally Bad",
+        "canonical": "oklch(53% 0.16 25)",
+        "note": "Accuracy <50%, wrong tallies, wrong-answer feedback.",
+        "tonalRamp": [
+          "oklch(15% 0.16 25)",
+          "oklch(26% 0.16 25)",
+          "oklch(37% 0.16 25)",
+          "oklch(48% 0.16 25)",
+          "oklch(59% 0.16 25)",
+          "oklch(70% 0.16 25)",
+          "oklch(81% 0.16 25)",
+          "oklch(92% 0.16 25)"
+        ]
+      },
+      "feedback-correct-bg": {
+        "role": "feedback",
+        "displayName": "Correct Ground",
+        "canonical": "#edf7ee",
+        "note": "Pastel ground for an exact answer; border and text reuse Tally Good."
+      },
+      "feedback-wrong-bg": {
+        "role": "feedback",
+        "displayName": "Wrong Ground",
+        "canonical": "#fdf0f0",
+        "note": "Pastel ground for a wrong answer; text struck through in Tally Bad."
+      },
+      "feedback-fuzzy-bg": {
+        "role": "feedback",
+        "displayName": "Fuzzy Ground",
+        "canonical": "#eef5df",
+        "note": "Olive-tinted rather than green, so \"almost right\" is visibly neither correct nor brand."
+      },
+      "feedback-fuzzy-ink": {
+        "role": "feedback",
+        "displayName": "Fuzzy Ink",
+        "canonical": "#5a7030",
+        "note": "Text on the fuzzy ground."
+      },
+      "feedback-fuzzy-user-bg": {
+        "role": "feedback",
+        "displayName": "Fuzzy Echo Ground",
+        "canonical": "#f5f5e8",
+        "note": "Ground for echoing back what the user actually typed on a tolerated near-miss."
+      },
+      "feedback-fuzzy-user-ink": {
+        "role": "feedback",
+        "displayName": "Fuzzy Echo Ink",
+        "canonical": "#726c3c",
+        "note": "Text on the fuzzy echo ground."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles in full-page prose views. Lora 500, set in Signal Teal."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings. Lora 500 in prose views, 600 at 1.15em in reading-tips panels. Also the native specimen in script cards. Sub-headings are body-sized instead — there is no Title step."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running prose, table cells, quiz choices. 1rem, capped at --measure-prose (36rem / 576px) on every prose page. --fs-body (14px) is the inherited base, not body copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase micro-register: sheet section headers, stats table headings, quiz-shell tabs, badges. Makes the interface read as apparatus rather than content."
+      },
+      "letterform": {
+        "displayName": "Letterform",
+        "purpose": "A single character set inline, large enough to read its detail: the reading-tips letterform tables, the stats prompt cell. Value unsettled; experiment in 1.3-1.4rem."
+      },
+      "glyph": {
+        "displayName": "Glyph",
+        "purpose": "The foreign-script specimen in sheet cells. Exposed as --glyph so cells scale relative to it."
+      },
+      "prompt": {
+        "displayName": "Prompt",
+        "purpose": "The single character or toponym under test in the quiz. The largest type in the system."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state",
+        "value": "0.15s",
+        "purpose": "Every interactive state change in the system — hover, active, focus, colour and border shifts. Browser-default easing; no custom curve exists."
+      },
+      {
+        "name": "sidebar",
+        "value": "0.2s ease",
+        "purpose": "Sidebar collapse/expand width animation."
+      },
+      {
+        "name": "progress",
+        "value": "0.25s ease",
+        "purpose": "Quiz progress-bar fill width. The only motion that reports data rather than state."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "768px",
+        "purpose": "The system's only media query: the two script panels go from a 1fr 1fr grid to stacked rows. Everything else scales fluidly through clamp()."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Sheet Section",
+      "kind": "card",
+      "refersTo": "sheet-section-header",
+      "description": "The signature container: a hairline-bordered section opened by a full-bleed Highway Green plate in white uppercase micro-label type, holding a ruled grid of character cells.",
+      "html": "<section class=\"ds-sheet-section\"><h2>Mid-class consonants</h2><p class=\"ds-sheet-note\">Nine letters. The tone rules key off this class.</p><ol class=\"ds-char-grid ds-ruled\"><li class=\"ds-cell\"><span class=\"ds-glyph\">ก</span><span class=\"ds-rom\">k</span><span class=\"ds-gloss\">chicken</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">จ</span><span class=\"ds-rom\">ch</span><span class=\"ds-gloss\">plate</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">ด</span><span class=\"ds-rom\">d</span><span class=\"ds-gloss\">child</span></li><li class=\"ds-cell\"><span class=\"ds-glyph\">ต</span><span class=\"ds-rom\">t</span><span class=\"ds-gloss\">turtle</span></li></ol></section>",
+      "css": ".ds-sheet-section { border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); overflow: hidden; font-size: 13px; } .ds-sheet-section > h2 { background: var(--c-sign, #006747); color: #fff; font-size: 0.8em; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; margin: 0; } .ds-sheet-note { margin: 0; padding: 3px 7px 2px; font-size: 0.75em; color: var(--c-label, #3e4842); border-bottom: 1px solid var(--c-border, #c2dccb); } .ds-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); list-style: none; margin: 0; padding: 0; } .ds-ruled { margin: 0 -1px -1px 0; } .ds-ruled .ds-cell { border-right: 1px solid var(--c-border, #c2dccb); border-bottom: 1px solid var(--c-border, #c2dccb); } .ds-cell { background: #fff; text-align: center; padding: 3px 4px 2px; display: flex; flex-direction: column; align-items: center; } .ds-glyph { font-family: 'Noto Sans Thai', system-ui, sans-serif; font-size: 28px; line-height: 1.15; color: var(--c-head, #242b26); } .ds-rom { font-size: 1em; color: var(--c-sign, #006747); font-weight: 600; } .ds-gloss { font-size: 0.8em; color: var(--c-muted, #67716b); line-height: 1.3; }"
+    },
+    {
+      "name": "Character Cell",
+      "kind": "custom",
+      "refersTo": "cell",
+      "description": "The atom of the product: specimen glyph, romanisation in Highway Green, optional gloss in Faded Ink. Borderless by default; shares hairlines with neighbours in ruled listings.",
+      "html": "<div class=\"ds-cell-solo\"><span class=\"ds-cell-glyph\">Ж</span><span class=\"ds-cell-rom\">zh</span><span class=\"ds-cell-gloss\">beetle</span></div>",
+      "css": ".ds-cell-solo { background: #fff; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); text-align: center; padding: 6px 10px 4px; display: inline-flex; flex-direction: column; align-items: center; font-size: 13px; } .ds-cell-glyph { font-family: 'Noto Serif', Georgia, serif; font-size: 30px; line-height: 1.15; color: var(--c-head, #242b26); } .ds-cell-rom { color: var(--c-sign, #006747); font-weight: 600; } .ds-cell-gloss { font-size: 0.8em; color: var(--c-muted, #67716b); line-height: 1.3; }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single forward action in a view — Check, Next, Play another, Login. Signal Teal ground, no border.",
+      "html": "<button class=\"ds-btn-primary\">Check</button>",
+      "css": ".ds-btn-primary { padding: 8px 20px; border: none; border-radius: var(--radius, 4px); background: var(--c-accent, #0a8f6f); color: #fff; font-size: 13px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: opacity 0.15s; } .ds-btn-primary:hover { opacity: 0.85; } .ds-btn-primary:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Optional actions alongside a primary — Copy results. Hairline on transparent; hover deepens ink and border rather than filling.",
+      "html": "<button class=\"ds-btn-secondary\">Copy results</button>",
+      "css": ".ds-btn-secondary { padding: 8px 20px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: transparent; color: var(--c-label, #3e4842); font-size: 13px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: color 0.15s, border-color 0.15s; } .ds-btn-secondary:hover { color: var(--c-head, #242b26); border-color: var(--c-label, #3e4842); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Toolbar Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Quiz toolbar and stats filter control. Muted at rest, ink and border step up on hover, Mint Wash fill plus Highway Green border when active. Locked variant is a span with a title, never a disabled button.",
+      "html": "<div class=\"ds-pill-row\"><button class=\"ds-pill ds-pill-active\">Shuffled</button><button class=\"ds-pill\">Random</button><span class=\"ds-pill ds-pill-locked\" title=\"Log in to store stats and use Revision mode\">Revision</span></div>",
+      "css": ".ds-pill-row { display: flex; gap: 4px; align-items: center; } .ds-pill { padding: 3px 10px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: transparent; color: var(--c-muted, #67716b); font-size: 11px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; transition: all 0.15s; white-space: nowrap; } .ds-pill:hover { color: var(--c-label, #3e4842); border-color: var(--c-label, #3e4842); } .ds-pill-active { background: var(--c-alt, #e3f3ec); border-color: var(--c-sign, #006747); color: var(--c-head, #242b26); } .ds-pill-locked { opacity: 0.4; cursor: default; } .ds-pill-locked:hover { color: var(--c-muted, #67716b); border-color: var(--c-border, #c2dccb); } .ds-pill:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Panel Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "The info/practice panel tab strip. Scrolls horizontally with hidden scrollbars and a mask-image fade at the right edge that signals more tabs without spending a chevron. Active tab takes the Highway Green plate.",
+      "html": "<nav class=\"ds-tabs\"><button class=\"ds-tab ds-tab-active\">Reading tips</button><button class=\"ds-tab\">Alphabet</button><button class=\"ds-tab\">Letterforms</button><button class=\"ds-tab\">None</button></nav>",
+      "css": ".ds-tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 6px 16px 6px 0; background: #fff; mask-image: linear-gradient(to right, black calc(100% - 28px), transparent); } .ds-tabs::-webkit-scrollbar { display: none; } .ds-tab { padding: 4px 10px; border: none; border-radius: var(--radius-sm, 2px); background: transparent; color: var(--c-muted, #67716b); font-size: 12px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; white-space: nowrap; transition: color 0.15s, background-color 0.15s; } .ds-tab:hover { color: var(--c-label, #3e4842); background: var(--c-alt, #e3f3ec); } .ds-tab-active, .ds-tab-active:hover { color: #fff; background: var(--c-sign, #006747); } .ds-tab:focus-visible { outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: -2px; }"
+    },
+    {
+      "name": "Sidebar Nav Item",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "One-line sidebar entry: the script name in the editorial serif paired with its native specimen on a shared baseline, specimen set right. Utility rows stay sans, so the column separates content from apparatus. Active flattens its left corners and drops its left margin so it bleeds into the sidebar edge — a sign fixed to a post, not a floating chip.",
+      "html": "<div class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-script ds-nav-active\" style=\"--label-scale:1.15\"><span class=\"ds-nav-label\">Thai</span><span class=\"ds-nav-native\">อักษรไทย</span></a><a class=\"ds-nav-item ds-nav-script ds-nav-beta\"><span class=\"ds-nav-label\">Cyrillic</span><span class=\"ds-beta\">beta</span><span class=\"ds-nav-native\">Кирилица</span></a><a class=\"ds-nav-item ds-nav-script ds-nav-coming\" style=\"--label-scale:1.15\"><span class=\"ds-nav-label\">Lao</span><span class=\"ds-nav-native\">ພາສາລາວ</span></a><div class=\"ds-nav-divider\"></div><a class=\"ds-nav-item\"><span class=\"ds-nav-label\">About</span></a></div>",
+      "css": ".ds-nav { display: flex; flex-direction: column; width: 200px; padding: 8px 0; background: var(--c-cell, #ffffff); border-right: 1px solid var(--c-border, #c2dccb); } .ds-nav-divider { border-top: 1px solid var(--c-border, #c2dccb); margin: 4px 10px; } .ds-nav-item { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; padding: 8px 10px; margin: 0 6px; border-radius: var(--radius, 4px); text-decoration: none; font-size: 13px; color: var(--c-label, #3e4842); cursor: pointer; transition: background 0.15s, color 0.15s; } .ds-nav-item:hover { background: var(--c-alt, #e3f3ec); } .ds-nav-label { font-weight: 600; white-space: nowrap; } .ds-nav-script .ds-nav-label { font-family: var(--serif, Lora, Georgia, serif); color: var(--c-accent, #0a8f6f); } .ds-nav-script:hover .ds-nav-label { color: var(--c-sign, #006747); } .ds-nav-native { margin-left: auto; font-size: calc(1em * var(--label-scale, 1)); line-height: 16.25px; color: var(--c-head, #242b26); white-space: nowrap; } .ds-nav-beta .ds-nav-label { color: var(--c-muted, #67716b); } .ds-nav-coming { opacity: 0.75; cursor: default; } .ds-nav-coming:hover { background: none; } .ds-nav-coming .ds-nav-label, .ds-nav-coming .ds-nav-native { color: var(--c-muted, #67716b); } .ds-nav-active { background: var(--c-sign, #006747); margin-left: 0; padding-left: 16px; border-radius: 0 var(--radius, 4px) var(--radius, 4px) 0; } .ds-nav-active .ds-nav-label, .ds-nav-active .ds-nav-native { color: var(--c-on-sign, #ffffff); } .ds-beta { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; background: var(--c-sign, #006747); color: var(--c-on-sign, #ffffff); border: 1px solid transparent; border-radius: var(--radius-sm, 2px); padding: 2px 4px; line-height: 1; vertical-align: middle; } .ds-nav-active .ds-beta { border-color: var(--c-border-plate, rgba(255,255,255,0.6)); }"
+    },
+    {
+      "name": "Answer Input",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "The type-in quiz field. Border shifts to Highway Green on focus. Browser autocomplete, autocorrect and spellcheck are all disabled — the browser must never help transliterate.",
+      "html": "<form class=\"ds-input-row\"><input class=\"ds-input\" type=\"text\" placeholder=\"Type romanisation…\" autocomplete=\"off\" autocorrect=\"off\" spellcheck=\"false\"><button class=\"ds-btn-primary\" type=\"button\">Check</button></form>",
+      "css": ".ds-input-row { display: flex; gap: 8px; width: 100%; max-width: 360px; } .ds-input { flex: 1; padding: 8px 12px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); font-size: 14px; font-family: 'Noto Sans', system-ui, sans-serif; background: #fff; color: var(--c-head, #242b26); transition: border-color 0.15s; } .ds-input::placeholder { color: var(--c-muted, #67716b); } .ds-input:focus { border-color: var(--c-sign, #006747); outline: 2px solid var(--c-accent, #0a8f6f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Choice Button",
+      "kind": "button",
+      "refersTo": "choice",
+      "description": "Multiple-choice option. Hover borders Highway Green and tints Mint Wash; answered states take the pastel feedback grounds with status-coloured borders and text, and eliminated options dim to 0.4.",
+      "html": "<div class=\"ds-choices\"><button class=\"ds-choice ds-choice-correct\">Kalasin</button><button class=\"ds-choice ds-choice-wrong\">Kalasit</button><button class=\"ds-choice ds-choice-dim\">Khon Kaen</button></div>",
+      "css": ".ds-choices { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 360px; } .ds-choice { padding: 10px 16px; border: 1px solid var(--c-border, #c2dccb); border-radius: var(--radius, 4px); background: #fff; color: var(--c-label, #3e4842); font-size: 14px; font-family: 'Noto Sans', system-ui, sans-serif; cursor: pointer; text-align: left; transition: border-color 0.15s, background 0.15s; } .ds-choice:hover { border-color: var(--c-sign, #006747); background: var(--c-alt, #e3f3ec); } .ds-choice-correct { background: var(--fb-ok-bg, #edf7ee); border-color: var(--c-good, #3a7d44); color: var(--c-good, #3a7d44); } .ds-choice-wrong { background: var(--fb-wrong-bg, #fdf0f0); border-color: var(--c-bad, #b94040); color: var(--c-bad, #b94040); } .ds-choice-dim { opacity: 0.4; }"
+    },
+    {
+      "name": "Beta Badge",
+      "kind": "chip",
+      "refersTo": "badge-beta",
+      "description": "Marks a script whose question set is still changing. A plate, so it reads as a small sign rather than an outlined chip; on the active nav item it takes a Plate Rule outline to separate it from the plate underneath.",
+      "html": "<span class=\"ds-badge-beta\">beta</span>\n<span class=\"ds-plate\"><span class=\"ds-badge-beta ds-badge-beta-on-plate\">beta</span></span>",
+      "css": ".ds-badge-beta { display: inline-block; font-family: var(--sans); font-size: var(--fs-micro); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-caps); line-height: 1; background: var(--c-sign); color: var(--c-on-sign); border: 1px solid transparent; border-radius: var(--radius-sm); padding: var(--sp-2) var(--sp-4); vertical-align: middle; } .ds-badge-beta-on-plate { border-color: var(--c-border-plate); } .ds-plate { display: inline-block; margin-left: 12px; padding: 8px 10px; background: var(--c-sign); border-radius: 0 4px 4px 0; }"
+    },
+    {
+      "name": "Language Badge",
+      "kind": "chip",
+      "description": "Marks which languages a Cyrillic letter or rule applies to. Colours come from D3 Category 20 assigned by a fixed code order, with text colour chosen per-badge by luminance. Codes are BCP-47 so the same values double as lang attributes for OpenType locl substitutions.",
+      "html": "<span class=\"ds-langs\"><span class=\"ds-lang\" style=\"background:#1f77b4;color:#fff\" title=\"Russian\">RU</span><span class=\"ds-lang\" style=\"background:#aec7e8;color:#222\" title=\"Ukrainian\">UK</span><span class=\"ds-lang\" style=\"background:#ff7f0e;color:#fff\" title=\"Belarusian\">BE</span></span>",
+      "css": ".ds-langs { display: inline-flex; gap: 2px; vertical-align: middle; font-size: 20px; } .ds-lang { font-family: 'Noto Sans', system-ui, sans-serif; font-size: 0.6em; font-weight: 700; letter-spacing: 0.04em; border-radius: var(--radius-sm, 2px); padding: 0 3px; line-height: 1.5; cursor: help; }"
+    },
+    {
+      "name": "Script Card",
+      "kind": "card",
+      "refersTo": "script-card",
+      "description": "The Home index entry for one script. Three levels only, and state carried by surface and ink rather than by dimming text.",
+      "html": "<a class=\"ds-script-card\" href=\"#\">\n  <header class=\"ds-script-card-head\">\n    <span class=\"ds-script-card-name\">Thai</span>\n    <span class=\"ds-script-card-native\">อักษรไทย</span>\n  </header>\n  <span class=\"ds-script-card-detail\">Abugida — 44 consonants and 20+ vowel forms around them</span>\n  <footer class=\"ds-script-card-foot\"><span class=\"ds-script-card-where\">Thailand</span></footer>\n</a>",
+      "css": ".ds-script-card { display: flex; flex-direction: column; gap: var(--sp-8); padding: var(--sp-12) var(--sp-16) var(--sp-16); border-radius: var(--radius); background: var(--c-cell); text-decoration: none; color: inherit; transition: background 0.15s, color 0.15s; } .ds-script-card-head { font-size: var(--fs-prose); display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-8); padding-bottom: var(--sp-8); border-bottom: var(--hairline); } .ds-script-card-name { font-family: var(--serif); font-weight: 600; color: var(--c-accent); } .ds-script-card-native { font-size: calc(1em * var(--label-scale, 1)); color: var(--c-head); } .ds-script-card-detail { font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card-foot { margin-top: auto; padding-top: var(--sp-8); font-size: var(--fs-12); color: var(--c-muted); line-height: var(--lh-tight); } .ds-script-card:hover { background: var(--c-alt); } .ds-script-card:hover .ds-script-card-name { color: var(--c-sign); } .ds-script-card:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Map Shop Handout",
+    "overview": "The system is designed as though it were an A4/A5 reference sheet on sturdy glossy stock, made by a typographer whose day job is maps, and sold in a bookshop beside bird-species posters and wall maps of places worth visiting. That single image settles most questions before they are asked. Density is not a constraint to apologise for — a handout you paid for does not waste the sheet. Nothing is at a default value, because somebody competent set this. And the sheets are an object: if a sheet could not be printed on paper and still work, it has drifted.\n\nIts typographic lineage is textbooks, map legends, the supplementary lists tucked into a map's corner, and a little newspaper. The layout target is an engineering manual, not a magazine: condensed, tabulated, ruled. The system aims to be roughly 80–90% faithful to Matthew Butterick's Practical Typography, and the interesting part is the remaining 10–20%, where a screen and an interactive quiz demand things a printed page never had to answer.\n\nRoadsign iconography is the flavour, not the foundation — the kind of thematic nod a print designer might reach for anyway, since textbook and map design were never uniform either. It shows up as a highway-green plate under white lettering, and only where something genuinely behaves like a plate. Everything else is the paper, the rules, and the ink.",
+    "keyCharacteristics": [
+      "Condensed to engineering-manual density; whitespace is earned, never default",
+      "Mint hairlines and tonal fills do all the work that shadows would do elsewhere",
+      "The foreign glyph is the only element permitted to be large",
+      "Chrome is set at 10–13px and recedes; the sheet is the subject",
+      "A near-neutral ink with a faint green cast, so the greens read as deliberate",
+      "Print-plausible: a sheet should survive being printed on A5 and still function"
+    ],
+    "rules": [
+      {
+        "name": "The Plate Rule",
+        "body": "White-on-Highway-Green is reserved for surfaces that genuinely behave like a plate: sheet section headers, the active tab, the active nav item. It is the roadsign nod, and it works because it is rationed — a handful per screen. Applied to anything that is merely selected, prominent, or in need of attention, the nod becomes a costume.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral Ink Rule",
+        "body": "All three ink tones carry a faint green cast (#242b26, #3e4842, #67716b) rather than being true greys. Never substitute a pure neutral; the greens only read as deliberate because the ink quietly agrees with them.",
+        "section": "colors"
+      },
+      {
+        "name": "The ink trap",
+        "body": "Body Ink and Faded Ink sit almost exactly at Highway Green's luminance, so on a plate they are not merely low-contrast — they are literally invisible (Lc 0.0, WCAG 1.37:1). Faded Ink on Signal Teal is the same. An ink that reads fine everywhere on paper vanishes the moment it lands on a plate, and both contrast systems agree. Never demote plate text to an ink tone to make it look secondary; use a lighter tone instead.",
+        "section": "colors"
+      },
+      {
+        "name": "The Butterick Rule",
+        "body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.",
+        "section": "typography"
+      },
+      {
+        "name": "The Specimen Rule",
+        "body": "The foreign glyph is the only thing allowed to be large. Every other element is set between 10px and 1.6rem. When a new element wants to be big, it is almost always trying to be the specimen — and it isn't.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight Split Rule",
+        "body": "Lora runs at 500 in full-page prose and 600 in panels. The larger prose sizes carry more ink per stroke, so they want the lighter weight; the compact panel sizes need the heavier one. Do not homogenise these to a single weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shrinking Scale Rule",
+        "body": "Every scale in this system — type sizes, spacing steps, radii, colours — is under permanent pressure to inflate, because each individual addition looks reasonable in isolation. Treat a smaller palette as the default-correct answer: reach for an existing step before adding one, and when two steps are close enough that nobody could name the difference, they are one step.",
+        "section": "typography"
+      },
+      {
+        "name": "The Handout Density Rule",
+        "body": "A handout you paid for does not waste the sheet. Before adding padding, ask whether a printed reference sheet would spend that space. Usually it would not. Whitespace here is structural — it separates groups — and is not applied for comfort.",
+        "section": "layout"
+      },
+      {
+        "name": "The Print Test",
+        "body": "A sheet should be printable on A5 and still work. If a design depends on hover, scroll position, or viewport height to be legible, it has stopped being a handout.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Never introduce a shadow, glow, blur or gradient to signal depth, state or importance. If something needs to come forward, give it a hairline, a tonal fill, or a plate — in that order.",
+        "section": "elevation"
+      },
+      {
+        "name": "The De-emphasis Rule",
+        "body": "Something recedes by changing surface or ink, never by dimming text. Drop the greens to Faded Ink, or unmount the surface. Opacity applies to a whole inert element (--o-inert), at one level only — nested opacities multiply, and that is how the script cards once arrived at 1.6:1. The script card is the worked example: live is Cell White with a Signal Teal name, beta is the same card with the greens fallen back to Faded Ink, and unwritten is unmounted and dimmed as one element.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Two Registers Rule",
+        "body": "Chrome and quiz are set differently on purpose. Chrome — sidebar, panel tabs, toolbars, stats filters — is the fixture around the handout: restrained, near-muted, typographic, 10–13px, hairline-bordered, no fills except on hover and active. The quiz is inhabited for an uninterrupted stretch, so its controls are frankly interactive: 14px targets, real buttons with fills, coloured feedback rows, generous 2rem card padding. Both obey the same palette, radii and type families; they differ in how much presence they are allowed. Do not flatten one into the other.",
+        "section": "components"
+      },
+      {
+        "name": "The Muted Chrome Rule",
+        "body": "Interface controls rest at Faded Ink and step up to Body Ink on hover. A control at full Deep Ink is either active or a bug.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do ask \"would a map-shop handout do this?\" before adding space, weight or colour. It answers most layout questions correctly.",
+      "Do carry the sheet's typographic conventions into every dense listing — hairline rules, Mint Wash banding, uppercase micro-label headers, tight cell padding. The sheets are the house style, not a special case. Known drift: the stats table and the reading-tips panels were built as app UI that happens to sit near sheets; moving them toward sheet conventions is a licensed improvement, not a redesign.",
+      "Do use the hairline → tonal fill → plate ladder, in that order, to express depth.",
+      "Do keep new radii to 2px or 4px.",
+      "Do spend an existing scale step before inventing one — for type, spacing, radii and colour alike. Scales only ever inflate; the smaller palette is the default-correct answer.",
+      "Do reserve white-on-Highway-Green for surfaces that genuinely act as plates.",
+      "Do let the glyph be the only large thing on screen.",
+      "Do state maturity per script with the existing beta badge and dimming, rather than hedging the whole interface.",
+      "Do deviate from Butterick when a screen genuinely demands it — and record why."
+    ],
+    "donts": [
+      "Don't add a shadow, glow, blur, gradient or glassmorphic surface. Not for depth, not for state, not for emphasis.",
+      "Don't treat a WCAG 2.x ratio as the last word on Signal Teal. Check APCA before changing anything — white-on-teal is Lc −72.8 and fine, despite reading as a 4.1:1 \"fail\". Signal Teal as body-size text on Warm Sheet stays the weak case, but it is a guideline to weigh, not a prohibition. See \"On Signal Teal\" in DESIGN.md.",
+      "Don't drift toward a gamified language app: no mascots, streak flames, confetti, bouncy oversized rounded buttons, cartoon illustration or celebratory motion.",
+      "Don't drift toward a generic SaaS dashboard: no card-on-card stacking, gradient headers, purple/blue tech palette, floating widgets or comfort padding.",
+      "Don't chase trends: no neon, no heavy blur, no animated gradients, no dark-mode-first inversion of a system built as printed paper.",
+      "Don't produce undifferentiated walls of prose. Academic typography is part of the lineage; unstructured academic text is the failure mode — tabulate, rule and group instead.",
+      "Don't homogenise the two registers, or the Lora 500/600 split, in the name of consistency. Both differences are decisions.",
+      "Don't use the brand greens for status. Accuracy, freshness and correctness have their own palette so a score is never mistaken for branding.",
+      "Don't exceed one breakpoint's worth of complexity — reach for clamp() before reaching for a media query."
+    ]
+  }
 }
