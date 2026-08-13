@@ -351,7 +351,7 @@ const nudge = computed(() => {
 }
 
 .prompt-cell {
-	font-size: var(--fs-22-4);
+	font-size: var(--fs-letterform);
 	line-height: 1.3;
 	color: var(--c-head);
 }

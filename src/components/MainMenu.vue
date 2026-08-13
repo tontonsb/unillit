@@ -153,6 +153,9 @@ onBeforeUnmount(() => observer?.disconnect())
 
 <style scoped>
 aside {
+	--sidebar-width: 200px;
+	--sidebar-collapsed-width: 40px;
+
 	width: calc(var(--sidebar-width) + var(--scrollbar-width, 0px));
 	flex-shrink: 0;
 	display: flex;
@@ -181,7 +184,7 @@ aside.collapsed {
 	border-bottom: var(--hairline);
 	color: var(--c-label);
 	font-family: inherit;
-	font-size: var(--fs-18);
+	font-size: var(--fs-display);
 	transition: background 0.15s;
 }
 
@@ -299,7 +302,7 @@ nav {
 
 .item-abbr {
 	display: none;
-	font-size: var(--fs-17);
+	font-size: var(--fs-headline);
 	color: var(--c-sign);
 	line-height: 1;
 }
@@ -378,6 +381,7 @@ nav {
 }
 
 .user-name {
+	font-size: var(--fs-chrome);
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
