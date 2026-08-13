@@ -26,7 +26,6 @@
 	/* The base every unstyled element inherits, not the size of body copy — running
 	   text is --fs-prose. Chrome sits at or below this; prose sits above it. */
 	--fs-body: 0.875rem; /* 14px */
-	--fs-15: 0.9375rem;
 	--fs-prose: 1rem; /* 16px — DESIGN.md “body”: running prose */
 	--fs-headline: 1.1rem; /* 17.6px — DESIGN.md “headline” */
 

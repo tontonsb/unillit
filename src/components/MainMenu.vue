@@ -57,11 +57,12 @@ onBeforeUnmount(() => observer?.disconnect())
 				:to="`/scripts/${script.id}`"
 				class="nav-item script-item"
 				:class="{ active: route.params.id === script.id, beta: scriptStatus(script) === 'beta' }"
+				:style="{ '--label-scale': script.labelScale ?? 1 }"
 				:title="scriptStatus(script) === 'beta' ? `${script.name} — beta` : script.name"
 			>
 				<span class="item-label">{{ script.name }}</span>
-				<span class="item-native" :lang="script.lang">{{ script.nativeName }}</span>
 				<BetaBadge v-if="scriptStatus(script) === 'beta'" />
+				<span class="item-native" :lang="script.lang">{{ script.nativeName }}</span>
 				<span class="item-abbr" :lang="script.lang" aria-hidden="true">{{ script.abbr ?? script.nativeName[0] }}</span>
 			</RouterLink>
 
@@ -71,6 +72,7 @@ onBeforeUnmount(() => observer?.disconnect())
 				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
 				class="nav-item script-item coming-soon"
+				:style="{ '--label-scale': script.labelScale ?? 1 }"
 				:title="`${script.name} — not published yet`"
 			>
 				<span class="item-label">{{ script.name }}</span>
@@ -233,6 +235,7 @@ nav {
 	margin-inline: var(--sp-6);
 	border-radius: var(--radius);
 	text-decoration: none;
+	font-size: var(--fs-chrome);
 	color: var(--c-label);
 	transition: background 0.15s, color 0.15s;
 
@@ -281,7 +284,6 @@ nav {
 }
 
 .item-label {
-	font-size: var(--fs-chrome);
 	font-weight: 600;
 }
 
@@ -295,7 +297,7 @@ nav {
 
 .item-native {
 	margin-left: auto;
-	font-size: var(--fs-15);
+	font-size: calc(1em * var(--label-scale, 1));
 	color: var(--c-head);
 	line-height: var(--lh-tight);
 }
@@ -381,7 +383,6 @@ nav {
 }
 
 .user-name {
-	font-size: var(--fs-chrome);
 	overflow: hidden;
 	text-overflow: ellipsis;
 }

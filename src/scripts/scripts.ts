@@ -19,6 +19,7 @@ export interface ScriptConfig {
 	name: string
 	nativeName: string
 	lang: string // BCP-47 tag
+	labelScale?: number // some scripts look too small side by side with a latin label
 	abbr?: string     // icon char for collapsed menu; defaults to nativeName[0]
 	meta: string
 	countries?: string
@@ -37,6 +38,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Thai',
 		nativeName: 'อักษรไทย',
 		lang: 'th',
+		labelScale: 1.15,
 		abbr: 'ภ',
 		meta: 'Abugida — 44 consonants and 20+ vowel forms around them',
 		countries: 'Thailand',
@@ -66,6 +68,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Arabic',
 		nativeName: 'العربية',
 		lang: 'ar',
+		labelScale: 1.15,
 		abbr: 'ع',
 		meta: 'Abjad, written right to left; 28 letters with up to 4 forms each',
 		status: 'coming',
@@ -93,6 +96,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Bengali',
 		nativeName: 'বাংলা',
 		lang: 'bn',
+		labelScale: 1.15,
 		abbr: 'ব',
 		meta: 'Abugida. 39 consonants and 11 vowel chars',
 		countries: 'Bangladesh, India',
@@ -153,6 +157,7 @@ export const scriptList: ScriptConfig[] = [
 		name: 'Lao',
 		nativeName: 'ພາສາລາວ',
 		lang: 'lo',
+		labelScale: 1.15,
 		meta: 'Abugida. 27 consonants and lots of vowels',
 		countries: 'Laos',
 		status: 'coming',

@@ -113,23 +113,25 @@ header {
 	min-height: 36px;
 }
 
+/* an explicit size, because the children below are sized in `em` off it and the UA
+   default would resolve them against 28px */
 h1 {
 	display: flex;
 	align-items: baseline;
 	gap: var(--sp-6);
 	flex-shrink: 0;
 	padding: var(--sp-6) 0;
+	font-size: var(--fs-body);
 }
 
 .panel-name {
 	font-family: var(--serif);
-	font-size: var(--fs-body);
 	font-weight: 600;
 	color: var(--c-head);
 }
 
 .panel-native {
-	font-size: var(--fs-15);
+	font-size: calc(1em * var(--label-scale, 1));
 	font-weight: 400;
 	color: var(--c-sign);
 }

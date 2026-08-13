@@ -66,6 +66,7 @@ function copyLink() {
 				:title="config.name"
 				:title-native="config.nativeName"
 				:title-lang="config.lang"
+				:style="{ '--label-scale': config.labelScale ?? 1 }"
 				:tabs-label="`${config.name} sheets`"
 			>
 				<template #header-end>

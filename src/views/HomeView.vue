@@ -63,6 +63,7 @@ import BetaBadge from '@/components/BetaBadge.vue'
 				:to="`/scripts/${script.id}`"
 				class="script-card"
 				:class="{ beta: scriptStatus(script) === 'beta' }"
+				:style="{ '--label-scale': script.labelScale ?? 1 }"
 			>
 				<header>
 					<span class="card-name">{{ script.name }}</span>
@@ -78,6 +79,7 @@ import BetaBadge from '@/components/BetaBadge.vue'
 				v-for="script in sortedScriptList.filter(s => scriptStatus(s) === 'coming')"
 				:key="script.id"
 				class="script-card coming-soon"
+				:style="{ '--label-scale': script.labelScale ?? 1 }"
 			>
 				<header>
 					<span class="card-name">{{ script.name }}</span>
@@ -182,17 +184,17 @@ dt {
 	gap: var(--sp-8);
 	padding-bottom: var(--sp-8);
 	border-bottom: var(--hairline);
+	font-size: var(--fs-prose);
 }
 
 .card-name {
 	font-family: var(--serif);
-	font-size: var(--fs-prose);
 	font-weight: 600;
 	color: var(--c-accent);
 }
 
 .card-native {
-	font-size: var(--fs-headline);
+	font-size: calc(1em * var(--label-scale, 1));
 	color: var(--c-head);
 }
 
