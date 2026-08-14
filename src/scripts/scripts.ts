@@ -26,7 +26,7 @@ export interface ScriptConfig {
 	status?: ScriptStatus
 	infoTabs?: ScriptTab[]
 	practiceTabs?: ScriptTab[]
-	infoHeaderEnd?: Component
+	headerEnd?: Component
 }
 
 const NoContent = defineAsyncComponent(() => import('@/scripts/NoContent.vue'))
@@ -42,7 +42,7 @@ export const scriptList: ScriptConfig[] = [
 		abbr: 'ภ',
 		meta: 'Abugida — 44 consonants and 20+ vowel forms around them',
 		countries: 'Thailand',
-		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
+		headerEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
 		practiceTabs: (() => {
 			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
 			return thaiDatasets.map(dataset => ({ label: dataset.label, component: c, props: { datasetConfig: dataset, scriptId: 'thai', promptClass: 'thai', promptFontFamily: 'var(--font-thai)' } }))
@@ -125,7 +125,7 @@ export const scriptList: ScriptConfig[] = [
 		meta: 'Family of alphabets with 23 shared letters + per-lang additions',
 		countries: 'Balkans, Russia, Ukraine, Belarus, Central Asia',
 		status: 'beta',
-		infoHeaderEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
+		headerEnd: defineAsyncComponent(() => import('@/scripts/cyrillic/FontPicker.vue')),
 		infoTabs: [
 			{
 				label: 'Reading tips',

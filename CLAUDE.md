@@ -83,10 +83,10 @@ Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. Key fields:
   abbr: 'ፉ',          // single char for collapsed menu; defaults to nativeName[0]
   meta: 'Alphabet · left → right · N letters',
   countries: 'Country A · Country B',
-  comingSoon: true,   // hides from practice, shows in menu greyed out
+  status: 'coming',   // 'coming' greys it out in the menu, 'beta' badges it. Default 'live'
   infoTabs: [...],
   practiceTabs: [...],
-  infoHeaderEnd: FontPickerComponent,  // optional slot at end of info panel header
+  headerEnd: FontPickerComponent,  // optional control at the end of the panel header
 }
 ```
 
@@ -166,7 +166,7 @@ Each active script has:
 - `src/scripts/{script}/datasets.ts` — exports `{script}Datasets: QuizDataset[]`
 - `src/scripts/{script}/{script}Questions.ts` (or `questions.ts`) — exports question arrays
 
-Scripts with `comingSoon: true` appear in the menu greyed out but have no practice tabs.
+Scripts with `status: 'coming'` appear in the menu greyed out but have no practice tabs.
 
 ## Reading tips
 

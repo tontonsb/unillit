@@ -83,8 +83,8 @@ function copyLink() {
 				:tabs="config.practiceTabs ?? []"
 				:tabs-label="`${config.name} practice`"
 			>
-				<template v-if="config.infoHeaderEnd" #header-end>
-					<component :is="config.infoHeaderEnd" />
+				<template v-if="config.headerEnd" #header-end>
+					<component :is="config.headerEnd" />
 				</template>
 			</ScriptPanel>
 		</div>
