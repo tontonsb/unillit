@@ -21,7 +21,6 @@ const id = useId()
 	display: flex;
 	align-items: center;
 	gap: var(--sp-6);
-	margin-left: auto;
 	flex-shrink: 0;
 }
 

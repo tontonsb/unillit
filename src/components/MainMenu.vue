@@ -175,7 +175,7 @@ aside.collapsed {
 
 .toggle-btn {
 	flex-shrink: 0;
-	height: 36px;
+	height: var(--h-chrome-row);
 	width: 100%;
 	border: none;
 	background: none;
@@ -298,6 +298,7 @@ nav {
 	margin-left: auto;
 	font-size: calc(1em * var(--label-scale, 1));
 	color: var(--c-head);
+
 	/* line height in px so the native font can be scaled optically without scaling the line */
 	line-height: calc(var(--fs-chrome) * var(--lh-tight));
 }

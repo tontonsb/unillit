@@ -110,7 +110,7 @@ header {
 	padding: 0 var(--sp-12);
 	background: var(--c-cell);
 	border-bottom: var(--hairline);
-	min-height: 36px;
+	min-height: var(--h-chrome-row);
 }
 
 /* an explicit size, because the children below are sized in `em` off it and the UA
@@ -134,6 +134,9 @@ h1 {
 	font-size: calc(1em * var(--label-scale, 1));
 	font-weight: 400;
 	color: var(--c-sign);
+
+	/* against the h1's size, not its own, so the optical scale cannot grow the row */
+	line-height: calc(var(--fs-body) * var(--lh));
 }
 
 .tabs {
@@ -145,7 +148,7 @@ h1 {
 
 	/* matches the fade, so the last tab can scroll clear of it */
 	padding-right: var(--sp-28);
-	mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
+	mask-image: linear-gradient(to right, black calc(100% - var(--sp-28)), transparent);
 }
 
 .tabs::-webkit-scrollbar { display: none; }
