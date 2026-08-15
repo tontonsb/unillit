@@ -4,6 +4,7 @@ import type { QuizDataset } from './dataset'
 import { useStats, type QuestionStats } from '@/composables/useStats'
 import { useAuth } from '@/composables/useAuth'
 import { relativeDate } from './utils'
+import PillControl from '@/components/PillControl.vue'
 
 const props = defineProps<{
 	scriptId?: string
@@ -145,63 +146,58 @@ const nudge = computed(() => {
 		<template v-else>
 			<div v-if="hasFilters" class="filter-bar">
 				<template v-if="availableQuizTypes.length > 1">
-					<button
+					<PillControl
 						v-for="v in availableQuizTypes"
 						:key="v"
-						type="button"
-						class="filter-pill"
-						:class="{ active: filterQuizType === v }"
+						small
+						:active="filterQuizType === v"
 						:title="`Filter by quiz type: ${v}`"
 						@click="filterQuizType = filterQuizType === v ? null : v"
-					>{{ v }}</button>
+					>{{ v }}</PillControl>
 					<span class="filter-sep"></span>
 				</template>
 				<template v-if="availableFonts.length > 1">
-					<button
+					<PillControl
 						v-for="v in availableFonts"
 						:key="v"
-						type="button"
-						class="filter-pill"
-						:class="{ active: filterFont === v }"
+						small
+						:active="filterFont === v"
 						:title="`Filter by font: ${v}`"
 						@click="filterFont = filterFont === v ? null : v"
-					>{{ v }}</button>
+					>{{ v }}</PillControl>
 					<span class="filter-sep"></span>
 				</template>
 				<template v-if="availableInfoSheets.length > 1">
-					<button
+					<PillControl
 						v-for="v in availableInfoSheets"
 						:key="v"
-						type="button"
-						class="filter-pill"
-						:class="{ active: filterInfoSheet === v }"
+						small
+						:active="filterInfoSheet === v"
 						:title="`Filter by info sheet tab: ${v}`"
 						@click="filterInfoSheet = filterInfoSheet === v ? null : v"
-					>{{ v }}</button>
+					>{{ v }}</PillControl>
 					<span class="filter-sep"></span>
 				</template>
 				<template v-if="availableTolerances.length > 1">
-					<button
+					<PillControl
 						v-for="v in availableTolerances"
 						:key="v"
-						type="button"
-						class="filter-pill"
-						:class="{ active: filterTolerance === v }"
+						small
+						:active="filterTolerance === v"
 						:title="`Filter by allowed errors setting: ${v}`"
 						@click="filterTolerance = filterTolerance === v ? null : v"
-					>±{{ v }}</button>
+					>±{{ v }}</PillControl>
 					<span class="filter-sep"></span>
 				</template>
 				<template v-if="availableErrors.length > 1">
-					<button
+					<PillControl
 						v-for="v in availableErrors"
 						:key="v"
-						type="button"
-						class="filter-pill"
-						:class="{ active: filterErrors === v }"
+						small
+						:active="filterErrors === v"
 						:title="v === 0 ? 'Filter to exact matches only' : `Filter to answers with ${v} typo(s)`"
 						@click="filterErrors = filterErrors === v ? null : v"
-					>{{ v === 0 ? 'exact' : `${v} err` }}</button>
+					>{{ v === 0 ? 'exact' : `${v} err` }}</PillControl>
 				</template>
 			</div>
 			<div v-if="nudge" class="nudge-bar">{{ nudge }}</div>
@@ -266,31 +262,6 @@ const nudge = computed(() => {
 	padding: var(--sp-6) var(--sp-12);
 	border-bottom: var(--hairline);
 	background: var(--c-cell);
-}
-
-.filter-pill {
-	padding: var(--sp-2) var(--sp-8);
-	border: var(--hairline);
-	border-radius: var(--radius);
-	background: transparent;
-	color: var(--c-muted);
-	font-size: var(--fs-micro);
-	font-family: var(--sans);
-	font-weight: 600;
-	letter-spacing: var(--tracking-wide);
-	cursor: pointer;
-	transition: all 0.15s;
-}
-
-.filter-pill:hover {
-	color: var(--c-label);
-	border-color: var(--c-label);
-}
-
-.filter-pill.active {
-	background: var(--c-alt);
-	border-color: var(--c-sign);
-	color: var(--c-head);
 }
 
 .filter-sep {

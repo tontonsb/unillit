@@ -2,6 +2,7 @@
 import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ScriptPanel from '@/components/ScriptPanel.vue'
+import PillControl from '@/components/PillControl.vue'
 import { scriptsById } from '@/scripts/scripts'
 import { activeInfoSheet, infoTab, practiceTab } from '@/composables/useScriptContext'
 import { encodeTabs, applyShare } from '@/lib/tabLink'
@@ -70,12 +71,10 @@ function copyLink() {
 				:tabs-label="`${config.name} sheets`"
 			>
 				<template #header-end>
-					<button
-						type="button"
-						class="link-btn"
+					<PillControl
 						:title="copied ? 'Link copied' : 'Copy a link to these tabs'"
 						@click="copyLink"
-					>{{ copied ? '✓ Copied' : '🔗 Link' }}</button>
+					>{{ copied ? '✓ Copied' : '🔗 Link' }}</PillControl>
 				</template>
 			</ScriptPanel>
 			<ScriptPanel
@@ -96,25 +95,6 @@ function copyLink() {
 </template>
 
 <style scoped>
-.link-btn {
-	flex-shrink: 0;
-	padding: 3px var(--sp-8);
-	border: var(--hairline);
-	border-radius: var(--radius);
-	background: transparent;
-	color: var(--c-muted);
-	font-size: var(--fs-11);
-	font-family: var(--sans);
-	white-space: nowrap;
-	cursor: pointer;
-	transition: color 0.15s, border-color 0.15s;
-}
-
-.link-btn:hover {
-	color: var(--c-label);
-	border-color: var(--c-label);
-}
-
 .script-page {
 	display: flex;
 	flex-direction: column;

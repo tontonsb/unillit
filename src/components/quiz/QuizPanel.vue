@@ -8,6 +8,7 @@ import { samplingMode, randomCount, preferredMode } from '@/composables/useQuizP
 import { useResultShare } from '@/composables/useResultShare'
 import { useAuth } from '@/composables/useAuth'
 import { formatAnswers, revisionSample } from './utils'
+import PillControl from '@/components/PillControl.vue'
 import TypeInQuiz from './TypeInQuiz.vue'
 import MultipleChoiceQuiz from './MultipleChoiceQuiz.vue'
 import MultiSelectQuiz from './MultiSelectQuiz.vue'
@@ -213,40 +214,32 @@ const { resultCopied, copyResults } = useResultShare({
 
 		<div class="toolbar">
 			<div v-if="currentModes.length > 1" class="mode-toggle">
-				<button
+				<PillControl
 					v-for="m in currentModes"
 					:key="m"
-					type="button"
-					class="pill"
-					:class="{ active: mode === m }"
+					:active="mode === m"
 					@click="switchMode(m)"
-				>{{ modeLabel(m) }}</button>
+				>{{ modeLabel(m) }}</PillControl>
 			</div>
 			<div class="mode-picker">
-				<button
-					type="button"
-					class="pill"
-					:class="{ active: samplingMode === 'shuffled' }"
+				<PillControl
+					:active="samplingMode === 'shuffled'"
 					@click="switchSampling('shuffled')"
-				>Shuffled</button>
-				<button
-					type="button"
-					class="pill"
-					:class="{ active: samplingMode === 'random' }"
+				>Shuffled</PillControl>
+				<PillControl
+					:active="samplingMode === 'random'"
 					@click="switchSampling('random')"
-				>Random</button>
-				<button
+				>Random</PillControl>
+				<PillControl
 					v-if="user"
-					type="button"
-					class="pill"
-					:class="{ active: samplingMode === 'revision' }"
+					:active="samplingMode === 'revision'"
 					@click="switchSampling('revision')"
-				>Revision</button>
-				<span
+				>Revision</PillControl>
+				<PillControl
 					v-else
-					class="pill pill-locked"
+					locked
 					title="Log in to store stats and use Revision mode"
-				>Revision</span>
+				>Revision</PillControl>
 				<input
 					v-if="samplingMode !== 'shuffled'"
 					:value="randomCount"
@@ -371,48 +364,13 @@ const { resultCopied, copyResults } = useResultShare({
 	border-radius: var(--radius);
 	background: transparent;
 	color: var(--c-label);
-	font-size: var(--fs-11);
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	text-align: center;
 }
 
 .count-input:focus {
 	border-color: var(--c-sign);
-}
-
-.pill {
-	padding: 3px var(--sp-10);
-	border: var(--hairline);
-	border-radius: var(--radius);
-	background: transparent;
-	color: var(--c-muted);
-	font-size: var(--fs-11);
-	font-family: var(--sans);
-	cursor: pointer;
-	transition: all 0.15s;
-	white-space: nowrap;
-	flex-shrink: 0;
-}
-
-.pill:hover {
-	color: var(--c-label);
-	border-color: var(--c-label);
-}
-
-.pill-locked {
-	opacity: 0.4;
-	cursor: default;
-}
-
-.pill-locked:hover {
-	color: var(--c-muted);
-	border-color: var(--c-border);
-}
-
-.pill.active {
-	background: var(--c-alt);
-	border-color: var(--c-sign);
-	color: var(--c-head);
 }
 
 .progress-row {
