@@ -157,10 +157,10 @@ See §"Omissions" below for why these are system gaps rather than discipline fai
   script cards and the nav items; `pill-locked` 0.4 is unreviewed and stays literal until
   its own pass. Button hover dimming (0.85 ×6) is a different semantic and consistent
   already.
-- [ ] **Motion has durations but no easing** — three durations, zero easing tokens,
-  everything on browser-default `ease`. *Honest value: low.* The 0.15s transitions are
-  colour and border, where easing is perceptually irrelevant; only two places have
-  geometric motion (sidebar width 0.2s, progress fill 0.25s). One token applied twice.
+- [ ] **Motion has no easing tokens** — everything on browser-default `ease`. *Honest
+  value: low.* The `--dur` transitions are colour and border, where easing is
+  perceptually irrelevant; only two places have geometric motion (sidebar width 0.2s,
+  progress fill 0.25s). One token applied twice.
   Worth doing while already in those files, not worth a session of its own.
   `prefers-reduced-motion` is the valuable half and is listed under low-hanging fruit.
 - [ ] **Status covers evaluation but not information.** `good/warn/bad` answers "how
@@ -319,9 +319,10 @@ it is what stops the next edit inventing a neighbour.
 both role-specific, and advertising three widths invites widths this system has
 deliberately never had.
 
-- [ ] **`transition: … 0.15s` ×19** across 10 declaration shapes, plus `0.2s` and
-  `0.25s` singletons. Already noted under Omissions as low value for *easing*; the
-  duration token is separately cheap and is what stops a `0.12s` appearing.
+- [x] **The state-change duration is `--dur`.** 26 occurrences across 17 declarations in
+  13 files, at an unchanged 0.15s. The two geometric motions (sidebar width 0.2s,
+  progress fill 0.25s) stay literal: they are one of a kind, and a scale of three
+  durations would invite a fourth.
 
 Deliberately excluded: `font-weight: 600`×28 (a CSS keyword with universal meaning, not
 a scale) and the five `minmax()` cell minimums (`56 60 96 170 200px` — per-layout

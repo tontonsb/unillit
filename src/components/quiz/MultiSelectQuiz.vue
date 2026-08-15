@@ -172,7 +172,7 @@ function optClass(opt: string): string {
 	font-family: var(--sans);
 	cursor: pointer;
 	text-align: left;
-	transition: border-color 0.15s, background 0.15s;
+	transition: border-color var(--dur), background var(--dur);
 }
 
 .choice:disabled { cursor: default; }
@@ -199,7 +199,7 @@ function optClass(opt: string): string {
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: opacity 0.15s;
+	transition: opacity var(--dur);
 }
 
 .btn-check:hover { opacity: 0.85; }

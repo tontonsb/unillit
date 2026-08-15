@@ -127,7 +127,7 @@ function handleSubmit() {
 	font-family: var(--sans);
 	background: var(--c-cell);
 	color: var(--c-head);
-	transition: border-color 0.15s;
+	transition: border-color var(--dur);
 }
 
 .answer-input:focus {
@@ -172,7 +172,7 @@ function handleSubmit() {
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: opacity 0.15s;
+	transition: opacity var(--dur);
 }
 
 .btn-primary:hover { opacity: 0.85; }

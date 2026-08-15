@@ -174,7 +174,7 @@ dt {
 	background: var(--c-cell);
 	text-decoration: none;
 	color: inherit;
-	transition: background 0.15s, color 0.15s;
+	transition: background var(--dur), color var(--dur);
 }
 
 .script-card header {

@@ -187,7 +187,7 @@ aside.collapsed {
 	color: var(--c-label);
 	font-family: inherit;
 	font-size: var(--fs-display);
-	transition: background 0.15s;
+	transition: background var(--dur);
 }
 
 .toggle-btn:hover {
@@ -236,7 +236,7 @@ nav {
 	text-decoration: none;
 	font-size: var(--fs-chrome);
 	color: var(--c-label);
-	transition: background 0.15s, color 0.15s;
+	transition: background var(--dur), color var(--dur);
 
 	/* name and specimen share a baseline; only the beta badge ever needs the second
 	   line, and it lands where the index card puts it */

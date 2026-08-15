@@ -112,7 +112,7 @@ watch(activeTab, (tab) => {
 	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: background 0.15s, color 0.15s;
+	transition: background var(--dur), color var(--dur);
 }
 
 .tab-btn:hover { background: var(--c-alt); }

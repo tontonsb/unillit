@@ -144,7 +144,7 @@ onMounted(() => goToPage(0))
 	font-size: var(--fs-12);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: background 0.15s;
+	transition: background var(--dur);
 }
 
 .page-btn:disabled { opacity: 0.35; cursor: default; }

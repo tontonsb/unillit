@@ -100,7 +100,7 @@ function choiceState(choice: string): 'correct' | 'wrong' | 'dim' | null {
 	font-family: var(--sans);
 	cursor: pointer;
 	text-align: left;
-	transition: border-color 0.15s, background 0.15s;
+	transition: border-color var(--dur), background var(--dur);
 }
 
 /* always present, so answering never shifts the labels */

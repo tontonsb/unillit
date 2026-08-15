@@ -454,7 +454,7 @@ const { resultCopied, copyResults } = useResultShare({
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: opacity 0.15s;
+	transition: opacity var(--dur);
 }
 
 .btn-primary:hover { opacity: 0.85; }
@@ -468,7 +468,7 @@ const { resultCopied, copyResults } = useResultShare({
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: color 0.15s, border-color 0.15s;
+	transition: color var(--dur), border-color var(--dur);
 }
 
 .btn-secondary:hover {

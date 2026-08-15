@@ -29,7 +29,7 @@ defineProps<{
 	cursor: pointer;
 	white-space: nowrap;
 	flex-shrink: 0;
-	transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+	transition: color var(--dur), border-color var(--dur), background-color var(--dur);
 }
 
 .pill:hover {

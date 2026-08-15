@@ -164,7 +164,7 @@ h1 {
 	font-family: var(--sans);
 	cursor: pointer;
 	white-space: nowrap;
-	transition: color 0.15s, background-color 0.15s;
+	transition: color var(--dur), background-color var(--dur);
 }
 
 .tab:hover {

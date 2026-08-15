@@ -69,7 +69,7 @@ article > :is(h1, p),
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: opacity 0.15s;
+	transition: opacity var(--dur);
 	align-self: flex-start;
 }
 

@@ -343,7 +343,7 @@ const nudge = computed(() => {
 	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
-	transition: opacity 0.15s;
+	transition: opacity var(--dur);
 }
 
 .btn-primary:hover { opacity: 0.85; }

@@ -87,6 +87,11 @@
 	--fb-fuzzy-user-bg: #f5f5e8;
 	--fb-fuzzy-user-text: #726c3c;
 
+	/* State changes only — hover, active, focus. The two geometric motions (the sidebar
+	   width, the progress fill) are longer and one of a kind, so they stay literal:
+	   a scale of three durations would invite a fourth. */
+	--dur: 0.15s;
+
 	--radius-sm: 2px;
 	--radius: 4px;
 
