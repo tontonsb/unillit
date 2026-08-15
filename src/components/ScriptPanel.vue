@@ -120,8 +120,8 @@ h1 {
 	align-items: baseline;
 	gap: var(--sp-6);
 	flex-shrink: 0;
-	padding: var(--sp-6) 0;
-	font-size: var(--fs-body);
+	padding: var(--sp-4) 0;
+	font-size: var(--fs-prose);
 }
 
 .panel-name {
@@ -136,7 +136,7 @@ h1 {
 	color: var(--c-sign);
 
 	/* against the h1's size, not its own, so the optical scale cannot grow the row */
-	line-height: calc(var(--fs-body) * var(--lh));
+	line-height: calc(var(--fs-prose) * var(--lh));
 }
 
 .tabs {
@@ -160,7 +160,7 @@ h1 {
 	border-radius: var(--radius-sm);
 	background: transparent;
 	color: var(--c-muted);
-	font-size: var(--fs-12);
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	cursor: pointer;
 	white-space: nowrap;

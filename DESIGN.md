@@ -88,12 +88,12 @@ components:
     backgroundColor: "transparent"
     textColor: "{colors.faded-ink}"
     rounded: "{rounded.md}"
-    padding: "3px 10px"
+    padding: "2px 10px"
   pill-active:
     backgroundColor: "{colors.mint-wash}"
     textColor: "{colors.deep-ink}"
     rounded: "{rounded.md}"
-    padding: "3px 10px"
+    padding: "2px 10px"
   tab:
     backgroundColor: "transparent"
     textColor: "{colors.faded-ink}"
@@ -596,7 +596,7 @@ inconsistent. See **The Two Registers Rule** below.
   the ring stays inside the surface.
 
 ### Pills (toolbar controls)
-- **Style:** `3px 10px`, 11px, Mint Rule hairline on transparent, Faded Ink text.
+- **Style:** `2px 10px`, 11px, Mint Rule hairline on transparent, Faded Ink text.
 - **Hover:** text and border step up to Body Ink — no fill.
 - **Active:** Mint Wash fill, Highway Green border, Deep Ink text.
 - **Locked:** `opacity: 0.4`, rendered as a `<span>` rather than a disabled button, with
@@ -638,7 +638,7 @@ inconsistent. See **The Two Registers Rule** below.
   reversed to white. Beta drops the name and rail glyph to Faded Ink and keeps its badge;
   coming-soon carries that into the specimen, takes `--o-inert` as one row, and is an
   inert `<div>`.
-- **Panel tabs:** 12px, `4px 10px`, 2px radius, Faded Ink; hover tints Mint Wash; active
+- **Panel tabs:** chrome size, `4px 10px`, 2px radius, Faded Ink; hover tints Mint Wash; active
   is the Highway Green plate. The tab strip scrolls horizontally with hidden scrollbars
   and a `mask-image` fade at the right edge that signals more tabs without spending a
   chevron.

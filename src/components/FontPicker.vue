@@ -33,7 +33,7 @@ const id = useId()
 }
 
 .picker-select {
-	font-size: var(--fs-12);
+	font-size: var(--fs-chrome);
 	font-family: var(--sans);
 	color: var(--c-head);
 	background: var(--c-cell);

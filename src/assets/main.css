@@ -18,10 +18,10 @@
 	   value has one, by value where it does not. The sub-pixel neighbours are residue
 	   awaiting a consolidation. Sheets and reading tips scale in `em` off a clamped
 	   base and are deliberately absent. */
-	--fs-micro: 0.625rem; /* 10px — uppercase micro-labels */
+	--fs-micro: 0.65rem; /* micro-labels */
 	--fs-11: 0.6875rem;
 	--fs-12: 0.75rem;
-	--fs-chrome: 0.8125rem; /* 13px — nav, buttons, default chrome text */
+	--fs-chrome: 0.8rem; /* nav, small buttons */
 
 	/* The base every unstyled element inherits, not the size of body copy — running
 	   text is --fs-prose. Chrome sits at or below this; prose sits above it. */
@@ -48,7 +48,7 @@
 	/* Whole elements only, never text hierarchy — that is a colour or surface change.
 	   One level: opacities must not nest, or they multiply. The other opacities in the
 	   codebase are unreviewed and stay literal until their own pass. */
-	--o-inert: 0.75; /* content that exists but is not available yet */
+	--o-inert: 0.65; /* content that exists but is not available yet */
 
 	/**
 	  * Ink is near-neutral (faint green cast); the greens carry the brand:
