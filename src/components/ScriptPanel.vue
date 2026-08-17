@@ -181,8 +181,11 @@ h1 {
 	background: var(--c-sign);
 }
 
+/* Size reference for panel content that scales with its column: the sidebar
+   collapsing swings this 80px at 1280, which vw cannot see. */
 .panel-content {
 	flex: 1;
+	container-type: inline-size;
 	overflow-y: auto;
 	overflow-x: auto;
 	background: var(--c-bg);

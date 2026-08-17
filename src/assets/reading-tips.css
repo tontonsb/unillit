@@ -2,10 +2,14 @@
    Script-specific bits (letterform fonts, term-card badges) live in each
    component's scoped <style>. */
 
+/* Ramp anchors, which is what the slope and intercept encode: 519px of container
+   (1280 viewport, sidebar open) on --fs-chrome, 736px on --fs-prose — 736 is where
+   --measure-wide caps the box, so type and column stop growing together. Container is
+   .panel-content; rem bounds keep the reader's font-size preference live. */
 .reading-tips {
 	padding: 1.25rem 1.5rem;
-	max-width: var(--measure-tips);
-	font-size: clamp(13px, 0.9vw, 16px);
+	max-width: var(--measure-wide);
+	font-size: clamp(var(--fs-chrome), 0.32rem + 1.48cqi, var(--fs-prose));
 	color: var(--c-label);
 }
 

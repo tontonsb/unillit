@@ -104,8 +104,7 @@
 	   bound would silently widen in characters. --measure-prose is the text column,
 	   padding excluded — `.prose` is content-box for that reason. */
 	--measure-prose: 36rem; /* 576px */
-	--measure-wide: 46rem; /* 736px — grid and table pages */
-	--measure-tips: 40rem; /* 640px — parked pending the reading-tips pass */
+	--measure-wide: 46rem; /* 736px — grid and table pages, and the reading-tips panel */
 	--w-quiz-control: 22.5rem; /* 360px — widest control in the answer card */
 
 	/* The top chrome row. The sidebar's collapse toggle and both panel headers are set to
