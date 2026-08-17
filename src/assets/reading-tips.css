@@ -2,14 +2,12 @@
    Script-specific bits (letterform fonts, term-card badges) live in each
    component's scoped <style>. */
 
-/* Ramp anchors, which is what the slope and intercept encode: 519px of container
-   (1280 viewport, sidebar open) on --fs-chrome, 736px on --fs-prose — 736 is where
-   --measure-wide caps the box, so type and column stop growing together. Container is
-   .panel-content; rem bounds keep the reader's font-size preference live. */
 .reading-tips {
-	padding: 1.25rem 1.5rem;
-	max-width: var(--measure-wide);
-	font-size: clamp(var(--fs-chrome), 0.32rem + 1.48cqi, var(--fs-prose));
+	padding: var(--sp-20) var(--sp-24);
+	max-width: var(--measure-tips);
+
+	/* 2.1 ≈ --fs-prose / --measure-tips; 12.8px @ 610px, 16px @ 762px */
+	font-size: clamp(var(--fs-chrome), 2.1cqi, var(--fs-prose));
 	color: var(--c-label);
 }
 
@@ -18,7 +16,7 @@
 	font-size: 1.15em;
 	font-weight: 600;
 	color: var(--c-accent);
-	margin-top: 1.25rem;
+	margin-top: var(--sp-20);
 	margin-bottom: 0.3rem;
 }
 
@@ -32,11 +30,11 @@
 }
 
 .reading-tips p { color: var(--c-label); }
-.reading-tips p + p { margin-top: 0.5rem; }
+.reading-tips p + p { margin-top: var(--sp-8); }
 
 .reading-tips ul,
 .reading-tips ol {
-	padding-left: 1.25rem;
+	padding-left: var(--sp-20);
 	margin: 0.4rem 0 0.6rem;
 	display: flex;
 	flex-direction: column;
@@ -66,7 +64,7 @@
 
 .reading-tips table {
 	border-collapse: collapse;
-	margin: 0.5rem 0;
+	margin: var(--sp-8) 0;
 	font-size: 0.9em;
 }
 
@@ -74,7 +72,7 @@
 	color: var(--c-head);
 	font-weight: 600;
 	text-align: left;
-	padding: 4px 12px;
+	padding: var(--sp-4) var(--sp-12);
 }
 
 /* single rule under the header row — no cell grid */
@@ -83,7 +81,7 @@
 }
 
 .reading-tips td {
-	padding: 4px 12px;
+	padding: var(--sp-4) var(--sp-12);
 	color: var(--c-label);
 }
 
@@ -93,14 +91,14 @@
 	background: transparent;
 	border-bottom: none;
 	padding: 0;
-	width: 0.75rem;
+	width: var(--sp-12);
 }
 
 /* zebra carries row tracking in place of borders (covers row-header th too) */
 .reading-tips tr:nth-child(even) td:not(:empty),
 .reading-tips tbody tr:nth-child(even) th:not(:empty) { background: var(--c-alt); }
 
-.reading-tips figure { margin: 0.75rem 0; }
+.reading-tips figure { margin: var(--sp-12) 0; }
 
 .reading-tips figure img {
 	display: block;
@@ -137,7 +135,7 @@
 .reading-tips dl {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-	gap: 0.5rem;
+	gap: var(--sp-8);
 }
 
 .reading-tips dl > div {

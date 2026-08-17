@@ -416,9 +416,10 @@ and adds its gutters outside the cap. Running text is capped at `--measure-prose
 (36rem) on every prose page; `--measure-wide` (46rem) is the same kind of content width
 for grid and table pages, and a page holding both re-centres its prose children on the
 measure. `--w-quiz-control` (22.5rem) is not a measure — it fits the widest control in
-the answer card. Reading tips share `--measure-wide` and cap at ~89 characters: their
-paragraphs run one or two lines, so a tighter measure would spend wraps protecting a
-return sweep that barely happens.
+the answer card. Reading tips run to ~93 characters on `--measure-tips` (48rem): their
+paragraphs are one or two lines, so a tighter measure would spend wraps protecting a
+return sweep that barely happens. It also sets the panel's type ramp
+(`--fs-prose ÷ --measure-tips`), so line length never shortens as the panel widens.
 
 ### Named Rules
 
