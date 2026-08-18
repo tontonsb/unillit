@@ -1,6 +1,6 @@
-/* Shared typography for script reading-tips panels.
-   Script-specific bits (letterform fonts, term-card badges) live in each
-   component's scoped <style>. */
+/* The compact prose register for script reading-tips panels. What it shares with
+   page prose is in prose.css, which loads first; script-specific bits (letterform
+   fonts, term-card badges) live in each component's scoped <style>. */
 
 .reading-tips {
 	padding: var(--sp-20) var(--sp-24);
@@ -31,33 +31,11 @@
 	margin-bottom: 0.4rem;
 }
 
-.reading-tips p { color: var(--c-label); }
-.reading-tips p + p { margin-top: var(--sp-12); }
-
-.reading-tips ul,
-.reading-tips ol {
-	padding-left: var(--sp-20);
-	margin: var(--sp-8) 0 var(--sp-12);
-	display: flex;
-	flex-direction: column;
-	gap: var(--sp-4);
-	line-height: var(--lh-tight);
-}
-
-.reading-tips li::marker {
-	color: var(--c-accent);
-}
-
+/* metrics only — the callout's accent rule and italic are shared, in prose.css */
 .reading-tips blockquote {
 	margin: 0.6rem 0;
 	padding: 0.3rem 0 0.3rem 0.8rem;
-	border-left: 3px solid var(--c-accent);
-	color: var(--c-head);
-	font-style: italic;
-	line-height: var(--lh-tight);
 }
-
-.reading-tips blockquote p { color: inherit; }
 
 /* low-key side note — lighter than a blockquote */
 .reading-tips small {
@@ -125,14 +103,6 @@
 	border-radius: var(--radius-sm);
 	font-size: 0.9em;
 }
-
-.reading-tips a {
-	color: var(--c-sign);
-	text-decoration: underline;
-	text-underline-offset: 2px;
-}
-
-.reading-tips a:hover { color: var(--c-head); }
 
 /* term cards (the header definition list) */
 .reading-tips dl {

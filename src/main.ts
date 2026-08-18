@@ -1,7 +1,9 @@
 import './assets/fonts'
 import './assets/main.css'
-import './assets/reading-tips.css'
+// prose.css carries the rules both prose registers share, so it precedes the
+// reading-tips overrides — they collide at equal specificity, order decides.
 import './assets/prose.css'
+import './assets/reading-tips.css'
 import './assets/sheet.css'
 
 import { createApp } from 'vue'

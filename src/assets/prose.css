@@ -1,7 +1,61 @@
-/* Shared page-prose for full-page article views (Home, About, …).
-   Applied via class="prose" on the root <article>. The compact side-panel
-   prose lives separately in reading-tips.css. Only rules that are identical
-   across the pages live here; page-specific bits stay in each component. */
+/* Prose registers: full-page articles (`.prose` — Home, About, …) and the compact
+   script reading-tips panels (`.reading-tips`). What both registers share lives at
+   the top, so each can override it below; the panel's own metrics — its scaled type
+   base, headings, tables, figures, term cards — stay in reading-tips.css. */
+
+/* ---------- shared by both registers ---------- */
+
+:is(.prose, .reading-tips) :is(h1, h2, h3) {
+	text-wrap: balance;
+}
+
+:is(.prose, .reading-tips) :is(p, li, dd) {
+	text-wrap: pretty;
+}
+
+:is(.prose, .reading-tips) p + p {
+	margin-top: var(--sp-12);
+}
+
+/* Tighter above than `p + p`: a list continues the line that introduces it. */
+:is(.prose, .reading-tips) :is(ul, ol) {
+	padding-left: var(--sp-20);
+	margin: var(--sp-8) 0 var(--sp-12);
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-4);
+	line-height: var(--lh-tight);
+}
+
+:is(.prose, .reading-tips) li::marker {
+	color: var(--c-accent);
+}
+
+/* The prominent callout. Each register sets its own margins and padding, because
+   those scale with its type; the accent rule and italic do not. */
+:is(.prose, .reading-tips) blockquote {
+	border-left: 3px solid var(--c-accent);
+	color: var(--c-head);
+	font-style: italic;
+	line-height: var(--lh-tight);
+}
+
+:is(.prose, .reading-tips) blockquote p {
+	color: inherit;
+}
+
+/* links within running text (not standalone card/nav links) */
+:is(.prose, .reading-tips) :is(p, li, dd, figcaption) a {
+	color: var(--c-sign);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+:is(.prose, .reading-tips) :is(p, li, dd, figcaption) a:hover {
+	color: var(--c-head);
+}
+
+/* ---------- page prose ---------- */
 
 /* content-box against the global border-box reset: under border-box the padding
    eats into --measure-prose and the column comes out 64px narrower than it names. */
@@ -52,56 +106,12 @@
 	margin-bottom: 0.4rem;
 }
 
-.prose :is(h1, h2, h3) {
-	text-wrap: balance;
-}
-
 .prose :is(p, li, dd) {
 	font-size: var(--fs-prose);
 	color: var(--c-label);
-	text-wrap: pretty;
 }
 
-.prose p + p {
-	margin-top: var(--sp-12);
-}
-
-/* Tighter above than `p + p`: a list continues the line that introduces it. */
-.prose ul,
-.prose ol {
-	padding-left: var(--sp-20);
-	margin: var(--sp-8) 0 var(--sp-12);
-	display: flex;
-	flex-direction: column;
-	gap: var(--sp-4);
-	line-height: var(--lh-tight);
-}
-
-.prose li::marker {
-	color: var(--c-accent);
-}
-
-/* the reading-tips callout at page-prose scale */
 .prose blockquote {
 	margin: var(--sp-12) 0;
 	padding: var(--sp-4) 0 var(--sp-4) var(--sp-12);
-	border-left: 3px solid var(--c-accent);
-	color: var(--c-head);
-	font-style: italic;
-	line-height: var(--lh-tight);
-}
-
-.prose blockquote p {
-	color: inherit;
-}
-
-/* links within running text (not standalone card/nav links) */
-.prose :is(p, li, dd) a {
-	color: var(--c-sign);
-	text-decoration: underline;
-	text-underline-offset: 2px;
-}
-
-.prose :is(p, li, dd) a:hover {
-	color: var(--c-head);
 }
