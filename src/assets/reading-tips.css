@@ -13,11 +13,11 @@
 
 .reading-tips h2 {
 	font-family: var(--serif);
-	font-size: 1.15em;
+	font-size: 1.1em;
 	font-weight: 600;
 	color: var(--c-accent);
 	margin-top: var(--sp-20);
-	margin-bottom: 0.3rem;
+	margin-bottom: var(--sp-4);
 }
 
 .reading-tips h3 {
@@ -25,20 +25,23 @@
 	font-size: 1em;
 	font-weight: 600;
 	color: var(--c-head);
-	margin-top: 0.9rem;
-	margin-bottom: 0.2rem;
+	margin-top: var(--sp-16);
+
+	/* off-ramp, matching the same value in .prose h3 — both snap when the ramp is revisited */
+	margin-bottom: 0.4rem;
 }
 
 .reading-tips p { color: var(--c-label); }
-.reading-tips p + p { margin-top: var(--sp-8); }
+.reading-tips p + p { margin-top: var(--sp-12); }
 
 .reading-tips ul,
 .reading-tips ol {
 	padding-left: var(--sp-20);
-	margin: 0.4rem 0 0.6rem;
+	margin: var(--sp-8) 0 var(--sp-12);
 	display: flex;
 	flex-direction: column;
-	gap: 0.2rem;
+	gap: var(--sp-4);
+	line-height: var(--lh-tight);
 }
 
 .reading-tips li::marker {
@@ -111,14 +114,14 @@
 .reading-tips figcaption {
 	font-size: 0.85em;
 	color: var(--c-muted);
-	margin-top: 0.4rem;
+	margin-top: var(--sp-6);
 	text-align: center;
 }
 
 .reading-tips code {
 	font-family: monospace;
 	background: var(--c-alt);
-	padding: 0 3px;
+	padding: 0 var(--sp-2);
 	border-radius: var(--radius-sm);
 	font-size: 0.9em;
 }
