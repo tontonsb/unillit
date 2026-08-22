@@ -7,7 +7,11 @@
 :root {
 	/* Fontsource suffixes its variable builds 'Variable'; static ones keep the plain
 	   name. A name matching no @font-face falls back silently. */
-	--sans: 'Noto Sans Variable', system-ui, sans-serif;
+
+	/* Noto Sans carries no Thai; per-character fallback covers bare Thai without
+	   wrapping it in markup. One face per script, all before the generic. Sarabun,
+	   not Noto Sans Thai: the loops are what the tips teach, so prose must keep them. */
+	--sans: 'Noto Sans Variable', 'Sarabun', system-ui, sans-serif;
 	--serif: 'Lora Variable', 'Noto Serif Variable', Georgia, serif;
 	--font-cyrillic: 'Noto Serif Variable', Georgia, serif;
 	--font-cyrillic-style: normal;
