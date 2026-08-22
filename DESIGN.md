@@ -34,7 +34,7 @@ typography:
     fontWeight: 500
     lineHeight: 1.4
   body:
-    fontFamily: "'Noto Sans', system-ui, sans-serif"
+    fontFamily: "'Noto Sans', 'Sarabun', system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.4
@@ -45,7 +45,7 @@ typography:
     letterSpacing: "0.07em"
   letterform:
     fontFamily: "Lora, 'Noto Serif', Georgia, serif"
-    fontSize: "1.4rem"
+    fontSize: "1.3rem"
     fontWeight: 400
   glyph:
     fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
@@ -384,18 +384,18 @@ publications.
 - **Display** (Lora 500, 1.6rem): page titles in full-page prose views. Set in Signal
   Teal.
 - **Headline** (Lora 500, 1.1rem): section headings in prose views; in reading-tips
-  panels the same role runs at 600/1.15em because the smaller panel size needs the
-  extra weight.
+  panels the same role runs at 600/1.1em, landing on 1.1rem at the top of the panel
+  ramp.
 - **Body** (Noto Sans 400, `--fs-prose` 1rem): running prose, table cells, quiz
   choices. `--fs-body` (14px) is the inherited base, not body copy — chrome sits at or
   below it.
 - **Label** (Noto Sans 600–700, 10–11px, `--tracking-caps`, uppercase): sheet section
   headers, stats table headings, quiz-shell tabs, badges. The micro-register that makes
   the interface read as apparatus rather than content.
-- **Letterform** (`--fs-letterform`, 22.4px): a single character set inline, large enough
-  to read its detail — the reading-tips letterform tables, the stats prompt cell. Sits
-  between Headline and Display, and is the only step in that gap. Value unsettled;
-  experiment in 1.3–1.4rem as more uses arrive.
+- **Letterform** (`--fs-letterform`, 20.8px): a single character set inline, large enough
+  to read its detail — the reading-tips letterform tables, Thai specimen columns and
+  glossary terms, the stats prompt cell. Sits between Headline and Display, and is the
+  only step in that gap.
 - **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
   exposed as `--glyph` so cells can scale relative to it.
 - **Prompt** (script font, 4rem): the single character or toponym under test.
@@ -612,8 +612,11 @@ inconsistent. See **The Two Registers Rule** below.
   `overflow: hidden`, opened by a full-bleed Highway Green header bar in white uppercase
   micro-label type. An optional `.section-note` strip sits under the header, and a
   `footer` closes it with a hairline and Faded Ink metadata.
-- **Term cards** (reading-tips `dl > div`): Cell White on a `minmax(170px, 1fr)` grid,
-  hairline border, Lora 600 Highway Green `dt` over Faded Ink `dd`.
+- **Term cards** (reading-tips `dl > div`): Cell White on a `minmax(10.5rem, 1fr)` grid,
+  hairline border, Lora 600 Highway Green `dt` over Faded Ink `dd`. Fixed sizes, so the
+  cards hold still while the panel's prose scales.
+- **Panel colophon** (reading-tips `.colophon`): the same pairs without the card — a
+  ruled strip of micro-label `dt` over Lora 600 Highway Green `dd`.
 - **Script cards** (the Home index): fill, no border. Three levels only — a header row
   pairing the Latin name (Lora 600 Signal Teal) with the native specimen over a
   hairline, the description at `--fs-12`, and a footer carrying the countries and the

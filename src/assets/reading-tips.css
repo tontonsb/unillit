@@ -21,24 +21,11 @@
 }
 
 .reading-tips h3 {
-	font-family: var(--serif);
 	font-size: 1em;
-	font-weight: 600;
-	color: var(--c-head);
-	margin-top: var(--sp-16);
-
-	/* off-ramp, matching the same value in .prose h3 — both snap when the ramp is revisited */
-	margin-bottom: 0.4rem;
 }
 
-/* metrics only — the callout's accent rule and italic are shared, in prose.css */
-.reading-tips blockquote {
-	margin: 0.6rem 0;
-	padding: 0.3rem 0 0.3rem 0.8rem;
-}
-
-/* low-key side note — lighter than a blockquote */
-.reading-tips small {
+/* muted asides: the side note (lighter than a blockquote) and the figure caption */
+.reading-tips :is(small, figcaption) {
 	font-size: 0.85em;
 	color: var(--c-muted);
 }
@@ -46,14 +33,18 @@
 .reading-tips table {
 	border-collapse: collapse;
 	margin: var(--sp-8) 0;
-	font-size: 0.9em;
+}
+
+/* We use manual <br> when needed. */
+.reading-tips :is(th, td) {
+	padding: var(--sp-4) var(--sp-12);
+	white-space: nowrap;
 }
 
 .reading-tips th {
 	color: var(--c-head);
 	font-weight: 600;
 	text-align: left;
-	padding: var(--sp-4) var(--sp-12);
 }
 
 /* single rule under the header row — no cell grid */
@@ -62,7 +53,6 @@
 }
 
 .reading-tips td {
-	padding: var(--sp-4) var(--sp-12);
 	color: var(--c-label);
 }
 
@@ -90,8 +80,6 @@
 }
 
 .reading-tips figcaption {
-	font-size: 0.85em;
-	color: var(--c-muted);
 	margin-top: var(--sp-6);
 	text-align: center;
 }
@@ -101,31 +89,69 @@
 	background: var(--c-alt);
 	padding: 0 var(--sp-2);
 	border-radius: var(--radius-sm);
-	font-size: 0.9em;
+	font-size: 0.85em;
 }
 
-/* term cards (the header definition list) */
+/* term cards — a glossary, returned to while reading, so the card is right */
 .reading-tips dl {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
 	gap: var(--sp-8);
 }
 
 .reading-tips dl > div {
-	padding: 0.4rem 0.6rem;
+	padding: var(--sp-6) var(--sp-10);
 	border: var(--hairline);
 	border-radius: var(--radius);
 	background: var(--c-cell);
 }
 
+/* Apparatus, not prose — fixed sizes, so the cards do not ride the panel's type ramp. */
 .reading-tips dt {
+	font-family: var(--serif);
+	font-size: var(--fs-chrome);
 	font-weight: 600;
 	color: var(--c-sign);
-	font-family: var(--serif);
 }
 
 .reading-tips dd {
-	font-size: 0.85em;
+	font-size: var(--fs-micro);
 	color: var(--c-muted);
 	margin: 0;
+}
+
+/* The script's business card: an opening masthead, so the values carry it and the
+   labels recede to the micro register. Aligned columns and a closing rule do the
+   organising a card's fill and border used to. */
+.reading-tips .colophon {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+	gap: var(--sp-8) var(--sp-16);
+	padding-bottom: var(--sp-8);
+	border-bottom: var(--hairline);
+}
+
+.reading-tips .colophon > div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-2);
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
+.reading-tips .colophon dt {
+	font-family: var(--sans);
+	font-size: var(--fs-micro);
+	font-weight: 600;
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--c-muted);
+}
+
+.reading-tips .colophon dd {
+	font-family: var(--serif);
+	font-size: var(--fs-chrome);
+	font-weight: 600;
+	color: var(--c-sign);
 }

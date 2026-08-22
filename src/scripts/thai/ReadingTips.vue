@@ -1,17 +1,17 @@
 <template>
 	<article class="reading-tips">
-		<dl>
+		<dl class="colophon">
 			<div>
-				<dt>left → right</dt>
-				<dd>Direction</dd>
+				<dt>Direction</dt>
+				<dd>left → right</dd>
 			</div>
 			<div>
-				<dt>Abugida</dt>
-				<dd>Script type</dd>
+				<dt>Script type</dt>
+				<dd>Abugida</dd>
 			</div>
 			<div>
-				<dt>RTGS</dt>
-				<dd>Romanisation</dd>
+				<dt>Romanisation</dt>
+				<dd>RTGS</dd>
 			</div>
 		</dl>
 
@@ -250,30 +250,20 @@
 .thai {
 	color: var(--c-head);
 	font-family: var(--font-thai);
-	font-size: 1.1em;
+	font-size: var(--fs-letterform);
+	font-weight: 400;
 }
 
-.f-sans {
-	font-family: 'Noto Sans Thai Variable', sans-serif;
-	font-size: 1.6em;
-	line-height: 1;
-}
-
-.f-sarabun {
-	font-family: Sarabun, sans-serif;
-	font-size: 1.6em;
-	line-height: 1;
-}
-
-.f-serif {
-	font-family: 'Noto Serif Thai Variable', serif;
-	font-size: 1.6em;
-	line-height: 1;
-}
-
+.f-sans,
+.f-sarabun,
+.f-serif,
 .f-trirong {
-	font-family: Trirong, serif;
-	font-size: 1.6em;
+	font-size: var(--fs-letterform);
 	line-height: 1;
 }
+
+.f-sans { font-family: 'Noto Sans Thai Variable', sans-serif; }
+.f-sarabun { font-family: Sarabun, sans-serif; }
+.f-serif { font-family: 'Noto Serif Thai Variable', serif; }
+.f-trirong { font-family: Trirong, serif; }
 </style>

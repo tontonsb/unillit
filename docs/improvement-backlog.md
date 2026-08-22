@@ -119,12 +119,14 @@ agrees this is worth investing product-specific design in.
 
 Not too many cards — one misapplication.
 
-- [ ] **Demote the reading-tips metadata trio out of cards.** Thai has 2 `<dl>` groups
+- [x] **Demote the reading-tips metadata trio out of cards.** Thai has 2 `<dl>` groups
   / 12 term cards. Group 2 (9 cards, `นคร Nakhon / great city`) is a genuine glossary
   and the card is right. Group 1 (3 cards: Direction / Script type / Romanisation) is
   read once and never returned to, yet gets the heaviest non-plate treatment in the
   system — hairline **plus** Cell White fill **plus** serif Highway Green `dt`. Two
   rungs of the depth ladder for a colophon. A ruled strip or run-in caption would do.
+  Now a ruled masthead: micro-label `dt` over serif Highway Green `dd`, no fill or
+  border. Group 2 keeps the cards. `dt`/`dd` were also inverted; fixed.
 - [ ] `HomeView`'s 7 script cards are fine — that is an index, cards are correct.
 
 ## 5. Design system — structural
@@ -244,12 +246,15 @@ above, don't renegotiate the ramp.
   (`0.2rem` in AboutView, `0.4rem` in prose.css); the rest are in `reading-tips.css`,
   which step 1 left alone. Note the old instruction "keep the px neighbour" now means
   "keep the ramp step of that px name", not "author it in px".
+  `reading-tips.css` is done; its one survivor is `h3` `0.4rem`, held to match
+  `.prose h3`. AboutView and prose.css remain.
 - [ ] **The clamped registers spend fixed space.** `.sheet` and `.reading-tips` scale
   `font-size` with `clamp()` and set every margin, padding and gap absolutely. Sheet
   type runs 11→14px (+27%) against `padding: 10px` and cells at `3px 4px 2px`, fixed;
   reading tips 13→16px (+23%) against fixed rem. At 1440px the sheet sits on its 11px
   floor, at 1920px the type is 27% larger and the padding is unchanged — **the sheet
   reads tighter on the big monitor than on the laptop**, which inverts the intent.
+  Reading tips still spend fixed space, now against a 12.8→16px container ramp.
 - [ ] **Three sibling tables, three metrics.** `StatsPanel` and `RunsPanel` td
   `5px 12px`, `RunHistory` td `7px 12px`, `ScriptProgressList` `5px 8px`. `.runs-table`
   is the same class name in two files with different padding — a component, not a
@@ -306,6 +311,9 @@ Extra variety is acceptable here — the target is a discoverable scale, not a s
   where `.prose` uses Faded Ink. The Two Registers Rule is *chrome vs quiz* and requires
   both to share palette and type families, so it does not license this. Also still on
   raw rem spacing and its own `--measure-tips`.
+  Closed except the measure: nine rules now shared with `.prose` (lists, `p + p`,
+  blockquote, links, `h3`, `text-wrap`), spacing on `--sp-*`. `--measure-tips` stays,
+  now deriving the type ramp — `--fs-prose ÷ --measure-tips`.
 - [x] **`.prose blockquote` had no styling at all.** It now carries the reading-tips
   callout at page-prose scale: accent left rule, italic, Deep Ink, `--lh-tight`.
 

@@ -9,6 +9,25 @@
 	text-wrap: balance;
 }
 
+/* A heading opening a page-prose container is spaced by that container. Not shared
+   with the panel: Markdown wraps every block there in a bare <section>, so its
+   headings are all first children with nothing else to space them. */
+.prose :is(h1, h2, h3):first-child {
+	margin-top: 0;
+}
+
+/* Body-sized on purpose in both registers: set apart by register — serif, weight,
+   tracking, muting — rather than by growing into a title. Only the size differs,
+   because page prose is fixed and the panel scales. */
+:is(.prose, .reading-tips) h3 {
+	font-family: var(--serif);
+	font-weight: 600;
+	letter-spacing: var(--tracking-wide);
+	color: var(--c-muted);
+	margin-top: var(--sp-16);
+	margin-bottom: 0.4rem;
+}
+
 :is(.prose, .reading-tips) :is(p, li, dd) {
 	text-wrap: pretty;
 }
@@ -31,9 +50,10 @@
 	color: var(--c-accent);
 }
 
-/* The prominent callout. Each register sets its own margins and padding, because
-   those scale with its type; the accent rule and italic do not. */
+/* the prominent callout */
 :is(.prose, .reading-tips) blockquote {
+	margin: var(--sp-12) 0;
+	padding: var(--sp-4) 0 var(--sp-4) var(--sp-12);
 	border-left: 3px solid var(--c-accent);
 	color: var(--c-head);
 	font-style: italic;
@@ -95,23 +115,11 @@
 	margin-top: var(--sp-24);
 }
 
-/* Body-sized on purpose: set apart by register — serif, weight, tracking, muting —
-   rather than by growing into a title. */
 .prose h3 {
-	font-family: var(--serif);
 	font-size: var(--fs-prose);
-	font-weight: 600;
-	letter-spacing: var(--tracking-wide);
-	color: var(--c-muted);
-	margin-bottom: 0.4rem;
 }
 
 .prose :is(p, li, dd) {
 	font-size: var(--fs-prose);
 	color: var(--c-label);
-}
-
-.prose blockquote {
-	margin: var(--sp-12) 0;
-	padding: var(--sp-4) 0 var(--sp-4) var(--sp-12);
 }

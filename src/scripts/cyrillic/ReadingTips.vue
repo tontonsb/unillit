@@ -4,18 +4,18 @@ import LB from '@/components/LangBadge.vue'
 
 <template>
 	<article class="reading-tips">
-		<dl>
+		<dl class="colophon">
 			<div>
-				<dt>left → right</dt>
-				<dd>Direction</dd>
+				<dt>Direction</dt>
+				<dd>left → right</dd>
 			</div>
 			<div>
-				<dt>Alphabet</dt>
-				<dd>Script type</dd>
+				<dt>Script type</dt>
+				<dd>Alphabet</dd>
 			</div>
 			<div>
-				<dt>Roadsign (similar to BGN/PCGN)</dt>
-				<dd>Romanisation</dd>
+				<dt>Romanisation</dt>
+				<dd>Roadsign (similar to BGN/PCGN)</dd>
 			</div>
 		</dl>
 
@@ -255,6 +255,8 @@ import LB from '@/components/LangBadge.vue'
 			<figure>
 				<img
 					src="/bulgarian-vs-russian-cyrillic.png"
+					width="1241"
+					height="650"
 					loading="lazy"
 					alt="Bulgarian and Russian Cyrillic letterforms with differences highlighted"
 				>
@@ -277,25 +279,14 @@ import LB from '@/components/LangBadge.vue'
 </template>
 
 <style scoped>
-/* Cyrillic-specific: letterform font for the first table column and cursive cells.
-   Shared prose/table/blockquote styles live in assets/reading-tips.css */
-.cyr-up {
+.cyr-up,
+.cur {
 	font-family: 'Lora Variable', serif;
 	font-size: var(--fs-letterform);
 	text-align: center;
 }
 
 .cur {
-	font-family: 'Lora Variable', serif;
 	font-style: italic;
-	font-size: var(--fs-letterform);
-	text-align: center;
-}
-
-.legend {
-	display: block;
-	margin-top: 0.3rem;
-	font-size: 0.8em;
-	color: var(--c-muted);
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-13T03:13:50.140Z",
+  "generatedAt": "2026-08-22T02:52:31.852Z",
   "title": "Design System: Unillit",
   "extensions": {
     "colorMeta": {
@@ -272,11 +272,11 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section headings. Lora 500 in prose views, 600 at 1.15em in reading-tips panels. Also the native specimen in script cards. Sub-headings are body-sized instead — there is no Title step."
+        "purpose": "Section headings. Lora 500 in prose views, 600 at 1.1em in reading-tips panels — landing on 1.1rem at the top of the panel ramp. Also the native specimen in script cards. Sub-headings are body-sized instead — there is no Title step."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Running prose, table cells, quiz choices. 1rem, capped at --measure-prose (36rem / 576px) on every prose page. --fs-body (14px) is the inherited base, not body copy."
+        "purpose": "Running prose, table cells, quiz choices. 1rem, capped at --measure-prose (36rem / 576px) on every prose page. The stack carries one face per script — Noto Sans has no Thai — so bare foreign text needs no wrapper. --fs-body (14px) is the inherited base, not body copy."
       },
       "label": {
         "displayName": "Label",
@@ -284,7 +284,7 @@
       },
       "letterform": {
         "displayName": "Letterform",
-        "purpose": "A single character set inline, large enough to read its detail: the reading-tips letterform tables, the stats prompt cell. Value unsettled; experiment in 1.3-1.4rem."
+        "purpose": "A single character set inline, large enough to read its detail: the reading-tips letterform tables, the Thai specimen columns and glossary terms, the stats prompt cell."
       },
       "glyph": {
         "displayName": "Glyph",
@@ -410,6 +410,14 @@
       "css": ".ds-langs { display: inline-flex; gap: 2px; vertical-align: middle; font-size: 20px; } .ds-lang { font-family: 'Noto Sans', system-ui, sans-serif; font-size: 0.6em; font-weight: 700; letter-spacing: 0.04em; border-radius: var(--radius-sm, 2px); padding: 0 3px; line-height: 1.5; cursor: help; }"
     },
     {
+      "name": "Panel Colophon",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The three facts opening a reading-tips panel — direction, script type, romanisation. Read once, so it takes the lightest rung of the depth ladder: a ruled strip, no fill and no box, with the values carrying the line.",
+      "html": "<dl class=\"ds-colophon\">\n  <div><dt>Direction</dt><dd>left → right</dd></div>\n  <div><dt>Script type</dt><dd>Abugida</dd></div>\n  <div><dt>Romanisation</dt><dd>RTGS</dd></div>\n</dl>",
+      "css": ".ds-colophon { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--sp-8) var(--sp-16); margin: 0; padding-bottom: var(--sp-8); border-bottom: var(--hairline); } .ds-colophon > div { display: flex; flex-direction: column; gap: var(--sp-2); } .ds-colophon dt { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--c-muted); } .ds-colophon dd { margin: 0; font-family: var(--serif); font-size: var(--fs-chrome); font-weight: 600; color: var(--c-sign); }"
+    },
+    {
       "name": "Script Card",
       "kind": "card",
       "refersTo": "script-card",
@@ -448,6 +456,11 @@
       {
         "name": "The Butterick Rule",
         "body": "Target 80–90% fidelity to Practical Typography: real measure limits, no double spaces, proper dashes and quotes, restrained emphasis, purposeful line length, no decorative type. Where a screen genuinely differs from a page — interactive states, scroll, live data density — deviate on purpose and be able to say why. \"It looked nicer\" is not a why.",
+        "section": "typography"
+      },
+      {
+        "name": "The Written-in-rem, Chosen-in-px Rule",
+        "body": "Every absolute size is a --fs-* token in :root, written as an exact sixteenth of a rem so type honours the reader’s browser font-size preference — but chosen in px, because the chrome register needs 1px resolution in the 10–15px band and a rem-native ladder cannot express that. The px in each token’s comment is the real intent; the rem is how it is spelled. Sizes that scale with their container stay in em.",
         "section": "typography"
       },
       {
