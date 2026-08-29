@@ -131,13 +131,13 @@ const specialMarks: Mark[] = [
 	<article class="sheet">
 		<section>
 			<h2>Consonants — traditional alphabetical order</h2>
-			<div class="legend">
+			<p class="section-note">
 				<span>Class (affects tone):</span>
 				<CharBadge tag="mid" />
 				<CharBadge tag="high" />
 				<CharBadge tag="low" />
-				<span class="legend-note">Rom = RTGS initial · <em>final in italics</em> (when different · — = no final/silent)</span>
-			</div>
+				<small>Rom = RTGS initial · <em>final in italics</em> (when different · — = no final/silent)</small>
+			</p>
 			<ol class="cols-fill ruled">
 				<li
 					v-for="c in consonants"
@@ -228,22 +228,6 @@ const specialMarks: Mark[] = [
 </template>
 
 <style scoped>
-.legend {
-	display: flex;
-	gap: 8px;
-	align-items: center;
-	padding: 3px 7px;
-	font-size: 0.75em;
-	color: var(--c-label);
-	border-bottom: var(--hairline);
-	flex-wrap: wrap;
-}
-
-.legend-note {
-	color: var(--c-muted);
-	margin-left: 4px;
-}
-
 .two-col {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

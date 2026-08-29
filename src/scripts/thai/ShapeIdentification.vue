@@ -231,13 +231,13 @@ const consonantFamilies: ConsonantFamily[] = [
 section {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 6px;
-	padding: 6px;
+	gap: var(--sp-6);
+	padding: var(--sp-6);
 }
 
 section > h2 {
-	flex-basis: calc(100% + 12px);
-	margin: -6px -6px 0;
+	flex-basis: calc(100% + var(--sp-6) + var(--sp-6));
+	margin: calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)) 0;
 }
 
 figure {
@@ -255,7 +255,7 @@ figcaption {
 	color: var(--c-label);
 	font-size: 0.65em;
 	font-weight: 600;
-	padding: 2px 6px;
+	padding: var(--sp-2) var(--sp-6);
 	white-space: nowrap;
 	letter-spacing: var(--tracking-wide);
 }
