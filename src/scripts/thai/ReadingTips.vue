@@ -104,10 +104,10 @@ import CharBadge from './CharBadge.vue'
 
 			| Form         | Syllable                              | Ex  | In action           |
 			|--------------|---------------------------------------|-----|---------------------|
-			| Open         | Open <CharBadge tag="open" />         | ◌ะ  | นะน... -> na-n...   |
-			| Pre-final    | Closed <CharBadge tag="prefinal" />   | ◌ั   | นัน... -> nan-...    |
-			| Self-closed  | Closed <CharBadge tag="selfclosed" /> | เ◌า  | เนาน... -> nao-n... |
-			| Inconclusive | Either                                | ◌า, แ◌ | นาน... -> na-n... or nan-... |
+			| Open         | Open <CharBadge tag="open" />         | ◌ะ  | นะน... → na-n...   |
+			| Pre-final    | Closed <CharBadge tag="prefinal" />   | ◌ั   | นัน... → nan-...    |
+			| Self-closed  | Closed <CharBadge tag="selfclosed" /> | เ◌า  | เนาน... → nao-n... |
+			| Inconclusive | Either                                | ◌า, แ◌ | นาน... → na-n... or nan-... |
 
 			<small>Some might argue นะ is phonologically a closed syllable with an implicit glottal
 			stop ending it, but you're not one of those people, so just note that
