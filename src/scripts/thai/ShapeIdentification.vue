@@ -24,7 +24,7 @@ interface ConsonantFamily {
 interface VowelChar {
 	thai: string
 	translit: string
-	length: 'short' | 'long'
+	length?: 'short' | 'long'
 }
 
 interface VowelFamily {
@@ -56,8 +56,8 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เก', translit: 'e', length: 'long' },
 			{ thai: 'แก', translit: 'ae', length: 'long' },
 			{ thai: 'โก', translit: 'o', length: 'long' },
-			{ thai: 'ใก', translit: 'ai', length: 'long' },
-			{ thai: 'ไก', translit: 'ai', length: 'long' },
+			{ thai: 'ใก', translit: 'ai', length: 'short' },
+			{ thai: 'ไก', translit: 'ai', length: 'short' },
 		],
 	},
 	{
@@ -76,7 +76,8 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เก็', translit: 'e', length: 'short' },
 			{ thai: 'เกาะ', translit: 'o', length: 'short' },
 			{ thai: 'เกอ', translit: 'oe', length: 'long' },
-			{ thai: 'เกิ', translit: 'oe', length: 'short' },
+			/* เงิน is short, เดิน is long */
+			{ thai: 'เกิ', translit: 'oe' },
 			{ thai: 'แกะ', translit: 'ae', length: 'short' },
 			{ thai: 'แก็', translit: 'ae', length: 'short' },
 			{ thai: 'กำ', translit: 'am', length: 'short' },
@@ -92,7 +93,7 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'กัว', translit: 'ua', length: 'long' },
 			{ thai: 'กัย', translit: 'ai', length: 'short' },
 			{ thai: 'กุย', translit: 'ui', length: 'short' },
-			{ thai: 'เกา', translit: 'ao', length: 'long' },
+			{ thai: 'เกา', translit: 'ao', length: 'short' },
 			{ thai: 'เกย', translit: 'oei', length: 'long' },
 			{ thai: 'เกีย', translit: 'ia', length: 'long' },
 			{ thai: 'เกือ', translit: 'uea', length: 'long' },
@@ -219,7 +220,7 @@ const consonantFamilies: ConsonantFamily[] = [
 					<li v-for="(vowel, vi) in family.vowels" :key="vi" class="cell">
 						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
 						<span class="rom">{{ vowel.translit }}</span>
-						<CharBadge :tag="vowel.length" />
+						<CharBadge v-if="vowel.length" :tag="vowel.length" />
 					</li>
 				</ul>
 			</figure>
