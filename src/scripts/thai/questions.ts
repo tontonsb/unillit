@@ -45,7 +45,7 @@ export const consonantQuestions: Question[] = [
 	{ prompt: 'ส', answer: 's', hint: 'tail (vs ล)' },
 	{ prompt: 'ห', answer: 'h', hint: 'mid loop (vs ท)' },
 	{ prompt: 'ฬ', answer: 'l', hint: 'loopy tail (vs พ ฟ)' },
-	{ prompt: 'อ', answer: ['o', '-', ''], hint: 'no tail (vs ฮ), head on right (vs จ)' },
+	{ prompt: 'อ', answer: ['o', '-', ''], hint: 'no tail (vs ฮ), head on right (vs จ) · carrier for an initial vowel' },
 	{ prompt: 'ฮ', answer: 'h', hint: 'loopy tail (vs อ)' },
 ]
 
@@ -64,14 +64,14 @@ export const vowelQuestions: Question[] = [
 	{ prompt: 'แก', answer: 'kae', hint: 'long ae' },
 	{ prompt: 'โก', answer: 'ko', hint: 'long o' },
 	{ prompt: 'กอ', answer: 'ko', hint: 'long open o' },
-	{ prompt: 'เกาะ', answer: 'ko', hint: 'short open o, open syllable' },
+	{ prompt: 'เกาะ', answer: 'ko', hint: 'short open-mid o, open syllable' },
 	{ prompt: 'เกอ', answer: 'koe', hint: 'long oe, open syllable' },
-	{ prompt: 'เกิ', answer: 'koe', hint: 'short oe, closed syllable' },
+	{ prompt: 'เกิ', answer: 'koe', hint: 'oe before a final consonant, either short (เงิน) or long (เดิน)' },
 	{ prompt: 'เกีย', answer: 'kia', hint: 'diphthong ia' },
 	{ prompt: 'กัว', answer: 'kua', hint: 'diphthong ua — ว acts as second element' },
 	{ prompt: 'เกือ', answer: 'kuea', hint: 'triphthong uea — common in place names' },
 	{ prompt: 'กำ', answer: 'kam', hint: '◌ํ + า; implied final m' },
-	{ prompt: 'กรร', answer: 'ka', hint: 'ro han — รร reads as short a before a final consonant' },
+	{ prompt: 'กรร', answer: ['ka', 'kan'], hint: 'ro han — short a before a final consonant (an if standalone)' },
 ]
 
 export const syllableQuestions: Question[] = [
@@ -123,8 +123,8 @@ export const allVowelQuestions: Question[] = [
 	{ prompt: 'เก็', answer: 'ke', hint: 'short e, closed syllable' },
 	{ prompt: 'แกะ', answer: 'kae', hint: 'short ae, open syllable' },
 	{ prompt: 'แก็', answer: 'kae', hint: 'short ae, closed syllable' },
-	{ prompt: 'โกะ', answer: 'ko', hint: 'short o, open syllable' },
-	{ prompt: 'เกาะ', answer: 'ko', hint: 'short o, open syllable' },
+	{ prompt: 'โกะ', answer: 'ko', hint: 'short close o, open syllable' },
+	{ prompt: 'เกาะ', answer: 'ko', hint: 'short open-mid o, open syllable' },
 	{ prompt: 'ก็อ', answer: 'ko', hint: 'short o, closed syllable' },
 	{ prompt: 'เกอะ', answer: 'koe', hint: 'short oe, open syllable' },
 	// Long pure vowels
@@ -138,12 +138,12 @@ export const allVowelQuestions: Question[] = [
 	{ prompt: 'โก', answer: 'ko', hint: 'long o' },
 	{ prompt: 'กอ', answer: 'ko', hint: 'long o' },
 	{ prompt: 'เกอ', answer: 'koe', hint: 'long oe — long schwa-like vowel, before + after' },
-	{ prompt: 'เกิ', answer: 'koe', hint: 'sara oe short — เ◌ิ before a final consonant; e.g. เดิน doen' },
+	{ prompt: 'เกิ', answer: 'koe', hint: 'sara oe — เ◌ิ before a final consonant, either short (เงิน ngoen) or long (เดิน doen)' },
 	// Inherent ai (two spellings, same sound)
 	{ prompt: 'ไก', answer: 'kai', hint: 'mai malai — one of two spellings of ai; more common' },
-	{ prompt: 'ใก', answer: 'kai', hint: 'mai malai noi — rarer ai spelling; only 20 words' },
+	{ prompt: 'ใก', answer: 'kai', hint: 'mai muan — rarer ai spelling; only 20 words' },
 	// Diphthongs with glide consonants
-	{ prompt: 'เกา', answer: 'kao', hint: 'ao — เ◌า; ว acts as o-glide' },
+	{ prompt: 'เกา', answer: 'kao', hint: 'ao — า acts as o-glide' },
 	{ prompt: 'กาย', answer: 'kai', hint: 'ai — sara aa + ย as glide' },
 	{ prompt: 'กาว', answer: 'kao', hint: 'ao — sara aa + ว as glide' },
 	{ prompt: 'กิว', answer: 'kio', hint: 'io — sara i + ว as glide' },
@@ -160,7 +160,7 @@ export const allVowelQuestions: Question[] = [
 	{ prompt: 'เกือะ', answer: 'kuea', hint: 'short uea — long form far more common' },
 	// Special compound vowels
 	{ prompt: 'กำ', answer: 'kam', hint: 'sara am — ◌ํ + า; implied final m' },
-	{ prompt: 'กรร', answer: 'ka', hint: 'ro han — รร reads as short a before a final consonant' },
+	{ prompt: 'กรร', answer: ['ka', 'kan'], hint: 'ro han — short a before a final consonant (an at syllable end)' },
 ]
 
 // All 77 Thai provinces (76 provinces + Bangkok)
@@ -169,7 +169,7 @@ export const provinceQuestions: Question[] = [
 	{ prompt: 'กาญจนบุรี', answer: 'Kanchanaburi', hint: 'ญ final = n' },
 	{ prompt: 'กาฬสินธุ์', answer: 'Kalasin', hint: 'thanthakhat ◌์ makes ธุ์ silent' },
 	{ prompt: 'กำแพงเพชร', answer: 'Kamphaeng Phet', hint: 'เพชร → phet — historical spelling, ร is silent, ช final = t' },
-	{ prompt: 'กรุงเทพมหานคร', answer: ['Krung Thep Maha Nakhnon', 'Krung Thep', 'Bangkok'], hint: 'กร is consonant cluster kr' },
+	{ prompt: 'กรุงเทพมหานคร', answer: ['Krung Thep Maha Nakhon', 'Krung Thep', 'Bangkok'], hint: 'กร is consonant cluster kr' },
 	{ prompt: 'ขอนแก่น', answer: 'Khon Kaen' },
 	{ prompt: 'จันทบุรี', answer: 'Chanthaburi' },
 	{ prompt: 'ฉะเชิงเทรา', answer: 'Chachoengsao', hint: 'ทร followed by a vowel is usually s' },

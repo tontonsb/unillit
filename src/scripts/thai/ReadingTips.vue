@@ -42,7 +42,7 @@ import CharBadge from './CharBadge.vue'
 			| น    | n        | น is n |
 			| นน   | non      | น has an implicit short *o* |
 			| นัน   | nan      | ◌ั is the diacritic for short vowel *a* |
-			| เนน  | neen/nen | เ◌ is the diacritic for long vowel *ee* |
+			| เนน  | nen      | เ◌ is the diacritic for long vowel *e* |
 		</Markdown>
 
 		<Markdown wrap="section">
@@ -62,7 +62,7 @@ import CharBadge from './CharBadge.vue'
 			|-------------|---------------|---------------------------------------------------|-------------------------------------------------|------------------------------------------------|--------------------------------------------------|------------------------|
 			| Head        | Terminal loop | <span class="f-sarabun">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-serif">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-sans">ผ พ<br>ค ด<br>ถ ภ</span> | <span class="f-trirong">ผ พ<br>ค ด<br>ถ ภ</span> | ph ph<br>kh d<br>th kh |
 			| Crown       | Curled loop   | <span class="f-sarabun">ข</span>                  | <span class="f-serif">ข</span>                  | <span class="f-sans">ข</span>                  | <span class="f-trirong">ข</span>                 | kh                     |
-			| Serration   | Broken line   | <span class="f-sarabun">ฃ ฅ</span>                | <span class="f-serif">ฃ ฅ</span>               | <span class="f-sans">ฃ ฅ</span>                | <span class="f-trirong">ฃ ฅ</span>               | s kh                   |
+			| Serration   | Broken line   | <span class="f-sarabun">ฃ ฅ</span>                | <span class="f-serif">ฃ ฅ</span>               | <span class="f-sans">ฃ ฅ</span>                | <span class="f-trirong">ฃ ฅ</span>               | kh kh                  |
 			| Mid loop    | On stroke     | <span class="f-sarabun">ฆ<br>น ม</span>           | <span class="f-serif">ฆ<br>น ม</span>          | <span class="f-sans">ฆ<br>น ม</span>           |  <span class="f-trirong">ฆ<br>น ม</span>         | kh<br>n m              |
 			| Tail        | Line outwards | <span class="f-sarabun">ส ช ฟ</span>              | <span class="f-serif">ส ช ฟ</span>             | <span class="f-sans">ส ช ฟ</span>              | <span class="f-trirong">ส ช ฟ</span>             | s ch f                 |
 		</Markdown>

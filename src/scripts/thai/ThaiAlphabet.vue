@@ -110,7 +110,7 @@ const vowelRows: VowelRow[] = [
 	{ short: 'แกะ / แก็◌', long: 'แก', rtgs: 'ae', position: 'before', notes: 'Like <em>a</em> in <em>cat</em>' },
 	{ short: 'โกะ', long: 'โก', rtgs: 'o', position: 'before' },
 	{ short: 'เกาะ', long: 'กอ', rtgs: 'o', position: 'wrap / after', notes: 'Open-mid <em>o</em> as in <em>or</em>' },
-	{ short: 'เกอะ / เกิ◌', long: 'เกอ', rtgs: 'oe', position: 'before+after', notes: 'Schwa-like; short เ◌ิ used before a final consonant (e.g. เดิน doen)' },
+	{ short: 'เกอะ / เกิ◌', long: 'เกอ / เกิ◌', rtgs: 'oe', position: 'before+after', notes: 'Schwa-like; เ◌ิ before a final consonant can be short (เงิน <em>ngoen</em>) or long (เดิน <em>doen</em>)' },
 	{ short: 'เกียะ', long: 'เกีย', rtgs: 'ia', position: 'before+above+after', notes: 'Diphthong; long form far more common' },
 	{ short: 'กัวะ', long: 'กัว / กว', rtgs: 'ua', position: 'above / glide', notes: 'Diphthong; ว acts as second element' },
 	{ short: 'เกือะ', long: 'เกือ', rtgs: 'uea', position: 'before+above+after', notes: 'Triphthong; long form common in place names' },
