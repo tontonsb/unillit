@@ -91,6 +91,13 @@
 	border-bottom: var(--hairline);
 }
 
+.sheet .badges {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2px;
+}
+
 .sheet .rom {
 	font-size: 1em;
 	color: var(--c-sign);

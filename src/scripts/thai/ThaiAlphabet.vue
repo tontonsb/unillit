@@ -239,11 +239,6 @@ ol { display: grid; gap: 0; }
 .cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
 .cols-fill { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
 
-.badges {
-	display: inline-flex;
-	gap: 2px;
-}
-
 .thai { font-family: var(--font-thai); font-size: var(--glyph); line-height: 1.15; }
 .thai.xl { font-size: calc(var(--glyph) * 1.2); }
 .thai.sm { font-size: calc(var(--glyph) * 0.8); }

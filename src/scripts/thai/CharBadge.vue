@@ -6,6 +6,9 @@ const labels: Record<string, string> = {
 	vowel: 'vow',
 	short: 's',
 	long: 'l',
+	open: 'cv',
+	prefinal: 'cv_',
+	selfclosed: 'cvc',
 }
 
 const titles: Record<string, string> = {
@@ -17,6 +20,9 @@ const titles: Record<string, string> = {
 	mid: 'Mid-class consonant (affects tone)',
 	high: 'High-class consonant (affects tone)',
 	low: 'Low-class consonant (affects tone)',
+	open: 'CV syllable — next char belongs to next syllable',
+	prefinal: 'CVC syllable — next char will complete this syllable',
+	selfclosed: 'Complete CVC syllable — next char belongs to next syllable',
 }
 </script>
 
@@ -37,14 +43,24 @@ span {
 	letter-spacing: var(--tracking-caps);
 }
 
+/**
+  * Consonant tags and vowel tags never land on the same character, so the two sets
+  * share swatches instead of spending hues the palette cannot separate
+  * (docs/badge-palette-options.md).
+  */
 .obsolete { background: #fde8d8; color: #9a3412; border: 1px solid #fca97e; }
-.rare     { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
-.vowel    { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
-.short    { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-.long     { background: #e8f0fe; color: #1a56a0; border: 1px solid #a8c4f0; }
+.rare { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.short { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+.long { background: #e8f0fe; color: #1a56a0; border: 1px solid #a8c4f0; }
+.mid { background: #ddeaf5; color: #1a5c8a; border: 1px solid #a9c9e2; }
 
-/* consonant classes — the former cell-fill colors, badge-scale */
-.mid  { background: #ddeaf5; color: #1a5c8a; border: 1px solid #a9c9e2; }
-.high { background: #fbe5e7; color: #a52834; border: 1px solid #f0b3ba; }
-.low  { background: #e3f2e5; color: #2e7d32; border: 1px solid #abd5af; }
+.high,
+.prefinal { background: #fbe5e7; color: #a52834; border: 1px solid #f0b3ba; }
+
+.low,
+.open { background: #e3f2e5; color: #2e7d32; border: 1px solid #abd5af; }
+
+/* both mark a glyph that carries the other category inside it */
+.vowel,
+.selfclosed { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
 </style>

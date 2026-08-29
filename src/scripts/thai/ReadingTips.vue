@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import CharBadge from './CharBadge.vue'
+</script>
+
 <template>
 	<article class="reading-tips">
 		<dl class="colophon">
@@ -96,8 +100,18 @@
 			| นา   | na       | |      |          |
 			| โนะ  | no       |	|      |          |
 
-			The same vowel can have multiple orthographies, sometimes the syllable split can be deduced from that.
-			I.e. ะ is used for short vowels in open syllables while forms like ◌ั are always in a closed syllable.
+			The same vowel can have multiple orthographies. Sometimes the syllable split can be deduced from that.
+
+			| Form         | Syllable                              | Ex  | In action           |
+			|--------------|---------------------------------------|-----|---------------------|
+			| Open         | Open <CharBadge tag="open" />         | ◌ะ  | นะน... -> na-n...   |
+			| Pre-final    | Closed <CharBadge tag="prefinal" />   | ◌ั   | นัน... -> nan-...    |
+			| Self-closed  | Closed <CharBadge tag="selfclosed" /> | เ◌า  | เนาน... -> nao-n... |
+			| Inconclusive | Either                                | ◌า, แ◌ | นาน... -> na-n... or nan-... |
+
+			<small>Some might argue นะ is phonologically a closed syllable with an implicit glottal
+			stop ending it, but you're not one of those people, so just note that
+			<CharBadge tag="open" /> means the syllable will not consume the following consonant.</small>
 		</Markdown>
 
 		<Markdown wrap="section">
@@ -237,6 +251,7 @@
 			- [*Romanization of Thai* on Wikipedia](https://en.wikipedia.org/wiki/Romanization_of_Thai)
 			- [*Type anatomy*  on Wikipedia](https://en.wikipedia.org/wiki/Thai_typography#Type_anatomy)
 			- [*Reading course* on Thai Notes](https://thai-notes.com/reading/index.html)
+			- [Vowel pattern classification on Thai Language](http://www.thai-language.com/ref/vowels)
 			- [*Learning to Read Thai for Geoguessr* by Juliette](https://docs.google.com/document/d/1wQg71ZG2w1RoWZVe7FPF4jdC2iomDSQZImgtdOLBD-E)
 			- [*Dealing with Thai script in Geoguessr* by @faraban](https://discord.com/channels/854419081813164042/855528394229415966/1236524192237621329)
 			- [A collection of Thailand map quizzes on Helloquiz, includes finding subdivisions in Thai](https://helloquiz.app/country/th)
