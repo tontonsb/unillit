@@ -45,7 +45,17 @@ export default defineConfigWithVueTs(
 					multiline: 1,
 				},
 			],
-			'vue/html-indent': ['warn', 'tab'],
+			/**
+			  * Indentation inside a <Markdown> block is markdown syntax — two spaces
+			  * continue a list item — so the HTML indent rule must keep out of it.
+			  */
+			'vue/html-indent': [
+				'warn',
+				'tab',
+				{
+					ignores: ['VElement[rawName=Markdown] *'],
+				},
+			],
 			'vue/script-indent': ['warn', 'tab'],
 			'@stylistic/indent': ['warn', 'tab'],
 			'vue/singleline-html-element-content-newline': 'off',
