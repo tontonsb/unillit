@@ -21,10 +21,16 @@ interface ConsonantFamily {
 	characters: ConsonantChar[]
 }
 
+/**
+  * Informs parsing: whether the syllable will consume the next consonant.
+  */
+type SyllableShape = 'open' | 'prefinal' | 'selfclosed'
+
 interface VowelChar {
 	thai: string
 	translit: string
 	length?: 'short' | 'long'
+	shape?: SyllableShape
 }
 
 interface VowelFamily {
@@ -36,11 +42,11 @@ const vowelFamilies: VowelFamily[] = [
 	{
 		name: 'Diacritic above',
 		vowels: [
-			{ thai: 'กั', translit: 'a', length: 'short' },
+			{ thai: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
 			{ thai: 'กิ', translit: 'i', length: 'short' },
 			{ thai: 'กี', translit: 'i', length: 'long' },
 			{ thai: 'กึ', translit: 'ue', length: 'short' },
-			{ thai: 'กื', translit: 'ue', length: 'long' },
+			{ thai: 'กื', translit: 'ue', length: 'long', shape: 'prefinal' },
 		],
 	},
 	{
@@ -56,8 +62,8 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เก', translit: 'e', length: 'long' },
 			{ thai: 'แก', translit: 'ae', length: 'long' },
 			{ thai: 'โก', translit: 'o', length: 'long' },
-			{ thai: 'ใก', translit: 'ai', length: 'short' },
-			{ thai: 'ไก', translit: 'ai', length: 'short' },
+			{ thai: 'ใก', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ thai: 'ไก', translit: 'ai', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
@@ -70,17 +76,17 @@ const vowelFamilies: VowelFamily[] = [
 	{
 		name: 'Compound — multi-part or wrapping',
 		vowels: [
-			{ thai: 'กะ', translit: 'a', length: 'short' },
-			{ thai: 'กือ', translit: 'ue', length: 'long' },
-			{ thai: 'เกะ', translit: 'e', length: 'short' },
-			{ thai: 'เก็', translit: 'e', length: 'short' },
-			{ thai: 'เกาะ', translit: 'o', length: 'short' },
-			{ thai: 'เกอ', translit: 'oe', length: 'long' },
+			{ thai: 'กะ', translit: 'a', length: 'short', shape: 'open' },
+			{ thai: 'กือ', translit: 'ue', length: 'long', shape: 'open' },
+			{ thai: 'เกะ', translit: 'e', length: 'short', shape: 'open' },
+			{ thai: 'เก็', translit: 'e', length: 'short', shape: 'prefinal' },
+			{ thai: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
+			{ thai: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
 			/* เงิน is short, เดิน is long */
-			{ thai: 'เกิ', translit: 'oe' },
-			{ thai: 'แกะ', translit: 'ae', length: 'short' },
-			{ thai: 'แก็', translit: 'ae', length: 'short' },
-			{ thai: 'กำ', translit: 'am', length: 'short' },
+			{ thai: 'เกิ', translit: 'oe', shape: 'prefinal' },
+			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
+			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
+			{ thai: 'กำ', translit: 'am', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
@@ -90,10 +96,10 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'กาว', translit: 'ao', length: 'long' },
 			{ thai: 'กาย', translit: 'ai', length: 'long' },
 			{ thai: 'กิว', translit: 'iu', length: 'short' },
-			{ thai: 'กัว', translit: 'ua', length: 'long' },
+			{ thai: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
 			{ thai: 'กัย', translit: 'ai', length: 'short' },
 			{ thai: 'กุย', translit: 'ui', length: 'short' },
-			{ thai: 'เกา', translit: 'ao', length: 'short' },
+			{ thai: 'เกา', translit: 'ao', length: 'short', shape: 'selfclosed' },
 			{ thai: 'เกย', translit: 'oei', length: 'long' },
 			{ thai: 'เกีย', translit: 'ia', length: 'long' },
 			{ thai: 'เกือ', translit: 'uea', length: 'long' },
@@ -213,6 +219,21 @@ const consonantFamilies: ConsonantFamily[] = [
 				Vowels — base consonant {{ baseCons }}
 				<ConsonantPicker v-model="baseCons" />
 			</h2>
+			<p class="section-note">
+				<span>Syllable shape:</span>
+				<span class="shape-key">
+					<CharBadge tag="open" />
+					<small>ends with this vowel</small>
+				</span>
+				<span class="shape-key">
+					<CharBadge tag="selfclosed" />
+					<small>ends with this glide</small>
+				</span>
+				<span class="shape-key">
+					<CharBadge tag="prefinal" />
+					<small>next consonant will end this syllable</small>
+				</span>
+			</p>
 
 			<figure v-for="family in vowelFamilies" :key="family.name">
 				<figcaption>{{ family.name }}</figcaption>
@@ -220,7 +241,10 @@ const consonantFamilies: ConsonantFamily[] = [
 					<li v-for="(vowel, vi) in family.vowels" :key="vi" class="cell">
 						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
 						<span class="rom">{{ vowel.translit }}</span>
-						<CharBadge v-if="vowel.length" :tag="vowel.length" />
+						<span class="badges">
+							<CharBadge v-if="vowel.length" :tag="vowel.length" />
+							<CharBadge v-if="vowel.shape" :tag="vowel.shape" />
+						</span>
 					</li>
 				</ul>
 			</figure>
@@ -236,9 +260,16 @@ section {
 	padding: var(--sp-6);
 }
 
-section > h2 {
+section > h2,
+section > .section-note {
 	flex-basis: calc(100% + var(--sp-6) + var(--sp-6));
 	margin: calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)) 0;
+}
+
+.shape-key {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--sp-4);
 }
 
 figure {
