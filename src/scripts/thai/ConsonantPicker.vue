@@ -25,6 +25,7 @@ const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 	display: flex;
 	gap: 2px;
 	margin-left: auto;
+	margin-block: calc(-1 * var(--sp-2));
 }
 
 .cons-btn {
@@ -32,7 +33,7 @@ const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 	font-size: var(--fs-body);
 	font-weight: 400;
 	line-height: 1;
-	padding: 0 5px 1px;
+	padding: 0 var(--sp-4) 1px;
 	border: 1px solid var(--c-border-plate);
 	border-radius: var(--radius);
 	background: transparent;
