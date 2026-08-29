@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import CharBadge from './CharBadge.vue'
 import ConsonantPicker from './ConsonantPicker.vue'
 
 const baseCons = ref('◌')
+const showRare = ref(false)
 
 function replaceConsonant(thai: string): string {
 	return thai.replace(/ก/g, baseCons.value)
@@ -31,6 +32,7 @@ interface VowelChar {
 	translit: string
 	length?: 'short' | 'long'
 	shape?: SyllableShape
+	rare?: boolean
 }
 
 interface VowelFamily {
@@ -53,21 +55,21 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
 
 			{ thai: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
-		//	{ thai: 'เกอะ', translit: 'oe', length: 'short', shape: 'open' },
+			{ thai: 'เกอะ', translit: 'oe', length: 'short', shape: 'open', rare: true },
 			{ thai: 'เกือ', translit: 'uea', length: 'long' },
-		//	{ thai: 'เกือะ', translit: 'uea', length: 'short', shape: 'open' },
-		//	{ thai: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed' },
+			{ thai: 'เกือะ', translit: 'uea', length: 'short', shape: 'open', rare: true },
+			{ thai: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed', rare: true },
 
 			/* only appears in the word เกอว http://www.thai-language.com/id/141803 */
 		//	{ thai: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
 
 			{ thai: 'เกย', translit: 'oei', length: 'long', shape: 'selfclosed' },
 			{ thai: 'เกีย', translit: 'ia', length: 'long' },
-		//	{ thai: 'เกียะ', translit: 'ia', length: 'short', shape: 'open' },
+			{ thai: 'เกียะ', translit: 'ia', length: 'short', shape: 'open', rare: true },
 			{ thai: 'เกียว', translit: 'iao', length: 'long', shape: 'selfclosed' },
 
-		//	{ thai: 'เกว', translit: 'eo', length: 'long', shape: 'selfclosed' },
-		//	{ thai: 'เก็ว', translit: 'eo', length: 'short', shape: 'selfclosed' },
+			{ thai: 'เกว', translit: 'eo', length: 'long', shape: 'selfclosed', rare: true },
+			{ thai: 'เก็ว', translit: 'eo', length: 'short', shape: 'selfclosed', rare: true },
 		],
 	},
 	{
@@ -77,8 +79,8 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
 			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
 
-		//	{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed' },
-		//	{ thai: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed' },
+			{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed', rare: true },
+			{ thai: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed', rare: true },
 
 			{ thai: 'โก', translit: 'o', length: 'long' },
 			{ thai: 'โกะ', translit: 'o', length: 'short', shape: 'open' },
@@ -123,7 +125,7 @@ const vowelFamilies: VowelFamily[] = [
 		vowels: [
 			{ thai: 'กา', translit: 'a', length: 'long' },
 			{ thai: 'กอ', translit: 'o', length: 'long' },
-		//	{ thai: 'ก็อ', translit: 'o', length: 'short', shape: 'prefinal' },
+			{ thai: 'ก็อ', translit: 'o', length: 'short', shape: 'prefinal', rare: true },
 			{ thai: 'กะ', translit: 'a', length: 'short', shape: 'open' },
 
 			{ thai: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
@@ -131,7 +133,7 @@ const vowelFamilies: VowelFamily[] = [
 		//	{ thai: 'กวาย', translit: 'uai', length: 'long', shape: 'selfclosed' }, // disputed, awaiting native speaker feedback
 
 			{ thai: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
-		//	{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed' },
+			{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed', rare: true },
 
 			{ thai: 'กาว', translit: 'ao', length: 'long', shape: 'selfclosed' },
 			{ thai: 'กาย', translit: 'ai', length: 'long', shape: 'selfclosed' },
@@ -143,11 +145,22 @@ const vowelFamilies: VowelFamily[] = [
 		vowels: [
 			{ thai: 'ฤ', translit: 'ri/rue/roe' },
 			{ thai: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open' },
-		//	{ thai: 'ฦ', translit: 'lue' },
-		//	{ thai: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open' },
+			{ thai: 'ฦ', translit: 'lue', rare: true },
+			{ thai: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open', rare: true },
 		],
 	},
 ]
+
+const visibleVowelFamilies = computed(() => {
+	if (showRare.value) return vowelFamilies
+
+	return vowelFamilies
+		.map(family => ({
+			...family,
+			vowels: family.vowels.filter(vowel => !vowel.rare),
+		}))
+		.filter(family => family.vowels.length > 0)
+})
 
 const consonantFamilies: ConsonantFamily[] = [
 	{
@@ -274,12 +287,16 @@ const consonantFamilies: ConsonantFamily[] = [
 					<CharBadge tag="prefinal" />
 					<small>next consonant will end this syllable</small>
 				</span>
+				<label class="rare-toggle">
+					<input v-model="showRare" type="checkbox">
+					Uncommon forms
+				</label>
 			</p>
 
-			<figure v-for="family in vowelFamilies" :key="family.name">
+			<figure v-for="family in visibleVowelFamilies" :key="family.name">
 				<figcaption>{{ family.name }}</figcaption>
 				<ul>
-					<li v-for="(vowel, vi) in family.vowels" :key="vi" class="cell">
+					<li v-for="vowel in family.vowels" :key="vowel.thai" class="cell">
 						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
 						<span class="rom">{{ vowel.translit }}</span>
 						<span class="badges">
@@ -311,6 +328,19 @@ section > .section-note {
 	display: inline-flex;
 	align-items: center;
 	gap: var(--sp-4);
+}
+
+.rare-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--sp-4);
+	margin-left: auto;
+	cursor: pointer;
+}
+
+.rare-toggle input {
+	margin: 0;
+	accent-color: var(--c-sign);
 }
 
 figure {
