@@ -188,7 +188,7 @@
 
 		<section>
 			<h2>Common elements in place names</h2>
-			<dl>
+			<dl class="terms">
 				<div>
 					<dt><span class="thai">นคร</span> Nakhon</dt>
 					<dd>great city</dd>

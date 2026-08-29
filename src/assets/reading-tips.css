@@ -93,16 +93,15 @@
 }
 
 /* term cards — a glossary, returned to while reading, so the card is right */
-.reading-tips dl {
+.reading-tips .terms {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
 	gap: var(--sp-8);
 }
 
-.reading-tips dl > div {
+.reading-tips .terms > div {
 	padding: var(--sp-6) var(--sp-10);
 	border: var(--hairline);
-	border-radius: var(--radius);
 	background: var(--c-cell);
 }
 
@@ -114,6 +113,15 @@
 	color: var(--c-sign);
 }
 
+/* term to one edge, its reading to the other — the index card's header row */
+.reading-tips .terms dt {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--sp-8);
+	padding-bottom: var(--sp-4);
+}
+
 .reading-tips dd {
 	font-size: var(--fs-micro);
 	color: var(--c-muted);
@@ -122,7 +130,7 @@
 
 /* The script's business card: an opening masthead, so the values carry it and the
    labels recede to the micro register. Aligned columns and a closing rule do the
-   organising a card's fill and border used to. */
+   organising, in place of a card's fill and border. */
 .reading-tips .colophon {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
@@ -135,9 +143,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--sp-2);
-	padding: 0;
-	border: 0;
-	background: none;
 }
 
 .reading-tips .colophon dt {
