@@ -139,20 +139,32 @@ export const allVowelQuestions: Question[] = [
 	{ prompt: 'กอ', answer: 'ko', hint: 'long o' },
 	{ prompt: 'เกอ', answer: 'koe', hint: 'long oe — long schwa-like vowel, before + after' },
 	{ prompt: 'เกิ', answer: 'koe', hint: 'sara oe — เ◌ิ before a final consonant, either short (เงิน ngoen) or long (เดิน doen)' },
-	// Inherent ai (two spellings, same sound)
-	{ prompt: 'ไก', answer: 'kai', hint: 'mai malai — one of two spellings of ai; more common' },
+	// Inherent ai (four spellings, same sound)
+	{ prompt: 'ไก', answer: 'kai', hint: 'mai malai — the common spelling of ai' },
 	{ prompt: 'ใก', answer: 'kai', hint: 'mai muan — rarer ai spelling; only 20 words' },
+	{ prompt: 'ไกย', answer: 'kai', hint: 'ai — ไ◌ with a silent ย; super rare, but in ไทย (Thai)' },
+	{ prompt: 'กัย', answer: 'kai', hint: 'ai — ◌ั + ย as glide; as in สุโขทัย (Sukhothai)' },
 	// Diphthongs with glide consonants
 	{ prompt: 'เกา', answer: 'kao', hint: 'ao — า acts as o-glide' },
 	{ prompt: 'กาย', answer: 'kai', hint: 'ai — sara aa + ย as glide' },
 	{ prompt: 'กาว', answer: 'kao', hint: 'ao — sara aa + ว as glide' },
 	{ prompt: 'กิว', answer: 'kio', hint: 'io — sara i + ว as glide' },
 	{ prompt: 'กอย', answer: 'koi', hint: 'oi — sara oo + ย as glide' },
+	{ prompt: 'ก็อย', answer: 'koi', hint: 'short oi — ◌็อ + ย as glide; rare' },
+	{ prompt: 'โกย', answer: 'koi', hint: 'oi — sara o + ย as glide' },
 	{ prompt: 'เกย', answer: 'koei', hint: 'oei — sara oe + ย as glide' },
 	{ prompt: 'กุย', answer: 'kui', hint: 'ui — sara u + ย as glide' },
+	{ prompt: 'เกว', answer: 'keo', hint: 'eo — sara e + ว as glide; as in เอว, เลว' },
+	{ prompt: 'เก็ว', answer: 'keo', hint: 'short eo — เ◌็ + ว as glide; as in เร็ว' },
+	{ prompt: 'แกว', answer: 'kaeo', hint: 'aeo — sara ae + ว as glide; as in แมว, แก้ว' },
+	{ prompt: 'แก็ว', answer: 'kaeo', hint: 'short aeo — แ◌็ + ว as glide; rare' },
+	{ prompt: 'เกียว', answer: 'kiao', hint: 'iao — sara ia + ว as glide; as in เขียว' },
+	{ prompt: 'กวย', answer: 'kuai', hint: 'uai — sara ua + ย as glide; as in สวย, ด้วย' },
+	{ prompt: 'เกือย', answer: 'kueai', hint: 'ueai — sara uea + ย as glide; as in เหนื่อย' },
 	// ia / ua / uea — long
 	{ prompt: 'เกีย', answer: 'kia', hint: 'long ia' },
 	{ prompt: 'กัว', answer: 'kua', hint: 'long ua' },
+	{ prompt: 'กว', answer: 'kua', hint: 'long ua — the form written before a final consonant; as in สวน, นวด' },
 	{ prompt: 'เกือ', answer: 'kuea', hint: 'long uea triphthong' },
 	// ia / ua / uea — short (rare in practice)
 	{ prompt: 'เกียะ', answer: 'kia', hint: 'short ia — long form far more common' },
@@ -161,6 +173,11 @@ export const allVowelQuestions: Question[] = [
 	// Special compound vowels
 	{ prompt: 'กำ', answer: 'kam', hint: 'sara am — ◌ํ + า; implied final m' },
 	{ prompt: 'กรร', answer: ['ka', 'kan'], hint: 'ro han — short a before a final consonant (an at syllable end)' },
+	// Ligatures — consonant and vowel in one glyph, hence no ก base
+	{ prompt: 'ฤ', answer: ['rue', 'ri', 'roe'], hint: 'rue in ฤดู, ri in อังกฤษ, roe in ฤกษ์' },
+	{ prompt: 'ฤๅ', answer: 'rue', hint: 'long rue — rare; as in ฤๅษี ruesi' },
+	{ prompt: 'ฦ', answer: 'lue', hint: 'obsolete l-counterpart of ฤ' },
+	{ prompt: 'ฦๅ', answer: 'lue', hint: 'obsolete; long counterpart of ฦ' },
 ]
 
 // All 77 Thai provinces (76 provinces + Bangkok)
