@@ -34,6 +34,14 @@ const version = __APP_VERSION__
 		</Markdown>
 
 		<dl class="changelog">
+			<dt>1.0.6</dt>
+			<dd>
+				<ul>
+					<li>Reading tips design reworked</li>
+					<li>Sheet styles homogenized a little</li>
+				</ul>
+			</dd>
+
 			<dt>1.0.4</dt>
 			<dd>
 				More design work, I must iron the mess into something standardized before adding more sheets...
