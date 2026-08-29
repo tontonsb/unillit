@@ -40,13 +40,52 @@ interface VowelFamily {
 
 const vowelFamilies: VowelFamily[] = [
 	{
-		name: 'Diacritic above',
+		name: 'That 6-like thing on left',
 		vowels: [
-			{ thai: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
-			{ thai: 'กิ', translit: 'i', length: 'short' },
-			{ thai: 'กี', translit: 'i', length: 'long' },
-			{ thai: 'กึ', translit: 'ue', length: 'short' },
-			{ thai: 'กื', translit: 'ue', length: 'long', shape: 'prefinal' },
+			{ thai: 'เก', translit: 'e', length: 'long' },
+			{ thai: 'เก็', translit: 'e', length: 'short', shape: 'prefinal' },
+			{ thai: 'เกะ', translit: 'e', length: 'short', shape: 'open' },
+
+			/* เงิน is short, เดิน is long */
+			{ thai: 'เกิ', translit: 'oe', shape: 'prefinal' },
+
+			{ thai: 'เกา', translit: 'ao', length: 'short', shape: 'selfclosed' },
+			{ thai: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
+
+			{ thai: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
+		//	{ thai: 'เกอะ', translit: 'oe', length: 'short', shape: 'open' },
+			{ thai: 'เกือ', translit: 'uea', length: 'long' },
+		//	{ thai: 'เกือะ', translit: 'uea', length: 'short', shape: 'open' },
+		//	{ thai: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed' },
+
+			/* only appears in the word เกอว http://www.thai-language.com/id/141803 */
+		//	{ thai: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
+
+			{ thai: 'เกย', translit: 'oei', length: 'long', shape: 'selfclosed' },
+			{ thai: 'เกีย', translit: 'ia', length: 'long' },
+		//	{ thai: 'เกียะ', translit: 'ia', length: 'short', shape: 'open' },
+			{ thai: 'เกียว', translit: 'iao', length: 'long', shape: 'selfclosed' },
+
+		//	{ thai: 'เกว', translit: 'eo', length: 'long', shape: 'selfclosed' },
+		//	{ thai: 'เก็ว', translit: 'eo', length: 'short', shape: 'selfclosed' },
+		],
+	},
+	{
+		name: 'Two of the 6-likes. Or one but with an umbrella.',
+		vowels: [
+			{ thai: 'แก', translit: 'ae', length: 'long' },
+			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
+			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
+
+		//	{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed' },
+		//	{ thai: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed' },
+
+			{ thai: 'โก', translit: 'o', length: 'long' },
+			{ thai: 'โกะ', translit: 'o', length: 'short', shape: 'open' },
+			{ thai: 'โกย', translit: 'oi', length: 'long', shape: 'selfclosed' },
+			{ thai: 'ใก', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ thai: 'ไก', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ thai: 'ไกย', translit: 'ai', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
@@ -54,56 +93,58 @@ const vowelFamilies: VowelFamily[] = [
 		vowels: [
 			{ thai: 'กุ', translit: 'u', length: 'short' },
 			{ thai: 'กู', translit: 'u', length: 'long' },
+			{ thai: 'กุย', translit: 'ui', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
-		name: 'Character on left',
+		name: 'Diacritic above',
 		vowels: [
-			{ thai: 'เก', translit: 'e', length: 'long' },
-			{ thai: 'แก', translit: 'ae', length: 'long' },
-			{ thai: 'โก', translit: 'o', length: 'long' },
-			{ thai: 'ใก', translit: 'ai', length: 'short', shape: 'selfclosed' },
-			{ thai: 'ไก', translit: 'ai', length: 'short', shape: 'selfclosed' },
-		],
-	},
-	{
-		name: 'Char on right',
-		vowels: [
-			{ thai: 'กา', translit: 'a', length: 'long' },
-			{ thai: 'กอ', translit: 'o', length: 'long' },
-		],
-	},
-	{
-		name: 'Compound — multi-part or wrapping',
-		vowels: [
-			{ thai: 'กะ', translit: 'a', length: 'short', shape: 'open' },
+			{ thai: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
+			{ thai: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
+			{ thai: 'กัวะ', translit: 'ua', length: 'short', shape: 'open' },
+
+			{ thai: 'กัย', translit: 'ai', length: 'short', shape: 'selfclosed' },
+
+			{ thai: 'กิ', translit: 'i', length: 'short' },
+			{ thai: 'กิว', translit: 'io', length: 'short', shape: 'selfclosed' },
+
+			{ thai: 'กี', translit: 'i', length: 'long' },
+
+			{ thai: 'กื', translit: 'ue', length: 'long', shape: 'prefinal' },
 			{ thai: 'กือ', translit: 'ue', length: 'long', shape: 'open' },
-			{ thai: 'เกะ', translit: 'e', length: 'short', shape: 'open' },
-			{ thai: 'เก็', translit: 'e', length: 'short', shape: 'prefinal' },
-			{ thai: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
-			{ thai: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
-			/* เงิน is short, เดิน is long */
-			{ thai: 'เกิ', translit: 'oe', shape: 'prefinal' },
-			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
-			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
+
+			{ thai: 'กึ', translit: 'ue', length: 'short' },
+
 			{ thai: 'กำ', translit: 'am', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
-		name: 'Diphthong patterns (vowel combos and glides with consonant glyphs ย / ว / อ / รร)',
+		name: 'Only chars on the right',
 		vowels: [
-			{ thai: 'กอย', translit: 'oi', length: 'long' },
-			{ thai: 'กาว', translit: 'ao', length: 'long' },
-			{ thai: 'กาย', translit: 'ai', length: 'long' },
-			{ thai: 'กิว', translit: 'iu', length: 'short' },
-			{ thai: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
-			{ thai: 'กัย', translit: 'ai', length: 'short' },
-			{ thai: 'กุย', translit: 'ui', length: 'short' },
-			{ thai: 'เกา', translit: 'ao', length: 'short', shape: 'selfclosed' },
-			{ thai: 'เกย', translit: 'oei', length: 'long' },
-			{ thai: 'เกีย', translit: 'ia', length: 'long' },
-			{ thai: 'เกือ', translit: 'uea', length: 'long' },
+			{ thai: 'กา', translit: 'a', length: 'long' },
+			{ thai: 'กอ', translit: 'o', length: 'long' },
+		//	{ thai: 'ก็อ', translit: 'o', length: 'short', shape: 'prefinal' },
+			{ thai: 'กะ', translit: 'a', length: 'short', shape: 'open' },
+
+			{ thai: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
+			{ thai: 'กวย', translit: 'uai', length: 'long', shape: 'selfclosed' },
+		//	{ thai: 'กวาย', translit: 'uai', length: 'long', shape: 'selfclosed' }, // disputed, awaiting native speaker feedback
+
+			{ thai: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
+		//	{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed' },
+
+			{ thai: 'กาว', translit: 'ao', length: 'long', shape: 'selfclosed' },
+			{ thai: 'กาย', translit: 'ai', length: 'long', shape: 'selfclosed' },
 			{ thai: 'กรร', translit: 'an/a', length: 'short' },
+		],
+	},
+	{
+		name: 'Ligatures',
+		vowels: [
+			{ thai: 'ฤ', translit: 'ri/rue/roe' },
+			{ thai: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open' },
+		//	{ thai: 'ฦ', translit: 'lue' },
+		//	{ thai: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open' },
 		],
 	},
 ]
