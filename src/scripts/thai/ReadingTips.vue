@@ -212,7 +212,7 @@ import CharBadge from './CharBadge.vue'
 					<dd>fortified city</dd>
 				</div>
 				<div>
-					<dt><span class="thai">ราช</span> Raat / Ratcha</dt>
+					<dt><span class="thai">ราช</span> Rat / Ratcha</dt>
 					<dd>royal/king</dd>
 				</div>
 				<div>
