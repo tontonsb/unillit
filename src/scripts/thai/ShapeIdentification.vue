@@ -61,7 +61,7 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed', rare: true },
 
 			/* only appears in the word เกอว http://www.thai-language.com/id/141803 */
-		//	{ thai: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
+			// { thai: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
 
 			{ thai: 'เกย', translit: 'oei', length: 'long', shape: 'selfclosed' },
 			{ thai: 'เกีย', translit: 'ia', length: 'long' },
@@ -130,7 +130,7 @@ const vowelFamilies: VowelFamily[] = [
 
 			{ thai: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
 			{ thai: 'กวย', translit: 'uai', length: 'long', shape: 'selfclosed' },
-		//	{ thai: 'กวาย', translit: 'uai', length: 'long', shape: 'selfclosed' }, // disputed, awaiting native speaker feedback
+			// { thai: 'กวาย', translit: 'uai', length: 'long', shape: 'selfclosed' }, // disputed, awaiting native speaker feedback
 
 			{ thai: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
 			{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed', rare: true },
@@ -372,7 +372,6 @@ ul {
 li {
 	border-right: var(--hairline);
 	min-width: 38px;
-	min-height: 74px;
 }
 li:last-child { border-right: none; }
 
