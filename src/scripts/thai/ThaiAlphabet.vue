@@ -232,7 +232,7 @@ const specialMarks: Mark[] = [
 <style scoped>
 .two-col {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
 	gap: 8px;
 }
 

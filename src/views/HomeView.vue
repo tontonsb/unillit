@@ -139,7 +139,7 @@ article > :is(h1, h2, p, dl) {
 
 .approaches {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 	gap: var(--sp-16);
 	margin-top: var(--sp-28);
 	margin-bottom: var(--sp-28);
