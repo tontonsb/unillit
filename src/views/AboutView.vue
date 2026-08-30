@@ -34,6 +34,18 @@ const version = __APP_VERSION__
 		</Markdown>
 
 		<dl class="changelog">
+			<dt>1.0.7</dt>
+			<dd>
+				A Thai sheet review edition. Mostly vowel improvemenmts since I'm starting to understand what's going on.
+				<ul>
+					<li>Removed Rare/Obsolete info from the identification sheet — rareness doesn't matter once you've found it</li>
+					<li>VOW tag from identification sheet is also now used in the alphabet sheet to note vowel-like consonants</li>
+					<li>Vowel/diphthong forms are tagged if they imply CV or CVC structure</li>
+					<li>... and the forms that self-close with a vowel-like consonant are tagged using the VOW tag color</li>
+					<li>Of course, some errors were fixed and questions sets slightly revised</li>
+				</ul>
+			</dd>
+
 			<dt>1.0.6</dt>
 			<dd>
 				<ul>
