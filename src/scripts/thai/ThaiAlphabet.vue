@@ -138,7 +138,7 @@ const specialMarks: Mark[] = [
 				<CharBadge tag="mid" />
 				<CharBadge tag="high" />
 				<CharBadge tag="low" />
-				<small>Rom = initial · <em>final in italics</em> (when different) · — = no final/silent)</small>
+				<small>Rom = initial · <em>final in italics</em> (when different) · — = no final/silent</small>
 			</p>
 			<ol class="cols-fill ruled">
 				<li
