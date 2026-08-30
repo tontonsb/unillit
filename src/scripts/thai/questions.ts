@@ -70,6 +70,8 @@ export const vowelQuestions: Question[] = [
 	{ prompt: 'เกีย', answer: 'kia', hint: 'diphthong ia' },
 	{ prompt: 'กัว', answer: 'kua', hint: 'diphthong ua — ว acts as second element' },
 	{ prompt: 'เกือ', answer: 'kuea', hint: 'triphthong uea — common in place names' },
+	{ prompt: 'กัย', answer: 'kai', hint: 'glide ai — ◌ั + ย' },
+	{ prompt: 'แกว', answer: 'kaeo', hint: 'glide aeo — แ◌ + ว' },
 	{ prompt: 'กำ', answer: 'kam', hint: '◌ํ + า; implied final m' },
 	{ prompt: 'กรร', answer: ['ka', 'kan'], hint: 'ro han — short a before a final consonant (an if standalone)' },
 ]
@@ -103,6 +105,7 @@ export const syllableQuestions: Question[] = [
 	{ prompt: 'น้ำ', answer: 'nam', hint: 'n (mai tho tone mark) + sara am — water' },
 	{ prompt: 'หาด', answer: 'hat', hint: 'h + long a + d (final t) — beach' },
 	{ prompt: 'ใหม่', answer: 'mai', hint: '(silent ห raises tone) m +  ใ (rare ai spelling) (mai ek tone mark) — new' },
+	{ prompt: 'ไทย', answer: 'thai', hint: 'th + ไ◌ย (the ย is silent) — Thai' },
 	{ prompt: 'พรรณ', answer: 'phan', hint: 'ph + short a (ro han รร) + n' },
 	{ prompt: 'กรรม', answer: 'kam', hint: 'k + short a (ro han รร) + m' },
 	{ prompt: 'จังหวัด', answer: 'changwat', hint: 'จัง (chang) + หวัด (wat, silent ห raises tone) — province' },
