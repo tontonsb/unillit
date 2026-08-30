@@ -48,13 +48,13 @@ typography:
     fontSize: "1.3rem"
     fontWeight: 400
   glyph:
-    fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
+    fontFamily: "var(--font-thai) | var(--font-cyrillic) — set per script"
     fontSize: "clamp(24px, 1.56vw, 30px)"
     fontWeight: 400
     lineHeight: 1.15
   prompt:
-    fontFamily: "var(--font-thai), var(--font-cyrillic), var(--font-arabic)"
-    fontSize: "4rem"
+    fontFamily: "var(--font-thai) | var(--font-cyrillic) — set per script"
+    fontSize: "clamp(3rem, 13vw, 4rem)"
     fontWeight: 400
     lineHeight: 1.2
   scriptFonts:
@@ -418,7 +418,9 @@ publications.
   only step in that gap.
 - **Glyph** (script font, `clamp(24px, 1.56vw, 30px)`): the specimen in sheet cells,
   exposed as `--glyph` so cells can scale relative to it.
-- **Prompt** (script font, 4rem): the single character or toponym under test.
+- **Prompt** (script font, `clamp(3rem, 13vw, 4rem)`): the single character or toponym
+  under test. A long single-word toponym has no wrap opportunity, so it scales down
+  rather than clipping; it is at full size from ~500px up.
 
 **Sub-headings are body-sized.** A heading distinguishes itself by kind, not by growing
 — `.prose h3` is serif 600, tracked and muted at `--fs-prose`. There is no Title step.
@@ -488,8 +490,9 @@ It corrects rendering, not layout: the row keeps its height whatever the glyph d
 ### Open: the type ramp is extracted, not yet resolved
 
 Eleven `--fs-*` tokens in `main.css`, one base (`1rem` is 16px — nothing sets
-`html`'s font-size), and no component carrying a literal font-size. Two value-named
-tokens remain — `--fs-11` and `--fs-12` — and no two steps now sit under 1px apart.
+`html`'s font-size), and no component carrying a literal font-size. Three value-named
+tokens remain — `--fs-11`, `--fs-12` and `--fs-48` — and two pairs still sit under 1px
+apart: `--fs-micro` 10.4 against `--fs-11`, and `--fs-12` against `--fs-chrome` 12.8.
 
 Tokens named by value are deliberately ugly: each is a size with no role that some other
 token does not already serve. A token that earns a name gets one.
@@ -518,6 +521,11 @@ sheet left and practice right, each an independently scrolling column with its o
 sticky tab header. Below 768px it becomes two stacked rows; when the info panel is set
 to *None* the rows collapse to `auto 1fr` so the practice panel takes the screen. 768px
 is the system's only breakpoint — everything else scales fluidly through `clamp()`.
+
+The top chrome row is a token, `--h-chrome-row` (2.25rem). The sidebar's collapse toggle
+and both panel headers are all set to it, so their bottom hairlines meet as one unbroken
+line across the viewport. Anything new landing in that row takes the token rather than
+its own height, or the line breaks.
 
 Density is tiered by register. Sheets run on a 2–10px rhythm (`padding: 10px`, `gap:
 8px`, cells at `3px 4px 2px`) and place glyph cells on a `repeat(auto-fill,
