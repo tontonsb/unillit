@@ -164,6 +164,8 @@ import CharBadge from './CharBadge.vue'
 			The thanthakhat ◌์ is a diacritic that indicates a silent consonant.
 
 			Example: ศักดิ์ is *sak* since ศั is *sa*, ก is *k* and the third letter has the ignore-me-hat.
+
+			<small>The actual literal meaning of term ทัณฑฆาต (*thanthakhat*) is death penalty not just "ignore this".</small>
 		</Markdown>
 
 		<Markdown wrap="section">
