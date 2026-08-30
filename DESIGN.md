@@ -57,6 +57,18 @@ typography:
     fontSize: "4rem"
     fontWeight: 400
     lineHeight: 1.2
+  scriptFonts:
+    thai:
+      - "'Noto Sans Thai Variable', system-ui, sans-serif"
+      - "'Sarabun', system-ui, sans-serif"
+      - "'Noto Serif Thai Variable', serif"
+      - "'Trirong', serif"
+    cyrillic:
+      - "'Lora Variable', serif"
+      - "'Spectral', serif"
+      - "'Ysabeau Variable', sans-serif"
+      - "'Pacifico', cursive"
+      - "'Great Vibes', cursive"
 rounded:
   sm: "2px"
   md: "4px"
@@ -370,9 +382,17 @@ job is to break them knowingly.
 
 **Display Font:** Lora (with Noto Serif, Georgia, serif)
 **Body Font:** Noto Sans (with system-ui, sans-serif)
-**Script Fonts:** per script and user-swappable — Noto Sans Thai / Noto Serif Thai /
-Trirong / Sarabun for Thai; Noto Serif and friends for Cyrillic; Noto Naskh Arabic;
-Noto Sans Bengali. Exposed as `--font-thai`, `--font-cyrillic` and set at the app root.
+**Script Fonts:** per script and user-swappable through the panel-header picker —
+Noto Sans Thai / Sarabun / Noto Serif Thai / Trirong for Thai; Lora / Spectral /
+Ysabeau / Pacifico / Great Vibes for Cyrillic. The picked face is exposed as
+`--font-thai` or `--font-cyrillic` and set at the app root; `scriptFonts` above lists
+the families verbatim, and every one of them is also imported in
+`src/assets/fonts.ts`. A face named there but not imported falls back to a system font
+with no error, so the two lists have to move together.
+
+Reading-tips letterform samples name a family directly rather than going through
+`--font-thai`: the point of those figures is to show one letter across several faces
+at once, which the variable cannot do.
 
 **Character:** A bookish serif for anything that names or titles, a plain humanist
 sans for everything that instructs or labels. Lora carries the editorial voice; Noto

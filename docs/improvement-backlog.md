@@ -59,7 +59,8 @@ agrees this is worth investing product-specific design in.
 - [ ] ✅ **Disabled pill with a tooltip when a mode is unavailable.** Consonants,
   Vowels and All vowels are `modes: ['typein']`, so the Type-in/Multiple-choice toggle
   vanishes with no explanation — including for a user following the site's own
-  documented "jump in head first" strategy.
+  documented "jump in head first" strategy. The pattern now exists: the logged-out
+  Revision pill is `locked` with a `title`, so this is applying it, not designing it.
 - [ ] ✅ **Confusable-by-design MC distractors.** Weight selection toward similar
   source length (±1 glyph) and shared leading syllables. The datasets already encode
   the confusion pairs — the hints name them. *Downgraded from the critique's original
@@ -102,12 +103,13 @@ agrees this is worth investing product-specific design in.
   Job 2 is load-bearing and deserves its own mark: "here are the shape cues" and
   "here's what it collides with" are the two halves of every hint, a structural
   boundary rather than a list comma.
-- [ ] **Rewrite the Thai alphabet legend.** `ThaiAlphabet.vue:139`:
-  `Rom = RTGS initial · final in italics (when different · — = no final/silent)`
-  Two `·` doing different jobs in one sentence, the second nested inside parentheses
-  so the structure is ambiguous — and `—` appears as a *literal token* meaning "no
-  final" in a panel where dashes are also punctuation. This is the legend for the
-  densest sheet in the product.
+- [x] **Rewrite the Thai alphabet legend.** `ThaiAlphabet.vue:141`. Both `·` are now
+  clause separators in one register, and the parenthetical no longer swallows the
+  second clause. `—` still doubles as a literal "no final" token in a panel where
+  dashes are punctuation, which the rewrite judged acceptable.
+- [ ] **The *All vowels* instruction no longer covers the set.** "Type the full syllable
+  — include the k (e.g. ka, not just a)" predates the four ligature prompts (ฤ ฤๅ ฦ ฦๅ),
+  which carry no ก to include.
 - [ ] **Document the separator nesting.** `'w / ŭ · oʻ'` uses slash for variants
   within a language and dot across languages. Principled, stated nowhere.
 - [ ] **Two spacing conventions:** `&nbsp;·&nbsp;` in headings vs bare ` · ` elsewhere.
@@ -155,6 +157,8 @@ See §"Omissions" below for why these are system gaps rather than discipline fai
   Category 20 values for `LangBadge` and 8 taxonomy tags / 24 hexes for `CharBadge`.
   Both reached outside the system; one grabbed Tailwind's defaults. **Biggest single
   gap.**
+  Five recipes measured and left open in `docs/badge-palette-options.md` — the
+  category count decides between them and is not known yet.
 - [ ] **One "unavailable" semantic, still several values.** `--o-inert` (0.75) covers the
   script cards and the nav items; `pill-locked` 0.4 is unreviewed and stays literal until
   its own pass. Button hover dimming (0.85 ×6) is a different semantic and consistent
@@ -391,6 +395,13 @@ menu/nav spacing (8 steps, 25 uses, a clean 2px ladder) and the prose views
   all 44 consonants for tone class, which the reading tips themselves say is "not
   preserved in RTGS" — the noisiest column on the densest sheet, changing nothing about
   a transliteration.
+- **Thai classification residue.** The vowel pass aligned the shape sheet, the alphabet
+  table and the quiz sets; three questions stayed open. The ligatures ฤ ฤๅ ฦ ฦๅ are on
+  the shape sheet and in *All vowels* but absent from the alphabet sheet entirely.
+  ฬ and ฎ are badged `rare` there while appearing in กาฬสินธุ์, บึงกาฬ and สุราษฎร์ธานี —
+  the province rule that governs vowels would make them common. And the vowel table
+  covers every base vowel but no glide combination, which is a defensible scope the
+  page states nowhere.
 - **Reading tips length.** Author will revisit content, *not* to compress into slogans.
   The benchmark is the ~200-page GeoGuessr community doc, not a 2,000-word article, so
   ~1,300 words is already radical condensation. The navigability findings are separate
