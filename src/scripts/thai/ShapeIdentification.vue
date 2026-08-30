@@ -79,7 +79,7 @@ const vowelFamilies: VowelFamily[] = [
 			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
 			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
 
-			{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed', rare: true },
+			{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed' },
 			{ thai: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed', rare: true },
 
 			{ thai: 'โก', translit: 'o', length: 'long' },
@@ -95,7 +95,7 @@ const vowelFamilies: VowelFamily[] = [
 		vowels: [
 			{ thai: 'กุ', translit: 'u', length: 'short' },
 			{ thai: 'กู', translit: 'u', length: 'long' },
-			{ thai: 'กุย', translit: 'ui', length: 'short', shape: 'selfclosed' },
+			{ thai: 'กุย', translit: 'ui', length: 'short', shape: 'selfclosed', rare: true },
 		],
 	},
 	{
@@ -103,7 +103,7 @@ const vowelFamilies: VowelFamily[] = [
 		vowels: [
 			{ thai: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
 			{ thai: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
-			{ thai: 'กัวะ', translit: 'ua', length: 'short', shape: 'open' },
+			{ thai: 'กัวะ', translit: 'ua', length: 'short', shape: 'open', rare: true },
 
 			{ thai: 'กัย', translit: 'ai', length: 'short', shape: 'selfclosed' },
 
@@ -130,21 +130,20 @@ const vowelFamilies: VowelFamily[] = [
 
 			{ thai: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
 			{ thai: 'กวย', translit: 'uai', length: 'long', shape: 'selfclosed' },
-			// { thai: 'กวาย', translit: 'uai', length: 'long', shape: 'selfclosed' }, // disputed, awaiting native speaker feedback
 
 			{ thai: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
 			{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed', rare: true },
 
 			{ thai: 'กาว', translit: 'ao', length: 'long', shape: 'selfclosed' },
 			{ thai: 'กาย', translit: 'ai', length: 'long', shape: 'selfclosed' },
-			{ thai: 'กรร', translit: 'an/a', length: 'short' },
+			{ thai: 'กรร', translit: 'a/an', length: 'short' },
 		],
 	},
 	{
 		name: 'Ligatures',
 		vowels: [
-			{ thai: 'ฤ', translit: 'ri/rue/roe' },
-			{ thai: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open' },
+			{ thai: 'ฤ', translit: 'ri/rue/roe', rare: true },
+			{ thai: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open', rare: true },
 			{ thai: 'ฦ', translit: 'lue', rare: true },
 			{ thai: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open', rare: true },
 		],
