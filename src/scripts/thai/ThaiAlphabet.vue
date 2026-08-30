@@ -104,17 +104,19 @@ interface VowelRow {
 const vowelRows: VowelRow[] = [
 	{ short: 'กะ / กั◌', long: 'กา', rtgs: 'a', position: 'after (sara a / sara aa)', notes: 'Short ั used before a final consonant' },
 	{ short: 'กิ', long: 'กี', rtgs: 'i', position: 'above' },
-	{ short: 'กึ', long: 'กือ', rtgs: 'ue', position: 'above / above+after', notes: 'Unrounded back vowel; no English equivalent' },
+	{ short: 'กึ', long: 'กือ / กื◌', rtgs: 'ue', position: 'above / above+after', notes: 'Unrounded back vowel; no English equivalent. The long form drops the อ before a final consonant' },
 	{ short: 'กุ', long: 'กู', rtgs: 'u', position: 'below' },
 	{ short: 'เกะ / เก็◌', long: 'เก', rtgs: 'e', position: 'before', notes: 'Short form เ◌็ used before final' },
 	{ short: 'แกะ / แก็◌', long: 'แก', rtgs: 'ae', position: 'before', notes: 'Like <em>a</em> in <em>cat</em>' },
 	{ short: 'โกะ', long: 'โก', rtgs: 'o', position: 'before' },
-	{ short: 'เกาะ', long: 'กอ', rtgs: 'o', position: 'wrap / after', notes: 'Open-mid <em>o</em> as in <em>or</em>' },
+	{ short: 'เกาะ / ก็อ', long: 'กอ', rtgs: 'o', position: 'wrap / after', notes: 'Open-mid <em>o</em> as in <em>or</em>; ◌็อ is the short form before a final consonant' },
 	{ short: 'เกอะ / เกิ◌', long: 'เกอ / เกิ◌', rtgs: 'oe', position: 'before+after', notes: 'Schwa-like; เ◌ิ before a final consonant can be short (เงิน <em>ngoen</em>) or long (เดิน <em>doen</em>)' },
 	{ short: 'เกียะ', long: 'เกีย', rtgs: 'ia', position: 'before+above+after', notes: 'Diphthong; long form far more common' },
 	{ short: 'กัวะ', long: 'กัว / กว', rtgs: 'ua', position: 'above / glide', notes: 'Diphthong; ว acts as second element' },
 	{ short: 'เกือะ', long: 'เกือ', rtgs: 'uea', position: 'before+above+after', notes: 'Triphthong; long form common in place names' },
 	{ short: 'กำ', long: '—', rtgs: 'am', position: 'above+after (◌ํ+า)', notes: 'Sara am — implied final m; e.g. กำแพง Kamphaeng' },
+	{ short: 'ใก / ไก / ไกย', long: '—', rtgs: 'ai', position: 'before', notes: 'Mai muan ใ◌ in a fixed set of ~20 words, mai malai ไ◌ elsewhere; ไ◌ย adds a silent ย, as in ไทย <em>Thai</em>' },
+	{ short: 'เกา', long: '—', rtgs: 'ao', position: 'wrap (เ◌+า)', notes: 'Sara ao — the า belongs to the vowel, not to a following syllable; e.g. เขาใหญ่ Khao Yai' },
 	{ short: 'กรร', long: '—', rtgs: 'an / a', position: 'after (◌รร)', notes: 'Ro han — <em>an</em> at syllable end; short <em>a</em> before a final consonant' },
 ]
 
