@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import CharBadge from './CharBadge.vue'
+import CharBadge from '@/components/CharBadge.vue'
 import ConsonantPicker from './ConsonantPicker.vue'
 
 const baseCons = ref('◌')

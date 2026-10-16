@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CharBadge from './CharBadge.vue'
+import CharBadge from '@/components/CharBadge.vue'
 </script>
 
 <template>
