@@ -43,10 +43,9 @@
 	--tracking-caps: 0.07em; /* uppercase micro-labels */
 	--tracking-wide: 0.04em; /* emphasized sentence case */
 
-	/* --lh-tight is for text that should read as one block rather than as a column of
-	   lines: list items, callouts, dense cells. */
 	--lh: 1.4;
-	--lh-tight: 1.25;
+	--lh-tight: 1.25; /* to reads as a block/list */
+	--lh-glyph: 1.15; /* for the large specimen */
 
 	/* Whole elements only, never text hierarchy — that is a colour or surface change.
 	   One level: opacities must not nest, or they multiply. The other opacities in the

@@ -355,7 +355,7 @@ figure {
 figcaption {
 	background: var(--c-alt);
 	color: var(--c-label);
-	font-size: 0.65em;
+	font-size: 0.75em;
 	font-weight: 600;
 	padding: var(--sp-2) var(--sp-6);
 	white-space: nowrap;
@@ -377,6 +377,6 @@ li:last-child { border-right: none; }
 .thai {
 	font-family: var(--font-thai);
 	font-size: var(--glyph);
-	line-height: 1.15;
+	line-height: var(--lh-glyph);
 }
 </style>

@@ -24,7 +24,7 @@
 .sheet section > h2 {
 	background: var(--c-sign);
 	color: var(--c-on-sign);
-	font-size: 0.8em;
+	font-size: 0.75em;
 	font-weight: 600;
 	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
@@ -102,15 +102,16 @@
 	font-size: 1em;
 	color: var(--c-sign);
 	font-weight: 600;
+	line-height: var(--lh-tight);
 }
 
 .sheet .final {
-	font-size: 0.8em;
+	font-size: 0.75em;
 	color: var(--c-muted);
 }
 
 .sheet .gloss {
-	font-size: 0.8em;
+	font-size: 0.75em;
 	color: var(--c-muted);
 	text-align: center;
 	line-height: var(--lh-tight);

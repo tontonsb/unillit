@@ -240,7 +240,7 @@ ol { display: grid; gap: 0; }
 .cols-fit { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
 .cols-fill { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
 
-.thai { font-family: var(--font-thai); font-size: var(--glyph); line-height: 1.15; }
+.thai { font-family: var(--font-thai); font-size: var(--glyph); line-height: var(--lh-glyph); }
 .thai.xl { font-size: calc(var(--glyph) * 1.2); }
 .thai.sm { font-size: calc(var(--glyph) * 0.8); }
 
@@ -249,7 +249,7 @@ ol { display: grid; gap: 0; }
 table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 0.8em;
+	font-size: 0.75em;
 }
 
 th {

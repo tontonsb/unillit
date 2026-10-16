@@ -35,7 +35,7 @@ const titles: Record<string, string> = {
 span {
 	font-size: 0.6em;
 	font-weight: 700;
-	padding: 0 3px;
+	padding: 0 var(--sp-2);
 	border-radius: var(--radius-sm);
 	line-height: 1.5;
 	vertical-align: middle;
