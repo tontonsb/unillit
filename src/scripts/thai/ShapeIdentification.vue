@@ -252,7 +252,7 @@ const consonantFamilies: ConsonantFamily[] = [
 
 <template>
 	<article class="sheet">
-		<section>
+		<section class="families">
 			<h2>Consonants — translit: initial / –final sound</h2>
 
 			<GlyphFamily
@@ -269,7 +269,7 @@ const consonantFamilies: ConsonantFamily[] = [
 			</GlyphFamily>
 		</section>
 
-		<section>
+		<section class="families">
 			<h2>
 				Vowels — base consonant {{ baseCons }}
 				<ConsonantPicker v-model="baseCons" />
@@ -313,19 +313,6 @@ const consonantFamilies: ConsonantFamily[] = [
 </template>
 
 <style scoped>
-section {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--sp-6);
-	padding: var(--sp-6);
-}
-
-section > h2,
-section > .section-note {
-	flex-basis: calc(100% + var(--sp-6) + var(--sp-6));
-	margin: calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)) 0;
-}
-
 .shape-key {
 	display: inline-flex;
 	align-items: center;

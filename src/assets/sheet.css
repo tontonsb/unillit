@@ -58,6 +58,22 @@
 	color: var(--c-muted);
 }
 
+/**
+  * A section of GlyphFamily strips, wrapping side by side.
+  * The header and note span the full width by cancelling the section padding.
+  */
+.sheet section.families {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sp-6);
+	padding: var(--sp-6);
+}
+
+.sheet section.families > :is(h2, .section-note) {
+	flex-basis: calc(100% + var(--sp-6) + var(--sp-6));
+	margin: calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)) 0;
+}
+
 /* glyph-cell grid — sheets set --cell-min to fit their glyph width */
 .sheet .char-grid {
 	display: grid;
