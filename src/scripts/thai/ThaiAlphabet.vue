@@ -224,7 +224,6 @@ const specialMarks: Mark[] = [
 
 		<footer>
 			<span>Romanisation follows <abbr title="Royal Thai General System of Transcription, revised 1999">RTGS 1999</abbr> as used on Thai road signs and official maps. Tones are not marked in RTGS.</span>
-			<span>Thai Unicode block: U+0E00–U+0E7F</span>
 		</footer>
 	</article>
 </template>
