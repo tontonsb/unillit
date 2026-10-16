@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import CharBadge from '@/components/CharBadge.vue'
+import GlyphFamily from '@/components/GlyphFamily.vue'
 import ConsonantPicker from './ConsonantPicker.vue'
 
 const baseCons = ref('◌')
@@ -254,17 +255,18 @@ const consonantFamilies: ConsonantFamily[] = [
 		<section>
 			<h2>Consonants — translit: initial / –final sound</h2>
 
-			<figure v-for="family in consonantFamilies" :key="family.name">
-				<figcaption>{{ family.name }}</figcaption>
-				<ul>
-					<li v-for="(char, ci) in family.characters" :key="ci" class="cell">
-						<span class="thai">{{ char.thai }}</span>
-						<span class="rom">{{ char.translit }}</span>
-						<span v-if="char.final" class="final">–{{ char.final }}</span>
-						<CharBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
-					</li>
-				</ul>
-			</figure>
+			<GlyphFamily
+				v-for="family in consonantFamilies"
+				v-slot="{ item: char }"
+				:key="family.name"
+				:name="family.name"
+				:items="family.characters"
+			>
+				<span class="thai">{{ char.thai }}</span>
+				<span class="rom">{{ char.translit }}</span>
+				<span v-if="char.final" class="final">–{{ char.final }}</span>
+				<CharBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
+			</GlyphFamily>
 		</section>
 
 		<section>
@@ -292,19 +294,20 @@ const consonantFamilies: ConsonantFamily[] = [
 				</label>
 			</p>
 
-			<figure v-for="family in visibleVowelFamilies" :key="family.name">
-				<figcaption>{{ family.name }}</figcaption>
-				<ul>
-					<li v-for="vowel in family.vowels" :key="vowel.thai" class="cell">
-						<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
-						<span class="rom">{{ vowel.translit }}</span>
-						<span class="badges">
-							<CharBadge v-if="vowel.length" :tag="vowel.length" />
-							<CharBadge v-if="vowel.shape" :tag="vowel.shape" />
-						</span>
-					</li>
-				</ul>
-			</figure>
+			<GlyphFamily
+				v-for="family in visibleVowelFamilies"
+				v-slot="{ item: vowel }"
+				:key="family.name"
+				:name="family.name"
+				:items="family.vowels"
+			>
+				<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
+				<span class="rom">{{ vowel.translit }}</span>
+				<span class="badges">
+					<CharBadge v-if="vowel.length" :tag="vowel.length" />
+					<CharBadge v-if="vowel.shape" :tag="vowel.shape" />
+				</span>
+			</GlyphFamily>
 		</section>
 	</article>
 </template>
@@ -341,38 +344,6 @@ section > .section-note {
 	margin: 0;
 	accent-color: var(--c-sign);
 }
-
-figure {
-	margin: 0;
-	border: var(--hairline);
-	border-radius: var(--radius);
-	overflow: hidden;
-	min-width: 0;
-	display: flex;
-	flex-direction: column;
-}
-
-figcaption {
-	background: var(--c-alt);
-	color: var(--c-label);
-	font-size: 0.75em;
-	font-weight: 600;
-	padding: var(--sp-2) var(--sp-6);
-	white-space: nowrap;
-	letter-spacing: var(--tracking-wide);
-}
-
-ul {
-	display: flex;
-	flex-wrap: wrap;
-	flex: 1;
-}
-
-li {
-	border-right: var(--hairline);
-	min-width: 38px;
-}
-li:last-child { border-right: none; }
 
 .thai {
 	font-family: var(--font-thai);
