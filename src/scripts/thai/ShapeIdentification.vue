@@ -7,12 +7,12 @@ import ConsonantPicker from './ConsonantPicker.vue'
 const baseCons = ref('◌')
 const showRare = ref(false)
 
-function replaceConsonant(thai: string): string {
-	return thai.replace(/ก/g, baseCons.value)
+function replaceConsonant(glyph: string): string {
+	return glyph.replace(/ก/g, baseCons.value)
 }
 
 interface ConsonantChar {
-	thai: string
+	glyph: string
 	translit: string
 	final: string | null
 	tags?: string[]
@@ -29,7 +29,7 @@ interface ConsonantFamily {
 type SyllableShape = 'open' | 'prefinal' | 'selfclosed'
 
 interface VowelChar {
-	thai: string
+	glyph: string
 	translit: string
 	length?: 'short' | 'long'
 	shape?: SyllableShape
@@ -38,115 +38,115 @@ interface VowelChar {
 
 interface VowelFamily {
 	name: string
-	vowels: VowelChar[]
+	characters: VowelChar[]
 }
 
 const vowelFamilies: VowelFamily[] = [
 	{
 		name: 'That 6-like thing on left',
-		vowels: [
-			{ thai: 'เก', translit: 'e', length: 'long' },
-			{ thai: 'เก็', translit: 'e', length: 'short', shape: 'prefinal' },
-			{ thai: 'เกะ', translit: 'e', length: 'short', shape: 'open' },
+		characters: [
+			{ glyph: 'เก', translit: 'e', length: 'long' },
+			{ glyph: 'เก็', translit: 'e', length: 'short', shape: 'prefinal' },
+			{ glyph: 'เกะ', translit: 'e', length: 'short', shape: 'open' },
 
 			/* เงิน is short, เดิน is long */
-			{ thai: 'เกิ', translit: 'oe', shape: 'prefinal' },
+			{ glyph: 'เกิ', translit: 'oe', shape: 'prefinal' },
 
-			{ thai: 'เกา', translit: 'ao', length: 'short', shape: 'selfclosed' },
-			{ thai: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
+			{ glyph: 'เกา', translit: 'ao', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'เกาะ', translit: 'o', length: 'short', shape: 'open' },
 
-			{ thai: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
-			{ thai: 'เกอะ', translit: 'oe', length: 'short', shape: 'open', rare: true },
-			{ thai: 'เกือ', translit: 'uea', length: 'long' },
-			{ thai: 'เกือะ', translit: 'uea', length: 'short', shape: 'open', rare: true },
-			{ thai: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed', rare: true },
+			{ glyph: 'เกอ', translit: 'oe', length: 'long', shape: 'open' },
+			{ glyph: 'เกอะ', translit: 'oe', length: 'short', shape: 'open', rare: true },
+			{ glyph: 'เกือ', translit: 'uea', length: 'long' },
+			{ glyph: 'เกือะ', translit: 'uea', length: 'short', shape: 'open', rare: true },
+			{ glyph: 'เกือย', translit: 'ueai', length: 'long', shape: 'selfclosed', rare: true },
 
 			/* only appears in the word เกอว http://www.thai-language.com/id/141803 */
-			// { thai: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
+			// { glyph: 'เกอว', translit: 'oeu', length: 'long', shape: 'selfclosed' },
 
-			{ thai: 'เกย', translit: 'oei', length: 'long', shape: 'selfclosed' },
-			{ thai: 'เกีย', translit: 'ia', length: 'long' },
-			{ thai: 'เกียะ', translit: 'ia', length: 'short', shape: 'open', rare: true },
-			{ thai: 'เกียว', translit: 'iao', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'เกย', translit: 'oei', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'เกีย', translit: 'ia', length: 'long' },
+			{ glyph: 'เกียะ', translit: 'ia', length: 'short', shape: 'open', rare: true },
+			{ glyph: 'เกียว', translit: 'iao', length: 'long', shape: 'selfclosed' },
 
-			{ thai: 'เกว', translit: 'eo', length: 'long', shape: 'selfclosed', rare: true },
-			{ thai: 'เก็ว', translit: 'eo', length: 'short', shape: 'selfclosed', rare: true },
+			{ glyph: 'เกว', translit: 'eo', length: 'long', shape: 'selfclosed', rare: true },
+			{ glyph: 'เก็ว', translit: 'eo', length: 'short', shape: 'selfclosed', rare: true },
 		],
 	},
 	{
 		name: 'Two of the 6-likes. Or one but with an umbrella.',
-		vowels: [
-			{ thai: 'แก', translit: 'ae', length: 'long' },
-			{ thai: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
-			{ thai: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
+		characters: [
+			{ glyph: 'แก', translit: 'ae', length: 'long' },
+			{ glyph: 'แก็', translit: 'ae', length: 'short', shape: 'prefinal' },
+			{ glyph: 'แกะ', translit: 'ae', length: 'short', shape: 'open' },
 
-			{ thai: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed' },
-			{ thai: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed', rare: true },
+			{ glyph: 'แกว', translit: 'aeo', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'แก็ว', translit: 'aeo', length: 'short', shape: 'selfclosed', rare: true },
 
-			{ thai: 'โก', translit: 'o', length: 'long' },
-			{ thai: 'โกะ', translit: 'o', length: 'short', shape: 'open' },
-			{ thai: 'โกย', translit: 'oi', length: 'long', shape: 'selfclosed' },
-			{ thai: 'ใก', translit: 'ai', length: 'short', shape: 'selfclosed' },
-			{ thai: 'ไก', translit: 'ai', length: 'short', shape: 'selfclosed' },
-			{ thai: 'ไกย', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'โก', translit: 'o', length: 'long' },
+			{ glyph: 'โกะ', translit: 'o', length: 'short', shape: 'open' },
+			{ glyph: 'โกย', translit: 'oi', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'ใก', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'ไก', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'ไกย', translit: 'ai', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
 		name: 'Diacritic below',
-		vowels: [
-			{ thai: 'กุ', translit: 'u', length: 'short' },
-			{ thai: 'กู', translit: 'u', length: 'long' },
-			{ thai: 'กุย', translit: 'ui', length: 'short', shape: 'selfclosed', rare: true },
+		characters: [
+			{ glyph: 'กุ', translit: 'u', length: 'short' },
+			{ glyph: 'กู', translit: 'u', length: 'long' },
+			{ glyph: 'กุย', translit: 'ui', length: 'short', shape: 'selfclosed', rare: true },
 		],
 	},
 	{
 		name: 'Diacritic above',
-		vowels: [
-			{ thai: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
-			{ thai: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
-			{ thai: 'กัวะ', translit: 'ua', length: 'short', shape: 'open', rare: true },
+		characters: [
+			{ glyph: 'กั', translit: 'a', length: 'short', shape: 'prefinal' },
+			{ glyph: 'กัว', translit: 'ua', length: 'long', shape: 'open' },
+			{ glyph: 'กัวะ', translit: 'ua', length: 'short', shape: 'open', rare: true },
 
-			{ thai: 'กัย', translit: 'ai', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'กัย', translit: 'ai', length: 'short', shape: 'selfclosed' },
 
-			{ thai: 'กิ', translit: 'i', length: 'short' },
-			{ thai: 'กิว', translit: 'io', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'กิ', translit: 'i', length: 'short' },
+			{ glyph: 'กิว', translit: 'io', length: 'short', shape: 'selfclosed' },
 
-			{ thai: 'กี', translit: 'i', length: 'long' },
+			{ glyph: 'กี', translit: 'i', length: 'long' },
 
-			{ thai: 'กื', translit: 'ue', length: 'long', shape: 'prefinal' },
-			{ thai: 'กือ', translit: 'ue', length: 'long', shape: 'open' },
+			{ glyph: 'กื', translit: 'ue', length: 'long', shape: 'prefinal' },
+			{ glyph: 'กือ', translit: 'ue', length: 'long', shape: 'open' },
 
-			{ thai: 'กึ', translit: 'ue', length: 'short' },
+			{ glyph: 'กึ', translit: 'ue', length: 'short' },
 
-			{ thai: 'กำ', translit: 'am', length: 'short', shape: 'selfclosed' },
+			{ glyph: 'กำ', translit: 'am', length: 'short', shape: 'selfclosed' },
 		],
 	},
 	{
 		name: 'Only chars on the right',
-		vowels: [
-			{ thai: 'กา', translit: 'a', length: 'long' },
-			{ thai: 'กอ', translit: 'o', length: 'long' },
-			{ thai: 'ก็อ', translit: 'o', length: 'short', shape: 'prefinal', rare: true },
-			{ thai: 'กะ', translit: 'a', length: 'short', shape: 'open' },
+		characters: [
+			{ glyph: 'กา', translit: 'a', length: 'long' },
+			{ glyph: 'กอ', translit: 'o', length: 'long' },
+			{ glyph: 'ก็อ', translit: 'o', length: 'short', shape: 'prefinal', rare: true },
+			{ glyph: 'กะ', translit: 'a', length: 'short', shape: 'open' },
 
-			{ thai: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
-			{ thai: 'กวย', translit: 'uai', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'กว', translit: 'ua', length: 'long', shape: 'prefinal' },
+			{ glyph: 'กวย', translit: 'uai', length: 'long', shape: 'selfclosed' },
 
-			{ thai: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
-			{ thai: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed', rare: true },
+			{ glyph: 'กอย', translit: 'oi', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'ก็อย', translit: 'oi', length: 'short', shape: 'selfclosed', rare: true },
 
-			{ thai: 'กาว', translit: 'ao', length: 'long', shape: 'selfclosed' },
-			{ thai: 'กาย', translit: 'ai', length: 'long', shape: 'selfclosed' },
-			{ thai: 'กรร', translit: 'a/an', length: 'short' },
+			{ glyph: 'กาว', translit: 'ao', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'กาย', translit: 'ai', length: 'long', shape: 'selfclosed' },
+			{ glyph: 'กรร', translit: 'a/an', length: 'short' },
 		],
 	},
 	{
 		name: 'Ligatures',
-		vowels: [
-			{ thai: 'ฤ', translit: 'ri/rue/roe', rare: true },
-			{ thai: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open', rare: true },
-			{ thai: 'ฦ', translit: 'lue', rare: true },
-			{ thai: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open', rare: true },
+		characters: [
+			{ glyph: 'ฤ', translit: 'ri/rue/roe', rare: true },
+			{ glyph: 'ฤๅ', translit: 'rue', length: 'long', shape: 'open', rare: true },
+			{ glyph: 'ฦ', translit: 'lue', rare: true },
+			{ glyph: 'ฦๅ', translit: 'lue', length: 'long', shape: 'open', rare: true },
 		],
 	},
 ]
@@ -157,94 +157,94 @@ const visibleVowelFamilies = computed(() => {
 	return vowelFamilies
 		.map(family => ({
 			...family,
-			vowels: family.vowels.filter(vowel => !vowel.rare),
+			characters: family.characters.filter(vowel => !vowel.rare),
 		}))
-		.filter(family => family.vowels.length > 0)
+		.filter(family => family.characters.length > 0)
 })
 
 const consonantFamilies: ConsonantFamily[] = [
 	{
 		name: 'Crates — floor and both sides',
 		characters: [
-			{ thai: 'บ', translit: 'b', final: 'p' },
-			{ thai: 'ป', translit: 'p', final: 'p' },
-			{ thai: 'ข', translit: 'kh', final: 'k' },
-			{ thai: 'ฃ', translit: 'kh', final: 'k' },
-			{ thai: 'ช', translit: 'ch', final: 't' },
-			{ thai: 'ซ', translit: 's', final: 't' },
-			{ thai: 'ษ', translit: 's', final: 't' },
-			{ thai: 'ฆ', translit: 'kh', final: 'k' },
-			{ thai: 'น', translit: 'n', final: 'n' },
-			{ thai: 'ม', translit: 'm', final: 'm' },
-			{ thai: 'ย', translit: 'y', final: 'y', tags: ['vowel'] },
+			{ glyph: 'บ', translit: 'b', final: 'p' },
+			{ glyph: 'ป', translit: 'p', final: 'p' },
+			{ glyph: 'ข', translit: 'kh', final: 'k' },
+			{ glyph: 'ฃ', translit: 'kh', final: 'k' },
+			{ glyph: 'ช', translit: 'ch', final: 't' },
+			{ glyph: 'ซ', translit: 's', final: 't' },
+			{ glyph: 'ษ', translit: 's', final: 't' },
+			{ glyph: 'ฆ', translit: 'kh', final: 'k' },
+			{ glyph: 'น', translit: 'n', final: 'n' },
+			{ glyph: 'ม', translit: 'm', final: 'm' },
+			{ glyph: 'ย', translit: 'y', final: 'y', tags: ['vowel'] },
 		],
 	},
 	{
 		name: 'Minions — roof and both sides',
 		characters: [
-			{ thai: 'ก', translit: 'k', final: 'k' },
-			{ thai: 'ถ', translit: 'th', final: 't' },
-			{ thai: 'ภ', translit: 'ph', final: 'p' },
-			{ thai: 'ฎ', translit: 'd', final: 't' },
-			{ thai: 'ฏ', translit: 't', final: 't' },
-			{ thai: 'ด', translit: 'd', final: 't' },
-			{ thai: 'ค', translit: 'kh', final: 'k' },
-			{ thai: 'ศ', translit: 's', final: 't' },
-			{ thai: 'ต', translit: 't', final: 't' },
-			{ thai: 'ฅ', translit: 'kh', final: 'k' },
+			{ glyph: 'ก', translit: 'k', final: 'k' },
+			{ glyph: 'ถ', translit: 'th', final: 't' },
+			{ glyph: 'ภ', translit: 'ph', final: 'p' },
+			{ glyph: 'ฎ', translit: 'd', final: 't' },
+			{ glyph: 'ฏ', translit: 't', final: 't' },
+			{ glyph: 'ด', translit: 'd', final: 't' },
+			{ glyph: 'ค', translit: 'kh', final: 'k' },
+			{ glyph: 'ศ', translit: 's', final: 't' },
+			{ glyph: 'ต', translit: 't', final: 't' },
+			{ glyph: 'ฅ', translit: 'kh', final: 'k' },
 		],
 	},
 	{
 		name: 'Minions holding a sword',
 		characters: [
-			{ thai: 'ฒ', translit: 'th', final: 't' },
-			{ thai: 'ณ', translit: 'n', final: 'n' },
-			{ thai: 'ฌ', translit: 'ch', final: 't' },
-			{ thai: 'ญ', translit: 'y', final: 'n' },
+			{ glyph: 'ฒ', translit: 'th', final: 't' },
+			{ glyph: 'ณ', translit: 'n', final: 'n' },
+			{ glyph: 'ฌ', translit: 'ch', final: 't' },
+			{ glyph: 'ญ', translit: 'y', final: 'n' },
 		],
 	},
 	{
 		name: 'Pacman ghosts/AmongUs — side gap',
 		characters: [
-			{ thai: 'อ', translit: '–', final: null, tags: ['vowel'] },
-			{ thai: 'ฮ', translit: 'h', final: null },
-			{ thai: 'จ', translit: 'ch', final: 't' },
-			{ thai: 'ฉ', translit: 'ch', final: null },
-			{ thai: 'ล', translit: 'l', final: 'n' },
-			{ thai: 'ส', translit: 's', final: 't' },
+			{ glyph: 'อ', translit: '–', final: null, tags: ['vowel'] },
+			{ glyph: 'ฮ', translit: 'h', final: null },
+			{ glyph: 'จ', translit: 'ch', final: 't' },
+			{ glyph: 'ฉ', translit: 'ch', final: null },
+			{ glyph: 'ล', translit: 'l', final: 'n' },
+			{ glyph: 'ส', translit: 's', final: 't' },
 		],
 	},
 	{
 		name: 'Flags',
 		characters: [
-			{ thai: 'ร', translit: 'r', final: 'n/–' },
-			{ thai: 'ธ', translit: 'th', final: 't' },
-			{ thai: 'ฐ', translit: 'th', final: 't' },
+			{ glyph: 'ร', translit: 'r', final: 'n/–' },
+			{ glyph: 'ธ', translit: 'th', final: 't' },
+			{ glyph: 'ฐ', translit: 'th', final: 't' },
 		],
 	},
 	{
 		name: 'Hooks',
 		characters: [
-			{ thai: 'ง', translit: 'ng', final: 'ng' },
-			{ thai: 'ว', translit: 'w', final: 'o/u', tags: ['vowel'] },
+			{ glyph: 'ง', translit: 'ng', final: 'ng' },
+			{ glyph: 'ว', translit: 'w', final: 'o/u', tags: ['vowel'] },
 		],
 	},
 	{
 		name: 'Squiggles — N-like',
 		characters: [
-			{ thai: 'ห', translit: 'h', final: null },
-			{ thai: 'ท', translit: 'th', final: 't' },
-			{ thai: 'ฑ', translit: 'th', final: 't' },
+			{ glyph: 'ห', translit: 'h', final: null },
+			{ glyph: 'ท', translit: 'th', final: 't' },
+			{ glyph: 'ฑ', translit: 'th', final: 't' },
 		],
 	},
 	{
 		name: 'W-shape',
 		characters: [
-			{ thai: 'ผ', translit: 'ph', final: null },
-			{ thai: 'ฝ', translit: 'f', final: null },
-			{ thai: 'พ', translit: 'ph', final: 'p' },
-			{ thai: 'ฟ', translit: 'f', final: 'p' },
-			{ thai: 'ฬ', translit: 'l', final: 'n' },
+			{ glyph: 'ผ', translit: 'ph', final: null },
+			{ glyph: 'ฝ', translit: 'f', final: null },
+			{ glyph: 'พ', translit: 'ph', final: 'p' },
+			{ glyph: 'ฟ', translit: 'f', final: 'p' },
+			{ glyph: 'ฬ', translit: 'l', final: 'n' },
 		],
 	},
 ]
@@ -262,7 +262,7 @@ const consonantFamilies: ConsonantFamily[] = [
 				:name="family.name"
 				:items="family.characters"
 			>
-				<span class="thai">{{ char.thai }}</span>
+				<span class="thai">{{ char.glyph }}</span>
 				<span class="rom">{{ char.translit }}</span>
 				<span v-if="char.final" class="final">–{{ char.final }}</span>
 				<CharBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
@@ -299,9 +299,9 @@ const consonantFamilies: ConsonantFamily[] = [
 				v-slot="{ item: vowel }"
 				:key="family.name"
 				:name="family.name"
-				:items="family.vowels"
+				:items="family.characters"
 			>
-				<span class="thai">{{ replaceConsonant(vowel.thai) }}</span>
+				<span class="thai">{{ replaceConsonant(vowel.glyph) }}</span>
 				<span class="rom">{{ vowel.translit }}</span>
 				<span class="badges">
 					<CharBadge v-if="vowel.length" :tag="vowel.length" />
