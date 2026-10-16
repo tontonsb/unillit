@@ -2,11 +2,16 @@
 // Base-consonant selector shown inside a sheet section h2 (white-on-green).
 const model = defineModel<string>({ required: true })
 
-const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
+const props = defineProps<{
+	script: string
+	consonants: string[]
+}>()
+
+const placeholders = ['◌', ...props.consonants]
 </script>
 
 <template>
-	<span class="cons-picker">
+	<span class="cons-picker" :style="{ fontFamily: `var(--font-${script})` }">
 		<button
 			v-for="c in placeholders"
 			:key="c"
@@ -29,7 +34,7 @@ const placeholders = ['◌', 'ก', 'ข', 'ด', 'ท', 'น']
 }
 
 .cons-btn {
-	font-family: var(--font-thai);
+	font-family: inherit;
 	font-size: var(--fs-body);
 	font-weight: 400;
 	line-height: 1;

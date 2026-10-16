@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import CharBadge from '@/components/CharBadge.vue'
 import GlyphFamily from '@/components/GlyphFamily.vue'
-import ConsonantPicker from './ConsonantPicker.vue'
+import ConsonantPicker from '@/components/ConsonantPicker.vue'
 
 const baseCons = ref('◌')
 const showRare = ref(false)
@@ -272,7 +272,11 @@ const consonantFamilies: ConsonantFamily[] = [
 		<section class="families">
 			<h2>
 				Vowels — base consonant {{ baseCons }}
-				<ConsonantPicker v-model="baseCons" />
+				<ConsonantPicker
+					v-model="baseCons"
+					script="thai"
+					:consonants="['ก', 'ข', 'ด', 'ท', 'น']"
+				/>
 			</h2>
 			<p class="section-note">
 				<span>Syllable shape:</span>

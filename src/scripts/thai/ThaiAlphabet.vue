@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import CharBadge from '@/components/CharBadge.vue'
-import ConsonantPicker from './ConsonantPicker.vue'
+import ConsonantPicker from '@/components/ConsonantPicker.vue'
 
 const baseCons = ref('◌')
 
@@ -163,7 +163,11 @@ const specialMarks: Mark[] = [
 		<section>
 			<h2>
 				Vowels — base consonant {{ baseCons }}
-				<ConsonantPicker v-model="baseCons" />
+				<ConsonantPicker
+					v-model="baseCons"
+					script="thai"
+					:consonants="['ก', 'ข', 'ด', 'ท', 'น']"
+				/>
 			</h2>
 			<p class="section-note">Short and long pairs share the same quality; length is phonemic. In place names, length distinction is often lost in romanisation.</p>
 			<div class="vtable-wrap">
