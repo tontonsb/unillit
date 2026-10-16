@@ -3,13 +3,33 @@ import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ScriptPanel from '@/components/ScriptPanel.vue'
 import PillControl from '@/components/PillControl.vue'
-import { scriptsById } from '@/scripts/scripts'
+import QuizShell from '@/components/quiz/QuizShell.vue'
+import PracticePlaceholder from '@/scripts/PracticePlaceholder.vue'
+import { scriptsById, type ScriptTab } from '@/scripts/scripts'
 import { activeInfoSheet, infoTab, practiceTab } from '@/composables/useScriptContext'
 import { encodeTabs, applyShare } from '@/lib/tabLink'
 
 const route = useRoute()
 const router = useRouter()
 const config = computed(() => scriptsById[route.params.id as string])
+
+const practiceTabs = computed<ScriptTab[]>(() => {
+	const script = config.value
+
+	if (!script?.datasets?.length)
+		return [{ label: 'Practice', component: PracticePlaceholder }]
+
+	return script.datasets.map(dataset => ({
+		label: dataset.label,
+		component: QuizShell,
+		props: {
+			datasetConfig: dataset,
+			scriptId: script.id,
+			promptClass: script.promptClass,
+			promptFontFamily: script.promptFontFamily,
+		},
+	}))
+})
 
 function clampIndex(value: unknown, tabs: unknown[] | undefined): number | null {
 	const n = Number(value)
@@ -29,7 +49,7 @@ function clampIndex(value: unknown, tabs: unknown[] | undefined): number | null 
 onMounted(() => {
 	const [rawInfo, rawPractice] = applyShare(route.query.t)
 	const info = clampIndex(rawInfo, config.value?.infoTabs)
-	const practice = clampIndex(rawPractice, config.value?.practiceTabs)
+	const practice = clampIndex(rawPractice, practiceTabs.value)
 
 	if (info !== null)
 		infoTab.value = info
@@ -79,7 +99,7 @@ function copyLink() {
 			</ScriptPanel>
 			<ScriptPanel
 				v-model:active-index="practiceTab"
-				:tabs="config.practiceTabs ?? []"
+				:tabs="practiceTabs"
 				:tabs-label="`${config.name} practice`"
 			>
 				<template v-if="config.headerEnd" #header-end>

@@ -66,7 +66,8 @@ If npm is not available, I've forgotten to launch it. Just ask for it and I'll r
 ## Script page layout
 
 `ScriptView` renders two `ScriptPanel` components side-by-side (grid, collapses to rows on mobile).
-Left panel = `infoTabs`, right panel = `practiceTabs`. Each panel has a tab bar; the active info tab
+Left panel = `infoTabs`, right panel = one `QuizShell` tab per entry in `datasets` (a single
+`PracticePlaceholder` tab when there are none). Each panel has a tab bar; the active info tab
 label is written to the global `activeInfoSheet` ref (used for stats context).
 
 ## Registering a script
@@ -85,12 +86,14 @@ Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. Key fields:
   countries: 'Country A · Country B',
   status: 'coming',   // 'coming' greys it out in the menu, 'beta' badges it. Default 'live'
   infoTabs: [...],
-  practiceTabs: [...],
+  datasets: fooDatasets,           // optional. QuizDatasetConfig[] from the script's datasets.ts
+  promptClass: 'foo',              // optional. class on the quiz prompt
+  promptFontFamily: 'var(--font-foo)',
   headerEnd: FontPickerComponent,  // optional control at the end of the panel header
 }
 ```
 
-Practice tabs for a script with a quiz: use `QuizShell` as the component, pass `{ datasetConfig, scriptId, promptClass, promptFontFamily }` as props.
+`datasetsById` is derived from `datasets`, indexed the same as the practice tabs.
 
 ## Quiz system
 

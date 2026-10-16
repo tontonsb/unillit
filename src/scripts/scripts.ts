@@ -1,6 +1,7 @@
 import type { Component } from 'vue'
 import { defineAsyncComponent } from 'vue'
 import type { QuizDatasetConfig } from '@/components/quiz/dataset'
+import NoContent from './NoContent.vue'
 import { thaiDatasets } from './thai/datasets'
 import { cyrillicDatasets } from './cyrillic/datasets'
 
@@ -25,12 +26,11 @@ export interface ScriptConfig {
 	countries?: string
 	status?: ScriptStatus
 	infoTabs?: ScriptTab[]
-	practiceTabs?: ScriptTab[]
+	datasets?: QuizDatasetConfig[]
+	promptClass?: string
+	promptFontFamily?: string
 	headerEnd?: Component
 }
-
-const NoContent = defineAsyncComponent(() => import('@/scripts/NoContent.vue'))
-const PracticePlaceholder = defineAsyncComponent(() => import('@/scripts/PracticePlaceholder.vue'))
 
 export const scriptList: ScriptConfig[] = [
 	{
@@ -43,10 +43,9 @@ export const scriptList: ScriptConfig[] = [
 		meta: 'Abugida — 44 consonants and 20+ vowel forms around them',
 		countries: 'Thailand',
 		headerEnd: defineAsyncComponent(() => import('@/scripts/thai/FontPicker.vue')),
-		practiceTabs: (() => {
-			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return thaiDatasets.map(dataset => ({ label: dataset.label, component: c, props: { datasetConfig: dataset, scriptId: 'thai', promptClass: 'thai', promptFontFamily: 'var(--font-thai)' } }))
-		})(),
+		datasets: thaiDatasets,
+		promptClass: 'thai',
+		promptFontFamily: 'var(--font-thai)',
 		infoTabs: [
 			{
 				label: 'Reading tips',
@@ -87,9 +86,6 @@ export const scriptList: ScriptConfig[] = [
 			},*/
 			{ label: 'None', component: NoContent },
 		],
-		practiceTabs: [
-			{ label: 'Practice', component: PracticePlaceholder },
-		],
 	},
 	{
 		id: 'bengali',
@@ -111,9 +107,6 @@ export const scriptList: ScriptConfig[] = [
 				component: defineAsyncComponent(() => import('@/scripts/bengali/BengaliSheet.vue')),
 			},*/
 			{ label: 'None', component: NoContent },
-		],
-		practiceTabs: [
-			{ label: 'Practice', component: PracticePlaceholder },
 		],
 	},
 	{
@@ -137,10 +130,9 @@ export const scriptList: ScriptConfig[] = [
 			},*/
 			{ label: 'None', component: NoContent },
 		],
-		practiceTabs: (() => {
-			const c = defineAsyncComponent(() => import('@/components/quiz/QuizShell.vue'))
-			return cyrillicDatasets.map(dataset => ({ label: dataset.label, component: c, props: { datasetConfig: dataset, scriptId: 'cyrillic', promptClass: 'cyr', promptFontFamily: 'var(--font-cyrillic)' } }))
-		})(),
+		datasets: cyrillicDatasets,
+		promptClass: 'cyr',
+		promptFontFamily: 'var(--font-cyrillic)',
 	},
 	{
 		id: 'greek',
@@ -174,8 +166,6 @@ export const sortedScriptList = [...scriptList]
 
 export const scriptsById = Object.fromEntries(scriptList.map((s) => [s.id, s]))
 
-// indexed the same as the practice tabs (which are built from these)
-export const datasetsById: Record<string, QuizDatasetConfig[]> = {
-	thai: thaiDatasets,
-	cyrillic: cyrillicDatasets,
-}
+export const datasetsById: Record<string, QuizDatasetConfig[]> = Object.fromEntries(
+	scriptList.map(s => [s.id, s.datasets ?? []]),
+)
