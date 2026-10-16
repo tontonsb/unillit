@@ -23,19 +23,27 @@ shared state lives in module-level refs (composables).
 
 A comment earns its place only when the code would otherwise read as a mistake — a
 non-obvious constraint, a footgun, a decision someone would reasonably undo. A normal
-choice needs no defence, and readable code needs no summary.
+choice needs no defence.
 
 - Don't justify ordinary decisions (`<!-- a div, not a <nav> ... -->`), restate what
   the next line does, or narrate the history of a change ("changed X to Y because Z").
 - In docs, write what is true now. When something is done, collapse it to the outcome
-  and delete the superseded description; correcting a wrong assumption is one clause,
-  not a paragraph.
+  and delete the superseded description.
 
 ## Tools
 
 - Check types: `npm run type-check`
 - Build: `npm run build`
 - Style checks: `npm run lint:eslint` and `npm run lint:stylelint`
+
+## Docs
+
+`docs/audit-*.md` and `.impeccable/critique/*` are dated records of impeccable's audit and
+critique sessions. `docs/improvement-backlog.md` collects the proposed solutions to their
+findings and tracks which are done.
+
+- Tick an audit finding once it's fixed, but never reword the audit.
+- Tick a backlog item only when all of it is done, noting the outcome, not the steps.
 
 ## Fonts
 
@@ -48,20 +56,7 @@ touching fonts, check every declared family appears in `document.fonts`.
 
 Use the `wght` / `wght-italic` entrypoints, not `standard` / `wdth`.
 
-## Known issues
-
-If npm is not available, I've forgotten to launch it. Just ask for it and I'll resume Claude with npm launched.
-
 ---
-
-## Routing
-
-| Path | View | Notes |
-|---|---|---|
-| `/` | `HomeView` | landing |
-| `/scripts/:id` | `ScriptView` | two-panel split: info left, practice right |
-| `/history` | `HistoryView` | all-script run history |
-| `/about` | `AboutView` | |
 
 ## Script page layout
 
@@ -72,104 +67,11 @@ label is written to the global `activeInfoSheet` ref (used for stats context).
 
 ## Registering a script
 
-Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. Key fields:
+Add a `ScriptConfig` entry to `src/scripts/scripts.ts`. What the interface doesn't say:
 
-```ts
-{
-  id: 'foo',          // used in route and stats
-  name: 'Foo',
-  nativeName: 'ፉ',
-  lang: 'am',         // required. BCP-47 tag for nativeName — not the id
-  labelScale: 1.15,   // optional. nativeName's optical size against a Latin label
-  abbr: 'ፉ',          // single char for collapsed menu; defaults to nativeName[0]
-  meta: 'Alphabet · left → right · N letters',
-  countries: 'Country A · Country B',
-  status: 'coming',   // 'coming' greys it out in the menu, 'beta' badges it. Default 'live'
-  infoTabs: [...],
-  datasets: fooDatasets,           // optional. QuizDatasetConfig[] from the script's datasets.ts
-  promptClass: 'foo',              // optional. class on the quiz prompt
-  promptFontFamily: 'var(--font-foo)',
-  headerEnd: FontPickerComponent,  // optional control at the end of the panel header
-}
-```
-
-`datasetsById` is derived from `datasets`, indexed the same as the practice tabs.
-
-## Quiz system
-
-### Data model (`src/components/quiz/dataset.ts`)
-
-```ts
-type QuizMode = 'typein' | 'multiplechoice' | 'multiselect'
-
-interface Question {
-  prompt: string        // the foreign-script string shown to user
-  answer: string | string[]  // accepted romanisation(s); first is canonical
-  hint?: string         // shown after answering
-}
-
-// what a script's datasets.ts exports — metadata is eager, questions are not
-interface QuizDatasetConfig {
-  label: string
-  load: () => Promise<QuizDatasetData>
-  maxTolerance?: number   // max Levenshtein errors allowed in typein mode
-  instructions?: string   // shown above input in typein mode
-  modes?: QuizMode[]      // defaults to ['typein'] if omitted
-  kind?: QuizKind         // flavours the result share text
-}
-
-interface QuizDatasetData {
-  questions: Question[]
-  options?: string[]      // multiselect — derived from questions when omitted
-}
-
-// the resolved form; QuizShell awaits load(), everything below it sees this
-interface QuizDataset extends QuizDatasetConfig, QuizDatasetData {}
-```
-
-`scripts.ts` reads `label` at module scope and `MainMenu` imports it on every route, so
-anything in the dataset literal is on the critical path. Only metadata belongs there;
-per-question data, `options` included, travels in the `load()` payload.
-
-### Component tree
-
-```
-QuizShell           ← tabs: quiz | stats | runs
-  QuizPanel         ← toolbar (mode + sampling), progress bar, card
-    TypeInQuiz      ← text input, Levenshtein fuzzy matching, tolerance slider
-    MultipleChoiceQuiz  ← up to 5 choices drawn from session distractors
-  StatsPanel        ← per-question accuracy table (fetches from Supabase)
-  RunsPanel         ← run history list (fetches from Supabase)
-```
-
-### Session lifecycle (`src/components/quiz/useSession.ts`)
-
-Phase state machine: `question → answered → (next question | done)`.
-`startSession(count)`: shuffles questions; if count is set, samples with replacement.
-Sampling mode and preferred quiz mode are persisted to `localStorage` via `useQuizPrefs`.
-
-### Adding a new quiz mode
-
-1. Add the mode name to `QuizMode` in `dataset.ts`
-2. Create a `FooQuiz.vue` component that emits `answer(correct: boolean, errors?: number)`
-3. Wire it in `QuizPanel.vue` (mode toggle pill label + `v-if` render)
-4. Opt datasets in via `modes: ['typein', 'multiplechoice', 'foo']`
-
-## Stats (Supabase)
-
-Auth: Discord OAuth via `useAuth()` composable. Stats are only written when a user is logged in.
-
-Tables: `quiz_runs`, `quiz_answers`, `question_stats` (view queried by StatsPanel).
-
-`useStats(scriptId, dataset)` returns `{ startRun, recordAnswer, completeRun, fetchStats, fetchRuns }`.
-
-## Script datasets
-
-Each active script has:
-- `src/scripts/{script}/datasets.ts` — exports `{script}Datasets: QuizDataset[]`
-- `src/scripts/{script}/{script}Questions.ts` (or `questions.ts`) — exports question arrays
-
-Scripts with `status: 'coming'` appear in the menu greyed out but have no practice tabs.
+- `lang` is the BCP-47 tag of `nativeName`, not the script id (`und-Cyrl` for Cyrillic).
+- `status: 'coming'` only hides the menu link; `/scripts/:id` still renders.
+- The script's glyph font needs a `--font-{id}` token in `main.css` and its import in `fonts.ts`.
 
 ## Reading tips
 
@@ -222,12 +124,3 @@ Applies to all reading-tips prose and tables:
 Callouts: a `> blockquote` is the prominent callout (accent border, italic) for
 conversational asides or important scope notes; `<small>…</small>` is the
 low-key muted side note for minor "by the way" remarks.
-
-## Global composables
-
-| File | Exports | Notes |
-|---|---|---|
-| `useAuth.ts` | `user`, `loginWithDiscord()`, `logout()` | module-level singleton |
-| `useScriptContext.ts` | `activeInfoSheet`, `activeFont` | written by ScriptPanel/FontPicker, read by stats |
-| `useQuizPrefs.ts` | `samplingMode`, `randomCount`, `preferredMode` | localStorage-persisted module-level refs |
-| `useStats.ts` | `useStats(scriptId, dataset)` | not a singleton; call per QuizPanel |

@@ -351,18 +351,17 @@ threshold* (Lc 0.0). That is fine — it bands rows and marks hover, it never ha
 discriminated as a mark. Mint Rule at Lc ~20 is likewise fine as a sheet rule but is
 the honest weak point for **interactive** boundaries, where 1.4.11's 3:1 does apply.
 
-### On Signal Teal (working position, not settled)
+### On Signal Teal
 
 Signal Teal measures **3.89:1 / Lc +64.2 on Warm Sheet** — a WCAG "fail" for body
 text, but squarely in APCA's large/secondary band, which is exactly the role it holds
-(`h1`, `h2`, list markers, blockquote borders). The current working split: Signal Teal
+(`h1`, `h2`, list markers, blockquote borders). APCA is the measure that counts here, so
+Signal Teal headings stay; don't recolour them on WCAG grounds. The split: Signal Teal
 takes fills, large text, graphic marks and focus rings; Highway Green takes anything
 read as text at body size.
 
-This is a position, not a law. The tension is real and unresolved — the colour is more
-characterful than its contrast permits, which is precisely why it is non-standard and
-worth keeping. If you want it doing more, the routes that stay honest are: larger type,
-larger fills, graphic or iconographic use, and non-text UI.
+If you want it doing more, the routes that stay honest are: larger type, larger fills,
+graphic or iconographic use, and non-text UI.
 
 **WCAG 2.x is the wrong model for this colour, and the numbers say so.** White on
 Signal Teal measures 4.1:1 by the WCAG ratio — nominally a fail — but
