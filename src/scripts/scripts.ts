@@ -4,6 +4,7 @@ import type { QuizDatasetConfig } from '@/components/quiz/dataset'
 import NoContent from './NoContent.vue'
 import { thaiDatasets } from './thai/datasets'
 import { cyrillicDatasets } from './cyrillic/datasets'
+import { sinhalaDatasets } from './sinhala/datasets'
 
 export interface ScriptTab {
 	label: string
@@ -143,6 +144,31 @@ export const scriptList: ScriptConfig[] = [
 		meta: 'Alphabet of 24 letters',
 		countries: 'Greece, Cyprus',
 		status: 'coming',
+	},
+	{
+		id: 'sinhala',
+		name: 'Sinhala',
+		nativeName: 'සිංහල',
+		lang: 'si',
+		labelScale: 1.15,
+		abbr: 'ස',
+		meta: 'Abugida with 41 consonants and 18 vowels',
+		countries: 'Sri Lanka',
+		status: 'beta',
+		infoTabs: [
+			{
+				label: 'Reading tips',
+				component: defineAsyncComponent(() => import('@/scripts/sinhala/ReadingTips.vue')),
+			},
+			{
+				label: 'Identify by shape',
+				component: defineAsyncComponent(() => import('@/scripts/sinhala/ShapeIdentification.vue')),
+			},
+			{ label: 'None', component: NoContent },
+		],
+		datasets: sinhalaDatasets,
+		promptClass: 'sinhala',
+		promptFontFamily: 'var(--font-sinhala)',
 	},
 	{
 		id: 'lao',

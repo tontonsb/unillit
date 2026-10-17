@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import CharBadge from '@/components/CharBadge.vue'
+import ThaiBadge, { type ThaiTag } from './ThaiBadge.vue'
 import ConsonantPicker from '@/components/ConsonantPicker.vue'
 
 const baseCons = ref('◌')
@@ -16,7 +16,7 @@ interface Consonant {
 	rom: string
 	fin?: string // only set when final differs from initial
 	gloss?: string
-	tags?: string[] // CharBadge tags (obsolete, rare, …)
+	tags?: ThaiTag[]
 	cls: ConsonantClass
 }
 
@@ -135,9 +135,9 @@ const specialMarks: Mark[] = [
 			<h2>Consonants — traditional alphabetical order</h2>
 			<p class="section-note">
 				<span>Class (affects tone):</span>
-				<CharBadge tag="mid" />
-				<CharBadge tag="high" />
-				<CharBadge tag="low" />
+				<ThaiBadge tag="mid" />
+				<ThaiBadge tag="high" />
+				<ThaiBadge tag="low" />
 				<small>Rom = initial · <em>final in italics</em> (when different) · — = no final/silent</small>
 			</p>
 			<ol class="cols-fill ruled">
@@ -152,8 +152,8 @@ const specialMarks: Mark[] = [
 						<em v-if="c.fin" class="final">{{ c.fin }}</em>
 					</span>
 					<span class="badges">
-						<CharBadge :tag="c.cls" />
-						<CharBadge v-for="t in c.tags" :key="t" :tag="t" />
+						<ThaiBadge :tag="c.cls" />
+						<ThaiBadge v-for="t in c.tags" :key="t" :tag="t" />
 					</span>
 					<span v-if="c.gloss" class="gloss">{{ c.gloss }}</span>
 				</li>

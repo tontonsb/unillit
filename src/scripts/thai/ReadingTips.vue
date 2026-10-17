@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CharBadge from '@/components/CharBadge.vue'
+import ThaiBadge from './ThaiBadge.vue'
 </script>
 
 <template>
@@ -104,14 +104,14 @@ import CharBadge from '@/components/CharBadge.vue'
 
 			| Form         | Syllable                              | Ex  | In action           |
 			|--------------|---------------------------------------|-----|---------------------|
-			| Open         | Open <CharBadge tag="open" />         | ◌ะ  | นะน... → na-n...   |
-			| Pre-final    | Closed <CharBadge tag="prefinal" />   | ◌ั   | นัน... → nan-...    |
-			| Self-closed  | Closed <CharBadge tag="selfclosed" /> | เ◌า  | เนาน... → nao-n... |
+			| Open         | Open <ThaiBadge tag="open" />         | ◌ะ  | นะน... → na-n...   |
+			| Pre-final    | Closed <ThaiBadge tag="prefinal" />   | ◌ั   | นัน... → nan-...    |
+			| Self-closed  | Closed <ThaiBadge tag="selfclosed" /> | เ◌า  | เนาน... → nao-n... |
 			| Inconclusive | Either                                | ◌า, แ◌ | นาน... → na-n... or nan-... |
 
 			<small>Some might argue นะ is phonologically a closed syllable with an implicit glottal
 			stop ending it, but you're not one of those people, so just note that
-			<CharBadge tag="open" /> means the syllable will not consume the following consonant.</small>
+			<ThaiBadge tag="open" /> means the syllable will not consume the following consonant.</small>
 		</Markdown>
 
 		<Markdown wrap="section">

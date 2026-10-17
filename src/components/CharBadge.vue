@@ -1,33 +1,24 @@
+<script lang="ts">
+export type Swatch = 'orange' | 'yellow' | 'amber' | 'blue' | 'steel' | 'red' | 'green' | 'violet'
+
+export interface BadgeDef {
+	label: string
+	title: string
+	swatch: Swatch
+}
+
+export const lengthBadges = {
+	short: { label: 's', title: 'Short vowel', swatch: 'amber' },
+	long: { label: 'l', title: 'Long vowel', swatch: 'blue' },
+} satisfies Record<string, BadgeDef>
+</script>
+
 <script setup lang="ts">
-defineProps<{ tag: string }>()
-
-const labels: Record<string, string> = {
-	obsolete: 'obs',
-	vowel: 'vow',
-	short: 's',
-	long: 'l',
-	open: 'cv',
-	prefinal: 'cv_',
-	selfclosed: 'cvc',
-}
-
-const titles: Record<string, string> = {
-	obsolete: 'Obsolete character',
-	rare: 'Rare character',
-	vowel: 'Can also form a vowel/diphthong pattern',
-	short: 'Short vowel',
-	long: 'Long vowel',
-	mid: 'Mid-class consonant (affects tone)',
-	high: 'High-class consonant (affects tone)',
-	low: 'Low-class consonant (affects tone)',
-	open: 'CV syllable — next char belongs to next syllable',
-	prefinal: 'CVC syllable — next char will complete this syllable',
-	selfclosed: 'Complete CVC syllable — next char belongs to next syllable',
-}
+defineProps<BadgeDef>()
 </script>
 
 <template>
-	<span :class="tag" :title="titles[tag]">{{ labels[tag] ?? tag }}</span>
+	<span :class="swatch" :title="title">{{ label }}</span>
 </template>
 
 <style scoped>
@@ -43,24 +34,13 @@ span {
 	letter-spacing: var(--tracking-caps);
 }
 
-/**
-  * Consonant tags and vowel tags never land on the same character, so the two sets
-  * share swatches instead of spending hues the palette cannot separate
-  * (docs/badge-palette-options.md).
-  */
-.obsolete { background: #fde8d8; color: #9a3412; border: 1px solid #fca97e; }
-.rare { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
-.short { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-.long { background: #e8f0fe; color: #1a56a0; border: 1px solid #a8c4f0; }
-.mid { background: #ddeaf5; color: #1a5c8a; border: 1px solid #a9c9e2; }
-
-.high,
-.prefinal { background: #fbe5e7; color: #a52834; border: 1px solid #f0b3ba; }
-
-.low,
-.open { background: #e3f2e5; color: #2e7d32; border: 1px solid #abd5af; }
-
-/* both mark a glyph that carries the other category inside it */
-.vowel,
-.selfclosed { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+/* docs/badge-palette-options.md */
+.orange { background: #fde8d8; color: #9a3412; border: 1px solid #fca97e; }
+.yellow { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.amber { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+.blue { background: #e8f0fe; color: #1a56a0; border: 1px solid #a8c4f0; }
+.steel { background: #ddeaf5; color: #1a5c8a; border: 1px solid #a9c9e2; }
+.red { background: #fbe5e7; color: #a52834; border: 1px solid #f0b3ba; }
+.green { background: #e3f2e5; color: #2e7d32; border: 1px solid #abd5af; }
+.violet { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
 </style>

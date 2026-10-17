@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import CharBadge from '@/components/CharBadge.vue'
+import ThaiBadge, { type ThaiTag } from './ThaiBadge.vue'
 import GlyphFamily from '@/components/GlyphFamily.vue'
 import ConsonantPicker from '@/components/ConsonantPicker.vue'
 
@@ -15,7 +15,7 @@ interface ConsonantChar {
 	glyph: string
 	translit: string
 	final: string | null
-	tags?: string[]
+	tags?: ThaiTag[]
 }
 
 interface ConsonantFamily {
@@ -265,7 +265,7 @@ const consonantFamilies: ConsonantFamily[] = [
 				<span class="thai">{{ char.glyph }}</span>
 				<span class="rom">{{ char.translit }}</span>
 				<span v-if="char.final" class="final">–{{ char.final }}</span>
-				<CharBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
+				<ThaiBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
 			</GlyphFamily>
 		</section>
 
@@ -281,15 +281,15 @@ const consonantFamilies: ConsonantFamily[] = [
 			<p class="section-note">
 				<span>Syllable shape:</span>
 				<span class="shape-key">
-					<CharBadge tag="open" />
+					<ThaiBadge tag="open" />
 					<small>ends with this vowel</small>
 				</span>
 				<span class="shape-key">
-					<CharBadge tag="selfclosed" />
+					<ThaiBadge tag="selfclosed" />
 					<small>ends with this glide</small>
 				</span>
 				<span class="shape-key">
-					<CharBadge tag="prefinal" />
+					<ThaiBadge tag="prefinal" />
 					<small>next consonant will end this syllable</small>
 				</span>
 				<label class="rare-toggle">
@@ -308,8 +308,8 @@ const consonantFamilies: ConsonantFamily[] = [
 				<span class="thai">{{ replaceConsonant(vowel.glyph) }}</span>
 				<span class="rom">{{ vowel.translit }}</span>
 				<span class="badges">
-					<CharBadge v-if="vowel.length" :tag="vowel.length" />
-					<CharBadge v-if="vowel.shape" :tag="vowel.shape" />
+					<ThaiBadge v-if="vowel.length" :tag="vowel.length" />
+					<ThaiBadge v-if="vowel.shape" :tag="vowel.shape" />
 				</span>
 			</GlyphFamily>
 		</section>
