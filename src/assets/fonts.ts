@@ -28,3 +28,4 @@ import '@fontsource/trirong/400.css'
 import '@fontsource/trirong/600.css'
 import '@fontsource/sarabun/400.css'
 import '@fontsource/sarabun/600.css'
+import '@fontsource-variable/noto-sans-sinhala/wght.css'        // --font-sinhala

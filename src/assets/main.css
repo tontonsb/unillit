@@ -16,6 +16,7 @@
 	--font-cyrillic: 'Noto Serif Variable', Georgia, serif;
 	--font-cyrillic-style: normal;
 	--font-thai: 'Noto Sans Thai Variable', system-ui, sans-serif;
+	--font-sinhala: 'Noto Sans Sinhala Variable', system-ui, sans-serif;
 
 	/* rem so type honours the browser's font-size preference, chosen in px because the
 	   chrome register needs 1px resolution in the 10–15px band. Named by role where a
