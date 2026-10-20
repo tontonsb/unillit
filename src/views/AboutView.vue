@@ -34,6 +34,15 @@ const version = __APP_VERSION__
 		</Markdown>
 
 		<dl class="changelog">
+			<dt>1.1</dt>
+			<dd>
+				A surprise launch of two previously unplanned scripts. They are in beta, I am learning the basics myself.
+				<ul>
+					<li>Added Sinhala script — tips, lookup sheet, quizzes</li>
+					<li>Added Tamil script — tips, lookup sheet, quizzes (mainly Sri Lanka toponyms for now)</li>
+				</ul>
+			</dd>
+
 			<dt>1.0.7</dt>
 			<dd>
 				A Thai sheet review edition. Mostly vowel improvemenmts since I'm starting to understand what's going on.
