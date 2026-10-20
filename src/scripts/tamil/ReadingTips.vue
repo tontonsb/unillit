@@ -139,6 +139,32 @@
 			| மட்டக்களப்பு      | Mattakkalappu   | Batticaloa   |
 		</Markdown>
 
+		<Markdown wrap="section">
+			## Names from other languages
+
+			Tamil has three n-like consonants (ந, ண, ன), three l-likes
+			(ல, ள, ழ), and two r-likes (ர, ற).
+
+			There are competing spellings for names that come from other
+			languages (often from Sinhalese).
+
+			Besides consonant variations, the ending *-a* sometimes gets
+			changed into *-ai*.
+
+			| Place        | Options                                | Variation??           |
+			|--------------|----------------------------------------|-----------------------|
+			| Kurunagal    | குருணாகல் / குருநாகல்               | *na*: ணா vs நா     |
+			| Monaragala   | மொணராகலை  / மொனராகலை    | *na*: ண vs ன       |
+			| Ambalangoda  | அம்பலாங்கொடை / அம்பலாங்கொட | *dai* டை vs *da* ட  |
+			| Gampola      | கம்பளை / கம்பலை                  | *lai*:  ளை vs லை  |
+			| Polonnaruwa  | பொலன்னறுவை / பொலன்னருவை   | *ru*: று vs ரு        |
+			| Polonnaruwa  | பொலன்னறுவை / பொலநறுவை      | *nna* ன்ன vs *na* ந |
+			| Anuradhapura | அனுராதபுரம் / அநுராதபுரம்          | *nu*: னு vs நு        |
+
+			> Kurunagal (aka Kurunegala) also has versions குருணாகலை and குருநாகலை
+			> with the *-ai* ending. Anuradhapura is commonly அனுராதபுர without the *m*.
+		</Markdown>
+
 		<section>
 			<h2>Common elements in place names</h2>
 

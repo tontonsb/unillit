@@ -83,6 +83,18 @@
 		</Markdown>
 
 		<Markdown wrap="section">
+			## Variations
+
+			The ල and ළ are generally pronounced alike as *l* in contemporary
+			Sinhalese, while න and ණ are both pronounced as *n*.
+
+			Although there is usually a "standard" spelling for each word, it
+			is common to see Moneragala as either මොණරාගල or මොනරාගල and
+			Gampola as either ගම්පොළ or ගම්පොල. Even in official signage and
+			government docs.
+		</Markdown>
+
+		<Markdown wrap="section">
 			## Established names
 
 			Sure enough, some toponyms have established names that don't line
