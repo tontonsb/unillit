@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import ThaiBadge, { type ThaiTag } from './ThaiBadge.vue'
-import GlyphFamily from '@/components/GlyphFamily.vue'
+import GlyphFamily, { filterFamilies } from '@/components/GlyphFamily.vue'
 import ConsonantPicker from '@/components/ConsonantPicker.vue'
+import SheetToggle from '@/components/SheetToggle.vue'
 
 const baseCons = ref('◌')
 const showRare = ref(false)
@@ -154,12 +155,7 @@ const vowelFamilies: VowelFamily[] = [
 const visibleVowelFamilies = computed(() => {
 	if (showRare.value) return vowelFamilies
 
-	return vowelFamilies
-		.map(family => ({
-			...family,
-			characters: family.characters.filter(vowel => !vowel.rare),
-		}))
-		.filter(family => family.characters.length > 0)
+	return filterFamilies(vowelFamilies, vowel => !vowel.rare)
 })
 
 const consonantFamilies: ConsonantFamily[] = [
@@ -292,10 +288,9 @@ const consonantFamilies: ConsonantFamily[] = [
 					<ThaiBadge tag="prefinal" />
 					<small>next consonant will end this syllable</small>
 				</span>
-				<label class="rare-toggle">
-					<input v-model="showRare" type="checkbox">
+				<SheetToggle v-model="showRare">
 					Uncommon forms
-				</label>
+				</SheetToggle>
 			</p>
 
 			<GlyphFamily
@@ -321,19 +316,6 @@ const consonantFamilies: ConsonantFamily[] = [
 	display: inline-flex;
 	align-items: center;
 	gap: var(--sp-4);
-}
-
-.rare-toggle {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--sp-4);
-	margin-left: auto;
-	cursor: pointer;
-}
-
-.rare-toggle input {
-	margin: 0;
-	accent-color: var(--c-sign);
 }
 
 .thai {

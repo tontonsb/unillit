@@ -1,3 +1,22 @@
+<script lang="ts">
+/**
+ * Exporting because
+ * - We're not doing the whole rendering but providing the box and the slots.
+ * - A whole subset can be dropped by filter.
+ */
+export function filterFamilies<C>(
+	families: { name: string, characters: C[] }[],
+	keep: (char: C) => boolean,
+) {
+	return families
+		.map(family => ({
+			...family,
+			characters: family.characters.filter(keep),
+		}))
+		.filter(family => family.characters.length > 0)
+}
+</script>
+
 <script setup lang="ts" generic="T">
 defineProps<{
 	name: string
