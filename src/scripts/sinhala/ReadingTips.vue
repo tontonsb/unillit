@@ -24,7 +24,7 @@
 			- Consonants are written left to right.
 			- The vowel is a diacritic written above, below, after or even before the consonant.
 			- Consonants without a diacritic have the short *a* as a default vowel.
-			- The default vowel can be suppressed using the ් diacritic.
+			- The default vowel can be suppressed using the ් diacritic (*al-lakuna*).
 
 			| Sinhala | Latin | Why????                  |
 			|---------|-------|--------------------------|
@@ -94,14 +94,9 @@
 			| මහනුවර     | Mahanuwara    | Kandy            |
 			| කොළඹ      | Kolamba       | Colombo          |
 			| ගාල්ල        | Galla         | Galle            |
-			| නුවරඑළිය    | Nuwaraeliya   | Nuwara Eliya     |
 			| ත්‍රිකුණාමලය  | Trikunamalaya | Trincomalee      |
 			| මඩකලපුව    | Madakalapuwa  | Batticaloa       |
 			| යාපනය      | Yapanaya      | Jaffna           |
-
-			The names Trincomalee, Batticaloa and Jaffna are derived from the
-			Tamil names of these places. That's why the Sinhala version is so
-			different.
 		</Markdown>
 
 		<section>

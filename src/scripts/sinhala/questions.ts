@@ -98,6 +98,8 @@ export const diacriticQuestions: Question[] = [
   * The English name comes first; literal transliteration as an alternative.
   */
 export const toponymQuestions: Question[] = [
+	// we should consider ignoring spaces...
+	{ prompt: 'ශ්‍රී ලංකාව', answer: ['Sri Lanka', 'SriLanka', 'Sri Lankawa', 'SriLankawa', 'Sri Lankava', 'SriLankava'], hint: 'The ව can be absent' },
 	{ prompt: 'අම්පාර', answer: ['Ampara', 'Amparai']},
 	{ prompt: 'අනුරාධපුර', answer: 'Anuradhapura'},
 	{ prompt: 'බදුල්ල', answer: 'Badulla'},

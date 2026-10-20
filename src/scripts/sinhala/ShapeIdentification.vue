@@ -207,7 +207,7 @@ const sections = [
 <template>
 	<article class="sheet">
 		<section
-			v-for="(section, si) in sections"
+			v-for="section in sections"
 			:key="section.title"
 			class="families"
 		>
