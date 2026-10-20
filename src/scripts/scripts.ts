@@ -5,6 +5,7 @@ import NoContent from './NoContent.vue'
 import { thaiDatasets } from './thai/datasets'
 import { cyrillicDatasets } from './cyrillic/datasets'
 import { sinhalaDatasets } from './sinhala/datasets'
+import { tamilDatasets } from './tamil/datasets'
 
 export interface ScriptTab {
 	label: string
@@ -169,6 +170,31 @@ export const scriptList: ScriptConfig[] = [
 		datasets: sinhalaDatasets,
 		promptClass: 'sinhala',
 		promptFontFamily: 'var(--font-sinhala)',
+	},
+	{
+		id: 'tamil',
+		name: 'Tamil',
+		nativeName: 'தமிழ்',
+		lang: 'ta',
+		labelScale: 1.15,
+		abbr: 'த',
+		meta: 'Abugida — 18 consonants + 5 borrowed, 12 vowels',
+		countries: 'India, Sri Lanka, Singapore',
+		status: 'beta',
+		infoTabs: [
+			{
+				label: 'Reading tips',
+				component: defineAsyncComponent(() => import('@/scripts/tamil/ReadingTips.vue')),
+			},
+			{
+				label: 'Identify by shape',
+				component: defineAsyncComponent(() => import('@/scripts/tamil/ShapeIdentification.vue')),
+			},
+			{ label: 'None', component: NoContent },
+		],
+		datasets: tamilDatasets,
+		promptClass: 'tamil',
+		promptFontFamily: 'var(--font-tamil)',
 	},
 	{
 		id: 'lao',
