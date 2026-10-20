@@ -121,7 +121,7 @@
 	line-height: var(--lh-tight);
 }
 
-.sheet .final {
+.sheet .rom-alt {
 	font-size: 0.75em;
 	color: var(--c-muted);
 }

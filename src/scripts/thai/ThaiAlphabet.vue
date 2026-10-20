@@ -149,7 +149,7 @@ const specialMarks: Mark[] = [
 					<span class="thai">{{ c.thai }}</span>
 					<span class="rom">
 						{{ c.rom }}
-						<em v-if="c.fin" class="final">{{ c.fin }}</em>
+						<em v-if="c.fin" class="rom-alt">{{ c.fin }}</em>
 					</span>
 					<span class="badges">
 						<ThaiBadge :tag="c.cls" />

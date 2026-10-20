@@ -260,7 +260,7 @@ const consonantFamilies: ConsonantFamily[] = [
 			>
 				<span class="thai">{{ char.glyph }}</span>
 				<span class="rom">{{ char.translit }}</span>
-				<span v-if="char.final" class="final">–{{ char.final }}</span>
+				<span v-if="char.final" class="rom-alt">–{{ char.final }}</span>
 				<ThaiBadge v-for="tag in char.tags" :key="tag" :tag="tag" />
 			</GlyphFamily>
 		</section>
