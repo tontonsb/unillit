@@ -27,7 +27,7 @@ export function pageMeta(path: string, scripts: Record<string, ScriptSummary>): 
 
 		return {
 			title: `${script.name} on ${SITE}`,
-			description: `Learn to read some of the ${script.name} script.`,
+			description: `Learn how to decipher the ${script.name} script.`,
 		}
 	}
 
