@@ -11,6 +11,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { reloadOnStaleChunks } from './lib/staleBuild'
+import { pageMeta } from './lib/pageMeta'
+import { scriptsById } from './scripts/scripts'
 
 console.log(`Unillit v${__APP_VERSION__}`)
 
@@ -19,5 +21,9 @@ const app = createApp(App)
 app.use(router)
 
 reloadOnStaleChunks(router)
+
+router.afterEach(to => {
+	document.title = pageMeta(to.path, scriptsById).title
+})
 
 app.mount('#app')
